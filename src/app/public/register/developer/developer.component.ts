@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, NgForm } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Developer } from 'src/app/developers/model/developer';
 import { DevelopersService } from 'src/app/developers/services/developers.service';
 
@@ -14,16 +14,23 @@ export class DeveloperComponent implements OnInit {
   TempDev:Developer;
   pass:string = "";
 
-  languages = new FormControl("");
+  registerForm: FormGroup =this.formBuilder.group({
+    first_name: ["",Validators.required],
+    last_name: ["",Validators.required],
+    phone: ["",Validators.required],
+    email: ["",Validators.required],
+    password: ["",Validators.required],
+    languages: [""],
+    databases: [""],
+    frameworks: [""]
+  });
+
+  
   languagesList:Array<string> = ["JavaScript","Python","Java","C#","C++","TypeScript","Shell","C","Ruby"];
-
-  databases = new FormControl("");
-  databasesList:Array<string> = ["MySQL", "Oracle", "PostgreSQL", "Microsoft SQL Server", "MongoDB"];
-
-  frameworks = new FormControl("");
+  databasesList:Array<string> = ["MySQL", "Oracle", "PostgreSQL", "Microsoft SQL Server", "MongoDB"];  
   frameworksList:Array<string> = ["Angular", "ASP.NET Core", "Django", "React", "Vue.js"];
 
-  constructor(private service:DevelopersService) { 
+  constructor(private service:DevelopersService, private formBuilder: FormBuilder) { 
     this.TempDev = {} as Developer;
   }
 
@@ -31,6 +38,7 @@ export class DeveloperComponent implements OnInit {
   }
 
   Add(){
+    this.TempDev = this.registerForm.value;
     this.TempDev.id = 0;
     this.service.AddDev(this.TempDev).subscribe((response:any) => {
       this.devs.push({...response});
