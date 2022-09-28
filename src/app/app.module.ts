@@ -14,12 +14,15 @@ import { MatButtonModule} from "@angular/material/button";
 import { MatToolbarModule} from "@angular/material/toolbar";
 import { MatIconModule} from "@angular/material/icon";
 import { MatSortModule} from "@angular/material/sort";
+import { MatCardModule } from '@angular/material/card';
+import { MatGridListModule } from '@angular/material/grid-list';
 import {MatSelectModule} from '@angular/material/select'
 
 import { RegisterComponent } from './public/register/register.component';
 import { DeveloperComponent } from './public/register/developer/developer.component';
 import { DevelopersComponent } from './developers/developers.component';
 import { CompaniesComponent } from './companies/companies.component';
+import { LoginComponent } from './public/login/login.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,8 @@ import { CompaniesComponent } from './companies/companies.component';
     RegisterComponent,
     DeveloperComponent,
     DevelopersComponent,
-    CompaniesComponent
+    CompaniesComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -43,6 +47,8 @@ import { CompaniesComponent } from './companies/companies.component';
     MatToolbarModule,
     MatIconModule,
     MatSortModule,
+    MatCardModule,
+    MatGridListModule,
     MatSelectModule
   ],
   providers: [],
