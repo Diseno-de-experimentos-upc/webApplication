@@ -1,0 +1,14 @@
+{
+   "accounts": [
+      {
+        "id": "1",
+         "username": "account1",
+         "password": "account1key"
+      },
+      {
+        "id": "2",
+         "username": "account2",
+         "password": "account2key"
+      }
+   ]
+}
