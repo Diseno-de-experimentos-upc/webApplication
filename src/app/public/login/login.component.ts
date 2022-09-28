@@ -11,10 +11,10 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup = this.formBuilder.group({
     email : ["", {validators: [Validators.required], updateOn: 'change'}],
     password : ["", {validators: [Validators.required, Validators.minLength(8)], updateOn: 'change'}]
-   });
-   constructor(private formBuilder: FormBuilder) { }
+});
+  constructor(private formBuilder: FormBuilder) { }
 
-   ngOnInit(): void {
+  ngOnInit(): void {
     this.setEmailValidation();
   }
   

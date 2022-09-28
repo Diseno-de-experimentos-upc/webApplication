@@ -1,0 +1,26 @@
+.register-dev{
+    background-color: #02AAEE;
+    width: 65rem;
+    margin: auto;
+    display: grid;
+    justify-content: center;
+}
+
+.professional-info{
+    background-color: #007BBB;
+    border-radius: 20px;
+    padding: 43px;
+}
+
+.created{
+    background-color: #000000;
+    color: #FFFFFF;
+    width: 309px;
+    margin: auto;
+    margin-top: 10px;
+}
+
+mat-form-field {
+    background-color: #FFFFFF;
+    height: 44px;
+}

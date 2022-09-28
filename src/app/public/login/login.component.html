@@ -22,7 +22,7 @@
                             <mat-label>Email</mat-label>
                             <input type="text" matInput formControlName="email" placeholder="example@gmail.com">
                             <mat-error *ngIf="email?.errors?.['required']">Email is <strong>required</strong></mat-error>
-                          </mat-form-field>
+                        </mat-form-field>
                     </mat-grid-tile>
                     <mat-grid-tile>
                         <mat-form-field appearance="fill" class="full-width">
@@ -37,8 +37,8 @@
                     <button class="btnLogIn" [disabled]="!loginForm.valid" mat-raised-button color="primary" type="submit" >Log In</button>
                 </mat-card-actions>
                 <mat-grid-tile-footer>
-                    <a routerLink="/register">Forgot Password?<br></a>
-                    <a routerLink="/forgot-password">Create a new account</a>
+                    <a routerLink="/forgot-password">Forgot Password?<br></a>
+                    <a routerLink="/register">Create a new account</a>
                 </mat-grid-tile-footer>
             </mat-card-content>
             <ng-template [ngIf]="loggedIn">

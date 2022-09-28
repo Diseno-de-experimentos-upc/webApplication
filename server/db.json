@@ -1,32 +1,47 @@
 {
-    "developers": [
-        {
-            "languages": [
-                "Python",
-                "Java",
-                "C++"
-            ],
-            "databases": [
-                "MySQL",
-                "PostgreSQL",
-                "Microsoft SQL Server"
-            ],
-            "frameworks": [
-                "Angular",
-                "React",
-                "Vue.js"
-            ],
-            "first_name": "Pedro",
-            "last_name": "Jimenez",
-            "phone": "498419819",
-            "email": "fepedev135@keyido.com",
-            "password": "123456789",
-            "id": 1
-        }
-    ],
-    "companies": [
-        {
-            
-        }
-    ]
+  "developers": [
+    {
+      "languages": [
+        "Python",
+        "Java",
+        "C++"
+      ],
+      "databases": [
+        "MySQL",
+        "PostgreSQL",
+        "Microsoft SQL Server"
+      ],
+      "frameworks": [
+        "Angular",
+        "React",
+        "Vue.js"
+      ],
+      "first_name": "Pedro",
+      "last_name": "Jimenez",
+      "phone": "498419819",
+      "email": "fepedev135@keyido.com",
+      "password": "123456789",
+      "id": 1
+    },
+    {
+      "languages": [
+        "C++"
+      ],
+      "databases": [
+        "MongoDB"
+      ],
+      "frameworks": [
+        "Angular"
+      ],
+      "first_name": "Abel",
+      "last_name": "Cierto",
+      "phone": "498419819",
+      "email": "bay@gmail.com",
+      "password": "123456789",
+      "id": 2
+    }
+  ],
+  "companies": [
+    {}
+  ]
 }

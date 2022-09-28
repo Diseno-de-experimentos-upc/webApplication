@@ -1,80 +1,96 @@
-<form class="example-form">
-    <table class="example-full-width" cellspacing="0">
-        <tr>
-        <td>
-            <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>First Name</mat-label>
-            <input
-                matInput
-                placeholder="Ex. Evans"
-                [(ngModel)]="TempDev.first_name"
-                name="first_name"
-            />
-            </mat-form-field>
-        </td>
-
-        <td>
-            <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Last Name</mat-label>
-            <input matInput placeholder="Ex. Johnson" [(ngModel)]="TempDev.last_name" name="last_name"/>
-            </mat-form-field>
-        </td>
-
-        <td>
-            <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Telephone</mat-label>
-            <span matPrefix>+51 &nbsp;</span>
-            <input type="tel" matInput placeholder="955-555-123" [(ngModel)]="TempDev.phone" name="phone"/>
-            <mat-icon matSuffix>mode_edit</mat-icon>
-            </mat-form-field>
-        </td>
-        </tr>
-    </table>
-
-    <table class="example-full-width" cellspacing="0">
-        <tr>
-        <td>
-            <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Email</mat-label>
-            <input matInput type="email" placeholder="Ex. dev777@gmail.com" [(ngModel)]="TempDev.email" name="email"/>
-            </mat-form-field>
-        </td>
-
-        <td>
-            <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Password</mat-label>
-            <input matInput type="password" [(ngModel)]="TempDev.password" name="password"/>
-            </mat-form-field>
-        </td>
-
-        <td>
-            <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Confirm Password</mat-label>
-            <input matInput type="password" [(ngModel)]="pass" name="confirm_pass" />
-            </mat-form-field>
-        </td>
-        </tr>
-    </table>
-
-    <mat-form-field appearance="fill">
-        <mat-label>Languages</mat-label>
-        <mat-select [formControl]="languages" multiple [(ngModel)]="TempDev.languages">
-          <mat-option *ngFor="let language of languagesList" [value]="language">{{language}}</mat-option>
-        </mat-select>
-    </mat-form-field>
+<mat-card class="register-dev container">
+    <h1>Get Started With DigitalMind</h1>
+    <form class="register-dev-form">
+        <table class="example-full-width" cellspacing="10">
+            <tr>
+            <td>
+                <mat-form-field class="register-dev__firstname" appearance="fill">
+                <mat-label>First Name</mat-label>
+                <input
+                    matInput
+                    placeholder="Ex. Evans"
+                    [(ngModel)]="TempDev.first_name"
+                    name="first_name"
+                />
+                </mat-form-field>
+            </td>
     
-    <mat-form-field appearance="fill">
-        <mat-label>Databases</mat-label>
-        <mat-select [formControl]="databases" multiple [(ngModel)]="TempDev.databases">
-          <mat-option *ngFor="let database of databasesList" [value]="database">{{database}}</mat-option>
-        </mat-select>
-    </mat-form-field>
-
-    <mat-form-field appearance="fill">
-        <mat-label>Frameworks</mat-label>
-        <mat-select [formControl]="frameworks" multiple [(ngModel)]="TempDev.frameworks">
-          <mat-option *ngFor="let framework of frameworksList" [value]="framework">{{framework}}</mat-option>
-        </mat-select>
-    </mat-form-field>
+            <td>
+                <mat-form-field class="register-dev__lastname" appearance="fill">
+                <mat-label>Last Name</mat-label>
+                <input matInput placeholder="Ex. Johnson" [(ngModel)]="TempDev.last_name" name="last_name"/>
+                </mat-form-field>
+            </td>
     
-</form>
+            <td>
+                <mat-form-field class="register-dev__phone" appearance="fill">
+                <mat-label>Telephone</mat-label>
+                <span matPrefix>+51 &nbsp;</span>
+                <input type="tel" matInput placeholder="955-555-123" [(ngModel)]="TempDev.phone" name="phone"/>
+                <mat-icon matSuffix>mode_edit</mat-icon>
+                </mat-form-field>
+            </td>
+            </tr>
+        </table>
+    
+        <table class="example-full-width" cellspacing="10">
+            <tr>
+            <td>
+                <mat-form-field class="register-dev__email" appearance="fill">
+                <mat-label>Email</mat-label>
+                <input matInput type="email" placeholder="Ex. dev777@gmail.com" [(ngModel)]="TempDev.email" name="email"/>
+                </mat-form-field>
+            </td>
+    
+            <td>
+                <mat-form-field class="register-dev__password" appearance="fill">
+                <mat-label>Password</mat-label>
+                <input matInput type="password" [(ngModel)]="TempDev.password" name="password"/>
+                </mat-form-field>
+            </td>
+    
+            <td>
+                <mat-form-field class="register-dev__lastname confirm" appearance="fill">
+                <mat-label>Confirm Password</mat-label>
+                <input matInput type="password" [(ngModel)]="pass" name="confirm_pass" />
+                </mat-form-field>
+            </td>
+            </tr>
+        </table>
+
+        <h2>Enter your professional info </h2>
+        <table class="professional-info" cellspacing="10">         
+            <tr>
+                <td>
+                    <mat-form-field appearance="fill" class="register-dev__languages">
+                        <mat-label>Languages</mat-label>
+                            <mat-select [formControl]="languages" multiple [(ngModel)]="TempDev.languages">
+                        <mat-option *ngFor="let language of languagesList" [value]="language">{{language}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </td>
+                
+                <td>
+                    <mat-form-field appearance="fill" class="register-dev__databases">
+                        <mat-label>Databases</mat-label>
+                        <mat-select [formControl]="databases" multiple [(ngModel)]="TempDev.databases">
+                            <mat-option *ngFor="let database of databasesList" [value]="database">{{database}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </td>
+            
+                <td>
+                    <mat-form-field appearance="fill" class="register-dev__frameworks">
+                    <mat-label>Frameworks</mat-label>
+                    <mat-select [formControl]="frameworks" multiple [(ngModel)]="TempDev.frameworks">
+                      <mat-option *ngFor="let framework of frameworksList" [value]="framework">{{framework}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                </td>
+            </tr>
+        </table>
+    </form>
+    <button mat-button color="primary" class="created" (click)="Add()">Create Account</button>
+</mat-card>
+
+
