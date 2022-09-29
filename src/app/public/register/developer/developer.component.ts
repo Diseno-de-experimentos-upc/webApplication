@@ -25,12 +25,12 @@ export class DeveloperComponent implements OnInit {
     frameworks: [""]
   });
 
-  
+
   languagesList:Array<string> = ["JavaScript","Python","Java","C#","C++","TypeScript","Shell","C","Ruby"];
-  databasesList:Array<string> = ["MySQL", "Oracle", "PostgreSQL", "Microsoft SQL Server", "MongoDB"];  
+  databasesList:Array<string> = ["MySQL", "Oracle", "PostgreSQL", "Microsoft SQL Server", "MongoDB"];
   frameworksList:Array<string> = ["Angular", "ASP.NET Core", "Django", "React", "Vue.js"];
 
-  constructor(private service:DevelopersService, private formBuilder: FormBuilder) { 
+  constructor(private service:DevelopersService, private formBuilder: FormBuilder) {
     this.TempDev = {} as Developer;
   }
 

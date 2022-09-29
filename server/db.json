@@ -39,9 +39,90 @@
       "email": "bay@gmail.com",
       "password": "123456789",
       "id": 2
+    },
+    {
+      "first_name": "Michael",
+      "last_name": "Carrillo",
+      "phone": "1234567",
+      "email": "mimir@micorreo",
+      "password": "12345678",
+      "languages": [
+        "Java",
+        "C#"
+      ],
+      "databases": [
+        "Oracle",
+        "PostgreSQL"
+      ],
+      "frameworks": [
+        "Django",
+        "Vue.js"
+      ],
+      "id": 3
+    },
+    {
+      "first_name": "Hector",
+      "last_name": "Gonzáles",
+      "phone": "987654327",
+      "email": "hectorviv@gmail.com",
+      "password": "hector1234",
+      "languages": [
+        "Java",
+        "C#"
+      ],
+      "databases": [
+        "MySQL",
+        "MongoDB"
+      ],
+      "frameworks": [
+        "Django",
+        "Vue.js"
+      ],
+      "id": 4
     }
   ],
   "companies": [
-    {}
+    {
+      "recruiter_first_name": "Pedro",
+      "recruiter_last_name": "Jimenez",
+      "recruiter_phone": "498419819",
+      "recruiter_email": "fepedev135@keyido.com",
+      "recruiter_password": "123456789",
+      "company_name": "Google",
+      "ruc": 22336123199,
+      "owner_name": "Mark Sukerber",
+      "address": "The olivos",
+      "locality": "Manhatahn",
+      "city": "New Yordk",
+      "id": 1
+    },
+    {
+      "recruiter_first_name": "Alessandro",
+      "recruiter_last_name": "Velasquez",
+      "recruiter_phone": "984123876",
+      "recruiter_email": "alessandrovelasquez@gmail.com",
+      "recruiter_password": "Alessandro1234",
+      "company_name": "Google",
+      "ruc": 20536161199,
+      "owner_name": "Julian Coulter",
+      "address": "Av. la Paz 1049",
+      "locality": "Miraflores",
+      "city": "Lima",
+      "id": 2
+    },
+    {
+      "recruiter_first_name": "Pablo",
+      "recruiter_last_name": "Contreras Salas",
+      "recruiter_phone": "980765438",
+      "recruiter_email": "pablocontreras@gmail.com",
+      "recruiter_password": "pablo1234",
+      "company_name": "AppliSys",
+      "ruc": 20100717558,
+      "owner_name": "Adams Jibrin",
+      "address": "Isaac Albeniz 106",
+      "locality": "SAN BORJA",
+      "city": "Lima",
+      "id": 3
+    }
   ]
 }

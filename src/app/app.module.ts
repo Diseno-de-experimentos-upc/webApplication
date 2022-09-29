@@ -16,13 +16,14 @@ import { MatIconModule} from "@angular/material/icon";
 import { MatSortModule} from "@angular/material/sort";
 import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
-import {MatSelectModule} from '@angular/material/select'
+import {MatSelectModule} from '@angular/material/select';
 
 import { RegisterComponent } from './public/register/register.component';
 import { DeveloperComponent } from './public/register/developer/developer.component';
 import { DevelopersComponent } from './developers/developers.component';
 import { CompaniesComponent } from './companies/companies.component';
 import { LoginComponent } from './public/login/login.component';
+import { CompanyComponent } from './public/register/company/company.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { LoginComponent } from './public/login/login.component';
     DeveloperComponent,
     DevelopersComponent,
     CompaniesComponent,
-    LoginComponent
+    LoginComponent,
+    CompanyComponent,
   ],
   imports: [
     BrowserModule,
