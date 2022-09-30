@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Developer } from 'src/app/developers/model/developer';
 import { DevelopersService } from 'src/app/developers/services/developers.service';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogBoxComponent } from '../dialog-box/dialog-box.component';
 
 @Component({
   selector: 'app-developer',
@@ -30,7 +32,7 @@ export class DeveloperComponent implements OnInit {
   databasesList:Array<string> = ["MySQL", "Oracle", "PostgreSQL", "Microsoft SQL Server", "MongoDB"];
   frameworksList:Array<string> = ["Angular", "ASP.NET Core", "Django", "React", "Vue.js"];
 
-  constructor(private service:DevelopersService, private formBuilder: FormBuilder) {
+  constructor(private service:DevelopersService, private formBuilder: FormBuilder, public dialog: MatDialog) {
     this.TempDev = {} as Developer;
   }
 
@@ -45,4 +47,14 @@ export class DeveloperComponent implements OnInit {
       console.log(this.devs);
     });
   }
+
+  openDialog() {
+    this.dialog.open(DialogBoxComponent, {
+      width: '550px',
+      height: '150px',
+      data: "right click"
+    });
+  }
+
+
 }

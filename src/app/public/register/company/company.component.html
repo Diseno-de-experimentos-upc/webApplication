@@ -1,8 +1,4 @@
-<div class="form-container myf">
-
-  <div class="title">
-    <h1 class="text">Get Started With DigitalMind</h1>
-  </div>
+ 
   <form class="register-dev-form" [formGroup]="registerForm">
     <div class="main-div">
       <table class="example-full-width" cellspacing="10">
@@ -58,7 +54,7 @@
         </tr>
       </table>
     </div>
-    <div class="container-form">
+ 
       <div class="professional-info">
         <h3>Enter information of your company </h3>
         <table cellspacing="10">
@@ -109,11 +105,10 @@
           </div>
         </table>
       </div>
-    </div>
+    
   </form>
   <div class="container">
-    <button mat-button color="primary" class="created" (click)="Add()" [disabled]="!registerForm.valid">Create Account
-    </button>
+    <button mat-button color="primary" class="created" (click)="Add()" (click)="openDialog()" [disabled]="!registerForm.valid">Create Account</button>
   </div>
-</div>
+ 
 

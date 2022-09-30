@@ -1,0 +1,20 @@
+.main-div {
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+}
+
+.title{
+    font-weight: bold;
+    color: #3A4AA5;
+    font-size: 1.5rem;
+}
+
+.spacer{
+    margin: 10px 0;
+}
+
+.button{
+    margin-top: 0.3rem;
+    margin-left: 4.5rem;
+}

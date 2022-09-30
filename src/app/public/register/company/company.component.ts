@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {Company} from "../../../companies/model/company";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {CompaniesService} from "../../../companies/services/companies.service";
+import { DialogBoxComponent } from '../dialog-box/dialog-box.component';
+import { MatDialog } from '@angular/material/dialog';
+
 
 @Component({
   selector: 'app-company',
@@ -9,6 +12,7 @@ import {CompaniesService} from "../../../companies/services/companies.service";
   styleUrls: ['./company.component.css']
 })
 export class CompanyComponent implements OnInit {
+
 
   comps:Array<any> = [];
   TempComp:Company;
@@ -28,7 +32,7 @@ export class CompanyComponent implements OnInit {
     city: ["", Validators.required]
   });
 
-  constructor(private service:CompaniesService, private formBuilder: FormBuilder) {
+  constructor(private service:CompaniesService, private formBuilder: FormBuilder, public dialog: MatDialog) {
     this.TempComp = {} as Company;
   }
 
@@ -42,5 +46,15 @@ export class CompanyComponent implements OnInit {
       this.comps.push({...response});
       console.log(this.comps);
     });
+    
   }
+
+  openDialog() {
+    this.dialog.open(DialogBoxComponent, {
+      width: '550px',
+      height: '150px',
+      data: "right click"
+    });
+  }
+
 }

@@ -79,6 +79,28 @@
         "Vue.js"
       ],
       "id": 4
+    },
+    {
+      "first_name": "Michael",
+      "last_name": "Carrillo",
+      "phone": "987654311",
+      "email": "michaelcarrillo1@gmail.com",
+      "password": "12345678",
+      "languages": [
+        "JavaScript",
+        "Python",
+        "C++",
+        "TypeScript"
+      ],
+      "databases": [
+        "MySQL",
+        "MongoDB"
+      ],
+      "frameworks": [
+        "Angular",
+        "Vue.js"
+      ],
+      "id": 5
     }
   ],
   "companies": [

@@ -17,6 +17,9 @@ import { MatSortModule} from "@angular/material/sort";
 import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
 import {MatSelectModule} from '@angular/material/select';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatRadioModule} from '@angular/material/radio';
+import {MatDialogModule} from '@angular/material/dialog';
 
 import { RegisterComponent } from './public/register/register.component';
 import { DeveloperComponent } from './public/register/developer/developer.component';
@@ -24,6 +27,8 @@ import { DevelopersComponent } from './developers/developers.component';
 import { CompaniesComponent } from './companies/companies.component';
 import { LoginComponent } from './public/login/login.component';
 import { CompanyComponent } from './public/register/company/company.component';
+import { DialogBoxComponent } from './public/register/dialog-box/dialog-box.component';
+
 
 @NgModule({
   declarations: [
@@ -34,6 +39,7 @@ import { CompanyComponent } from './public/register/company/company.component';
     CompaniesComponent,
     LoginComponent,
     CompanyComponent,
+    DialogBoxComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,7 +57,10 @@ import { CompanyComponent } from './public/register/company/company.component';
     MatSortModule,
     MatCardModule,
     MatGridListModule,
-    MatSelectModule
+    MatSelectModule,
+    MatCheckboxModule,
+    MatRadioModule,
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
