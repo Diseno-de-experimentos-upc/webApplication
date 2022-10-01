@@ -14,6 +14,10 @@ import { MatButtonModule} from "@angular/material/button";
 import { MatToolbarModule} from "@angular/material/toolbar";
 import { MatIconModule} from "@angular/material/icon";
 import { MatSortModule} from "@angular/material/sort";
+import {MatSidenavModule} from "@angular/material/sidenav";
+import {MatDividerModule} from "@angular/material/divider";
+import { MatCardModule } from '@angular/material/card';
+
 
 import { RegisterComponent } from './public/register/register.component';
 import { DeveloperComponent } from './public/register/developer/developer.component';
@@ -41,7 +45,10 @@ import { CompaniesComponent } from './companies/companies.component';
     MatButtonModule,
     MatToolbarModule,
     MatIconModule,
-    MatSortModule
+    MatSortModule,
+    MatSidenavModule,
+    MatDividerModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
