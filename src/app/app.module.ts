@@ -23,6 +23,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatDividerModule} from "@angular/material/divider";
 
+
 import { RegisterComponent } from './public/register/register.component';
 import { DeveloperComponent } from './public/register/developer/developer.component';
 import { DevelopersComponent } from './developers/developers.component';
