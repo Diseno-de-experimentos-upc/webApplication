@@ -42,11 +42,10 @@ export class CompanyComponent implements OnInit {
   Add(){
     this.TempComp = this.registerForm.value;
     this.TempComp.id = 0;
-    /*this.service.AddRec(this.TempComp).subscribe((response:any) => {
+    this.service.AddRec(this.TempComp).subscribe((response:any) => {
       this.comps.push({...response});
       console.log(this.comps);
-    });*/
-
+    });
   }
 
   openDialog() {

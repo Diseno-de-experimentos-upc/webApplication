@@ -1,16 +1,19 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse,HttpHeaders } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpErrorResponse,
+  HttpHeaders,
+} from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { Developer } from '../model/developer';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DevelopersService {
-
-  BaseURL:string = "http://localhost:3000/developers";
-  NewsURL:string = "http://localhost:3000/news-developers"
+  BaseURL: string = 'http://localhost:3000/developers';
+  NewsURL: string = 'http://localhost:3000/news-developers';
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -18,7 +21,7 @@ export class DevelopersService {
     }),
   };
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
@@ -33,15 +36,21 @@ export class DevelopersService {
     );
   }
 
-  GetAllDevs(): Observable<Developer>{
-    return this.http.get<Developer>(this.BaseURL, this.httpOptions).pipe(retry(2), catchError(this.handleError));
+  GetAllDevs(): Observable<Developer> {
+    return this.http
+      .get<Developer>(this.BaseURL, this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
   }
 
-  AddDev(dev:Developer): Observable<Developer>{
-    return this.http.post<Developer>(this.BaseURL, JSON.stringify(dev), this.httpOptions).pipe(retry(2), catchError(this.handleError));
+  AddDev(dev: Developer): Observable<Developer> {
+    return this.http
+      .post<Developer>(this.BaseURL, JSON.stringify(dev), this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
   }
 
-  GetAllNews(): Observable<object>{
-    return this.http.get<object>(this.NewsURL, this.httpOptions).pipe(retry(2), catchError(this.handleError));
+  GetAllNews(): Observable<object> {
+    return this.http
+      .get<object>(this.NewsURL, this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
   }
 }

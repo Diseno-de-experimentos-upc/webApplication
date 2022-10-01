@@ -1,16 +1,19 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse,HttpHeaders } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpErrorResponse,
+  HttpHeaders,
+} from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { Company } from '../model/company';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CompaniesService {
-
-  BaseURL:string = "http://localhost:3000/companies";
-  NewsURL:string = "http://localhost:3000/news-companies"
+  BaseURL: string = 'http://localhost:3000/companies';
+  NewsURL: string = 'http://localhost:3000/news-companies';
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -18,7 +21,7 @@ export class CompaniesService {
     }),
   };
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
@@ -33,15 +36,21 @@ export class CompaniesService {
     );
   }
 
-  GetAllRec(): Observable<Company>{
-    return this.http.get<Company>(this.BaseURL, this.httpOptions).pipe(retry(2), catchError(this.handleError));
+  GetAllRec(): Observable<Company> {
+    return this.http
+      .get<Company>(this.BaseURL, this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
   }
 
-  AddRec(dev:Company): Observable<Company>{
-    return this.http.post<Company>(this.BaseURL, JSON.stringify(dev), this.httpOptions).pipe(retry(2), catchError(this.handleError));
+  AddRec(dev: Company): Observable<Company> {
+    return this.http
+      .post<Company>(this.BaseURL, JSON.stringify(dev), this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
   }
 
-  GetAllNews(): Observable<object>{
-    return this.http.get<object>(this.NewsURL, this.httpOptions).pipe(retry(2), catchError(this.handleError));
+  GetAllNews(): Observable<object> {
+    return this.http
+      .get<object>(this.NewsURL, this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
   }
 }
