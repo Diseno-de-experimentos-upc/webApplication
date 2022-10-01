@@ -10,6 +10,7 @@ import { Developer } from '../model/developer';
 export class DevelopersService {
 
   BaseURL:string = "http://localhost:3000/developers";
+  NewsURL:string = "http://localhost:3000/news-developers"
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -38,5 +39,9 @@ export class DevelopersService {
 
   AddDev(dev:Developer): Observable<Developer>{
     return this.http.post<Developer>(this.BaseURL, JSON.stringify(dev), this.httpOptions).pipe(retry(2), catchError(this.handleError));
+  }
+
+  GetAllNews(): Observable<object>{
+    return this.http.get<object>(this.NewsURL, this.httpOptions).pipe(retry(2), catchError(this.handleError));
   }
 }
