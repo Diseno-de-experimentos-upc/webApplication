@@ -12,41 +12,27 @@
             <td><mat-card-subtitle>Fill in your credentials</mat-card-subtitle></td>
         </tr>
     </table>
-    <mat-card>
-        <form [formGroup]="loginForm" (submit)="submitForm()">
-            <mat-card-content>
-                <mat-grid-list cols="1" rowHeight="8:1">
-                    <mat-grid-tile>
-                        <!--Email-->  
-                        <mat-form-field appearance="fill" class="full-width">
-                            <mat-label>Email</mat-label>
-                            <input type="text" matInput formControlName="email" placeholder="example@gmail.com">
-                            <mat-error *ngIf="email?.errors?.['required']">Email is <strong>required</strong></mat-error>
-                        </mat-form-field>
-                    </mat-grid-tile>
-                    <mat-grid-tile>
-                        <mat-form-field appearance="fill" class="full-width">
-                            <mat-label>Password</mat-label>
-                            <input type="password" matInput formControlName="password">
-                            <mat-error *ngIf="password?.errors?.['required']">Password is <strong>required</strong></mat-error>
-                            <mat-error *ngIf="password?.errors?.['minlength']">Password must be at least 8 characters long</mat-error>
-                        </mat-form-field>
-                    </mat-grid-tile>
-                </mat-grid-list>
-                <mat-card-actions>
-                    <button class="btnLogIn" [disabled]="!loginForm.valid" mat-raised-button color="primary" type="submit" >Log In</button>
-                </mat-card-actions>
-                <mat-grid-tile-footer>
-                    <a routerLink="/forgot-password">Forgot Password?<br></a>
-                    <a routerLink="/register/developer">Create a new account</a>
-                </mat-grid-tile-footer>
-            </mat-card-content>
-            <ng-template [ngIf]="loggedIn">
-                <span>Form Submitted succesfully</span>
-            </ng-template>
+    <div class="form-login">
+        <form [formGroup]="loginForm" (ngSubmit)="submitForm()">
+            <!--Email-->  
+            <mat-form-field appearance="fill" class="full-width">
+                <mat-label>Email</mat-label>
+                <input type="text" matInput formControlName="email" placeholder="example@gmail.com">
+                <mat-error *ngIf="email?.errors?.['required']">Email is <strong>required</strong></mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="full-width">
+                <mat-label>Password</mat-label>
+                <input type="password" matInput formControlName="password">
+                <mat-error *ngIf="password?.errors?.['required']">Password is <strong>required</strong></mat-error>
+                <mat-error *ngIf="password?.errors?.['minlength']">Password must be at least 8 characters long</mat-error>
+            </mat-form-field>
+            <button class="btnLogIn" [disabled]="!loginForm.valid" mat-raised-button color="primary" type="submit" >Log In</button>
         </form>
-    </mat-card>
-    <mat-card-footer>
-        <span>© 2022 Digital Mind.All your privacy is sure!</span>
-    </mat-card-footer>
+        <ul>
+            <li><a routerLink="/forgot-password">Forgot Password?</a></li>
+            <li><a routerLink="/register/developer">Create a new account</a></li>
+        </ul>
+    </div>
+    <br>
+    <p>© 2022 Digital Mind.All your privacy is sure!</p>
 </div>
