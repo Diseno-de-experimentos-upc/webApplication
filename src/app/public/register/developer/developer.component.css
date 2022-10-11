@@ -1,0 +1,72 @@
+ .register-dev{
+    background-color: #35BAF0;
+    width: 65rem;
+    margin: auto;
+    display: grid;
+    justify-content: center;
+}
+
+.professional-info{
+    background-color: #007BBB;
+    border-radius: 20px;
+    padding: 73.5px 40px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 50rem;
+    margin: 2.5rem auto;
+
+}
+
+.created{
+    background-color: #000000;
+    color: #FFFFFF;
+    width: 20rem;
+    height: 3.5rem;
+    display: flex;
+    flex-direction: column;
+    margin: 1rem auto;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+
+mat-form-field {
+    background-color: #FFFFFF;
+    height: 44px;
+}
+
+mat-grid-tile {
+    background: lightblue;
+  }
+
+.main-div {
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.title{
+  text-align: center;
+  margin-top: 4rem;
+  font-weight: bold;
+}
+
+.title .text{
+  font-weight: bolder;
+}
+
+hr.line {
+  border-top: 10px solid black;
+}
+
+h3{
+  text-decoration: underline;
+  font-size: 1.2rem;
+}
+
+td{
+  font-size: 0.9rem;
+}

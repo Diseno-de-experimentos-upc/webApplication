@@ -1,14 +1,171 @@
 {
-   "accounts": [
-      {
-        "id": "1",
-         "username": "account1",
-         "password": "account1key"
-      },
-      {
-        "id": "2",
-         "username": "account2",
-         "password": "account2key"
-      }
-   ]
+  "developers": [
+    {
+      "languages": ["Python", "Java", "C++"],
+      "databases": ["MySQL", "PostgreSQL", "Microsoft SQL Server"],
+      "frameworks": ["Angular", "React", "Vue.js"],
+      "first_name": "Pedro",
+      "last_name": "Jimenez",
+      "phone": "498419819",
+      "email": "fepedev135@keyido.com",
+      "password": "123456789",
+      "id": 1
+    },
+    {
+      "languages": ["C++"],
+      "databases": ["MongoDB"],
+      "frameworks": ["Angular"],
+      "first_name": "Abel",
+      "last_name": "Cierto",
+      "phone": "498419819",
+      "email": "bay@gmail.com",
+      "password": "123456789",
+      "id": 2
+    },
+    {
+      "first_name": "Michael",
+      "last_name": "Carrillo",
+      "phone": "1234567",
+      "email": "mimir@micorreo",
+      "password": "12345678",
+      "languages": ["Java", "C#"],
+      "databases": ["Oracle", "PostgreSQL"],
+      "frameworks": ["Django", "Vue.js"],
+      "id": 3
+    },
+    {
+      "first_name": "Hector",
+      "last_name": "Gonzáles",
+      "phone": "987654327",
+      "email": "hectorviv@gmail.com",
+      "password": "hector1234",
+      "languages": ["Java", "C#"],
+      "databases": ["MySQL", "MongoDB"],
+      "frameworks": ["Django", "Vue.js"],
+      "id": 4
+    },
+    {
+      "first_name": "Michael",
+      "last_name": "Carrillo",
+      "phone": "987654311",
+      "email": "michaelcarrillo1@gmail.com",
+      "password": "12345678",
+      "languages": ["JavaScript", "Python", "C++", "TypeScript"],
+      "databases": ["MySQL", "MongoDB"],
+      "frameworks": ["Angular", "Vue.js"],
+      "id": 5
+    }
+  ],
+  "companies": [
+    {
+      "recruiter_first_name": "Pedro",
+      "recruiter_last_name": "Jimenez",
+      "recruiter_phone": "498419819",
+      "recruiter_email": "fepedev135@keyido.com",
+      "recruiter_password": "123456789",
+      "company_name": "Google",
+      "ruc": 22336123199,
+      "owner_name": "Mark Sukerber",
+      "address": "The olivos",
+      "locality": "Manhatahn",
+      "city": "New Yordk",
+      "id": 1
+    },
+    {
+      "recruiter_first_name": "Alessandro",
+      "recruiter_last_name": "Velasquez",
+      "recruiter_phone": "984123876",
+      "recruiter_email": "alessandrovelasquez@gmail.com",
+      "recruiter_password": "Alessandro1234",
+      "company_name": "Google",
+      "ruc": 20536161199,
+      "owner_name": "Julian Coulter",
+      "address": "Av. la Paz 1049",
+      "locality": "Miraflores",
+      "city": "Lima",
+      "id": 2
+    },
+    {
+      "recruiter_first_name": "Pablo",
+      "recruiter_last_name": "Contreras Salas",
+      "recruiter_phone": "980765438",
+      "recruiter_email": "pablocontreras@gmail.com",
+      "recruiter_password": "pablo1234",
+      "company_name": "AppliSys",
+      "ruc": 20100717558,
+      "owner_name": "Adams Jibrin",
+      "address": "Isaac Albeniz 106",
+      "locality": "SAN BORJA",
+      "city": "Lima",
+      "id": 3
+    }
+  ],
+  "news-developers": [
+    {
+      "author": "Tomas Sanchez",
+      "company": "CriptoMind",
+      "profile_photo": "https://juliogysels.com/wp-content/uploads/2019/06/perfil_JG_Azul_claro-1024x1024.png",
+      "title": "Need a Full Stack developer",
+      "description": "CriptoMind is finding a developer with knowledge in HTML, CSS, JavaScript. Plus, it need to know about Angular and PostgreSQL.",
+      "image": "https://kinsta.com/es/wp-content/uploads/sites/8/2021/12/what-is-a-full-stack-developer.png"
+    },
+    {
+      "author": "Henry Huarcaya",
+      "company": "Reno's Digital Data",
+      "profile_photo": "https://cdn.create.vista.com/api/media/small/25262411/stock-photo-businessman",
+      "title": "Need a data scientist",
+      "description": "Reno's Digital Data is finding a data scientist with knowledge in Python or R. Plus, it need to know about Matlab.",
+      "image": "https://www.simplilearn.com/ice9/free_resources_article_thumb/What-Skills-Do-I-Need-to-Become-a-Data-Scientist.jpg"
+    },
+    {
+      "author": "Samantha Diaz",
+      "company": "IBM",
+      "profile_photo": "https://img.freepik.com/foto-gratis/mujer-hermosa-joven-mirando-camara-chica-moda-verano-casual-camiseta-blanca-pantalones-cortos-hembra-positiva-muestra-emociones-faciales-modelo-divertido-aislado-amarillo_158538-15796.jpg?w=2000",
+      "title": "Fullstack Developer",
+      "description": "As an Application Developer, you will lead IBM into the future by translating system requirements into the design and development of customized systems in an agile environment.",
+      "image": "https://prod-discovery.edx-cdn.org/media/programs/card_images/2f377daa-30b3-487f-941c-18503633a4a1-12209ba765df.jpg"
+    },
+    {
+      "author": "Roxana Erribarren",
+      "company": "redbee Studios",
+      "profile_photo": "https://img.freepik.com/foto-gratis/cierrese-encima-retrato-aislado-encantadora-mujer-joven-caucasica-joven-alegre-pelo-oscuro-ojos-marrones-que-sonrien-mostrando-dientes-expresion-relajada-feliz-emociones-positivas_176420-10698.jpg?w=2000",
+      "title": "Mobile iOS Developer",
+      "description": "We are looking for Mobile iOS Developers with curiosity, team players, with passion, who want to grow, innovate and learn from the latest technologies.",
+      "image": "https://devtechnosys.com/insights/wp-content/uploads/2021/10/Things-to-Consider-Before-Hiring-An-iOS-Developer.png"
+    }
+  ],
+  "news-companies": [
+    {
+      "author": "Tomas Sanchez",
+      "company": "CriptoMind",
+      "profile_photo": "https://juliogysels.com/wp-content/uploads/2019/06/perfil_JG_Azul_claro-1024x1024.png",
+      "title": "Need a Full Stack developer",
+      "description": "CriptoMind is finding a developer with knowledge in HTML, CSS, JavaScript. Plus, it need to know about Angular and PostgreSQL.",
+      "image": "https://kinsta.com/es/wp-content/uploads/sites/8/2021/12/what-is-a-full-stack-developer.png"
+    },
+    {
+      "author": "Henry Huarcaya",
+      "company": "Reno's Digital Data",
+      "profile_photo": "https://cdn.create.vista.com/api/media/small/25262411/stock-photo-businessman",
+      "title": "Need a data scientist",
+      "description": "Reno's Digital Data is finding a data scientist with knowledge in Python or R. Plus, it need to know about Matlab.",
+      "image": "https://www.simplilearn.com/ice9/free_resources_article_thumb/What-Skills-Do-I-Need-to-Become-a-Data-Scientist.jpg"
+    },
+    {
+      "author": "Samantha Diaz",
+      "company": "IBM",
+      "profile_photo": "https://img.freepik.com/foto-gratis/mujer-hermosa-joven-mirando-camara-chica-moda-verano-casual-camiseta-blanca-pantalones-cortos-hembra-positiva-muestra-emociones-faciales-modelo-divertido-aislado-amarillo_158538-15796.jpg?w=2000",
+      "title": "Fullstack Developer",
+      "description": "As an Application Developer, you will lead IBM into the future by translating system requirements into the design and development of customized systems in an agile environment.",
+      "image": "https://prod-discovery.edx-cdn.org/media/programs/card_images/2f377daa-30b3-487f-941c-18503633a4a1-12209ba765df.jpg"
+    },
+    {
+      "author": "Roxana Erribarren",
+      "company": "redbee Studios",
+      "profile_photo": "https://img.freepik.com/foto-gratis/cierrese-encima-retrato-aislado-encantadora-mujer-joven-caucasica-joven-alegre-pelo-oscuro-ojos-marrones-que-sonrien-mostrando-dientes-expresion-relajada-feliz-emociones-positivas_176420-10698.jpg?w=2000",
+      "title": "Mobile iOS Developer",
+      "description": "We are looking for Mobile iOS Developers with curiosity, team players, with passion, who want to grow, innovate and learn from the latest technologies.",
+      "image": "https://devtechnosys.com/insights/wp-content/uploads/2021/10/Things-to-Consider-Before-Hiring-An-iOS-Developer.png"
+    }
+  ]
 }

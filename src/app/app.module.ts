@@ -16,6 +16,12 @@ import { MatIconModule} from "@angular/material/icon";
 import { MatSortModule} from "@angular/material/sort";
 import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
+import {MatSelectModule} from '@angular/material/select';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatRadioModule} from '@angular/material/radio';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatSidenavModule} from "@angular/material/sidenav";
+import {MatDividerModule} from "@angular/material/divider";
 
 
 import { RegisterComponent } from './public/register/register.component';
@@ -23,6 +29,9 @@ import { DeveloperComponent } from './public/register/developer/developer.compon
 import { DevelopersComponent } from './developers/developers.component';
 import { CompaniesComponent } from './companies/companies.component';
 import { LoginComponent } from './public/login/login.component';
+import { CompanyComponent } from './public/register/company/company.component';
+import { DialogBoxComponent } from './public/register/dialog-box/dialog-box.component';
+
 
 @NgModule({
   declarations: [
@@ -31,7 +40,9 @@ import { LoginComponent } from './public/login/login.component';
     DeveloperComponent,
     DevelopersComponent,
     CompaniesComponent,
-    LoginComponent
+    LoginComponent,
+    CompanyComponent,
+    DialogBoxComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,7 +59,13 @@ import { LoginComponent } from './public/login/login.component';
     MatIconModule,
     MatSortModule,
     MatCardModule,
-    MatGridListModule
+    MatGridListModule,
+    MatSelectModule,
+    MatCheckboxModule,
+    MatRadioModule,
+    MatDialogModule,
+    MatSidenavModule,
+    MatDividerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
