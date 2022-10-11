@@ -17,15 +17,15 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.setEmailValidation();
   }
-  
+
   //Properties
-  get email() { 
-    return this.loginForm.get('email'); 
+  get email() {
+    return this.loginForm.get('email');
   }
-  get password() { 
-    return this.loginForm.get('password'); 
+  get password() {
+    return this.loginForm.get('password');
   }
-  
+
   //Dyanmic validation setup
   setEmailValidation() {
     const emailControl = this.loginForm.get('email');
@@ -46,4 +46,7 @@ export class LoginComponent implements OnInit {
     this.loggedIn = true;
   }
 
+  back(): void {
+    window.location.href = 'https://digitalmind-upc-pre-202202-si729-sw52.github.io';
+  }
 }
