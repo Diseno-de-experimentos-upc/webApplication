@@ -18,7 +18,7 @@ export class CompanyComponent implements OnInit {
   TempComp:Company;
   pass:string = "";
 
-    registerForm: FormGroup =this.formBuilder.group({
+  registerForm: FormGroup =this.formBuilder.group({
     recruiter_first_name: ["",Validators.required],
     recruiter_last_name: ["",Validators.required],
     recruiter_phone: ["",Validators.required],
