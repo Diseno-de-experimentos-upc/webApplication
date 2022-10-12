@@ -14,6 +14,8 @@ import { Developer } from '../model/developer';
 export class DevelopersService {
   BaseURL: string = 'http://localhost:3000/developers';
   NewsURL: string = 'http://localhost:3000/news-developers';
+  ContactsURL: string = 'http://localhost:3000/contacts';
+  MessagesURL: string = 'http://localhost:3000/messages';
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -51,6 +53,26 @@ export class DevelopersService {
   GetAllNews(): Observable<object> {
     return this.http
       .get<object>(this.NewsURL, this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+
+  //////Messages Section /////////
+
+  GetContacts(): Observable<object> {
+    return this.http
+      .get<object>(this.ContactsURL, this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+
+  GetMessages(): Observable<object> {
+    return this.http
+      .get(this.MessagesURL, this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+
+  SendMessage(answer: object): Observable<object> {
+    return this.http
+      .post<object>(this.MessagesURL, answer, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 }

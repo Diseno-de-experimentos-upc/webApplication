@@ -1,0 +1,10 @@
+.news-card {
+    max-width: 720px;
+    margin-bottom: 2rem;
+}
+
+.avatar-header-image {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+}

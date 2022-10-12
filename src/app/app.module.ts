@@ -22,6 +22,8 @@ import {MatRadioModule} from '@angular/material/radio';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatDividerModule} from "@angular/material/divider";
+import {MatRippleModule} from '@angular/material/core';
+import {ScrollingModule} from '@angular/cdk/scrolling';
 
 
 import { RegisterComponent } from './public/register/register.component';
@@ -31,7 +33,8 @@ import { CompaniesComponent } from './companies/companies.component';
 import { LoginComponent } from './public/login/login.component';
 import { CompanyComponent } from './public/register/company/company.component';
 import { DialogBoxComponent } from './public/register/dialog-box/dialog-box.component';
-
+import { HomeComponent } from './developers/pages/home/home.component';
+import { MessagesComponent } from './developers/pages/messages/messages.component'
 
 @NgModule({
   declarations: [
@@ -43,6 +46,8 @@ import { DialogBoxComponent } from './public/register/dialog-box/dialog-box.comp
     LoginComponent,
     CompanyComponent,
     DialogBoxComponent,
+    HomeComponent,
+    MessagesComponent
   ],
   imports: [
     BrowserModule,
@@ -65,7 +70,9 @@ import { DialogBoxComponent } from './public/register/dialog-box/dialog-box.comp
     MatRadioModule,
     MatDialogModule,
     MatSidenavModule,
-    MatDividerModule
+    MatDividerModule,
+    MatRippleModule,
+    ScrollingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
