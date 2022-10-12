@@ -57,5 +57,8 @@ export class LoginComponent implements OnInit {
         data: 'registerForm',
       });
     }
+    else {
+      window.location.href = 'home-developer';
+    }
   }
 }
