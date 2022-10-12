@@ -30,7 +30,7 @@
                 <mat-error *ngIf="password?.errors?.['required']">Password is <strong>required</strong></mat-error>
                 <mat-error *ngIf="password?.errors?.['minlength']">Password must be at least 8 characters long</mat-error>
             </mat-form-field>
-            <button class="btnLogIn" [disabled]="!loginForm.valid" mat-raised-button color="primary" type="submit" >Log In</button>
+            <button class="btnLogIn" mat-raised-button color="primary" type="submit" (click)="openDialog()" >Log In</button>
         </form>
         <ul>
             <li><a routerLink="/forgot-password">Forgot Password?</a></li>

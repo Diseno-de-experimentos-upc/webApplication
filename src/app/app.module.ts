@@ -16,12 +16,12 @@ import { MatIconModule} from "@angular/material/icon";
 import { MatSortModule} from "@angular/material/sort";
 import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
-import {MatSelectModule} from '@angular/material/select';
-import {MatCheckboxModule} from '@angular/material/checkbox';
-import {MatRadioModule} from '@angular/material/radio';
-import {MatDialogModule} from '@angular/material/dialog';
-import {MatSidenavModule} from "@angular/material/sidenav";
-import {MatDividerModule} from "@angular/material/divider";
+import { MatSelectModule } from '@angular/material/select';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatSidenavModule } from "@angular/material/sidenav";
+import { MatDividerModule } from "@angular/material/divider";
 
 
 import { RegisterComponent } from './public/register/register.component';
@@ -32,7 +32,6 @@ import { LoginComponent } from './public/login/login.component';
 import { CompanyComponent } from './public/register/company/company.component';
 import { DialogBoxComponent } from './public/register/dialog-box/dialog-box.component';
 import { PageNotFoundComponent } from './public/page-not-found/page-not-found.component';
-
 
 @NgModule({
   declarations: [

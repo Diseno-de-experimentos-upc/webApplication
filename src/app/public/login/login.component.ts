@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, NgForm } from '@angular/forms';
-
+import { MatDialog } from '@angular/material/dialog';
+import { DialogBoxInvalidFormComponent } from '../register/dialog-box-invalid-form/dialog-box-invalid-form.component';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -12,7 +13,7 @@ export class LoginComponent implements OnInit {
     email : ["", {validators: [Validators.required, Validators.email], updateOn: 'change'}],
     password : ["", {validators: [Validators.required, Validators.minLength(8)], updateOn: 'change'}]
 });
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.setEmailValidation();
@@ -48,5 +49,13 @@ export class LoginComponent implements OnInit {
 
   back(): void {
     window.location.href = 'https://digitalmind-upc-pre-202202-si729-sw52.github.io';
+  }
+
+  openDialog() {
+    if (this.loginForm.invalid) {
+      this.dialog.open(DialogBoxInvalidFormComponent, { 
+        data: 'registerForm',
+      });
+    }
   }
 }
