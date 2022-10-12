@@ -10,6 +10,7 @@ import { Developer } from 'src/app/developers/model/developer';
 import { DevelopersService } from 'src/app/developers/services/developers.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogBoxComponent } from '../dialog-box/dialog-box.component';
+import { DialogBoxInvalidFormComponent } from '../dialog-box-invalid-form/dialog-box-invalid-form.component';
 
 @Component({
   selector: 'app-developer',
@@ -78,10 +79,16 @@ export class DeveloperComponent implements OnInit {
   }
 
   openDialog() {
-    this.dialog.open(DialogBoxComponent, {
-      width: '550px',
-      height: '150px',
-      data: 'right click',
-    });
+    if (this.registerForm.invalid) {
+      this.dialog.open(DialogBoxInvalidFormComponent, { 
+        data: 'registerForm',
+      });
+    }
+    else {
+      this.dialog.open(DialogBoxComponent, {
+        data: 'registerForm',
+      });
+      this.Add();
+    }
   }
 }
