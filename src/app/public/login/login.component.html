@@ -22,6 +22,7 @@
                 <mat-label>Email</mat-label>
                 <input type="text" matInput formControlName="email" placeholder="example@gmail.com">
                 <mat-error *ngIf="email?.errors?.['required']">Email is <strong>required</strong></mat-error>
+                <mat-error *ngIf="email?.errors?.['email']">Email is <strong>invalid</strong></mat-error>
             </mat-form-field>
             <mat-form-field appearance="fill" class="full-width">
                 <mat-label>Password</mat-label>

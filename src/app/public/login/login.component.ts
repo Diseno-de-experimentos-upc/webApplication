@@ -9,7 +9,7 @@ import { FormGroup, FormBuilder, Validators, NgForm } from '@angular/forms';
 export class LoginComponent implements OnInit {
   loggedIn = false;
   loginForm: FormGroup = this.formBuilder.group({
-    email : ["", {validators: [Validators.required], updateOn: 'change'}],
+    email : ["", {validators: [Validators.required, Validators.email], updateOn: 'change'}],
     password : ["", {validators: [Validators.required, Validators.minLength(8)], updateOn: 'change'}]
 });
   constructor(private formBuilder: FormBuilder) { }
@@ -32,10 +32,10 @@ export class LoginComponent implements OnInit {
     //Default validation
     emailControl?.setValidators([Validators.required, Validators.email]);
     this.loginForm.get('email')?.valueChanges.subscribe(value => {
-      if (value === 'admin') {
-        this.loginForm.get('email')?.setValidators([Validators.required, Validators.email]);
-      } else {
+      if (value === 'admin@digitalmind.com') {
         this.loginForm.get('email')?.setValidators([Validators.required]);
+      } else {
+        this.loginForm.get('email')?.setValidators([Validators.required, Validators.email]);
       }
       this.loginForm.get('email')?.updateValueAndValidity();
     });
