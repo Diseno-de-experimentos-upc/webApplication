@@ -96,12 +96,12 @@ export class CompanyComponent implements OnInit {
   setEmailValidation() {
     const emailControl = this.registerForm.get('email');
       //Default validation
-    emailControl?.setValidators([Validators.required, Validators.email]);
+    emailControl?.setValidators([Validators.required, Validators.email, Validators.pattern('[a-z0-9]+@[a-z]+\.[a-z]{2,3}')]);
     this.registerForm.get('email')?.valueChanges.subscribe(value => {
       if (value === 'admin@digitalmind.com') {
         this.registerForm.get('email')?.setValidators([Validators.required]);
       } else {
-        this.registerForm.get('email')?.setValidators([Validators.required, Validators.email]);
+        this.registerForm.get('email')?.setValidators([Validators.required, Validators.email, Validators.pattern('[a-z0-9]+@[a-z]+\.[a-z]{2,3}')]);
       }
         this.registerForm.get('email')?.updateValueAndValidity();
     });

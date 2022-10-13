@@ -31,12 +31,12 @@ export class LoginComponent implements OnInit {
   setEmailValidation() {
     const emailControl = this.loginForm.get('email');
     //Default validation
-    emailControl?.setValidators([Validators.required, Validators.email]);
+    emailControl?.setValidators([Validators.required, Validators.email, Validators.pattern('[a-z0-9]+@[a-z]+\.[a-z]{2,3}')]);
     this.loginForm.get('email')?.valueChanges.subscribe(value => {
       if (value === 'admin@digitalmind.com') {
         this.loginForm.get('email')?.setValidators([Validators.required]);
       } else {
-        this.loginForm.get('email')?.setValidators([Validators.required, Validators.email]);
+        this.loginForm.get('email')?.setValidators([Validators.required, Validators.email, Validators.pattern('[a-z0-9]+@[a-z]+\.[a-z]{2,3}')]);
       }
       this.loginForm.get('email')?.updateValueAndValidity();
     });
