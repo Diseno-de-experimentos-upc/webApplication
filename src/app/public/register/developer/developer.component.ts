@@ -60,7 +60,7 @@ export class DeveloperComponent implements OnInit {
       first_name: new FormControl('', { validators:  [Validators.required], updateOn: 'change' }),
       last_name: new FormControl('', { validators:  [Validators.required], updateOn: 'change' }),
       phone:new FormControl('', { validators:  [Validators.required, Validators.minLength(9), Validators.maxLength(9), Validators.pattern('^[0-9]*$')], updateOn: 'change' }),
-      email: new FormControl('', { validators:  [Validators.required, Validators.email], updateOn: 'change' }),
+      email: new FormControl('', { validators:  [Validators.required, Validators.email, Validators.pattern('[a-z0-9]+@[a-z]+\.[a-z]{2,3}')], updateOn: 'change' }),
       password: new FormControl('', { validators:  [Validators.required, Validators.minLength(8), Validators.maxLength(16)], updateOn: 'change' }),
       password_confirm: new FormControl('', { validators: [Validators.required, Validators.minLength(8), Validators.maxLength(16)], updateOn: 'change' }),
       languages: [''],

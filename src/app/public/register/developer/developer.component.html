@@ -28,6 +28,7 @@
         <input matInput type="email" placeholder="Ex. dev777@gmail.com" formControlName="email"/>
         <mat-error *ngIf="email?.errors?.['required']">Email is <strong>required</strong></mat-error>
         <mat-error *ngIf="email?.errors?.['email']">Email is <strong>invalid</strong></mat-error>
+        <mat-error *ngIf="email?.errors?.['email']">Email is <strong>invalid</strong></mat-error>
       </mat-form-field>
 
       <mat-form-field class="register-dev__password" appearance="fill">
@@ -36,7 +37,7 @@
         <mat-error *ngIf="password?.errors?.['required']">Password is <strong>required</strong></mat-error>
         <mat-error *ngIf="password?.errors?.['minlength']">At least 8 <strong>characters</strong></mat-error>
         <mat-error *ngIf="password?.errors?.['maxlength']">Maximum 16 <strong>characters</strong></mat-error>
-        <mat-error *ngIf="password?.errors?.['pattern']">Password should contain numbers and letters/special<strong>characters!</strong></mat-error>
+        <mat-error *ngIf="password?.errors?.['pattern']">Should contain numbers and letters/special <strong>characters!</strong></mat-error>
       </mat-form-field>
 
       <mat-form-field class="register-dev__confirm-password" appearance="fill">
