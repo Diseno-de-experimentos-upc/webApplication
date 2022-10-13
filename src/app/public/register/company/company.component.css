@@ -19,9 +19,9 @@ margin: auto auto;
 .main-div .mat-form-field {
 background-color: #FFFFFF;
 font-size: 0.7rem;
-margin: 1% 6.5%;
+margin: 1% 1%;
 text-align: center;
-width: 20%;
+width: 30%;
 }
 
 .professional-info{
@@ -37,9 +37,9 @@ width: 20%;
 .professional-info .mat-form-field {
 background-color: #FFFFFF;
 font-size: 0.7rem;
-margin: 1% 6.5%;
+margin: 1% 1%;
 text-align: center;
-width: 20%;
+width: 30%;
 }
 
 h3{
