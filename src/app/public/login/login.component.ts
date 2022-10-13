@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.setEmailValidation();
+    this.setPaswordValidation();
   }
 
   //Properties
@@ -61,4 +62,18 @@ export class LoginComponent implements OnInit {
       window.location.href = 'home-developer';
     }
   }
+
+  setPaswordValidation() {
+    const passwordControl = this.loginForm.get('password');
+
+    this.loginForm.get('password')?.valueChanges.subscribe(value => {
+      if (value.length < 8 || value.length > 16) {
+        this.loginForm.get('password')?.setValidators([Validators.required, Validators.minLength(8), Validators.maxLength(16)]);
+      } else {
+        this.loginForm.get('password')?.setValidators([Validators.required, Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*]).{8,16}$')]);
+      }
+        this.loginForm.get('password')?.updateValueAndValidity();
+    });
+  }
+
 }
