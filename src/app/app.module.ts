@@ -31,6 +31,7 @@ import { CompaniesComponent } from './companies/companies.component';
 import { LoginComponent } from './public/login/login.component';
 import { CompanyComponent } from './public/register/company/company.component';
 import { DialogBoxComponent } from './public/register/dialog-box/dialog-box.component';
+import { ProfileDeveloperComponent } from './profile-developer/profile-developer.component';
 
 
 @NgModule({
@@ -43,6 +44,7 @@ import { DialogBoxComponent } from './public/register/dialog-box/dialog-box.comp
     LoginComponent,
     CompanyComponent,
     DialogBoxComponent,
+    ProfileDeveloperComponent,
   ],
   imports: [
     BrowserModule,

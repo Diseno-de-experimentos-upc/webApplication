@@ -1,9 +1,21 @@
 {
   "developers": [
     {
-      "languages": ["Python", "Java", "C++"],
-      "databases": ["MySQL", "PostgreSQL", "Microsoft SQL Server"],
-      "frameworks": ["Angular", "React", "Vue.js"],
+      "languages": [
+        "Python",
+        "Java",
+        "C++"
+      ],
+      "databases": [
+        "MySQL",
+        "PostgreSQL",
+        "Microsoft SQL Server"
+      ],
+      "frameworks": [
+        "Angular",
+        "React",
+        "Vue.js"
+      ],
       "first_name": "Pedro",
       "last_name": "Jimenez",
       "phone": "498419819",
@@ -12,9 +24,15 @@
       "id": 1
     },
     {
-      "languages": ["C++"],
-      "databases": ["MongoDB"],
-      "frameworks": ["Angular"],
+      "languages": [
+        "C++"
+      ],
+      "databases": [
+        "MongoDB"
+      ],
+      "frameworks": [
+        "Angular"
+      ],
       "first_name": "Abel",
       "last_name": "Cierto",
       "phone": "498419819",
@@ -28,9 +46,18 @@
       "phone": "1234567",
       "email": "mimir@micorreo",
       "password": "12345678",
-      "languages": ["Java", "C#"],
-      "databases": ["Oracle", "PostgreSQL"],
-      "frameworks": ["Django", "Vue.js"],
+      "languages": [
+        "Java",
+        "C#"
+      ],
+      "databases": [
+        "Oracle",
+        "PostgreSQL"
+      ],
+      "frameworks": [
+        "Django",
+        "Vue.js"
+      ],
       "id": 3
     },
     {
@@ -39,9 +66,18 @@
       "phone": "987654327",
       "email": "hectorviv@gmail.com",
       "password": "hector1234",
-      "languages": ["Java", "C#"],
-      "databases": ["MySQL", "MongoDB"],
-      "frameworks": ["Django", "Vue.js"],
+      "languages": [
+        "Java",
+        "C#"
+      ],
+      "databases": [
+        "MySQL",
+        "MongoDB"
+      ],
+      "frameworks": [
+        "Django",
+        "Vue.js"
+      ],
       "id": 4
     },
     {
@@ -50,9 +86,20 @@
       "phone": "987654311",
       "email": "michaelcarrillo1@gmail.com",
       "password": "12345678",
-      "languages": ["JavaScript", "Python", "C++", "TypeScript"],
-      "databases": ["MySQL", "MongoDB"],
-      "frameworks": ["Angular", "Vue.js"],
+      "languages": [
+        "JavaScript",
+        "Python",
+        "C++",
+        "TypeScript"
+      ],
+      "databases": [
+        "MySQL",
+        "MongoDB"
+      ],
+      "frameworks": [
+        "Angular",
+        "Vue.js"
+      ],
       "id": 5
     }
   ],
@@ -166,6 +213,160 @@
       "title": "Mobile iOS Developer",
       "description": "We are looking for Mobile iOS Developers with curiosity, team players, with passion, who want to grow, innovate and learn from the latest technologies.",
       "image": "https://devtechnosys.com/insights/wp-content/uploads/2021/10/Things-to-Consider-Before-Hiring-An-iOS-Developer.png"
+    }
+  ],
+  "certificates": [
+    {
+      "id": 1,
+      "title": "Coursera",
+      "description": "Kotlin For Java Developers",
+      "imgLink": "https://www.coursera.org/logo",
+      "date": "Dec 2021 - Feb 2022",
+      "educationId": 2
+    },
+    {
+      "id": 2,
+      "title": "Google",
+      "description": "Data Strcture & Algorithms",
+      "imgLink": "https://www.coursera.org/logo",
+      "date": "Mar 2021 - Jun 2021",
+      "educationId": 1
+    },
+    {
+      "id": 3,
+      "title": "Udemy",
+      "description": "Cloud Computing",
+      "imgLink": "https://www.coursera.org/logo",
+      "date": "Jun 2020 - Sept 2020",
+      "educationId": 2
+    },
+    {
+      "title": "Academia-X",
+      "description": "VR Course",
+      "imgLink": "https://www.academiax.com/",
+      "date": "Feb 2022 - Oct 2022",
+      "educationId": "2",
+      "id": 4
+    }
+  ],
+
+  "study-centers": [
+    {
+      "id": 1,
+      "name": "Universidad de Lima",
+      "type_of_center": "University",
+      "educationId": "1"
+    },
+    {
+      "id": 2,
+      "name": "Universidad Católica",
+      "type_of_center": "University",
+      "educationId": "2"
+    },
+    {
+      "id": 3,
+      "name": "Universidad Peruana de Ciencias Aplicadas",
+      "type_of_center": "University",
+      "educationId": "1"
+    }
+  ],
+
+  "education": [
+    {
+      "id": 1,
+      "career": "Software Engineering",
+      "digital-profileId": 1
+    },
+    {
+      "id": 2,
+      "career": "Data Science",
+      "digital-profileId": 2
+    }
+  ],
+
+  "social-networks": [
+    {
+      "id": 1,
+      "name": "Facebook",
+      "user": "Jorge Martinez",
+      "digital-profileId": 1
+    },
+    {
+      "id": 2,
+      "name": "Instagram",
+      "user": "Jorge Martinez",
+      "digital-profileId": 2
+    },
+    {
+      "id": 3,
+      "name": "Twitter",
+      "user": "Jorge Martinez",
+      "digital-profileId": 1
+    }
+  ],
+
+  "technologies": [
+    {
+      "id": 1,
+      "name": "Figma",
+      "description": "UI Design, prototyping",
+      "imgLink": "https://camo.githubusercontent.com/a86a8278da4c5b5a43330e1ea28e6ba050007a837128b5dff5b35d5ff0f1248a/68747470733a2f2f63646e2d696d616765732d312e6d656469756d2e636f6d2f6d61782f313630302f312a365867664443566e3831415958363858766432492d674032782e706e67",
+      "digital-profileId": 1
+    },
+    {
+      "id": 2,
+      "name": "HTML",
+      "description": "HyperText Markup Language",
+      "imgLink": "https://camo.githubusercontent.com/a86a8278da4c5b5a43330e1ea28e6ba050007a837128b5dff5b35d5ff0f1248a/68747470733a2f2f63646e2d696d616765732d312e6d656469756d2e636f6d2f6d61782f313630302f312a365867664443566e3831415958363858766432492d674032782e706e67",
+      "digital-profileId": 1
+    },
+    {
+      "id": 3,
+      "name": "HTML",
+      "description": "HyperText Markup Language",
+      "imgLink": "https://camo.githubusercontent.com/a86a8278da4c5b5a43330e1ea28e6ba050007a837128b5dff5b35d5ff0f1248a/68747470733a2f2f63646e2d696d616765732d312e6d656469756d2e636f6d2f6d61782f313630302f312a365867664443566e3831415958363858766432492d674032782e706e67",
+      "digital-profileId": 2
+    }
+  ],
+  "projects": [
+    {
+      "id": 1,
+      "title": "DC Studios Landing Page",
+      "description": "Figma UI Kit usage showcasing demo of Marvel Studios Landing Page.",
+      "projectImg": "https://english.spbstu.ru/upload/medialibrary/7ba/47.jpg",
+      "projectLink": "https//figma.com",
+      "digital-profileId": 1
+    },
+    {
+      "id": 2,
+      "title": "Portfolio Webpage",
+      "description": "Personal Portfolio webpage with resume and blog",
+      "projectImg": "https://english.spbstu.ru/upload/medialibrary/7ba/47.jpg",
+      "projectLink": "https://jorgemartinez.github.io",
+      "digital-profileId": 2
+    },
+    {
+      "id": 3,
+      "title": "Marvel Studios Landing Page",
+      "description": "Figma UI Kit usage showcasing demo of Marvel Studios Landing Page.",
+      "projectImg": "https://english.spbstu.ru/upload/medialibrary/7ba/47.jpg",
+      "projectLink": "https//figma.com",
+      "digital-profileId": 1
+    }
+  ],
+
+  "digital-profiles": [
+    {
+      "id": 1,
+      "developerId": "1"
+    },
+    {
+      "id": 2,
+      "developerId": "2"      
+    },
+    {
+      "id": 3,
+      "developerId": "3"      
     }
   ]
 }

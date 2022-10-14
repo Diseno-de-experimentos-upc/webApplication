@@ -14,6 +14,9 @@ import { Developer } from '../model/developer';
 export class DevelopersService {
   BaseURL: string = 'http://localhost:3000/developers';
   NewsURL: string = 'http://localhost:3000/news-developers';
+  educationUrl: string = 'http://localhost:3000/education';
+  digitalProfileUrl: string = 'http://localhost:3000/digital-profiles';
+
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -53,4 +56,35 @@ export class DevelopersService {
       .get<object>(this.NewsURL, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
+
+  GetCetificates(educationId: number): Observable<object> {
+    return this.http
+      .get<object>(`${this.educationUrl}/${educationId}/certificates`, this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+
+  GetStudyCenters(educationId: number): Observable<object> {
+    return this.http
+      .get<object>(`${this.educationUrl}/${educationId}/study-centers`, this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+  
+  GetSocialNetworks(digitalProfileId: number): Observable<object> {
+    return this.http
+      .get<object>(`${this.digitalProfileUrl}/${digitalProfileId}/social-networks`, this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+
+  GetTechnologies(digitalProfileId: number): Observable<object> {
+    return this.http
+      .get<object>(`${this.digitalProfileUrl}/${digitalProfileId}/technologies`, this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+
+  GetProjects(digitalProfileId: number): Observable<object> {
+    return this.http
+      .get<object>(`${this.digitalProfileUrl}/${digitalProfileId}/projects`, this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+
 }
