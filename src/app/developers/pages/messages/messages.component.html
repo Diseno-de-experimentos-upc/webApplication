@@ -1,0 +1,77 @@
+<section class="messages">
+
+    <div class="inbox">
+        <cdk-virtual-scroll-viewport itemSize="50" class="example-viewport">
+            <div *ngFor="let contact of contacts" class="example-item">
+                    <mat-card class="example-card" matRipple [matRippleCentered]="true">
+                        <mat-card-header>
+                            <div mat-card-avatar class="example-header-image"></div>
+                            <mat-card-title>{{contact.full_name}}</mat-card-title>
+                            <mat-card-subtitle>{{contact.last_message}}</mat-card-subtitle>
+                        </mat-card-header>
+                    </mat-card>
+            </div>
+        </cdk-virtual-scroll-viewport>  
+    </div>
+    
+    
+    <div class="chat">
+        
+        <mat-card class="chat-header">
+            <mat-card-header>
+                <div mat-card-avatar class="example-header-image"></div>
+                <mat-card-title>Tomas Sanchez</mat-card-title>
+                <mat-card-subtitle>I will wait your answer</mat-card-subtitle>
+            </mat-card-header>
+        </mat-card>
+
+        <cdk-virtual-scroll-viewport itemSize="50" class="conversation">
+            <div *ngFor="let message of messages" class="example-item">
+                <div *ngIf="message.type === 'comp'" class="bubble1">
+                    <p>{{message.message}}</p>
+                </div>
+                <div *ngIf="message.type === 'dev'" class="bubble2">
+                    <p>{{message.message}}</p>
+                </div>
+            </div>
+        </cdk-virtual-scroll-viewport>
+
+        <div class="answer" >
+            <mat-form-field appearance="fill" style="width: calc(100% - 40px);">
+                <textarea matInput (keydown.enter)="SendMessage()" [(ngModel)]='answer'></textarea>
+            </mat-form-field>
+            <button mat-icon-button (click)="SendMessage()">
+                <mat-icon>send</mat-icon>
+            </button>
+        </div>
+
+    </div>
+</section>
+
+<!-- 
+
+<mat-card class="example-card" matRipple [matRippleCentered]="true">
+        <mat-card-header>
+                <div mat-card-avatar class="example-header-image"></div>
+                <mat-card-title>Tomas Sanchez</mat-card-title>
+                <mat-card-subtitle>I will wait your answer</mat-card-subtitle>
+            </mat-card-header>
+        </mat-card>
+
+        <mat-card class="example-card" matRipple [matRippleCentered]="true">
+            <mat-card-header>
+                <div mat-card-avatar class="example-header-image"></div>
+                <mat-card-title>Tomas Sanchez</mat-card-title>
+                <mat-card-subtitle>I will wait your answer</mat-card-subtitle>
+            </mat-card-header>
+        </mat-card>
+
+        <mat-card class="example-card" matRipple [matRippleCentered]="true">
+            <mat-card-header>
+                <div mat-card-avatar class="example-header-image"></div>
+                <mat-card-title>Tomas Sanchez</mat-card-title>
+                <mat-card-subtitle>I will wait your answer</mat-card-subtitle>
+        </mat-card-header>
+</mat-card>
+
+ -->

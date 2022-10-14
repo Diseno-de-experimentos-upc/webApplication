@@ -1,79 +1,127 @@
-.register-dev {
-  background-color: #35BAF0;
-  width: 65rem;
-  margin: auto;
-  display: grid;
+.register-dev-form{
+  background-color: #02AAEE;
+  width: 100%;
+  height: 75%;
+  margin: auto auto;
   justify-content: center;
-}
-
-.professional-info {
-  background-color: #007BBB;
-  border-radius: 20px;
-  padding: 30px 40px;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  width: 50rem;
-  margin: 2.5rem auto;
-
-}
-
-.professional-info-part {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-
-}
-
-.created {
-  background-color: #000000;
-  color: #FFFFFF;
-  width: 20rem;
-  height: 3.5rem;
-  display: flex;
-  flex-direction: column;
-  margin: 1rem auto;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.2rem;
-}
-
-mat-form-field {
-  background-color: #FFFFFF;
-  height: 44px;
-}
-
-mat-grid-tile {
-  background: lightblue;
+  text-align: center;
 }
 
 .main-div {
-  height: 10vh;
-  display: flex;
-  justify-content: center;
+height: 40%;
+align-items: center;
+background-color: #02AAEE;
+width: 90%;
+margin: auto auto;
+}
+
+
+.main-div .mat-form-field {
+background-color: #FFFFFF;
+font-size: 0.7rem;
+margin: 1% 1%;
+text-align: center;
+width: 30%;
+}
+
+.professional-info{
+  background-color: #007BBB; /* #007BBB */
+  border-radius: 20px;
+  border: 1px solid #000000;
   align-items: center;
+  width: 90%;
+  height: 45%;
+  margin: auto auto;
 }
 
-
-.title {
-  text-align: center;
-  margin-top: 4rem;
-  font-weight: bold;
+.professional-info .mat-form-field {
+background-color: #FFFFFF;
+font-size: 0.7rem;
+margin: 1% 1%;
+text-align: center;
+width: 30%;
 }
 
-.title .text {
-  font-weight: bolder;
+h3{
+  margin: 1%;
+font-size: 1.2rem;
+font-weight: bold;
+text-decoration: underline;
+text-align: center;
 }
 
-hr.line {
-  border-top: 10px solid black;
+.register-dev-form .btn-register{
+background-color: #000000;
+color: #FFFFFF;
+width: 40%;
+height: 10%;
+margin: 1% auto;
+text-align: center;
+font-size: 1.8vh;
 }
 
-h3 {
-  text-decoration: underline;
-  font-size: 1.2rem;
-}
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+  .register-dev-form{
+    background-color: #02AAEE;
+    width: 100%;
+    height: 75%;
+    margin: auto auto;
+    justify-content: center;
+    text-align: center;
+  }
 
-td {
-  font-size: 0.9rem;
+  .main-div {
+    height: 40%;
+    align-items: center;
+    background-color: #02AAEE;
+    width: 90%;
+    margin: auto auto;
+  }
+  
+  
+  .main-div .mat-form-field {
+    background-color: #FFFFFF;
+    font-size: 0.7rem;
+    margin: 1% 2%;
+    text-align: center;
+    width: 40%;
+  }
+  
+  
+  .professional-info{
+      background-color: #007BBB; /* #007BBB */
+      border-radius: 20px;
+      border: 1px solid #000000;
+      align-items: center;
+      width: 90%;
+      height: 50%;
+      margin: 4% auto;
+      margin-bottom: 2%;
+  }
+  
+  .professional-info .mat-form-field {
+    background-color: #FFFFFF;
+    font-size: 0.7rem;
+    margin: 1% 1%;
+    text-align: center;
+    width: 40%;
+  }
+  
+  h3{
+    margin: 1%;
+    font-size: 1rem;
+    font-weight: bold;
+    text-decoration: underline;
+    text-align: center;
+  }
+  
+  .register-dev-form .btn-register{
+    background-color: #000000;
+    color: #FFFFFF;
+    width: 40%;
+    height: 8%;
+    margin: 0% auto;
+    text-align: center;
+    font-size: 1.5vh;
+  }
 }

@@ -1,0 +1,295 @@
+<mat-toolbar color="primary">
+  <button mat-icon-button *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()">
+    <mat-icon *ngIf="!sidenav.opened"> menu </mat-icon>
+    <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
+  </button>
+
+  <img src="assets/images/user.png" width="60" height="40" />
+  <span>Profile+</span>
+  <span class="example-spacer"></span>
+  <span>Developer</span>
+  <span class="example-spacer"></span>
+
+  <button routerLink="/logout" mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+    <mat-icon>logout</mat-icon>
+  </button>
+</mat-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
+    <img class="avatar mat-elevation-z8" src="/assets/images/dev1.jpg" width="30%" />
+    <h4 class="name">Trevor Venegas</h4>
+    <p class="designation">Software Engineer</p>
+    <mat-divider></mat-divider>
+
+    <button routerLink="/home-developer" mat-button class="menu-button">
+      <mat-icon>home</mat-icon>
+      <span> Home</span>
+    </button>
+
+    <button mat-button class="menu-button">
+      <mat-icon>messages</mat-icon>
+      <span> Messages </span>
+    </button>
+
+    <button mat-button class="menu-button">
+      <mat-icon>notifications</mat-icon>
+      <span> Notifications</span>
+    </button>
+
+    <button mat-button class="menu-button">
+      <mat-icon> person</mat-icon>
+      <span> Profile</span>
+    </button>
+
+    <button mat-button class="menu-button">
+      <mat-icon> settings</mat-icon>
+      <span> Settings</span>
+    </button>
+
+    <button mat-button class="menu-button">
+      <mat-icon> logout</mat-icon>
+      <span> Logout</span>
+    </button>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <div class="inner-content mat-elevation-z8">
+      <mat-grid-list cols="4" rowHeight="88vh">
+        <mat-grid-tile #first colspan="1" rowspan="1">
+          <mat-card class="developer-personal-info">
+            <div class="img-container">
+              <img
+                src="https://appdevcon.nl/wp-content/uploads/2020/03/ADVANTAGES-AND-DISADVANTAGES-OF-BEING-A-DEVELOPER-.jpeg"
+                alt="" class="card-img" />
+            </div>
+
+            <div class="img-container">
+              <div class="card-container">
+                <h1 class="card-title-text">Michael Carrillo</h1>
+                <p class="card-paragraph-text">
+                  Specialist in software development and architecture. Agile
+                  development experience software, system modeling, database
+                  management. I consider myself a person responsible, able to
+                  achieve all the goals I set in my career professional.
+                </p>
+                <ul>
+                  <li>
+                    <mat-icon>email</mat-icon>
+                    <div class="inner-li">
+                      <span>Email</span>
+                      <br />
+                      <span>jorge.martinez@gmail.com</span>
+                    </div>
+                  </li>
+                  <li>
+                    <mat-icon>phone</mat-icon>
+                    <div class="inner-li">
+                      <span>Phone</span>
+                      <br />
+                      <span>(+51) 983 232 439</span>
+                    </div>
+                  </li>
+                  <li>
+                    <mat-icon>location_on</mat-icon>
+                    <div class="inner-li">
+                      <span>Address</span>
+                      <br />
+                      <span>Av. Los Incas 123, Lima, Peru</span>
+                    </div>
+                  </li>
+                  <!-- facebook account -->
+                  <li>
+                    <mat-icon>facebook</mat-icon>
+                    <div class="inner-li">
+                      <span>Facebook</span>
+                      <br />
+                      <span>@jorge.martinez</span>
+                    </div>
+                  </li>
+                  <!-- instagram account -->
+                  <li>
+                    <mat-icon>I</mat-icon>
+                    <div class="inner-li">
+                      <span>Instagram</span>
+                      <br />
+                      <span>@jorge.martinez</span>
+                    </div>
+                  </li>
+                  <!-- twitter account -->
+                  <li>
+                    <mat-icon>T</mat-icon>
+                    <div class="inner-li">
+                      <span>Twitter</span>
+                      <br />
+                      <span>@jorge.martinez</span>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </mat-card>
+        </mat-grid-tile>
+
+        <mat-grid-tile #second colspan="3" rowspan="1">
+          <mat-card class="developer-career-info">
+            <mat-card-title>
+              <div class="img-container-2">
+                <img src="http://softsupplier.com/wp-content/uploads/2021/05/hinh-nen-software-developer.png" alt=""
+                  class="img-in" />
+              </div>
+            </mat-card-title>
+
+            <mat-card-content>
+              <ul class="developer-list">
+                <!-- Education -->
+                <li>
+                  <span class="main-title"> Education </span>
+
+                  <div class="developer-container">
+                    <mat-card class="education-card">
+                      <mat-card-header>
+                        <div mat-card-avatar class="example-header-image"></div>
+                        <mat-card-title>
+                          <p>Chandigarh University</p>
+                        </mat-card-title>
+                        <mat-card-subtitle><span>Percentage</span> 89%</mat-card-subtitle>
+                      </mat-card-header>
+                      <mat-card-title>
+                        <p class="inner-paragraph">
+                          Bachelor in Computer Science Engineering
+                        </p>
+                      </mat-card-title>
+                      <mat-card-subtitle>2020 - 2024</mat-card-subtitle>
+                    </mat-card>
+
+                    <mat-card class="education-card">
+                      <mat-card-header>
+                        <div mat-card-avatar class="example-header-image"></div>
+                        <mat-card-title>
+                          <p>Chandigarh University</p>
+                        </mat-card-title>
+                        <mat-card-subtitle><span>Percentage</span> 89%</mat-card-subtitle>
+                      </mat-card-header>
+                      <mat-card-title>
+                        <p class="inner-paragraph">
+                          Bachelor in Computer Science Engineering
+                        </p>
+                      </mat-card-title>
+                      <mat-card-subtitle>2020 - 2024</mat-card-subtitle>
+                    </mat-card>
+
+                    <mat-card class="education-card">
+                      <mat-card-header>
+                        <div mat-card-avatar class="example-header-image"></div>
+                        <mat-card-title>
+                          <p>Chandigarh University</p>
+                        </mat-card-title>
+                        <mat-card-subtitle><span>Percentage</span> 89%</mat-card-subtitle>
+                      </mat-card-header>
+                      <mat-card-title>
+                        <p class="inner-paragraph">
+                          Bachelor in Computer Science Engineering
+                        </p>
+                      </mat-card-title>
+                      <mat-card-subtitle>2020 - 2024</mat-card-subtitle>
+                    </mat-card>
+
+                    <mat-card class="education-card">
+                      <mat-card-header>
+                        <div mat-card-avatar class="example-header-image"></div>
+                        <mat-card-title>
+                          <p>Chandigarh University</p>
+                        </mat-card-title>
+                        <mat-card-subtitle><span>Percentage</span> 89%</mat-card-subtitle>
+                      </mat-card-header>
+                      <mat-card-title>
+                        <p class="inner-paragraph">
+                          Bachelor in Computer Science Engineering
+                        </p>
+                      </mat-card-title>
+                      <mat-card-subtitle>2020 - 2024</mat-card-subtitle>
+                    </mat-card>
+                  </div>
+                </li>
+
+                <!-- Skills/Tools -->
+
+                <li>
+                  <span class="main-title"> Tools/Skills </span>
+                  <div class="developer-container">
+                    <mat-card *ngFor="let technology of technologies" class="skills-card">
+                      <div>
+                        <div class="img-container-2">
+                          <img [src]="technology.imgLink" alt="" class="skills-img" />
+                        </div>
+                        <mat-card-title>
+                          <p>{{ technology.name }}</p>
+                        </mat-card-title>
+                        <mat-card-subtitle>
+                          {{ technology.description }}
+                        </mat-card-subtitle>
+                      </div>
+                    </mat-card>
+                  </div>
+                </li>
+
+                <!-- Latest projects -->
+
+                <li>
+                  <span class="main-title"> Latest projects </span>
+
+                  <div class="developer-container">
+                    <mat-card *ngFor="let project of projects" class="project-card">
+                      <mat-card-header>
+                        <div mat-card-avatar style=" background-image: url({{project.projectImg}});
+                        background-size: cover;"></div>
+                        <mat-card-title>
+                          <p>{{ project.title }}</p>
+                        </mat-card-title>
+                        <mat-card-subtitle>{{
+                          project.description
+                          }}</mat-card-subtitle>
+                      </mat-card-header>
+                      <mat-card-content>
+                        <div class="project-content">
+                          <mat-icon>link</mat-icon>
+                          <span><strong>
+                              <a [href]="project.projectLink" target="_blank">{{ project.projectLink }}/</a>
+                            </strong></span>
+                        </div>
+                      </mat-card-content>
+                    </mat-card>
+                  </div>
+                </li>
+
+                <!-- Certificates & Awards -->
+
+                <li>
+                  <span class="main-title"> Certificates & Awards </span>
+
+                  <div class="developer-container">
+                    <mat-card *ngFor="let certificate of certificates" class="certificate-card card-color">
+                      <mat-card-header>
+                        <div mat-card-avatar class="certificate-header-image"></div>
+                        <mat-card-title>
+                          <p class="marvel-c">{{ certificate.title }}</p>
+                        </mat-card-title>
+                        <mat-card-subtitle>
+                          <strong>{{certificate.description}}</strong>
+                        </mat-card-subtitle>
+                      </mat-card-header>
+                      <mat-card-content>
+                        <p class="certificate-date">{{ certificate.date }}</p>
+                      </mat-card-content>
+                    </mat-card>
+                  </div>
+                </li>
+              </ul>
+            </mat-card-content>
+          </mat-card>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
