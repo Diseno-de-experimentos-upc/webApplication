@@ -16,7 +16,7 @@
     margin: 10% 0;
 }
 
-.main-div button{
-    width: 100%;
+.main-div .button{
+    width: 80%;
     height: 10%;
 }

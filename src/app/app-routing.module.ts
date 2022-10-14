@@ -6,6 +6,7 @@ import { CompanyComponent } from "./public/register/company/company.component";
 import { DeveloperComponent } from './public/register/developer/developer.component';
 import { DevelopersComponent } from "./developers/developers.component";
 import { CompaniesComponent } from './companies/companies.component';
+import { PageNotFoundComponent } from './public/page-not-found/page-not-found.component';
 import { MessagesComponent } from './developers/pages/messages/messages.component';
 import { HomeComponent } from './developers/pages/home/home.component';
 
@@ -22,7 +23,8 @@ const routes: Routes = [
     {path: 'home', component: HomeComponent},
     {path: 'messages', component: MessagesComponent}
   ]},
-  {path: 'home-company', component:CompaniesComponent}
+  {path: 'home-company', component:CompaniesComponent},
+  { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, NgForm } from '@angular/forms';
-
+import { MatDialog } from '@angular/material/dialog';
+import { DialogBoxInvalidFormComponent } from '../register/dialog-box-invalid-form/dialog-box-invalid-form.component';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -9,33 +10,34 @@ import { FormGroup, FormBuilder, Validators, NgForm } from '@angular/forms';
 export class LoginComponent implements OnInit {
   loggedIn = false;
   loginForm: FormGroup = this.formBuilder.group({
-    email : ["", {validators: [Validators.required], updateOn: 'change'}],
+    email : ["", {validators: [Validators.required, Validators.email], updateOn: 'change'}],
     password : ["", {validators: [Validators.required, Validators.minLength(8)], updateOn: 'change'}]
 });
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.setEmailValidation();
+    this.setPaswordValidation();
   }
-  
+
   //Properties
-  get email() { 
-    return this.loginForm.get('email'); 
+  get email() {
+    return this.loginForm.get('email');
   }
-  get password() { 
-    return this.loginForm.get('password'); 
+  get password() {
+    return this.loginForm.get('password');
   }
-  
+
   //Dyanmic validation setup
   setEmailValidation() {
     const emailControl = this.loginForm.get('email');
     //Default validation
-    emailControl?.setValidators([Validators.required, Validators.email]);
+    emailControl?.setValidators([Validators.required, Validators.email, Validators.pattern('[a-z0-9]+@[a-z]+\.[a-z]{2,3}')]);
     this.loginForm.get('email')?.valueChanges.subscribe(value => {
-      if (value === 'admin') {
-        this.loginForm.get('email')?.setValidators([Validators.required, Validators.email]);
-      } else {
+      if (value === 'admin@digitalmind.com') {
         this.loginForm.get('email')?.setValidators([Validators.required]);
+      } else {
+        this.loginForm.get('email')?.setValidators([Validators.required, Validators.email, Validators.pattern('[a-z0-9]+@[a-z]+\.[a-z]{2,3}')]);
       }
       this.loginForm.get('email')?.updateValueAndValidity();
     });
@@ -44,6 +46,34 @@ export class LoginComponent implements OnInit {
   submitForm() {
     console.log(this.loginForm.valid);
     this.loggedIn = true;
+  }
+
+  back(): void {
+    window.location.href = 'https://digitalmind-upc-pre-202202-si729-sw52.github.io';
+  }
+
+  openDialog() {
+    if (this.loginForm.invalid) {
+      this.dialog.open(DialogBoxInvalidFormComponent, { 
+        data: 'registerForm',
+      });
+    }
+    else {
+      window.location.href = 'home-developer';
+    }
+  }
+
+  setPaswordValidation() {
+    const passwordControl = this.loginForm.get('password');
+
+    this.loginForm.get('password')?.valueChanges.subscribe(value => {
+      if (value.length < 8 || value.length > 16) {
+        this.loginForm.get('password')?.setValidators([Validators.required, Validators.minLength(8), Validators.maxLength(16)]);
+      } else {
+        this.loginForm.get('password')?.setValidators([Validators.required, Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*]).{8,16}$')]);
+      }
+        this.loginForm.get('password')?.updateValueAndValidity();
+    });
   }
 
 }
