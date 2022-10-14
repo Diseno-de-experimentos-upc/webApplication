@@ -2,7 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {delay} from "rxjs";
 import {MatSidenav} from "@angular/material/sidenav";
 import {BreakpointObserver} from "@angular/cdk/layout";
-import { DevelopersService } from './services/developers.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-developers',
@@ -13,16 +13,11 @@ export class DevelopersComponent implements OnInit {
 
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
-  news:Array<any> = [];
-  constructor(private observer: BreakpointObserver, private service: DevelopersService) {
+  constructor(private observer: BreakpointObserver, private router: Router, private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
     this.ngAfterViewInit();
-    this.service.GetAllNews().subscribe((response:any)=>{
-      this.news = response;
-      console.log(this.news);
-    });
   }
 
   ngAfterViewInit() {
@@ -39,5 +34,4 @@ export class DevelopersComponent implements OnInit {
         }
       })
   }
-
 }

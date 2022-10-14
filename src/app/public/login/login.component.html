@@ -1,4 +1,7 @@
 <div class="form-container">
+  <button mat-icon-button class="btn-back" (click)="back()">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
     <table>
         <tr>
             <th>
@@ -14,25 +17,27 @@
     </table>
     <div class="form-login">
         <form [formGroup]="loginForm" (ngSubmit)="submitForm()">
-            <!--Email-->  
+            <!--Email-->
             <mat-form-field appearance="fill" class="full-width">
                 <mat-label>Email</mat-label>
                 <input type="text" matInput formControlName="email" placeholder="example@gmail.com">
                 <mat-error *ngIf="email?.errors?.['required']">Email is <strong>required</strong></mat-error>
+                <mat-error *ngIf="email?.errors?.['pattern'] || email?.errors?.['email'] ">Please enter valid <strong>email</strong></mat-error>
             </mat-form-field>
             <mat-form-field appearance="fill" class="full-width">
                 <mat-label>Password</mat-label>
                 <input type="password" matInput formControlName="password">
                 <mat-error *ngIf="password?.errors?.['required']">Password is <strong>required</strong></mat-error>
-                <mat-error *ngIf="password?.errors?.['minlength']">Password must be at least 8 characters long</mat-error>
+        <mat-error *ngIf="password?.errors?.['minlength']">At least 8 <strong>characters</strong></mat-error>
+        <mat-error *ngIf="password?.errors?.['maxlength']">Maximum 16 <strong>characters</strong></mat-error>
+        <mat-error *ngIf="password?.errors?.['pattern']">Should contain numbers and letters/special <strong>characters!</strong></mat-error>
             </mat-form-field>
-            <button class="btnLogIn" [disabled]="!loginForm.valid" mat-raised-button color="primary" type="submit" >Log In</button>
+            <button class="btnLogIn" mat-raised-button color="primary" type="submit" (click)="openDialog()" >Log In</button>
         </form>
         <ul>
             <li><a routerLink="/forgot-password">Forgot Password?</a></li>
             <li><a routerLink="/register/developer">Create a new account</a></li>
         </ul>
     </div>
-    <br>
     <p>© 2022 Digital Mind.All your privacy is sure!</p>
 </div>

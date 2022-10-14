@@ -1,4 +1,88 @@
 {
+  "messages": [
+    {
+      "id": 1,
+      "type": "comp",
+      "message": "Hello, I want you work in my company"
+    },
+    {
+      "id": 2,
+      "type": "dev",
+      "message": "I want a new job. So I'm in"
+    },
+    {
+      "id": 3,
+      "type": "comp",
+      "message": "Perfect. Have a great day"
+    },
+    {
+      "id": 4,
+      "type": "dev",
+      "message": "Thanks for the job"
+    }
+  ],
+  "contacts": [
+    {
+      "id": 1,
+      "full_name": "Elset MacNess",
+      "company": "Photojam",
+      "last_message": "I'll waiting for your answer"
+    },
+    {
+      "id": 2,
+      "full_name": "Anthony Tesmond",
+      "company": "Yodel",
+      "last_message": "I'll waiting for your answer"
+    },
+    {
+      "id": 3,
+      "full_name": "Filbert Doldon",
+      "company": "Yabox",
+      "last_message": "I'll waiting for your answer"
+    },
+    {
+      "id": 4,
+      "full_name": "Marlane Garnall",
+      "company": "Photobug",
+      "last_message": "I'll waiting for your answer"
+    },
+    {
+      "id": 5,
+      "full_name": "Nap McOwen",
+      "company": "Wordware",
+      "last_message": "I'll waiting for your answer"
+    },
+    {
+      "id": 6,
+      "full_name": "Patrizius Jamot",
+      "company": "Leexo",
+      "last_message": "I'll waiting for your answer"
+    },
+    {
+      "id": 7,
+      "full_name": "Warden Calltone",
+      "company": "Agivu",
+      "last_message": "I'll waiting for your answer"
+    },
+    {
+      "id": 8,
+      "full_name": "Javier Challen",
+      "company": "Meemm",
+      "last_message": "I'll waiting for your answer"
+    },
+    {
+      "id": 9,
+      "full_name": "Adams Devote",
+      "company": "Photospace",
+      "last_message": "I'll waiting for your answer"
+    },
+    {
+      "id": 10,
+      "full_name": "Aurthur Sinderson",
+      "company": "Topiclounge",
+      "last_message": "I'll waiting for your answer"
+    }
+  ],
   "developers": [
     {
       "languages": [
