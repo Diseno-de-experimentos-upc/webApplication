@@ -1,0 +1,156 @@
+<mat-toolbar color="primary">
+
+  <button mat-icon-button *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()">
+    <mat-icon *ngIf="!sidenav.opened">
+      menu
+    </mat-icon>
+    <mat-icon *ngIf="sidenav.opened">
+      close
+    </mat-icon>
+  </button>
+
+  <img src="assets/images/user.png" width="60" height="40">
+  <span>Profile+</span>
+  <span class="example-spacer"></span>
+  <span>Company</span>
+  <span class="example-spacer"></span>
+
+  <button routerLink="/logout" mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+    <mat-icon>logout</mat-icon>
+  </button>
+</mat-toolbar>
+
+<mat-sidenav-container>
+
+  <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
+
+    <img class="avatar mat-elevation-z8" src="/assets/images/recruiter1.png" width="30%">
+    <h4 class="name">Jorge Kung</h4>
+    <p class="designation">Amazon recruiter</p>
+    <mat-divider></mat-divider>
+
+    <button mat-button class="menu-button">
+      <mat-icon>home</mat-icon>
+      <span [routerLink]="['/home-company']"> Home</span>
+    </button>
+    <button mat-button class="menu-button">
+      <mat-icon>search</mat-icon>
+      <span> Find your dev</span>
+    </button>
+
+    <button mat-button class="menu-button">
+      <mat-icon>messages</mat-icon>
+      <span> Messages </span>
+    </button>
+
+    <button mat-button class="menu-button">
+      <mat-icon>notifications</mat-icon>
+      <span> Notifications</span>
+    </button>
+
+    <button mat-button class="menu-button">
+      <mat-icon> person</mat-icon>
+      <span> Profile</span>
+    </button>
+
+    <button mat-button class="menu-button">
+      <mat-icon> settings</mat-icon>
+      <span> Settings</span>
+    </button>
+
+    <button mat-button class="menu-button">
+      <mat-icon> logout</mat-icon>
+      <span> Logout</span>
+    </button>
+
+  </mat-sidenav>
+
+
+  <mat-sidenav-content>
+    <div class="content mat-elevation-z8" [formGroup]="filterForm">
+      <table cellspacing="10">
+        <tr>
+          <td>
+            <mat-form-field appearance="fill" class="find-your-dev__form-field">
+              <mat-label>Years of experience</mat-label>
+              <mat-select formControlName="years_of_experience">
+                <mat-option *ngFor="let year of yearsOfExperience" [value]="year">
+                  {{year}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field appearance="fill" class="find-your-dev__form-field">
+              <mat-label>Specialty type</mat-label>
+              <mat-select multiple formControlName="specialty_type">
+                <mat-option *ngFor="let specialty of specialtyType" [value]="specialty">
+                  {{specialty}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </td>
+
+          <td>
+            <mat-form-field appearance="fill" class="find-your-dev__form-field">
+              <mat-label>Level of study</mat-label>
+              <mat-select formControlName="level_of_study">
+                <mat-option *ngFor="let level of levelOfStudy" [value]="level">
+                  {{level}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </td>
+
+          <td>
+            <mat-form-field appearance="fill" class="find-your-dev__form-field">
+              <mat-label>Programming language</mat-label>
+              <mat-select multiple formControlName="programming_languages">
+                <mat-option *ngFor="let language of programmingLanguages" [value]="language">
+                  {{language}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+      <mat-checkbox color="primary" (change)="changeValueFramework()" [checked]=isCheckedFramework formControlName="check_framework">Frameworks</mat-checkbox>
+      <br/>
+
+      <div *ngIf=isCheckedFramework>
+        <mat-form-field appearance="fill" class="find-your-dev__form-field">
+          <mat-label>Frameworks</mat-label>
+          <mat-select multiple formControlName="frameworks">
+            <mat-option *ngFor="let framework of frameworkList" [value]="framework">
+              {{framework}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <mat-checkbox color="primary" (change)="changeValueDatabase()" [checked]=isCheckedDatabase formControlName="check_database">Databases</mat-checkbox>
+      <br/>
+      <div *ngIf=isCheckedDatabase>
+        <mat-form-field appearance="fill" class="find-your-dev__form-field">
+          <mat-label>Databases</mat-label>
+          <mat-select multiple formControlName="databases">
+            <mat-option *ngFor="let database of databaseList" [value]="database">
+              {{database}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <button mat-raised-button class="created" (click)="getDevs()" [disabled]="!filterForm.valid">
+        Search
+      </button>
+
+      <mat-card class="devs-card">
+        <mat-card-content *ngFor="let dev of devs">
+          <p>{{dev.first_name}} {{dev.last_name}}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </mat-sidenav-content>
+
+
+</mat-sidenav-container>

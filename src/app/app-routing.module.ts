@@ -6,6 +6,7 @@ import { CompanyComponent } from "./public/register/company/company.component";
 import { DeveloperComponent } from './public/register/developer/developer.component';
 import { DevelopersComponent } from "./developers/developers.component";
 import { CompaniesComponent } from './companies/companies.component';
+import { FindYourDevComponent } from './companies/pages/find-your-dev/find-your-dev.component';
 
 const routes: Routes = [
   {path:'', component:LoginComponent},
@@ -15,7 +16,8 @@ const routes: Routes = [
     ]},
   {path: 'register-company', component:CompanyComponent},
   {path: 'home-developer', component:DevelopersComponent},
-  {path: 'home-company', component:CompaniesComponent}
+  {path: 'home-company', component:CompaniesComponent},
+  {path: 'find-your-dev', component:FindYourDevComponent},
 ];
 
 @NgModule({

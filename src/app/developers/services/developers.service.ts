@@ -48,6 +48,12 @@ export class DevelopersService {
       .pipe(retry(2), catchError(this.handleError));
   }
 
+  getPedro(dev: Developer): Observable<Developer> {
+    return this.http
+      .get<Developer>(this.BaseURL + '/?first_name=' + dev.first_name, this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+
   GetAllNews(): Observable<object> {
     return this.http
       .get<object>(this.NewsURL, this.httpOptions)
