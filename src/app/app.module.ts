@@ -33,10 +33,15 @@ import { CompaniesComponent } from './companies/companies.component';
 import { LoginComponent } from './public/login/login.component';
 import { CompanyComponent } from './public/register/company/company.component';
 import { DialogBoxComponent } from './public/register/dialog-box/dialog-box.component';
+ 
+import { ProfileDeveloperComponent } from './profile-developer/profile-developer.component';
+
+ 
 import { HomeComponent } from './developers/pages/home/home.component';
 import { MessagesComponent } from './developers/pages/messages/messages.component'
 import { PageNotFoundComponent } from './public/page-not-found/page-not-found.component';
 import { DialogBoxInvalidFormComponent } from './public/register/dialog-box-invalid-form/dialog-box-invalid-form.component';
+ 
 
 @NgModule({
   declarations: [
@@ -48,10 +53,14 @@ import { DialogBoxInvalidFormComponent } from './public/register/dialog-box-inva
     LoginComponent,
     CompanyComponent,
     DialogBoxComponent,
+ 
+    ProfileDeveloperComponent,
+ 
     PageNotFoundComponent,
     DialogBoxInvalidFormComponent,
     HomeComponent,
     MessagesComponent
+ 
   ],
   imports: [
     BrowserModule,
