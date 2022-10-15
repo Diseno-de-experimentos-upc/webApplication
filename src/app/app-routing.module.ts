@@ -8,23 +8,24 @@ import { DevelopersComponent } from "./developers/developers.component";
 import { CompaniesComponent } from './companies/companies.component';
  
 import {ProfileDeveloperComponent} from "./profile-developer/profile-developer.component";
- 
+
 import { PageNotFoundComponent } from './public/page-not-found/page-not-found.component';
 import { MessagesComponent } from './developers/pages/messages/messages.component';
 import { HomeComponent } from './developers/pages/home/home.component';
- 
+
 
 const routes: Routes = [
-  {path:'', component:DevelopersComponent},
-  //{path:'', component:LoginComponent},
+  //{path:'', component:DevelopersComponent},
+  {path:'login', component:LoginComponent},
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
   {path: 'register', component: RegisterComponent, children: [
       {path: 'developer', component: DeveloperComponent},
       {path: 'company', component: CompanyComponent},
     ]},
   {path: 'register-company', component:CompanyComponent},
  
-  {path: 'home-developer', component:DevelopersComponent},
-  {path: 'home-company', component:CompaniesComponent},
+  {path: 'home-developer/:id', component:DevelopersComponent},
+  {path: 'home-company/:id', component:CompaniesComponent},
   {path: 'profile-developer', component:ProfileDeveloperComponent},
   
  

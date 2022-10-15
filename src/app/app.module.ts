@@ -22,8 +22,8 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatDividerModule } from "@angular/material/divider";
-import {MatRippleModule} from '@angular/material/core';
-import {ScrollingModule} from '@angular/cdk/scrolling';
+import {MatRippleModule } from '@angular/material/core';
+import {ScrollingModule } from '@angular/cdk/scrolling';
 
 
 import { RegisterComponent } from './public/register/register.component';
