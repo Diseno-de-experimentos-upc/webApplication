@@ -12,6 +12,7 @@ import {ProfileDeveloperComponent} from "./profile-developer/profile-developer.c
 import { PageNotFoundComponent } from './public/page-not-found/page-not-found.component';
 import { MessagesComponent } from './developers/pages/messages/messages.component';
 import { HomeComponent } from './developers/pages/home/home.component';
+import { ProfileCompanyComponent } from './profile-company/profile-company.component';
  
 
 const routes: Routes = [
@@ -25,13 +26,12 @@ const routes: Routes = [
  
   {path: 'home-developer', component:DevelopersComponent},
   {path: 'home-company', component:CompaniesComponent},
-  {path: 'profile-developer', component:ProfileDeveloperComponent},
-  
- 
   
   {path: 'developers', component:DevelopersComponent, children: [
     {path: 'home', component: HomeComponent},
-    {path: 'messages', component: MessagesComponent}
+    {path: 'messages', component: MessagesComponent},
+    {path: 'profile-developer', component:ProfileDeveloperComponent},
+    {path: 'profile-company', component:ProfileCompanyComponent},
   ]},
   {path: 'home-company', component:CompaniesComponent},
   { path: '**', component: PageNotFoundComponent }

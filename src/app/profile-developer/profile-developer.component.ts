@@ -1,8 +1,6 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatCard } from '@angular/material/card';
 import { MatGridList, MatGridTile } from '@angular/material/grid-list';
-import { MatSidenav } from '@angular/material/sidenav';
 import { delay } from 'rxjs';
 import { DevelopersService } from '../developers/services/developers.service';
 
@@ -12,8 +10,6 @@ import { DevelopersService } from '../developers/services/developers.service';
   styleUrls: ['./profile-developer.component.css'],
 })
 export class ProfileDeveloperComponent implements OnInit {
-  @ViewChild(MatSidenav)
-  sidenav!: MatSidenav;
 
   @ViewChild(MatGridList)
   gridList!: MatGridList;
@@ -80,19 +76,6 @@ export class ProfileDeveloperComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    this.observer
-      .observe(['(max-width: 800px)'])
-      .pipe(delay(1))
-      .subscribe((res) => {
-        if (res.matches) {
-          this.sidenav.mode = 'over';
-          this.sidenav.close();
-        } else {
-          this.sidenav.mode = 'side';
-          this.sidenav.open();
-        }
-      });
-
     this.observer
       .observe(['(max-width: 1215px)'])
       .pipe(delay(1))
