@@ -54,4 +54,11 @@ export class CompaniesService {
       .get<object>(this.NewsURL, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
+  
+  GetPosts(id: number): Observable<object> {
+    return this.http
+      .get<object>(this.BaseURL + '/' + id + '/posts', this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+
 }

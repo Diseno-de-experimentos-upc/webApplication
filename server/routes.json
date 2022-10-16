@@ -4,6 +4,7 @@
     "/education/:educationId/study-centers/:studyCenterId": "/study-centers/:studyCenterId",
     "/digital-profiles/:digital-profileId/social-networks/:socialNetworkId": "/social-networks/:socialNetworkId",
     "/digital-profiles/:digital-profileId/technologies/:technologyId": "/technologies/:technologyId",
-    "/digital-profiles/:digital-profileId/projects/:projectId": "/projects/:projectId"
+    "/digital-profiles/:digital-profileId/projects/:projectId": "/projects/:projectId",
+    "/companies/:companyId/posts/:postId": "/posts/:postId"
 
 }

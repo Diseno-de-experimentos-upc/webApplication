@@ -251,6 +251,70 @@
       "id": 3
     }
   ],
+   
+  "posts": [
+    {
+      "id": 1,
+      "companyId" : 1,
+      "recruiterIcon": "https://t4.ftcdn.net/jpg/02/90/27/39/360_F_290273933_ukYZjDv8nqgpOBcBUo5CQyFcxAzYlZRW.jpg",
+      "recruiterName": "Tomas Sanchez",
+      "date": "April 14, 2022",
+      "image": "https://collegeinfogeek.com/wp-content/uploads/2020/11/software-developer-at-work-station.jpg",
+      "title": "Marketing Designer (Internship Opportunity)",
+      "description": "I am a Facebook recruiter, please send me a message or comment on this post if you want to apply for this position. "
+    },
+    {
+      "id": 2,
+      "companyId" : 1,
+      "recruiterIcon": "https://t4.ftcdn.net/jpg/02/90/27/39/360_F_290273933_ukYZjDv8nqgpOBcBUo5CQyFcxAzYlZRW.jpg",
+      "recruiterName": "Tomas Sanchez",
+      "date": "May 07, 2022",
+      "image": "https://collegeinfogeek.com/wp-content/uploads/2020/11/software-developer-at-work-station.jpg",
+      "title": "Marketing Designer (Internship Opportunity)",
+      "description": "I am a Facebook recruiter, please send me a message or comment on this post if you want to apply for this position. "
+    },
+    {
+      "id": 2,
+      "companyId" : 1,
+      "recruiterIcon": "https://t4.ftcdn.net/jpg/02/90/27/39/360_F_290273933_ukYZjDv8nqgpOBcBUo5CQyFcxAzYlZRW.jpg",
+      "recruiterName": "Tomas Sanchez",
+      "date": "May 07, 2022",
+      "image": "https://collegeinfogeek.com/wp-content/uploads/2020/11/software-developer-at-work-station.jpg",
+      "title": "Marketing Designer (Internship Opportunity)",
+      "description": "I am a Facebook recruiter, please send me a message or comment on this post if you want to apply for this position. "
+    },
+    {
+      "id": 3,
+      "companyId" : 2,
+      "recruiterIcon": "https://t4.ftcdn.net/jpg/02/90/27/39/360_F_290273933_ukYZjDv8nqgpOBcBUo5CQyFcxAzYlZRW.jpg",
+      "recruiterName": "Tomas Sanchez",
+      "date": "December 24, 2022",
+      "image": "https://collegeinfogeek.com/wp-content/uploads/2020/11/software-developer-at-work-station.jpg",
+      "title": "Marketing Designer (Internship Opportunity)",
+      "description": "I am a Facebook recruiter, please send me a message or comment on this post if you want to apply for this position. "
+    },
+    {
+      "id": 4,
+      "companyId" : 1,
+      "recruiterIcon": "https://t4.ftcdn.net/jpg/02/90/27/39/360_F_290273933_ukYZjDv8nqgpOBcBUo5CQyFcxAzYlZRW.jpg",
+      "recruiterName": "Tomas Sanchez",
+      "date": "April 14, 2022",
+      "image": "https://collegeinfogeek.com/wp-content/uploads/2020/11/software-developer-at-work-station.jpg",
+      "title": "Marketing Designer (Internship Opportunity)",
+      "description": "I am a Facebook recruiter, please send me a message or comment on this post if you want to apply for this position. "
+    },
+    {
+      "id": 5,
+      "companyId" : 1,
+      "recruiterIcon": "https://t4.ftcdn.net/jpg/02/90/27/39/360_F_290273933_ukYZjDv8nqgpOBcBUo5CQyFcxAzYlZRW.jpg",
+      "recruiterName": "Tomas Sanchez",
+      "date": "May 07, 2022",
+      "image": "https://collegeinfogeek.com/wp-content/uploads/2020/11/software-developer-at-work-station.jpg",
+      "title": "Marketing Designer (Internship Opportunity)",
+      "description": "I am a Facebook recruiter, please send me a message or comment on this post if you want to apply for this position. "
+    }
+  ],
+
   "news-developers": [
     {
       "author": "Tomas Sanchez",
@@ -327,6 +391,22 @@
       "imgLink": "https://www.coursera.org/logo",
       "date": "Dec 2021 - Feb 2022",
       "educationId": 2
+    },
+    {
+      "id": 2,
+      "title": "Google",
+      "description": "Data Strcture & Algorithms",
+      "imgLink": "https://www.coursera.org/logo",
+      "date": "Mar 2021 - Jun 2021",
+      "educationId": 1
+    },
+    {
+      "id": 2,
+      "title": "Google",
+      "description": "Data Strcture & Algorithms",
+      "imgLink": "https://www.coursera.org/logo",
+      "date": "Mar 2021 - Jun 2021",
+      "educationId": 1
     },
     {
       "id": 2,
@@ -441,6 +521,31 @@
       "projectLink": "https//figma.com",
       "digital-profileId": 1
     },
+    {
+      "id": 1,
+      "title": "DC Studios Landing Page",
+      "description": "Figma UI Kit usage showcasing demo of Marvel Studios Landing Page.",
+      "projectImg": "https://english.spbstu.ru/upload/medialibrary/7ba/47.jpg",
+      "projectLink": "https//figma.com",
+      "digital-profileId": 1
+    },
+    {
+      "id": 1,
+      "title": "DC Studios Landing Page",
+      "description": "Figma UI Kit usage showcasing demo of Marvel Studios Landing Page.",
+      "projectImg": "https://english.spbstu.ru/upload/medialibrary/7ba/47.jpg",
+      "projectLink": "https//figma.com",
+      "digital-profileId": 1
+    },
+    {
+      "id": 1,
+      "title": "DC Studios Landing Page",
+      "description": "Figma UI Kit usage showcasing demo of Marvel Studios Landing Page.",
+      "projectImg": "https://english.spbstu.ru/upload/medialibrary/7ba/47.jpg",
+      "projectLink": "https//figma.com",
+      "digital-profileId": 1
+    },
+    
     {
       "id": 2,
       "title": "Portfolio Webpage",

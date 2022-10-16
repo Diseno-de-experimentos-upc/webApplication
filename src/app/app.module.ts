@@ -44,8 +44,13 @@ import { HomeComponent } from './developers/pages/home/home.component';
 import { MessagesComponent } from './developers/pages/messages/messages.component'
 import { PageNotFoundComponent } from './public/page-not-found/page-not-found.component';
 import { DialogBoxInvalidFormComponent } from './public/register/dialog-box-invalid-form/dialog-box-invalid-form.component';
+ 
+import { ProfileCompanyComponent } from './profile-company/profile-company.component';
+ 
+ 
 
 import { HomeCompanyComponent } from './companies/pages/home/home.component';
+ 
 
 @NgModule({
   declarations: [
@@ -65,9 +70,14 @@ import { HomeCompanyComponent } from './companies/pages/home/home.component';
     DialogBoxInvalidFormComponent,
     HomeComponent,
     MessagesComponent,
+ 
+    ProfileCompanyComponent
+ 
+ 
 
     HomeCompanyComponent
 
+ 
   ],
   imports: [
     BrowserModule,
