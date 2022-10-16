@@ -71,7 +71,7 @@ import { HomeCompanyComponent } from './companies/pages/home/home.component';
     HomeComponent,
     MessagesComponent,
  
-    ProfileCompanyComponent
+    ProfileCompanyComponent,
  
  
 
