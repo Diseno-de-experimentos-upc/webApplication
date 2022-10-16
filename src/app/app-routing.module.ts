@@ -25,10 +25,6 @@ const routes: Routes = [
     ]},
   {path: 'register-company', component:CompanyComponent},
 
-  {path: 'home-developer', component:DevelopersComponent},
-  {path: 'home-company', component:CompaniesComponent},
-  {path: 'find-your-dev', component:FindYourDevComponent},
-  {path: 'home-company', component:CompaniesComponent},
   {path: 'profile-developer', component:ProfileDeveloperComponent},
 
   {path: 'company', component:CompaniesComponent, children: [
