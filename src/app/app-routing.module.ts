@@ -14,6 +14,7 @@ import { MessagesComponent } from './developers/pages/messages/messages.componen
 import { HomeComponent } from './developers/pages/home/home.component';
 
 import { FindYourDevComponent } from './companies/pages/find-your-dev/find-your-dev.component';
+import {HomeCompanyComponent} from "./companies/pages/home/home.component";
 
 const routes: Routes = [
   {path:'', component:DevelopersComponent},
@@ -29,6 +30,11 @@ const routes: Routes = [
   {path: 'find-your-dev', component:FindYourDevComponent},
   {path: 'home-company', component:CompaniesComponent},
   {path: 'profile-developer', component:ProfileDeveloperComponent},
+
+  {path: 'company', component:CompaniesComponent, children: [
+      {path: 'find-your-dev', component:FindYourDevComponent},
+      {path: 'home', component:HomeCompanyComponent}
+    ]},
 
 
 

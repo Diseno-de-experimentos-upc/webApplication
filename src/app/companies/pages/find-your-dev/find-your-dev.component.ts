@@ -4,6 +4,9 @@ import { delay } from "rxjs";
 import { MatSidenav } from "@angular/material/sidenav";
 import { BreakpointObserver } from "@angular/cdk/layout";
 import { DevelopersService } from '../../../developers/services/developers.service';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogBoxComponent } from '../../../public/register/dialog-box/dialog-box.component';
+import { DialogBoxInvalidFormComponent } from '../../../public/register/dialog-box-invalid-form/dialog-box-invalid-form.component';
 
 @Component({
   selector: 'app-find-your-dev',
@@ -15,6 +18,7 @@ export class FindYourDevComponent implements OnInit {
   sidenav!: MatSidenav;
   isCheckedDatabase: boolean;
   isCheckedFramework: boolean;
+  disableFramework = false;
   devs:Array<any> = [];
   filterForm: FormGroup = this.formBuilder.group({
     years_of_experience: ["", Validators.required],
@@ -54,6 +58,7 @@ export class FindYourDevComponent implements OnInit {
     private observer: BreakpointObserver,
     private formBuilder: FormBuilder,
     private service: DevelopersService,
+    public dialog: MatDialog,
 
   ) {
     this.isCheckedDatabase = false;
@@ -71,6 +76,18 @@ export class FindYourDevComponent implements OnInit {
       console.log(data);
     });
   }
+
+  openDialog() {
+    if (this.filterForm.invalid) {
+      this.dialog.open(DialogBoxInvalidFormComponent, {
+        data: 'registerForm',
+      });
+    }
+    else {
+      this.getDevs();
+    }
+  }
+
   ngOnInit(): void {
     this.ngAfterViewInit();
   }

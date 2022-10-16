@@ -24,12 +24,6 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatDividerModule } from "@angular/material/divider";
-import { MatSelectModule } from '@angular/material/select';
-import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatRadioModule } from '@angular/material/radio';
-import { MatDialogModule } from '@angular/material/dialog';
-import { MatSidenavModule } from "@angular/material/sidenav";
-import { MatDividerModule } from "@angular/material/divider";
 import {MatRippleModule} from '@angular/material/core';
 import {ScrollingModule} from '@angular/cdk/scrolling';
 
@@ -51,6 +45,7 @@ import { MessagesComponent } from './developers/pages/messages/messages.componen
 import { PageNotFoundComponent } from './public/page-not-found/page-not-found.component';
 import { DialogBoxInvalidFormComponent } from './public/register/dialog-box-invalid-form/dialog-box-invalid-form.component';
 
+import { HomeCompanyComponent } from './companies/pages/home/home.component';
 
 @NgModule({
   declarations: [
@@ -69,7 +64,9 @@ import { DialogBoxInvalidFormComponent } from './public/register/dialog-box-inva
     PageNotFoundComponent,
     DialogBoxInvalidFormComponent,
     HomeComponent,
-    MessagesComponent
+    MessagesComponent,
+
+    HomeCompanyComponent
 
   ],
   imports: [
