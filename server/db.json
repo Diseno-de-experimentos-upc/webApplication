@@ -185,6 +185,26 @@
         "Vue.js"
       ],
       "id": 5
+    },
+    {
+      "first_name": "Zen",
+      "last_name": "Diaz",
+      "phone": "955612911",
+      "email": "diazhuarcayaoficial@gmail.com",
+      "password": "123456",
+      "languages": [
+        "Python",
+        "C#",
+        "C++"
+      ],
+      "databases": [
+        "Oracle"
+      ],
+      "frameworks": [
+        "Django",
+        "React"
+      ],
+      "id": 6
     }
   ],
   "companies": [

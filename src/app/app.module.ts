@@ -14,7 +14,9 @@ import { MatButtonModule} from "@angular/material/button";
 import { MatToolbarModule} from "@angular/material/toolbar";
 import { MatIconModule} from "@angular/material/icon";
 import { MatSortModule} from "@angular/material/sort";
-import { MatCardModule } from '@angular/material/card';
+
+import { MatCardModule} from '@angular/material/card';
+
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -33,15 +35,17 @@ import { CompaniesComponent } from './companies/companies.component';
 import { LoginComponent } from './public/login/login.component';
 import { CompanyComponent } from './public/register/company/company.component';
 import { DialogBoxComponent } from './public/register/dialog-box/dialog-box.component';
- 
+import { FindYourDevComponent } from './companies/pages/find-your-dev/find-your-dev.component';
+
 import { ProfileDeveloperComponent } from './profile-developer/profile-developer.component';
 
- 
+
 import { HomeComponent } from './developers/pages/home/home.component';
 import { MessagesComponent } from './developers/pages/messages/messages.component'
 import { PageNotFoundComponent } from './public/page-not-found/page-not-found.component';
 import { DialogBoxInvalidFormComponent } from './public/register/dialog-box-invalid-form/dialog-box-invalid-form.component';
- 
+
+import { HomeCompanyComponent } from './companies/pages/home/home.component';
 
 @NgModule({
   declarations: [
@@ -53,14 +57,17 @@ import { DialogBoxInvalidFormComponent } from './public/register/dialog-box-inva
     LoginComponent,
     CompanyComponent,
     DialogBoxComponent,
- 
+    FindYourDevComponent,
+
     ProfileDeveloperComponent,
- 
+
     PageNotFoundComponent,
     DialogBoxInvalidFormComponent,
     HomeComponent,
-    MessagesComponent
- 
+    MessagesComponent,
+
+    HomeCompanyComponent
+
   ],
   imports: [
     BrowserModule,

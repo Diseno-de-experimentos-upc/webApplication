@@ -1,0 +1,73 @@
+<div class="grid">
+  <div class="grid-two" [formGroup]="filterForm">
+
+    <mat-form-field appearance="fill" class="find-your-dev__form-field">
+      <mat-label>Years of experience</mat-label>
+      <mat-select formControlName="years_of_experience">
+        <mat-option *ngFor="let year of yearsOfExperience" [value]="year">
+          {{year}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="find-your-dev__form-field">
+      <mat-label>Specialty type</mat-label>
+      <mat-select multiple formControlName="specialty_type">
+        <mat-option *ngFor="let specialty of specialtyType" [value]="specialty">
+          {{specialty}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="find-your-dev__form-field">
+      <mat-label>Level of study</mat-label>
+      <mat-select formControlName="level_of_study">
+        <mat-option *ngFor="let level of levelOfStudy" [value]="level">
+          {{level}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="find-your-dev__form-field">
+      <mat-label>Programming language</mat-label>
+      <mat-select multiple formControlName="programming_languages">
+        <mat-option *ngFor="let language of programmingLanguages" [value]="language">
+          {{language}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-checkbox color="primary" (change)="changeValueFramework()" [checked]=isCheckedFramework formControlName="check_framework">Frameworks</mat-checkbox>
+
+    <div *ngIf=isCheckedFramework>
+      <mat-form-field appearance="fill" class="find-your-dev__form-field">
+        <mat-label>Frameworks</mat-label>
+        <mat-select multiple formControlName="frameworks">
+          <mat-option *ngFor="let framework of frameworkList" [value]="framework">
+            {{framework}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <mat-checkbox color="primary" (change)="changeValueDatabase()" [checked]=isCheckedDatabase formControlName="check_database">Databases</mat-checkbox>
+    <div *ngIf=isCheckedDatabase>
+      <mat-form-field appearance="fill" class="find-your-dev__form-field">
+        <mat-label>Databases</mat-label>
+        <mat-select multiple formControlName="databases">
+          <mat-option *ngFor="let database of databaseList" [value]="database">
+            {{database}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <button mat-raised-button color="primary" class="btn-register" (click)="openDialog()">Search</button>
+  </div>
+  <mat-card class="devs-card">
+    <h2>Results</h2>
+    <mat-card-content *ngFor="let dev of devs">
+      <img class="avatar mat-elevation-z8" src="/assets/images/recruiter1.png" width="180%">
+      <p>{{dev.first_name}} {{dev.last_name}}</p>
+    </mat-card-content>
+  </mat-card>
+</div>
