@@ -2,22 +2,44 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, NgForm } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogBoxInvalidFormComponent } from '../register/dialog-box-invalid-form/dialog-box-invalid-form.component';
+import { Router } from '@angular/router';
+import { LoginService } from '../services/login.service';
+
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  usersDeveloper: Array<any> = [];
+  usersCompany: Array<any> = [];
+  users: Array<any> = [];
   loggedIn = false;
   loginForm: FormGroup = this.formBuilder.group({
     email : ["", {validators: [Validators.required, Validators.email], updateOn: 'change'}],
-    password : ["", {validators: [Validators.required, Validators.minLength(8)], updateOn: 'change'}]
-});
-  constructor(private formBuilder: FormBuilder, public dialog: MatDialog) { }
+    password : ["", {validators: [Validators.required, Validators.minLength(8)], updateOn: 'change'}],
+  });
+
+  
+
+  constructor(private formBuilder: FormBuilder, public dialog: MatDialog, private router: Router, private service: LoginService) { }
 
   ngOnInit(): void {
     this.setEmailValidation();
     this.setPaswordValidation();
+    this.service.getDeveloperAll().subscribe((response: any) => {
+      this.usersDeveloper = response;
+      console.log(this.usersDeveloper);
+    });
+    this.service.getCompanyAll().subscribe((response: any) => {
+      this.usersCompany = response;
+      console.log(this.usersCompany);
+    });
+    this.service.getUserAll().subscribe((response: any) => {
+      this.users = response;
+      console.log(this.users);
+    });
   }
 
   //Properties
@@ -59,13 +81,11 @@ export class LoginComponent implements OnInit {
       });
     }
     else {
-      window.location.href = 'home-developer';
+      this.verifyAccount();
     }
   }
 
   setPaswordValidation() {
-    const passwordControl = this.loginForm.get('password');
-
     this.loginForm.get('password')?.valueChanges.subscribe(value => {
       if (value.length < 8 || value.length > 16) {
         this.loginForm.get('password')?.setValidators([Validators.required, Validators.minLength(8), Validators.maxLength(16)]);
@@ -75,5 +95,26 @@ export class LoginComponent implements OnInit {
         this.loginForm.get('password')?.updateValueAndValidity();
     });
   }
-
+  goUserDeveloper(id : any) {
+    this.router.navigate(['/home-developer/' + id]);
+  }
+  goUserCompany(id : any) {
+    this.router.navigate(['/home-company/' + id]);
+  }
+  verifyAccount() {
+    let email = this.loginForm.get('email')?.value;
+    let password = this.loginForm.get('password')?.value;
+    let user = this.users.find(user => user.email == email && user.password == password);
+    if (user != null) {
+      if (user.role == 'developer') {
+        this.goUserDeveloper(user.id);
+      }
+      else{
+        this.goUserCompany(user.id);
+      }
+    }
+    else {
+      alert('Invalid credentials');
+    }
+  }
 }

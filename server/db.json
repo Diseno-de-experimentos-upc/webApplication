@@ -185,6 +185,26 @@
         "Vue.js"
       ],
       "id": 5
+    },
+    {
+      "first_name": "Zen",
+      "last_name": "Diaz",
+      "phone": "955612911",
+      "email": "diazhuarcayaoficial@gmail.com",
+      "password": "123456",
+      "languages": [
+        "Python",
+        "C#",
+        "C++"
+      ],
+      "databases": [
+        "Oracle"
+      ],
+      "frameworks": [
+        "Django",
+        "React"
+      ],
+      "id": 6
     }
   ],
   "companies": [
@@ -556,6 +576,56 @@
     {
       "id": 3,
       "developerId": "3"      
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "email": "fepedev135@keyido.com",
+      "password": "123456789",
+      "role": "recruiter"
+    },
+    {
+      "id": 2,
+      "email": "alessandrovelasquez@gmail.com",
+      "password": "Alessandro1234",
+      "role": "recruiter"
+    },
+    {
+      "id": 3,
+      "email": "pablocontreras@gmail.com",
+      "password": "pablo1234",
+      "role": "recruiter"
+    },
+    {
+      "id": 4,
+      "email": "fepedev135@keyido.com",
+      "password": "123456789",
+      "role": "developer"
+    },
+    {
+      "id": 5,
+      "email": "bay@gmail.com",
+      "password": "123456789",
+      "role": "developer"
+    },
+    {
+      "id": 6,
+      "email": "mimir@micorreo",
+      "password": "12345678",
+      "role": "developer"
+    },
+    {
+      "id": 7,
+      "email": "hectorviv@gmail.com",
+      "password": "hector1234",
+      "role": "developer"
+    },
+    {
+      "id": 8,
+      "email": "michaelcarrillo1@gmail.com",
+      "password": "12345678",
+      "role": "developer"
     }
   ]
 }

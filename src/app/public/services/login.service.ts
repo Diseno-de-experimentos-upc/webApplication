@@ -1,29 +1,26 @@
 import { Injectable } from '@angular/core';
-import {
-  HttpClient,
-  HttpErrorResponse,
-  HttpHeaders,
-} from '@angular/common/http';
+import { HttpClient, HttpErrorResponse,  HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
-import { Company } from '../model/company';
-
-
+import { Developer } from '../../developers/model/developer';
+import { Company } from '../../companies/model/company';
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
-export class CompaniesService {
-  BaseURL: string = 'http://localhost:3000/companies';
-  NewsURL: string = 'http://localhost:3000/news-companies';
+export class LoginService {
+  developerURL = 'http://localhost:3000/developers';
+  companyURL = 'http://localhost:3000/companies';
+  usersURL = 'http://localhost:3000/users';
+  constructor(private http: HttpClient) { }
 
+
+  //http options
   httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type': 'application/json',
+      'Content-Type': 'application/json'
     }),
   };
-
-  constructor(private http: HttpClient) {}
-
+  //handle error
   handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       console.log(`An error occurred: ${error.error.message}`);
@@ -37,28 +34,27 @@ export class CompaniesService {
     );
   }
 
-  GetAllRec(): Observable<Company> {
+  getDeveloperAll(): Observable<Developer> {
     return this.http
-      .get<Company>(this.BaseURL, this.httpOptions)
+      .get<Developer>(this.developerURL, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 
-  AddRec(dev: Company): Observable<Company> {
+  getCompanyAll(): Observable<Company> {
     return this.http
-      .post<Company>(this.BaseURL, JSON.stringify(dev), this.httpOptions)
+      .get<Company>(this.companyURL, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 
-  GetAllNews(): Observable<object> {
+  getUserAll(): Observable<object> {
     return this.http
-      .get<object>(this.NewsURL, this.httpOptions)
-      .pipe(retry(2), catchError(this.handleError));
-  }
-  
-  GetPosts(id: number): Observable<object> {
-    return this.http
-      .get<object>(this.BaseURL + '/' + id + '/posts', this.httpOptions)
+      .get<object>(this.usersURL, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 
+  postUser(user: any): Observable<object> {
+    return this.http
+      .post<object>(this.usersURL, user, this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
 }
