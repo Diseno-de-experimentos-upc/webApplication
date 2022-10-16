@@ -9,7 +9,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class DialogBoxInvalidFormComponent implements OnInit {
 
   constructor(public dialogRef: MatDialogRef<DialogBoxInvalidFormComponent>, @Inject(MAT_DIALOG_DATA) public data: any) { }
-
+  message: string = "Please fill all the required fields";
   ngOnInit(): void {
   }
 

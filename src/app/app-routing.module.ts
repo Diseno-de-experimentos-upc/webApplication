@@ -13,18 +13,28 @@ import { PageNotFoundComponent } from './public/page-not-found/page-not-found.co
 import { MessagesComponent } from './developers/pages/messages/messages.component';
 import { HomeComponent } from './developers/pages/home/home.component';
 
+ 
+ 
 import { FindYourDevComponent } from './companies/pages/find-your-dev/find-your-dev.component';
 import {HomeCompanyComponent} from "./companies/pages/home/home.component";
+ 
 
 const routes: Routes = [
-  {path:'', component:DevelopersComponent},
-  //{path:'', component:LoginComponent},
+  //{path:'', component:DevelopersComponent},
+  {path:'login', component:LoginComponent},
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
   {path: 'register', component: RegisterComponent, children: [
       {path: 'developer', component: DeveloperComponent},
       {path: 'company', component: CompanyComponent},
     ]},
   {path: 'register-company', component:CompanyComponent},
+ 
+ 
+  {path: 'home-developer/:id', component:DevelopersComponent},
+  {path: 'home-company/:id', component:CompaniesComponent},
+ 
 
+ 
   {path: 'profile-developer', component:ProfileDeveloperComponent},
 
   {path: 'company', component:CompaniesComponent, children: [
