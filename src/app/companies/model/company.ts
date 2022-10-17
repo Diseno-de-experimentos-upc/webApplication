@@ -8,6 +8,8 @@ export interface Company{
   city: string,
   recruiter_first_name:string,
   recruiter_last_name:string,
+  recruiter_image:string,
+  recruiter_description:string,
   recruiter_email:string,
   recruiter_password:string,
   recruiter_phone:string,

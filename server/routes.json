@@ -5,6 +5,7 @@
     "/digital-profiles/:digital-profileId/social-networks/:socialNetworkId": "/social-networks/:socialNetworkId",
     "/digital-profiles/:digital-profileId/technologies/:technologyId": "/technologies/:technologyId",
     "/digital-profiles/:digital-profileId/projects/:projectId": "/projects/:projectId",
-    "/companies/:companyId/posts/:postId": "/posts/:postId"
+    "/companies/:companyId/posts/:postId": "/posts/:postId",
+    "/companies/:companyId/company-social-networks/:socialNetworkId": "/company-social-networks/:socialNetworkId"
 
 }

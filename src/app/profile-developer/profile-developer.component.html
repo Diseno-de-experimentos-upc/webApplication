@@ -6,18 +6,15 @@
           <mat-card class="developer-personal-info">
             <div class="img-container">
               <img
-                src="https://appdevcon.nl/wp-content/uploads/2020/03/ADVANTAGES-AND-DISADVANTAGES-OF-BEING-A-DEVELOPER-.jpeg"
+                [src]="developer.image"
                 alt="" class="card-img" />
             </div>
 
             <div class="img-container">
               <div class="card-container">
-                <h1 class="card-title-text">Michael Carrillo</h1>
+                <h1 class="card-title-text">{{developer.first_name}}  {{developer.last_name}} </h1>
                 <p class="card-paragraph-text">
-                  Specialist in software development and architecture. Agile
-                  development experience software, system modeling, database
-                  management. I consider myself a person responsible, able to
-                  achieve all the goals I set in my career professional.
+                  {{developer.description}}
                 </p>
                 <ul>
                   <li>
@@ -25,7 +22,7 @@
                     <div class="inner-li">
                       <span>Email</span>
                       <br />
-                      <span>jorge.martinez@gmail.com</span>
+                      <span>{{developer.email}}</span>
                     </div>
                   </li>
                   <li>
@@ -33,7 +30,7 @@
                     <div class="inner-li">
                       <span>Phone</span>
                       <br />
-                      <span>(+51) 983 232 439</span>
+                      <span> {{developer.phone}} </span>
                     </div>
                   </li>
                   <li>
@@ -41,7 +38,7 @@
                     <div class="inner-li">
                       <span>Address</span>
                       <br />
-                      <span>Av. Los Incas 123, Lima, Peru</span>
+                      <span>{{developer.adreess}}</span>
                     </div>
                   </li>
                   <!-- facebook account -->
@@ -50,7 +47,7 @@
                     <div class="inner-li">
                       <span>Facebook</span>
                       <br />
-                      <span>@jorge.martinez</span>
+                      <span>{{facebook}}</span>
                     </div>
                   </li>
                   <!-- instagram account -->
@@ -59,7 +56,7 @@
                     <div class="inner-li">
                       <span>Instagram</span>
                       <br />
-                      <span>@jorge.martinez</span>
+                      <span>{{instagram}}</span>
                     </div>
                   </li>
                   <!-- twitter account -->
@@ -68,7 +65,7 @@
                     <div class="inner-li">
                       <span>Twitter</span>
                       <br />
-                      <span>@jorge.martinez</span>
+                      <span>{{twitter}}</span>
                     </div>
                   </li>
                 </ul>
@@ -81,7 +78,7 @@
           <mat-card class="developer-career-info">
             <mat-card-title>
               <div class="img-container-2">
-                <img src="http://softsupplier.com/wp-content/uploads/2021/05/hinh-nen-software-developer.png" alt=""
+                <img [src]="developer.banner_image" alt=""
                   class="img-in" />
               </div>
             </mat-card-title>
@@ -93,69 +90,23 @@
                   <span class="main-title"> Education </span>
 
                   <div class="developer-container">
-                    <mat-card class="education-card">
+                   
+                    <mat-card *ngFor="let studyCenter of studyCenters" class="education-card">
                       <mat-card-header>
                         <div mat-card-avatar class="example-header-image"></div>
                         <mat-card-title>
-                          <p>Chandigarh University</p>
+                          <p>{{studyCenter.name}}</p>
                         </mat-card-title>
-                        <mat-card-subtitle><span>Percentage</span> 89%</mat-card-subtitle>
+                        <mat-card-subtitle><span>Percentage</span> {{studyCenter.career_progress}}%</mat-card-subtitle>
                       </mat-card-header>
                       <mat-card-title>
                         <p class="inner-paragraph">
-                          Bachelor in Computer Science Engineering
+                          {{studyCenter.description}}
                         </p>
                       </mat-card-title>
-                      <mat-card-subtitle>2020 - 2024</mat-card-subtitle>
+                      <mat-card-subtitle>{{studyCenter.started_year}} - {{studyCenter.finished_year}}</mat-card-subtitle>
                     </mat-card>
-
-                    <mat-card class="education-card">
-                      <mat-card-header>
-                        <div mat-card-avatar class="example-header-image"></div>
-                        <mat-card-title>
-                          <p>Chandigarh University</p>
-                        </mat-card-title>
-                        <mat-card-subtitle><span>Percentage</span> 89%</mat-card-subtitle>
-                      </mat-card-header>
-                      <mat-card-title>
-                        <p class="inner-paragraph">
-                          Bachelor in Computer Science Engineering
-                        </p>
-                      </mat-card-title>
-                      <mat-card-subtitle>2020 - 2024</mat-card-subtitle>
-                    </mat-card>
-
-                    <mat-card class="education-card">
-                      <mat-card-header>
-                        <div mat-card-avatar class="example-header-image"></div>
-                        <mat-card-title>
-                          <p>Chandigarh University</p>
-                        </mat-card-title>
-                        <mat-card-subtitle><span>Percentage</span> 89%</mat-card-subtitle>
-                      </mat-card-header>
-                      <mat-card-title>
-                        <p class="inner-paragraph">
-                          Bachelor in Computer Science Engineering
-                        </p>
-                      </mat-card-title>
-                      <mat-card-subtitle>2020 - 2024</mat-card-subtitle>
-                    </mat-card>
-
-                    <mat-card class="education-card">
-                      <mat-card-header>
-                        <div mat-card-avatar class="example-header-image"></div>
-                        <mat-card-title>
-                          <p>Chandigarh University</p>
-                        </mat-card-title>
-                        <mat-card-subtitle><span>Percentage</span> 89%</mat-card-subtitle>
-                      </mat-card-header>
-                      <mat-card-title>
-                        <p class="inner-paragraph">
-                          Bachelor in Computer Science Engineering
-                        </p>
-                      </mat-card-title>
-                      <mat-card-subtitle>2020 - 2024</mat-card-subtitle>
-                    </mat-card>
+ 
                   </div>
                 </li>
 

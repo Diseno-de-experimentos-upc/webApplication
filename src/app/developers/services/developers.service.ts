@@ -21,7 +21,6 @@ export class DevelopersService {
  
   ContactsURL: string = 'http://localhost:3000/contacts';
   MessagesURL: string = 'http://localhost:3000/messages';
- 
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -47,6 +46,12 @@ export class DevelopersService {
   GetAllDevs(): Observable<Developer> {
     return this.http
       .get<Developer>(this.BaseURL, this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+   
+   GetDeveloperById(id: number): Observable<Developer> {
+    return this.http
+      .get<Developer>(`${this.BaseURL}/${id}`, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 

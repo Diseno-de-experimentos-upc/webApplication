@@ -3,6 +3,9 @@ import { delay } from "rxjs";
 import { MatSidenav } from "@angular/material/sidenav";
 import { BreakpointObserver } from "@angular/cdk/layout";
 import { CompaniesService } from './services/companies.service';
+import { Company } from './model/company';
+import { ActivatedRoute } from '@angular/router';
+import { toInteger } from 'lodash';
 
 @Component({
   selector: 'app-companies',
@@ -14,8 +17,9 @@ export class CompaniesComponent implements OnInit {
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
   news:Array<any> = [];
-  constructor(private observer: BreakpointObserver, private service: CompaniesService) {
-  }
+  company! : Company;
+
+  constructor(private observer: BreakpointObserver, private service: CompaniesService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.ngAfterViewInit();
@@ -23,6 +27,13 @@ export class CompaniesComponent implements OnInit {
       this.news = response;
       console.log(this.news);
     });
+
+    const id = toInteger(this.route.snapshot.paramMap.get('id'));
+
+    this.service.GetRecruiterById(id).subscribe((response:any)=>{
+       this.company = response;
+    });
+
   }
 
   ngAfterViewInit() {

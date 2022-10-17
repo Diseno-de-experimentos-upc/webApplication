@@ -3,6 +3,9 @@ import {delay} from "rxjs";
 import {MatSidenav} from "@angular/material/sidenav";
 import {BreakpointObserver} from "@angular/cdk/layout";
 import { Router, ActivatedRoute } from '@angular/router';
+import { toInteger } from 'lodash';
+import { DevelopersService } from './services/developers.service';
+import { Developer } from './model/developer';
 
 @Component({
   selector: 'app-developers',
@@ -13,11 +16,18 @@ export class DevelopersComponent implements OnInit {
 
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
-  constructor(private observer: BreakpointObserver, private router: Router, private route: ActivatedRoute) {
-  }
+  developer!: Developer;
+
+  constructor(private observer: BreakpointObserver, private router: Router, private route: ActivatedRoute, private service: DevelopersService) { }
+  
 
   ngOnInit(): void {
     this.ngAfterViewInit();
+
+    const id = toInteger(this.route.snapshot.paramMap.get('id'));
+    this.service.GetDeveloperById(id).subscribe((response:any)=>{
+       this.developer = response;
+    });
   }
 
   ngAfterViewInit() {

@@ -26,9 +26,9 @@
 
   <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
 
-    <img class="avatar mat-elevation-z8" src="/assets/images/dev1.jpg" width="30%">
-    <h4 class="name">Trevor Venegas</h4>
-    <p class="designation">Software Engineer</p>
+    <img class="avatar mat-elevation-z8" [src]="developer.image" width="30%">
+    <h4 class="name">{{developer.first_name}} {{developer.last_name}} </h4>
+    <p class="designation">Developer</p>
     <mat-divider></mat-divider>
 
     <button mat-button class="menu-button" routerLink="home">

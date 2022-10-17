@@ -24,9 +24,9 @@
 
   <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
 
-    <img class="avatar mat-elevation-z8" src="/assets/images/recruiter1.png" width="30%">
-    <h4 class="name">Jorge Kung</h4>
-    <p class="designation">Amazon recruiter</p>
+    <img class="avatar mat-elevation-z8" [src]="company.recruiter_image" width="30%">
+    <h4 class="name">{{company.recruiter_first_name}} {{company.recruiter_last_name}}</h4>
+    <p class="designation">Recruiter</p>
     <mat-divider></mat-divider>
 
     <button mat-button class="menu-button">
@@ -48,7 +48,7 @@
       <span> Notifications</span>
     </button>
 
-    <button routerLink="/profile-developer" mat-button class="menu-button">
+    <button routerLink="profile-company" mat-button class="menu-button">
       <mat-icon> person</mat-icon>
       <span> Profile</span>
     </button>
@@ -67,10 +67,9 @@
 
 
   <mat-sidenav-content>
-    <div class="content mat-elevation-z8">
+    <div class="">
       <router-outlet></router-outlet>
     </div>
   </mat-sidenav-content>
-
 
 </mat-sidenav-container>

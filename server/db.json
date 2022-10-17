@@ -102,6 +102,10 @@
       ],
       "first_name": "Pedro",
       "last_name": "Jimenez",
+      "description":"Specialist in software development and architecture. Agile development experience software, system modeling, database management. I consider myself a person responsible, able to achieve all the goals I set in my career professional.",
+      "image": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8YXZhdGFyfGVufDB8fDB8fA%3D%3D&w=1000&q=80",
+      "banner_image": "https://www.netsolutions.com/assets/images/Digital-analytics-ofc-img.webp",
+      "adreess": "Av. Los Incas 123, Lima, Peru",
       "phone": "498419819",
       "email": "fepedev135@keyido.com",
       "password": "123456789",
@@ -117,16 +121,24 @@
       "frameworks": [
         "Angular"
       ],
-      "first_name": "Abel",
-      "last_name": "Cierto",
+      "first_name": "Matthew",
+      "last_name": "Aleva",
+      "description":"Specialist in software development and architecture. Agile development experience software, system modeling, database management. I consider myself a person responsible, able to achieve all the goals I set in my career professional.",
+      "image": "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8YXZhdGFyfGVufDB8fDB8fA%3D%3D&w=1000&q=80",
+      "banner_image": "https://res.cloudinary.com/practicaldev/image/fetch/s--9ysDPK1I--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/bsden6v0n3eq22khou29.jpg",
+      "adreess": "Av. Los Incas 123, Lima, Peru",
       "phone": "498419819",
       "email": "bay@gmail.com",
       "password": "123456789",
       "id": 2
     },
     {
-      "first_name": "Michael",
-      "last_name": "Carrillo",
+      "first_name": "Saenz",
+      "last_name": "Kenvit",
+      "description":"Specialist in software development and architecture. Agile development experience software, system modeling, database management. I consider myself a person responsible, able to achieve all the goals I set in my career professional.",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgOB84LLmkJh3CK_3rZ_BrH5N-7Ir6SrnLJqnI-MOpKXgA3Ws1ZhwDgIiT0Pulwr439TY&usqp=CAU",
+      "banner_image": "https://www.isdi.education/uploads/media/21-9-medium/03/1873-Blog_Abril_2022_Coding_Horizontal.jpg?v=1-0",
+      "adreess": "Av. Los Incas 123, Lima, Peru",
       "phone": "1234567",
       "email": "mimir@micorreo",
       "password": "12345678",
@@ -147,6 +159,10 @@
     {
       "first_name": "Hector",
       "last_name": "Gonzáles",
+      "description":"Specialist in software development and architecture. Agile development experience software, system modeling, database management. I consider myself a person responsible, able to achieve all the goals I set in my career professional.",
+      "image": "https://media-exp1.licdn.com/dms/image/C4E03AQGsV9iS0u958Q/profile-displayphoto-shrink_800_800/0/1656624616593?e=1671667200&v=beta&t=xzojy425Jhg3fSzfiT7ZG5M3Q096EKctTG_Y8SpCk-k",
+      "banner_image": "https://marketplace.canva.com/EAENvtZ8gO0/1/0/1600w/canva-black-technology-linkedin-banner-NOMWqNKutv0.jpg",
+      "adreess": "Av. Los Incas 123, Lima, Peru",
       "phone": "987654327",
       "email": "hectorviv@gmail.com",
       "password": "hector1234",
@@ -167,6 +183,10 @@
     {
       "first_name": "Michael",
       "last_name": "Carrillo",
+      "description":"Specialist in software development and architecture. Agile development experience software, system modeling, database management. I consider myself a person responsible, able to achieve all the goals I set in my career professional.",
+      "image": "https://media-exp1.licdn.com/dms/image/C4E03AQGsV9iS0u958Q/profile-displayphoto-shrink_800_800/0/1656624616593?e=1671667200&v=beta&t=xzojy425Jhg3fSzfiT7ZG5M3Q096EKctTG_Y8SpCk-k",
+      "banner_image": "https://marketplace.canva.com/EAENvtZ8gO0/1/0/1600w/canva-black-technology-linkedin-banner-NOMWqNKutv0.jpg",
+      "adreess": "Av. Los Incas 123, Lima, Peru",
       "phone": "987654311",
       "email": "michaelcarrillo1@gmail.com",
       "password": "12345678",
@@ -189,6 +209,10 @@
     {
       "first_name": "Zen",
       "last_name": "Diaz",
+      "description":"Specialist in software development and architecture. Agile development experience software, system modeling, database management. I consider myself a person responsible, able to achieve all the goals I set in my career professional.",
+      "image": "https://media-exp1.licdn.com/dms/image/C4E03AQGsV9iS0u958Q/profile-displayphoto-shrink_800_800/0/1656624616593?e=1671667200&v=beta&t=xzojy425Jhg3fSzfiT7ZG5M3Q096EKctTG_Y8SpCk-k",
+      "banner_image": "https://marketplace.canva.com/EAENvtZ8gO0/1/0/1600w/canva-black-technology-linkedin-banner-NOMWqNKutv0.jpg",
+      "adreess": "Av. Los Incas 123, Lima, Peru",
       "phone": "955612911",
       "email": "diazhuarcayaoficial@gmail.com",
       "password": "123456",
@@ -207,10 +231,45 @@
       "id": 6
     }
   ],
+  "company-social-networks": [
+    {
+      "id": 1,
+      "name": "Facebook",
+      "user": "pedro.jmenez235",
+      "companyId": 1
+    },
+    {
+      "id": 2,
+      "name": "Instagram",
+      "user": "pedrojmenez235",
+      "companyId": 1
+    },
+    {
+      "id": 3,
+      "name": "Twitter",
+      "user": "pedrojmenez235",
+      "companyId": 1
+    },
+    {
+      "id": 4,
+      "name": "Facebook",
+      "user": "alessandro.vel32",
+      "companyId": 2
+    },
+    {
+      "id": 5,
+      "name": "Instagram",
+      "user": "alessandrovel32",
+      "companyId": 2
+    }
+
+  ],
   "companies": [
     {
       "recruiter_first_name": "Pedro",
       "recruiter_last_name": "Jimenez",
+      "recruiter_description": "Experience as a manager of agile proyects. I work in Facebook meta. Every day is a challenge.",
+      "recruiter_image": "https://pbs.twimg.com/profile_images/1374076420566224899/wSZ6S8vW_400x400.jpg",
       "recruiter_phone": "498419819",
       "recruiter_email": "fepedev135@keyido.com",
       "recruiter_password": "123456789",
@@ -225,6 +284,8 @@
     {
       "recruiter_first_name": "Alessandro",
       "recruiter_last_name": "Velasquez",
+      "recruiter_description": "Experience as a manager of agile proyects. I work in Amazon. Every day is a challenge.",
+      "recruiter_image": "https://pbs.twimg.com/profile_images/1040813388463403008/K8mgjhEr_400x400.jpg",
       "recruiter_phone": "984123876",
       "recruiter_email": "alessandrovelasquez@gmail.com",
       "recruiter_password": "Alessandro1234",
@@ -239,6 +300,8 @@
     {
       "recruiter_first_name": "Pablo",
       "recruiter_last_name": "Contreras Salas",
+      "recruiter_description": "Experience as a manager of agile proyects. I work in Instagram. Every day is a challenge.",
+      "recruiter_image": "https://pbs.twimg.com/profile_images/1374076420566224899/wSZ6S8vW_400x400.jpg",
       "recruiter_phone": "980765438",
       "recruiter_email": "pablocontreras@gmail.com",
       "recruiter_password": "pablo1234",
@@ -256,8 +319,6 @@
     {
       "id": 1,
       "companyId" : 1,
-      "recruiterIcon": "https://t4.ftcdn.net/jpg/02/90/27/39/360_F_290273933_ukYZjDv8nqgpOBcBUo5CQyFcxAzYlZRW.jpg",
-      "recruiterName": "Tomas Sanchez",
       "date": "April 14, 2022",
       "image": "https://collegeinfogeek.com/wp-content/uploads/2020/11/software-developer-at-work-station.jpg",
       "title": "Marketing Designer (Internship Opportunity)",
@@ -266,8 +327,6 @@
     {
       "id": 2,
       "companyId" : 1,
-      "recruiterIcon": "https://t4.ftcdn.net/jpg/02/90/27/39/360_F_290273933_ukYZjDv8nqgpOBcBUo5CQyFcxAzYlZRW.jpg",
-      "recruiterName": "Tomas Sanchez",
       "date": "May 07, 2022",
       "image": "https://collegeinfogeek.com/wp-content/uploads/2020/11/software-developer-at-work-station.jpg",
       "title": "Marketing Designer (Internship Opportunity)",
@@ -276,8 +335,6 @@
     {
       "id": 2,
       "companyId" : 1,
-      "recruiterIcon": "https://t4.ftcdn.net/jpg/02/90/27/39/360_F_290273933_ukYZjDv8nqgpOBcBUo5CQyFcxAzYlZRW.jpg",
-      "recruiterName": "Tomas Sanchez",
       "date": "May 07, 2022",
       "image": "https://collegeinfogeek.com/wp-content/uploads/2020/11/software-developer-at-work-station.jpg",
       "title": "Marketing Designer (Internship Opportunity)",
@@ -286,8 +343,6 @@
     {
       "id": 3,
       "companyId" : 2,
-      "recruiterIcon": "https://t4.ftcdn.net/jpg/02/90/27/39/360_F_290273933_ukYZjDv8nqgpOBcBUo5CQyFcxAzYlZRW.jpg",
-      "recruiterName": "Tomas Sanchez",
       "date": "December 24, 2022",
       "image": "https://collegeinfogeek.com/wp-content/uploads/2020/11/software-developer-at-work-station.jpg",
       "title": "Marketing Designer (Internship Opportunity)",
@@ -296,8 +351,6 @@
     {
       "id": 4,
       "companyId" : 1,
-      "recruiterIcon": "https://t4.ftcdn.net/jpg/02/90/27/39/360_F_290273933_ukYZjDv8nqgpOBcBUo5CQyFcxAzYlZRW.jpg",
-      "recruiterName": "Tomas Sanchez",
       "date": "April 14, 2022",
       "image": "https://collegeinfogeek.com/wp-content/uploads/2020/11/software-developer-at-work-station.jpg",
       "title": "Marketing Designer (Internship Opportunity)",
@@ -306,8 +359,6 @@
     {
       "id": 5,
       "companyId" : 1,
-      "recruiterIcon": "https://t4.ftcdn.net/jpg/02/90/27/39/360_F_290273933_ukYZjDv8nqgpOBcBUo5CQyFcxAzYlZRW.jpg",
-      "recruiterName": "Tomas Sanchez",
       "date": "May 07, 2022",
       "image": "https://collegeinfogeek.com/wp-content/uploads/2020/11/software-developer-at-work-station.jpg",
       "title": "Marketing Designer (Internship Opportunity)",
@@ -439,18 +490,41 @@
       "id": 1,
       "name": "Universidad de Lima",
       "type_of_center": "University",
+      "career_progress": 96,
+      "description": "Bachelor in Computer Science Engineering",
+      "started_year": "2017",
+      "finished_year": "2021",
       "educationId": "1"
+   
     },
     {
       "id": 2,
       "name": "Universidad Católica",
       "type_of_center": "University",
+      "description": "Bachelor in Computer Science Engineering",
+      "career_progress": 86,
+      "started_year": "2019",
+      "finished_year": "2022",
       "educationId": "2"
     },
     {
       "id": 3,
       "name": "Universidad Peruana de Ciencias Aplicadas",
       "type_of_center": "University",
+      "description": "Bachelor in Computer Science Engineering",
+      "career_progress": 79,
+      "started_year": "2011",
+      "finished_year": "2081",
+      "educationId": "1"
+    },
+    {
+      "id": 4,
+      "name": "Universidad de Lima",
+      "type_of_center": "University",
+      "description": "Bachelor in Computer Science Engineering",
+      "career_progress": 96,
+      "started_year": "2020",
+      "finished_year": "2022",
       "educationId": "1"
     }
   ],
@@ -472,19 +546,19 @@
     {
       "id": 1,
       "name": "Facebook",
-      "user": "Jorge Martinez",
+      "user": "jorge.mar235",
       "digital-profileId": 1
     },
     {
       "id": 2,
       "name": "Instagram",
-      "user": "Jorge Martinez",
+      "user": "jorgemar235",
       "digital-profileId": 2
     },
     {
       "id": 3,
       "name": "Twitter",
-      "user": "Jorge Martinez",
+      "user": "jorgemar235",
       "digital-profileId": 1
     }
   ],
@@ -581,26 +655,26 @@
   "users": [
     {
       "id": 1,
-      "email": "fepedev135@keyido.com",
-      "password": "123456789",
-      "role": "recruiter"
+      "email": "pedrojimenez@gmail.com",
+       "password": "Pedr0Jim@nez",
+      "role": "developer"
     },
     {
       "id": 2,
-      "email": "alessandrovelasquez@gmail.com",
-      "password": "Alessandro1234",
+      "email": "matthewaleva@gmail.com",
+      "password": "Aleva32@leva",
       "role": "recruiter"
     },
     {
       "id": 3,
       "email": "pablocontreras@gmail.com",
-      "password": "pablo1234",
+      "password": "con@enraz3Salas",
       "role": "recruiter"
     },
     {
       "id": 4,
       "email": "fepedev135@keyido.com",
-      "password": "123456789",
+      "password": "fede@Dev123",
       "role": "developer"
     },
     {
@@ -619,12 +693,6 @@
       "id": 7,
       "email": "hectorviv@gmail.com",
       "password": "hector1234",
-      "role": "developer"
-    },
-    {
-      "id": 8,
-      "email": "michaelcarrillo1@gmail.com",
-      "password": "12345678",
       "role": "developer"
     }
   ]

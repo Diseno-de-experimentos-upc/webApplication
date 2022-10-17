@@ -49,6 +49,12 @@ export class CompaniesService {
       .pipe(retry(2), catchError(this.handleError));
   }
 
+  GetRecruiterById(id: number): Observable<Company> {
+    return this.http
+      .get<Company>(this.BaseURL + '/' + id, this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+
   GetAllNews(): Observable<object> {
     return this.http
       .get<object>(this.NewsURL, this.httpOptions)
@@ -60,5 +66,12 @@ export class CompaniesService {
       .get<object>(this.BaseURL + '/' + id + '/posts', this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
+
+  GetSocialNetworks(companyId: number): Observable<object> {
+    return this.http
+      .get<object>(`${this.BaseURL}/${companyId}/company-social-networks`, this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+
 
 }
