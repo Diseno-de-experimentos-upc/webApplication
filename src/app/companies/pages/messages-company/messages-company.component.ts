@@ -47,7 +47,7 @@ export class MessagesCompanyComponent implements OnInit {
   SendMessage(){
     let TempAnswer:object = {
         "id":0,
-        "type": "dev",
+        "type": "comp",
         "message": this.answer
     }
 
