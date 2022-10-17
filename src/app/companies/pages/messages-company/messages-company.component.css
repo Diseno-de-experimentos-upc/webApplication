@@ -11,15 +11,21 @@
     height: 100%
 }
 
-.example-viewport {
+.viewport {
     height: 100%;
     width: 336px;
 }
 
-.example-card {
+.contact {
     max-width: 295px;
     cursor:pointer;
     margin-bottom: 1rem;
+}
+
+.RecruiterPhoto{
+    width: 40px; 
+    height: 40px; 
+    border-radius: 50%;
 }
 
 .chat {
@@ -31,7 +37,7 @@
 }
 .chat-header{
     max-width: 688px;
-    min-width: 350px;
+    min-width: 300px;
     border-radius: 10px;
     background-color: #CBE0FF;
 }
@@ -44,7 +50,8 @@
     background-color: #CBE0FF;
     
     max-width: 688px;
-    min-width: 350px;
+    width: auto;
+    min-width: 300px;
 }
 
 .bubble1{
@@ -65,11 +72,6 @@
     padding: 1rem;
     margin-left: auto;
 }
-
-.example-header-image {
-    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-    background-size: cover;
-}  
 
 .answer{
     align-items: center;

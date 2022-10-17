@@ -1,4 +1,5 @@
 import { Component, OnInit} from '@angular/core';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { DevelopersService } from '../../services/developers.service';
 
 @Component({
@@ -9,11 +10,23 @@ import { DevelopersService } from '../../services/developers.service';
 export class MessagesComponent implements OnInit {
   messages: Array<any> = [];
   contacts: Array<any> = [];
-  answer: string = ""
+  answer: string = "";
+  show: boolean = false;
+  mobile:boolean = false;
 
-  constructor(private service: DevelopersService) { }
+
+  constructor(private service: DevelopersService, private breakpoint: BreakpointObserver) { }
 
   ngOnInit(): void {
+    this.breakpoint.observe([Breakpoints.XSmall, Breakpoints.HandsetLandscape]).subscribe((response: any) => {
+      console.log(response);
+      if (response.matches) {
+        this.mobile = true;
+      }
+      else {
+        this.mobile = false;
+      }
+    });
     this.GetContacts();
     this.GetMessages();
   }
