@@ -51,6 +51,7 @@ import { SettingsCompanyComponent } from './companies/pages/settings/settings.co
 import { DialogBoxSettingsComponent } from './companies/pages/settings/dialog-box/dialog-box.component';
 import { DialogCancelComponent } from './companies/pages/settings/dialog-cancel/dialog-cancel.component';
 import { DialogSaveComponent } from './companies/pages/settings/dialog-save/dialog-save.component';
+import { DialogBoxSettingsDeveloperComponent } from './developers/pages/settings/dialog-box/dialog-box.component';
 
 
 @NgModule({
@@ -78,6 +79,7 @@ import { DialogSaveComponent } from './companies/pages/settings/dialog-save/dial
     DialogBoxSettingsComponent,
     DialogCancelComponent,
     DialogSaveComponent,
+    DialogBoxSettingsDeveloperComponent,
 
   ],
   imports: [

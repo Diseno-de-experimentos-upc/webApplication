@@ -14,14 +14,14 @@ import { Developer } from '../model/developer';
 export class DevelopersService {
   BaseURL: string = 'http://localhost:3000/developers';
   NewsURL: string = 'http://localhost:3000/news-developers';
- 
+
   educationUrl: string = 'http://localhost:3000/education';
   digitalProfileUrl: string = 'http://localhost:3000/digital-profiles';
 
- 
+
   ContactsURL: string = 'http://localhost:3000/contacts';
   MessagesURL: string = 'http://localhost:3000/messages';
- 
+
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -56,9 +56,15 @@ export class DevelopersService {
       .pipe(retry(2), catchError(this.handleError));
   }
 
-  getPedro(dev: Developer): Observable<Developer> {
+  GetDevById(id: number): Observable<Developer> {
     return this.http
-      .get<Developer>(this.BaseURL + '/?first_name=' + dev.first_name, this.httpOptions)
+      .get<Developer>(`${this.BaseURL}/${id}`, this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+
+  updateDev(dev: Developer): Observable<Developer> {
+    return this.http
+      .put<Developer>(`${this.BaseURL}/${dev.id}`, JSON.stringify(dev), this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 
@@ -68,7 +74,6 @@ export class DevelopersService {
       .pipe(retry(2), catchError(this.handleError));
   }
 
- 
   GetCetificates(educationId: number): Observable<object> {
     return this.http
       .get<object>(`${this.educationUrl}/${educationId}/certificates`, this.httpOptions)
@@ -80,7 +85,7 @@ export class DevelopersService {
       .get<object>(`${this.educationUrl}/${educationId}/study-centers`, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
-  
+
   GetSocialNetworks(digitalProfileId: number): Observable<object> {
     return this.http
       .get<object>(`${this.digitalProfileUrl}/${digitalProfileId}/social-networks`, this.httpOptions)
@@ -99,7 +104,7 @@ export class DevelopersService {
       .pipe(retry(2), catchError(this.handleError));
   }
 
- 
+
   //////Messages Section /////////
 
   GetContacts(): Observable<object> {
@@ -119,5 +124,5 @@ export class DevelopersService {
       .post<object>(this.MessagesURL, answer, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
- 
+
 }

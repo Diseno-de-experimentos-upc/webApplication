@@ -6,12 +6,13 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
   templateUrl: './dialog-box.component.html',
   styleUrls: ['./dialog-box.component.css']
 })
-export class DialogBoxSettingsComponent implements OnInit {
+export class DialogBoxSettingsDeveloperComponent implements OnInit {
+
   toChange!: string;
   title!: string;
 
   constructor(
-    public dialogRef: MatDialogRef<DialogBoxSettingsComponent>,
+    public dialogRef: MatDialogRef<DialogBoxSettingsDeveloperComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) {
   }
   onNoClick(): void {
@@ -23,4 +24,5 @@ export class DialogBoxSettingsComponent implements OnInit {
     this.toChange = this.data._text;
     this.title = this.data._title;
   }
+
 }

@@ -14,7 +14,8 @@ import { DialogSaveComponent} from "./dialog-save/dialog-save.component";
 export class SettingsCompanyComponent implements OnInit {
   email: string = "Email";
   password: string = "Password";
-  //hidepassword: string = "";
+  recruiter: Company = {} as Company;
+
   constructor(
     private service: CompaniesService,
     private dialog: MatDialog
@@ -26,18 +27,6 @@ export class SettingsCompanyComponent implements OnInit {
       this.recruiter = data;
       console.log(data);
     });
-   /* for (let i = 0; i < 8; i++) {
-      this.hidepassword += "*";
-    }*/
-  }
-  recruiter: Company = {} as Company;
-  isEdit: boolean = false;
-  editRec(element: Company) {
-    this.recruiter = element;
-    this.isEdit = true;
-  }
-  cancelEdit() {
-    this.isEdit = false;
   }
   updateRec() {
     this.service.updateRec(this.recruiter.id, this.recruiter).subscribe((data: Company) => {
@@ -103,13 +92,4 @@ export class SettingsCompanyComponent implements OnInit {
       }
     });
   }
-  /*openDialog(): void {
-    this.dialog.open(DialogBoxSettingsComponent, {
-      width: '300px',
-      //data: {email: this.recruiter.email, password: this.recruiter.password},
-    });
-    this.dialog.afterAllClosed.subscribe(result => {
-      console.log('The dialog was closed');
-    });
-  }*/
 }
