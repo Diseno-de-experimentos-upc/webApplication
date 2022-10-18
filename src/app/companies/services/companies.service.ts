@@ -42,6 +42,16 @@ export class CompaniesService {
       .get<Company>(this.BaseURL, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
+  GetRecById(id: number): Observable<Company> {
+    return this.http
+      .get<Company>(this.BaseURL + '/' + id, this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+  updateRec(id: number, dev: Company): Observable<Company> {
+    return this.http
+      .put<Company>(this.BaseURL + '/' + id, JSON.stringify(dev), this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
 
   AddRec(dev: Company): Observable<Company> {
     return this.http

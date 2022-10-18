@@ -46,6 +46,12 @@ import { PageNotFoundComponent } from './public/page-not-found/page-not-found.co
 import { DialogBoxInvalidFormComponent } from './public/register/dialog-box-invalid-form/dialog-box-invalid-form.component';
 
 import { HomeCompanyComponent } from './companies/pages/home/home.component';
+import { SettingsDeveloperComponent } from './developers/pages/settings/settings.component';
+import { SettingsCompanyComponent } from './companies/pages/settings/settings.component';
+import { DialogBoxSettingsComponent } from './companies/pages/settings/dialog-box/dialog-box.component';
+import { DialogCancelComponent } from './companies/pages/settings/dialog-cancel/dialog-cancel.component';
+import { DialogSaveComponent } from './companies/pages/settings/dialog-save/dialog-save.component';
+
 
 @NgModule({
   declarations: [
@@ -66,7 +72,12 @@ import { HomeCompanyComponent } from './companies/pages/home/home.component';
     HomeComponent,
     MessagesComponent,
 
-    HomeCompanyComponent
+    HomeCompanyComponent,
+    SettingsDeveloperComponent,
+    SettingsCompanyComponent,
+    DialogBoxSettingsComponent,
+    DialogCancelComponent,
+    DialogSaveComponent,
 
   ],
   imports: [
