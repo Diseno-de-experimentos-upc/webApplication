@@ -8,19 +8,18 @@ import { DevelopersComponent } from './developers/developers.component';
 import { MessagesComponent } from './developers/pages/messages-developer/messages.component';
 import { HomeComponent } from './developers/pages/home-developer/home.component';
 import { ProfileDeveloperComponent } from './profile-developer/profile-developer.component';
+import { SettingsDeveloperComponent } from './developers/pages/settings/settings.component';
 /* Companies components */
 import { CompanyComponent } from './public/register/company/company.component';
 import { CompaniesComponent } from './companies/companies.component';
 import { ProfileCompanyComponent } from './profile-company/profile-company.component';
 import { FindYourDevComponent } from './companies/pages/find-your-dev/find-your-dev.component';
-import {  HomeCompanyComponent  } from './companies/pages/home/home.component';
+import { HomeCompanyComponent  } from './companies/pages/home/home.component';
 import { MessagesCompanyComponent } from './companies/pages/messages-company/messages-company.component';
-import { SettingsDeveloperComponent } from './developers/pages/settings/settings.component';
 import { SettingsCompanyComponent } from './companies/pages/settings/settings.component';
 
 const routes: Routes = [
   {path:'', component:DevelopersComponent},
-  //{path:'', component:LoginComponent},
   {path: 'register', component: RegisterComponent, children: [
       {path: 'developer', component: DeveloperComponent},
       {path: 'company', component: CompanyComponent},
