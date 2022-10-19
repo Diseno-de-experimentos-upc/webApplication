@@ -266,12 +266,13 @@
   ],
   "companies": [
     {
-      "recruiter_first_name": "Pedro",
-      "recruiter_last_name": "Jimenez",
+      "recruiter_first_name": "Mario",
+      "recruiter_last_name": "Levano",
       "recruiter_description": "Experience as a manager of agile proyects. I work in Facebook meta. Every day is a challenge.",
       "recruiter_image": "https://pbs.twimg.com/profile_images/1374076420566224899/wSZ6S8vW_400x400.jpg",
+      "recruiter_banner_image": "https://img.freepik.com/vector-gratis/fondo-abstracto-naranja-banner-acuarela_1035-18304.jpg?w=2000",
       "recruiter_phone": "498419819",
-      "recruiter_email": "fepedev135@keyido.com",
+      "recruiter_email": "mareioLevano5@keyido.com",
       "recruiter_password": "123456789",
       "company_name": "Google",
       "ruc": 22336123199,
@@ -279,13 +280,14 @@
       "address": "The olivos",
       "locality": "Manhatahn",
       "city": "New Yordk",
-      "id": 1
+      "id": 3
     },
     {
       "recruiter_first_name": "Alessandro",
       "recruiter_last_name": "Velasquez",
       "recruiter_description": "Experience as a manager of agile proyects. I work in Amazon. Every day is a challenge.",
       "recruiter_image": "https://pbs.twimg.com/profile_images/1040813388463403008/K8mgjhEr_400x400.jpg",
+      "recruiter_banner_image": "https://img.freepik.com/free-vector/digital-connecting-banner-technology-polygon-background_1035-17960.jpg?w=2000",
       "recruiter_phone": "984123876",
       "recruiter_email": "alessandrovelasquez@gmail.com",
       "recruiter_password": "Alessandro1234",
@@ -301,7 +303,8 @@
       "recruiter_first_name": "Pablo",
       "recruiter_last_name": "Contreras Salas",
       "recruiter_description": "Experience as a manager of agile proyects. I work in Instagram. Every day is a challenge.",
-      "recruiter_image": "https://pbs.twimg.com/profile_images/1374076420566224899/wSZ6S8vW_400x400.jpg",
+      "recruiter_image": "https://i.pinimg.com/originals/cb/05/f0/cb05f0ca5a29d510201e2c112aa2c0fa.jpg",
+      "recruiter_banner_image": "https://img.freepik.com/free-vector/blue-technology-digital-banner-design_1017-32257.jpg?w=2000",
       "recruiter_phone": "980765438",
       "recruiter_email": "pablocontreras@gmail.com",
       "recruiter_password": "pablo1234",
@@ -311,7 +314,7 @@
       "address": "Isaac Albeniz 106",
       "locality": "SAN BORJA",
       "city": "Lima",
-      "id": 3
+      "id": 1
     }
   ],
    
@@ -320,8 +323,8 @@
       "id": 1,
       "companyId" : 1,
       "date": "April 14, 2022",
-      "image": "https://collegeinfogeek.com/wp-content/uploads/2020/11/software-developer-at-work-station.jpg",
-      "title": "Marketing Designer (Internship Opportunity)",
+      "image": "https://blog.tail.digital/wp-content/uploads/2019/03/post-social-data-for-publishers-tail.png",
+      "title": "Big Data architect Job",
       "description": "I am a Facebook recruiter, please send me a message or comment on this post if you want to apply for this position. "
     },
     {
@@ -334,7 +337,7 @@
     },
     {
       "id": 2,
-      "companyId" : 1,
+      "companyId" : 2,
       "date": "May 07, 2022",
       "image": "https://collegeinfogeek.com/wp-content/uploads/2020/11/software-developer-at-work-station.jpg",
       "title": "Marketing Designer (Internship Opportunity)",
@@ -344,24 +347,24 @@
       "id": 3,
       "companyId" : 2,
       "date": "December 24, 2022",
-      "image": "https://collegeinfogeek.com/wp-content/uploads/2020/11/software-developer-at-work-station.jpg",
-      "title": "Marketing Designer (Internship Opportunity)",
+      "image": "https://www.smartdatacollective.com/wp-content/uploads/2019/02/future-of-data-analytics-in-2025.jpg",
+      "title": "Profesional  Data Analytics and Development",
       "description": "I am a Facebook recruiter, please send me a message or comment on this post if you want to apply for this position. "
     },
     {
       "id": 4,
-      "companyId" : 1,
+      "companyId" : 3,
       "date": "April 14, 2022",
-      "image": "https://collegeinfogeek.com/wp-content/uploads/2020/11/software-developer-at-work-station.jpg",
-      "title": "Marketing Designer (Internship Opportunity)",
+      "image": "https://blog.hyperiondev.com/wp-content/uploads/2019/02/Blog-Become-VR-Developer.jpg",
+      "title": "[VR-59] | Software Development Engineer",
       "description": "I am a Facebook recruiter, please send me a message or comment on this post if you want to apply for this position. "
     },
     {
       "id": 5,
-      "companyId" : 1,
+      "companyId" : 3,
       "date": "May 07, 2022",
-      "image": "https://collegeinfogeek.com/wp-content/uploads/2020/11/software-developer-at-work-station.jpg",
-      "title": "Marketing Designer (Internship Opportunity)",
+      "image": "https://i.blogs.es/0ebb19/unity-polemica/1366_2000.jpeg",
+      "title": "Unity3D Senior Developer",
       "description": "I am a Facebook recruiter, please send me a message or comment on this post if you want to apply for this position. "
     }
   ],

@@ -2,7 +2,7 @@
 .inner-content {
   height: auto;
   margin: 16px 16px 0px 32px;
-  background-color: #dbdbdb;
+  background-color: #efefef;
   border-radius: 10px;
 }
 
@@ -42,7 +42,7 @@ mat-icon {
 
 .developer-career-info {
   display: flex;
-  width: 100%;
+  width: 980%;
   flex-direction: column;
   margin: 1rem;
   overflow: auto;
@@ -89,6 +89,8 @@ li {
   margin-left: 2rem;
   display: list-item;
   color: #4054b4;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 ul span {

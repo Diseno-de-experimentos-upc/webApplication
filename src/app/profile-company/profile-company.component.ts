@@ -28,6 +28,8 @@ export class ProfileCompanyComponent implements OnInit {
   instagram : string = "none";
   posts : Array<any> = []; 
   company!: Company;
+  isEmpty: boolean = true;
+  isResponsive: boolean = false;
 
   constructor(private observer: BreakpointObserver, private service: CompaniesService, private route : ActivatedRoute ) { }
 
@@ -45,6 +47,14 @@ export class ProfileCompanyComponent implements OnInit {
     this.service.GetPosts(id).subscribe((response: any) => {
       this.posts = response;
       console.log(this.posts);
+
+      if(this.posts.length > 0){
+        this.isEmpty = false;
+      }
+      else{
+        this.isEmpty = true;
+      }
+
     });
   }
 
@@ -89,6 +99,9 @@ export class ProfileCompanyComponent implements OnInit {
 
           this.firstGridTile.rowspan = 1;
           this.secondGridTile.rowspan = 3;
+
+          this.isResponsive = true;
+
         } else {
           //full -width
           this.gridList.rowHeight = '88vh';
@@ -98,6 +111,8 @@ export class ProfileCompanyComponent implements OnInit {
 
           this.firstGridTile.rowspan = 1;
           this.secondGridTile.rowspan = 1;
+
+          this.isResponsive = false;
         }
       });
   }

@@ -133,6 +133,20 @@
    font-weight: 550;
 }
 
+.empty-post-title{
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  color: #6c757d;
+  
+}
+
+.empty-post-title-decoration{
+  text-align: center;
+  font-size: 1.5rem;
+  margin: auto;
+}
 
  @media screen and (max-width: 1215px) {
 
@@ -180,7 +194,7 @@
   
   .posts {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: row wrap;
     align-items: center;
     align-content: center;

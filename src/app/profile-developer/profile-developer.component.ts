@@ -32,7 +32,7 @@ export class ProfileDeveloperComponent implements OnInit {
   technologies: Array<any> = [];
   projects: Array<any> = [];
   developer!: Developer;
-
+ 
   constructor(
     private observer: BreakpointObserver,
     private service: DevelopersService,
@@ -120,6 +120,7 @@ export class ProfileDeveloperComponent implements OnInit {
 
           this.firstGridTile.rowspan = 1;
           this.secondGridTile.rowspan = 3;
+ 
         } else {
           //full -width
           this.gridList.rowHeight = '88vh';
@@ -129,6 +130,7 @@ export class ProfileDeveloperComponent implements OnInit {
 
           this.firstGridTile.rowspan = 1;
           this.secondGridTile.rowspan = 1;
+
         }
       });
   }
