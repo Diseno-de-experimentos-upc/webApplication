@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { RegisterComponent } from './public/register/register.component';
+import { LoginComponent } from './public/login/login.component';
 import { PageNotFoundComponent } from './public/page-not-found/page-not-found.component';
 /* Developers components */
 import { DeveloperComponent } from './public/register/developer/developer.component';
@@ -14,12 +15,12 @@ import { CompanyComponent } from './public/register/company/company.component';
 import { CompaniesComponent } from './companies/companies.component';
 import { ProfileCompanyComponent } from './profile-company/profile-company.component';
 import { FindYourDevComponent } from './companies/pages/find-your-dev/find-your-dev.component';
-import { HomeCompanyComponent  } from './companies/pages/home/home.component';
+import { HomeCompanyComponent  } from './companies/pages/home-company/home-company.component';
 import { MessagesCompanyComponent } from './companies/pages/messages-company/messages-company.component';
 import { SettingsCompanyComponent } from './companies/pages/settings/settings.component';
 
 const routes: Routes = [
-  {path:'', component:DevelopersComponent},
+  {path:'', component:LoginComponent},
   {path: 'register', component: RegisterComponent, children: [
       {path: 'developer', component: DeveloperComponent},
       {path: 'company', component: CompanyComponent},

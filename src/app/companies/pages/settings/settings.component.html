@@ -7,7 +7,7 @@
       <img src="/assets/images/recruiter1.png" alt="Recruiter's photo">
       <div>
         <h2>Full Name</h2>
-        <mat-card class="fields">{{recruiter.recruiter_first_name}} {{recruiter.recruiter_last_name}}</mat-card>
+        <mat-card class="fields">{{recruiter.first_name}} {{recruiter.last_name}}</mat-card>
       </div>
       <div>
         <h2>Company Name</h2>
@@ -16,20 +16,20 @@
       <div>
         <h2>Email</h2>
         <mat-card class="fields" id="-email">
-          {{recruiter.recruiter_email}}
+          {{recruiter.email}}
           <a href="javascript:void(0)" class="edit" (click)="openDialog(email)"><mat-icon>edit</mat-icon></a>
         </mat-card>
       </div>
       <div>
         <h2>Password</h2>
         <mat-card class="fields" id="-password">
-          {{recruiter.recruiter_password}}
+          {{recruiter.password}}
           <a href="javascript:void(0)" class="edit" (click)="openDialog(password)"><mat-icon>edit</mat-icon></a>
         </mat-card>
       </div>
       <div>
         <h2>Phone Number</h2>
-        <mat-card class="fields">{{recruiter.recruiter_phone}}</mat-card>
+        <mat-card class="fields">{{recruiter.phone}}</mat-card>
       </div>
       <div>
         <h2>Location</h2>
