@@ -44,7 +44,8 @@ const routes: Routes = [
     children: [
       { path: 'home', component: HomeCompanyComponent },
       { path: 'messages', component: MessagesCompanyComponent },
-      { path: 'profile', component: ProfileCompanyComponent }
+      { path: 'profile', component: ProfileCompanyComponent },
+      { path: 'find', component: FindYourDevComponent }
     ],
   },
   { path: '**', component: PageNotFoundComponent },
