@@ -209,11 +209,11 @@
   ],
   "companies": [
     {
-      "recruiter_first_name": "Pedro",
-      "recruiter_last_name": "Jimenez",
-      "recruiter_phone": "498419819",
-      "recruiter_email": "fepedev135@keyido.com",
-      "recruiter_password": "123456789",
+      "first_name": "Pedro",
+      "last_name": "Jimenez",
+      "phone": "498419819",
+      "email": "fepedev135@keyido.com",
+      "password": "123456789",
       "company_name": "Google",
       "ruc": 22336123199,
       "owner_name": "Mark Sukerber",
@@ -223,11 +223,11 @@
       "id": 1
     },
     {
-      "recruiter_first_name": "Alessandro",
-      "recruiter_last_name": "Velasquez",
-      "recruiter_phone": "984123876",
-      "recruiter_email": "alessandrovelasquez@gmail.com",
-      "recruiter_password": "Alessandro1234",
+      "first_name": "Alessandro",
+      "last_name": "Velasquez",
+      "phone": "984123876",
+      "email": "alessandrovelasquez@gmail.com",
+      "password": "Alessandro1234",
       "company_name": "Google",
       "ruc": 20536161199,
       "owner_name": "Julian Coulter",
@@ -237,11 +237,11 @@
       "id": 2
     },
     {
-      "recruiter_first_name": "Pablo",
-      "recruiter_last_name": "Contreras Salas",
-      "recruiter_phone": "980765438",
-      "recruiter_email": "pablocontreras@gmail.com",
-      "recruiter_password": "pablo1234",
+      "first_name": "Pablo",
+      "last_name": "Contreras Salas",
+      "phone": "980765438",
+      "email": "pablocontreras@gmail.com",
+      "password": "pablo1234",
       "company_name": "AppliSys",
       "ruc": 20100717558,
       "owner_name": "Adams Jibrin",
@@ -353,7 +353,6 @@
       "id": 4
     }
   ],
-
   "study-centers": [
     {
       "id": 1,
@@ -374,7 +373,6 @@
       "educationId": "1"
     }
   ],
-
   "education": [
     {
       "id": 1,
@@ -387,7 +385,6 @@
       "digital-profileId": 2
     }
   ],
-
   "social-networks": [
     {
       "id": 1,
@@ -408,7 +405,6 @@
       "digital-profileId": 1
     }
   ],
-
   "technologies": [
     {
       "id": 1,
@@ -458,7 +454,6 @@
       "digital-profileId": 1
     }
   ],
-
   "digital-profiles": [
     {
       "id": 1,
@@ -466,11 +461,11 @@
     },
     {
       "id": 2,
-      "developerId": "2"      
+      "developerId": "2"
     },
     {
       "id": 3,
-      "developerId": "3"      
+      "developerId": "3"
     }
   ],
   "users": [

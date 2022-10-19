@@ -14,8 +14,9 @@ import { LoginService } from '../services/login.service';
 export class LoginComponent implements OnInit {
   usersDeveloper: Array<any> = [];
   usersCompany: Array<any> = [];
-  users: Array<any> = [];
+
   loggedIn = false;
+  logger: string = 'developer';
   loginForm: FormGroup = this.formBuilder.group({
     email : ["", {validators: [Validators.required, Validators.email], updateOn: 'change'}],
     password : ["", {validators: [Validators.required, Validators.minLength(8)], updateOn: 'change'}],
@@ -35,10 +36,6 @@ export class LoginComponent implements OnInit {
     this.service.getCompanyAll().subscribe((response: any) => {
       this.usersCompany = response;
       console.log(this.usersCompany);
-    });
-    this.service.getUserAll().subscribe((response: any) => {
-      this.users = response;
-      console.log(this.users);
     });
   }
 
@@ -77,7 +74,7 @@ export class LoginComponent implements OnInit {
   openDialog() {
     if (this.loginForm.invalid) {
       this.dialog.open(DialogBoxInvalidFormComponent, { 
-        data: 'registerForm',
+        data: { message: 'Please fill all the required fields'},
       });
     }
     else {
@@ -104,13 +101,24 @@ export class LoginComponent implements OnInit {
   verifyAccount() {
     let email = this.loginForm.get('email')?.value;
     let password = this.loginForm.get('password')?.value;
-    let user = this.users.find(user => user.email == email && user.password == password);
-    if (user != null) {
-      if (user.role == 'developer') {
-        this.goUserDeveloper(user.id);
+    
+    if (email!== null && password!== null) {
+      if (this.logger === 'developer') {
+        for (let i = 0; i < this.usersDeveloper.length; i++) {
+          if (this.usersDeveloper[i].email === email && this.usersDeveloper[i].password === password) {
+            this.goUserDeveloper(this.usersDeveloper[i].id);
+            break;
+          }
+        }
       }
       else{
-        this.goUserCompany(user.id);
+        for (let i = 0; i < this.usersCompany.length; i++) {
+          if (this.usersCompany[i].email === email && this.usersCompany[i].password === password) {
+            this.goUserCompany(this.usersCompany[i].id);
+            break;
+          }
+        }
+        
       }
     }
     else {
