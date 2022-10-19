@@ -113,7 +113,7 @@
       "adreess": "Av. Los Incas 123, Lima, Peru",
       "phone": "498419819",
       "email": "fepedev135@keyido.com",
-      "password": "123456789",
+      "password": "Pedro@123",
       "id": 1
     },
     {
@@ -270,11 +270,11 @@
   ],
   "companies": [
     {
-      "first_name": "Pedro",
+      "first_name": "Edmer",
       "last_name": "Jimenez",
       "phone": "498419819",
-      "email": "fepedev135@keyido.com",
-      "password": "123456789",
+      "email": "edmerjimenez@gmail.com",
+      "password": "Edemer@12345",
       "company_name": "Google",
       "ruc": 22336123199,
       "owner_name": "Mark Sukerber",
@@ -639,50 +639,6 @@
     {
       "id": 3,
       "developerId": "3"
-    }
-  ],
-  "users": [
-    {
-      "id": 1,
-      "email": "pedrojimenez@gmail.com",
-      "password": "Pedr0Jim@nez",
-      "role": "developer"
-    },
-    {
-      "id": 2,
-      "email": "matthewaleva@gmail.com",
-      "password": "Aleva32@leva",
-      "role": "recruiter"
-    },
-    {
-      "id": 3,
-      "email": "pablocontreras@gmail.com",
-      "password": "con@enraz3Salas",
-      "role": "recruiter"
-    },
-    {
-      "id": 4,
-      "email": "fepedev135@keyido.com",
-      "password": "fede@Dev123",
-      "role": "developer"
-    },
-    {
-      "id": 5,
-      "email": "bay@gmail.com",
-      "password": "123456789",
-      "role": "developer"
-    },
-    {
-      "id": 6,
-      "email": "mimir@micorreo",
-      "password": "12345678",
-      "role": "developer"
-    },
-    {
-      "id": 7,
-      "email": "hectorviv@gmail.com",
-      "password": "hector1234",
-      "role": "developer"
     }
   ]
 }

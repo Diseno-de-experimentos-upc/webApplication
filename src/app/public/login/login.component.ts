@@ -93,10 +93,10 @@ export class LoginComponent implements OnInit {
     });
   }
   goUserDeveloper(id : any) {
-    this.router.navigate(['/home-developer/' + id]);
+    this.router.navigate(['/developers/' + id + '/home']);
   }
   goUserCompany(id : any) {
-    this.router.navigate(['/home-company/' + id]);
+    this.router.navigate(['/companies/' + id + '/home']);
   }
   verifyAccount() {
     let email = this.loginForm.get('email')?.value;
