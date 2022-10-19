@@ -34,7 +34,7 @@ import { DevelopersComponent } from './developers/developers.component';
 import { CompaniesComponent } from './companies/companies.component';
 import { LoginComponent } from './public/login/login.component';
 import { CompanyComponent } from './public/register/company/company.component';
-import { DialogBoxComponent } from './public/register/dialog-box/dialog-box.component';
+
 import { FindYourDevComponent } from './companies/pages/find-your-dev/find-your-dev.component';
 
 import { ProfileDeveloperComponent } from './profile-developer/profile-developer.component';
@@ -56,7 +56,6 @@ import { HomeCompanyComponent } from './companies/pages/home/home.component';
     CompaniesComponent,
     LoginComponent,
     CompanyComponent,
-    DialogBoxComponent,
     FindYourDevComponent,
 
     ProfileDeveloperComponent,

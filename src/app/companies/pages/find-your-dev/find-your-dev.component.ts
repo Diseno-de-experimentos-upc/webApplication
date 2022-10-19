@@ -5,7 +5,7 @@ import { MatSidenav } from "@angular/material/sidenav";
 import { BreakpointObserver } from "@angular/cdk/layout";
 import { DevelopersService } from '../../../developers/services/developers.service';
 import { MatDialog } from '@angular/material/dialog';
-import { DialogBoxComponent } from '../../../public/register/dialog-box/dialog-box.component';
+
 import { DialogBoxInvalidFormComponent } from '../../../public/register/dialog-box-invalid-form/dialog-box-invalid-form.component';
 
 @Component({

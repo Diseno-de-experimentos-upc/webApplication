@@ -12,8 +12,8 @@ import {
 import { Developer } from 'src/app/developers/model/developer';
 import { DevelopersService } from 'src/app/developers/services/developers.service';
 import { MatDialog } from '@angular/material/dialog';
-import { DialogBoxComponent } from '../dialog-box/dialog-box.component';
 import { DialogBoxInvalidFormComponent } from '../dialog-box-invalid-form/dialog-box-invalid-form.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-developer',
@@ -21,8 +21,9 @@ import { DialogBoxInvalidFormComponent } from '../dialog-box-invalid-form/dialog
   styleUrls: ['./developer.component.css'],
 })
 export class DeveloperComponent implements OnInit {
-  mismatch: boolean = false;
 
+  mismatch: boolean = false;
+  registered: boolean = false;
   devs: Array<any> = [];
   TempDev: Developer;
   pass: string = '';
@@ -54,7 +55,8 @@ export class DeveloperComponent implements OnInit {
     'Vue.js',
   ];
 
-  constructor( private service: DevelopersService, private formBuilder: FormBuilder, public dialog: MatDialog) {
+  constructor( private service: DevelopersService, private formBuilder: FormBuilder, public dialog: MatDialog, private router: Router) {
+    
     this.TempDev = {} as Developer;
     this.registerForm = this.formBuilder.group({
       first_name: new FormControl('', { validators:  [Validators.required], updateOn: 'change' }),
@@ -77,6 +79,10 @@ export class DeveloperComponent implements OnInit {
     this.setEmailValidation();
     this. setPhoneValidation();
     this.setPaswordValidation();
+    this.service.GetAllDevs().subscribe((response: any) => {
+      this.devs = response;
+      console.log(this.devs);
+    });
   }
 
   Add() {
@@ -90,15 +96,33 @@ export class DeveloperComponent implements OnInit {
 
   openDialog() {
     if (this.registerForm.invalid) {
-      this.dialog.open(DialogBoxInvalidFormComponent, { 
-        data: 'registerForm',
-      });
+      if(this.registerForm.get('password')?.value !== this.registerForm.get('password_confirm')?.value) {
+        this.dialog.open(DialogBoxInvalidFormComponent, { 
+          data: {message: 'Please confirm the same password!'},
+        });
+      }
+      else{
+        this.dialog.open(DialogBoxInvalidFormComponent, { 
+          data: {message: 'Please fill all the required fields!'},
+        });
+      }
     }
     else {
-      this.dialog.open(DialogBoxComponent, {
-        data: 'registerForm',
-      });
-      this.Add();
+      this.verifyDeveloperUnregistered();
+      if(!this.registered) {
+        this.Add();
+        this.registered = true;
+        this.dialog.open(DialogBoxInvalidFormComponent, { 
+          data: {message: 'You have successfully registered!'},
+        });
+        this.router.navigate(['/login']);
+      }
+      else {
+        this.dialog.open(DialogBoxInvalidFormComponent, { 
+          data: {message: 'This email is already registered!'},
+        });
+      }
+      
     }
   }
 
@@ -172,8 +196,6 @@ export class DeveloperComponent implements OnInit {
   }
   
   setPaswordValidation() {
-    const passwordControl = this.registerForm.get('password');
-
     this.registerForm.get('password')?.valueChanges.subscribe(value => {
       if (value.length < 8 || value.length > 16) {
         this.registerForm.get('password')?.setValidators([Validators.required, Validators.minLength(8), Validators.maxLength(16)]);
@@ -182,5 +204,18 @@ export class DeveloperComponent implements OnInit {
       }
         this.registerForm.get('password')?.updateValueAndValidity();
     });
+  }
+  verifyDeveloperUnregistered() {
+    this.devs.forEach((dev: any) => {
+      if (dev.email === this.registerForm.get('email')?.value) {
+        this.registered = true;
+        return;
+      }
+      else {
+        this.registered = false;
+        return;
+      }
+    });
+    
   }
 }

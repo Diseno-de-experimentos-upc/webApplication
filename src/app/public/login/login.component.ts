@@ -16,6 +16,7 @@ export class LoginComponent implements OnInit {
   usersCompany: Array<any> = [];
 
   loggedIn = false;
+  registered = false;
   logger: string = 'developer';
   loginForm: FormGroup = this.formBuilder.group({
     email : ["", {validators: [Validators.required, Validators.email], updateOn: 'change'}],
@@ -71,11 +72,24 @@ export class LoginComponent implements OnInit {
     window.location.href = 'https://digitalmind-upc-pre-202202-si729-sw52.github.io';
   }
 
-  openDialog() {
+  openDialog(): void {
+    this.registered = false;
     if (this.loginForm.invalid) {
-      this.dialog.open(DialogBoxInvalidFormComponent, { 
-        data: { message: 'Please fill all the required fields'},
-      });
+      if(this.loginForm.get('email')?.value === '' && this.loginForm.get('password')?.value === '') {
+        this.dialog.open(DialogBoxInvalidFormComponent, { 
+          data: { message: 'Please fill all the required fields'},
+        });
+      }
+      else if(this.loginForm.get('email')?.value === '' && this.loginForm.get('password')?.value !== '') {
+        this.dialog.open(DialogBoxInvalidFormComponent, { 
+          data: { message: 'Please fill the email field'},
+        });
+      }
+      else {
+        this.dialog.open(DialogBoxInvalidFormComponent, { 
+          data: { message: 'Please fill the password field'},
+        });
+      }
     }
     else {
       this.verifyAccount();
@@ -107,6 +121,7 @@ export class LoginComponent implements OnInit {
         for (let i = 0; i < this.usersDeveloper.length; i++) {
           if (this.usersDeveloper[i].email === email && this.usersDeveloper[i].password === password) {
             this.goUserDeveloper(this.usersDeveloper[i].id);
+            this.registered = true;
             break;
           }
         }
@@ -115,14 +130,17 @@ export class LoginComponent implements OnInit {
         for (let i = 0; i < this.usersCompany.length; i++) {
           if (this.usersCompany[i].email === email && this.usersCompany[i].password === password) {
             this.goUserCompany(this.usersCompany[i].id);
+            this.registered = true;
             break;
           }
         }
         
       }
     }
-    else {
-      alert('Invalid credentials');
+    if(!this.registered) {
+      this.dialog.open(DialogBoxInvalidFormComponent, { 
+        data: { message: 'Email or password incorrect'},
+      });
     }
   }
 }
