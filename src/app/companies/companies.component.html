@@ -29,13 +29,9 @@
     <p class="designation">Recruiter</p>
     <mat-divider></mat-divider>
 
-    <button mat-button class="menu-button">
+    <button mat-button class="menu-button" routerLink="home">
       <mat-icon>home</mat-icon>
       <span> Home</span>
-    </button>
-    <button mat-button class="menu-button">
-      <mat-icon>search</mat-icon>
-      <span>Find your dev</span>
     </button>
 
     <button mat-button class="menu-button">
@@ -48,7 +44,7 @@
       <span> Notifications</span>
     </button>
 
-    <button routerLink="profile-company" mat-button class="menu-button">
+    <button mat-button class="menu-button" routerLink="profile">
       <mat-icon> person</mat-icon>
       <span> Profile</span>
     </button>
@@ -67,8 +63,10 @@
 
 
   <mat-sidenav-content>
-    <div class="">
+    <div class="content mat-elevation-z8">
+
       <router-outlet></router-outlet>
+
     </div>
   </mat-sidenav-content>
 

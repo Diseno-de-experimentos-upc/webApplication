@@ -15,6 +15,8 @@ import { Company } from '../model/company';
 export class CompaniesService {
   BaseURL: string = 'http://localhost:3000/companies';
   NewsURL: string = 'http://localhost:3000/news-companies';
+  ContactsURL: string = 'http://localhost:3000/contacts';
+  MessagesURL: string = 'http://localhost:3000/messages';
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -60,6 +62,26 @@ export class CompaniesService {
       .get<object>(this.NewsURL, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
+
+  //////Messages Section /////////
+
+  GetContacts(): Observable<object> {
+    return this.http
+      .get<object>(this.ContactsURL, this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+
+  GetMessages(): Observable<object> {
+    return this.http
+      .get(this.MessagesURL, this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+
+  SendMessage(answer: object): Observable<object> {
+    return this.http
+      .post<object>(this.MessagesURL, answer, this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
   
   GetPosts(id: number): Observable<object> {
     return this.http
@@ -75,3 +97,4 @@ export class CompaniesService {
 
 
 }
+
