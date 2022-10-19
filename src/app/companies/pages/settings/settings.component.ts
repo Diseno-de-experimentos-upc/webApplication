@@ -71,13 +71,13 @@ export class SettingsCompanyComponent implements OnInit {
     dialogConfig.autoFocus = true;
     if (title == "Email") {
       dialogConfig.data = {
-        _text: this.recruiter.recruiter_email,
+        _text: this.recruiter.email,
         _title: title
       };
     }
     else {
       dialogConfig.data = {
-        _text: this.recruiter.recruiter_password,
+        _text: this.recruiter.password,
         _title: title
       };
     }
@@ -85,10 +85,10 @@ export class SettingsCompanyComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log(result);
       if (title == "Email") {
-        this.recruiter.recruiter_email = result;
+        this.recruiter.email = result;
       }
       else {
-        this.recruiter.recruiter_password = result;
+        this.recruiter.password = result;
       }
     });
   }

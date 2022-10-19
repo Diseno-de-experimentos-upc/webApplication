@@ -21,6 +21,7 @@ import { SettingsCompanyComponent } from './companies/pages/settings/settings.co
 
 const routes: Routes = [
   {path:'', component:LoginComponent},
+  {path:'login', component:LoginComponent},
   {path: 'register', component: RegisterComponent, children: [
       {path: 'developer', component: DeveloperComponent},
       {path: 'company', component: CompanyComponent},

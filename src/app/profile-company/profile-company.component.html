@@ -6,7 +6,7 @@
           <mat-card class="recruiter-personal-info">
             <div class="img-container">
               <img
-                [src]="company.recruiter_image"
+                [src]="company.image"
                 alt=""
                 class="card-img"
               />
@@ -14,9 +14,9 @@
 
             <div class="img-container">
               <div class="card-container">
-                <h1 class="card-title-text">{{company.recruiter_first_name}} {{company.recruiter_last_name}}</h1>
+                <h1 class="card-title-text">{{company.first_name}} {{company.last_name}}</h1>
                 <p class="card-paragraph-text">
-                  {{company.recruiter_description}}
+                  {{company.description}}
                 </p>
                 <ul>
                   <li>
@@ -24,7 +24,7 @@
                     <div class="inner-li">
                       <span>Email</span>
                       <br />
-                      <span>{{company.recruiter_email}}</span>
+                      <span>{{company.email}}</span>
                     </div>
                   </li>
                   <li>
@@ -32,7 +32,7 @@
                     <div class="inner-li">
                       <span>Phone</span>
                       <br />
-                      <span>{{company.recruiter_phone}}</span>
+                      <span>{{company.phone}}</span>
                     </div>
                   </li>
                   <li>
@@ -81,7 +81,7 @@
             <mat-card-title>
               <div class="img-container-2">
                 <img
-                  [src]="company.recruiter_banner_image"
+                  [src]="company.banner_image"
                   alt=""
                   class="img-in"
                 />
@@ -96,12 +96,12 @@
                     <mat-card-header>
                     <div mat-card-avatar>
                       <img
-                        [src]="company.recruiter_image"
+                        [src]="company.image"
                         alt=""
                         class="avatar-header-image"
                       />
                     </div>
-                    <mat-card-title>{{company.recruiter_first_name}} {{company.recruiter_last_name}}</mat-card-title>
+                    <mat-card-title>{{company.first_name}} {{company.last_name}}</mat-card-title>
                     <mat-card-subtitle>{{ post.date }}</mat-card-subtitle>
                   </mat-card-header>
                   <img mat-card-image [src]="post.image" alt="Profile photo" />
