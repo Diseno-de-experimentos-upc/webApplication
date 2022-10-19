@@ -15,8 +15,15 @@
             <td><mat-card-subtitle>Fill in your credentials</mat-card-subtitle></td>
         </tr>
     </table>
+    <section class="items-section">
+        <p>Login as</p>
+        <mat-radio-group [(ngModel)]="logger">
+          <mat-radio-button class="items-margin" value="developer" checked>Developer</mat-radio-button>
+          <mat-radio-button  class="items-margin" value="company">Company</mat-radio-button>
+        </mat-radio-group>
+      </section>
     <div class="form-login">
-        <form [formGroup]="loginForm" (ngSubmit)="submitForm()">
+        <form class="form-to-login" [formGroup]="loginForm" (ngSubmit)="submitForm()">
             <!--Email-->
             <mat-form-field appearance="fill" class="full-width">
                 <mat-label>Email</mat-label>
@@ -28,9 +35,9 @@
                 <mat-label>Password</mat-label>
                 <input type="password" matInput formControlName="password">
                 <mat-error *ngIf="password?.errors?.['required']">Password is <strong>required</strong></mat-error>
-        <mat-error *ngIf="password?.errors?.['minlength']">At least 8 <strong>characters</strong></mat-error>
-        <mat-error *ngIf="password?.errors?.['maxlength']">Maximum 16 <strong>characters</strong></mat-error>
-        <mat-error *ngIf="password?.errors?.['pattern']">Should contain numbers and letters/special <strong>characters!</strong></mat-error>
+                <mat-error *ngIf="password?.errors?.['minlength']">At least 8 <strong>characters</strong></mat-error>
+                <mat-error *ngIf="password?.errors?.['maxlength']">Maximum 16 <strong>characters</strong></mat-error>
+                <mat-error *ngIf="password?.errors?.['pattern']">Should contain numbers and letters/special <strong>characters!</strong></mat-error>
             </mat-form-field>
             <button class="btnLogIn" mat-raised-button color="primary" type="submit" (click)="openDialog()" >Log In</button>
         </form>
