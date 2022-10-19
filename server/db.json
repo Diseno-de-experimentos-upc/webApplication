@@ -140,8 +140,8 @@
       "banner_image": "https://www.isdi.education/uploads/media/21-9-medium/03/1873-Blog_Abril_2022_Coding_Horizontal.jpg?v=1-0",
       "adreess": "Av. Los Incas 123, Lima, Peru",
       "phone": "1234567",
-      "email": "mimir@micorreo",
-      "password": "12345678",
+      "email": "micorreo@gmail.com",
+      "password": "123456789",
       "languages": [
         "Java",
         "C#"
@@ -478,6 +478,7 @@
       "id": 4
     }
   ],
+
   "study-centers": [
     {
       "id": 1,
@@ -521,6 +522,7 @@
       "educationId": "1"
     }
   ],
+
   "education": [
     {
       "id": 1,
@@ -533,6 +535,7 @@
       "digital-profileId": 2
     }
   ],
+
   "social-networks": [
     {
       "id": 1,
@@ -553,6 +556,7 @@
       "digital-profileId": 1
     }
   ],
+
   "technologies": [
     {
       "id": 1,
@@ -627,6 +631,7 @@
       "digital-profileId": 1
     }
   ],
+
   "digital-profiles": [
     {
       "id": 1,
@@ -634,11 +639,11 @@
     },
     {
       "id": 2,
-      "developerId": "2"
+      "developerId": "2"      
     },
     {
       "id": 3,
-      "developerId": "3"
+      "developerId": "3"      
     }
   ],
   "users": [

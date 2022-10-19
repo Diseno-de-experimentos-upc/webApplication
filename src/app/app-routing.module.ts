@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './public/login/login.component';
 import { RegisterComponent } from './public/register/register.component';
 import { PageNotFoundComponent } from './public/page-not-found/page-not-found.component';
 /* Developers components */
@@ -14,21 +13,18 @@ import { CompanyComponent } from './public/register/company/company.component';
 import { CompaniesComponent } from './companies/companies.component';
 import { ProfileCompanyComponent } from './profile-company/profile-company.component';
 import { FindYourDevComponent } from './companies/pages/find-your-dev/find-your-dev.component';
-import { HomeCompanyComponent } from './companies/pages/home/home.component';
+import {  HomeCompanyComponent  } from './companies/pages/home/home.component';
 import { MessagesCompanyComponent } from './companies/pages/messages-company/messages-company.component';
+import { SettingsDeveloperComponent } from './developers/pages/settings/settings.component';
+import { SettingsCompanyComponent } from './companies/pages/settings/settings.component';
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent },
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
-  {
-    path: 'register',
-    component: RegisterComponent,
-    children: [
-      { path: 'developer', component: DeveloperComponent },
-      { path: 'company', component: CompanyComponent },
-    ],
-  },
-
+  {path:'', component:DevelopersComponent},
+  //{path:'', component:LoginComponent},
+  {path: 'register', component: RegisterComponent, children: [
+      {path: 'developer', component: DeveloperComponent},
+      {path: 'company', component: CompanyComponent},
+    ]},
   {
     path: 'developers/:id',
     component: DevelopersComponent,
@@ -36,6 +32,7 @@ const routes: Routes = [
       { path: 'home', component: HomeComponent },
       { path: 'messages', component: MessagesComponent },
       { path: 'profile', component: ProfileDeveloperComponent },
+      { path: 'settings', component: SettingsDeveloperComponent},
     ],
   },
   {
@@ -45,7 +42,8 @@ const routes: Routes = [
       { path: 'home', component: HomeCompanyComponent },
       { path: 'messages', component: MessagesCompanyComponent },
       { path: 'profile', component: ProfileCompanyComponent },
-      { path: 'find', component: FindYourDevComponent }
+      { path: 'find', component: FindYourDevComponent },
+      { path: 'settings', component:SettingsCompanyComponent},
     ],
   },
   { path: '**', component: PageNotFoundComponent },

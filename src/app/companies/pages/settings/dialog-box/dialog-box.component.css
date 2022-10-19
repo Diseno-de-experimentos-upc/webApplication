@@ -1,0 +1,9 @@
+.main-div {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+button {
+  width: 40%;
+  justify-self: center;
+}

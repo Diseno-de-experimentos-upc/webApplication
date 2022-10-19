@@ -8,7 +8,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class DialogBoxComponent implements OnInit {
 
   constructor(public dialogRef: MatDialogRef<DialogBoxComponent>, @Inject(MAT_DIALOG_DATA) public data: any) {}
-  
+
   onNoClick(): void {
     this.dialogRef.close();
   }

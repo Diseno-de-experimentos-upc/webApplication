@@ -41,6 +41,13 @@ import { MessagesCompanyComponent } from './companies/pages/messages-company/mes
 import { PageNotFoundComponent } from './public/page-not-found/page-not-found.component';
 import { DialogBoxInvalidFormComponent } from './public/register/dialog-box-invalid-form/dialog-box-invalid-form.component';
 import { ProfileCompanyComponent } from './profile-company/profile-company.component'; 
+import { HomeCompanyComponent } from './companies/pages/home/home.component';
+import { SettingsDeveloperComponent } from './developers/pages/settings/settings.component';
+import { SettingsCompanyComponent } from './companies/pages/settings/settings.component';
+import { DialogBoxSettingsComponent } from './companies/pages/settings/dialog-box/dialog-box.component';
+import { DialogCancelComponent } from './companies/pages/settings/dialog-cancel/dialog-cancel.component';
+import { DialogSaveComponent } from './companies/pages/settings/dialog-save/dialog-save.component';
+import { DialogBoxSettingsDeveloperComponent } from './developers/pages/settings/dialog-box/dialog-box.component';
 
 @NgModule({
   declarations: [
@@ -54,13 +61,20 @@ import { ProfileCompanyComponent } from './profile-company/profile-company.compo
     DialogBoxComponent,
     FindYourDevComponent,
     ProfileDeveloperComponent,
+    ProfileCompanyComponent
     HomeComponent,
     MessagesComponent,
     HomeCompanyComponent,
     MessagesCompanyComponent,
     PageNotFoundComponent,
     DialogBoxInvalidFormComponent,
-    ProfileCompanyComponent, 
+    SettingsDeveloperComponent,
+    SettingsCompanyComponent,
+    DialogBoxSettingsComponent,
+    DialogCancelComponent,
+    DialogSaveComponent,
+    DialogBoxSettingsDeveloperComponent,
+
   ],
   imports: [
     BrowserModule,
