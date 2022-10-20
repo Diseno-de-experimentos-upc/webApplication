@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
     password : ["", {validators: [Validators.required, Validators.minLength(8)], updateOn: 'change'}],
   });
 
-  
+
 
   constructor(private formBuilder: FormBuilder, public dialog: MatDialog, private router: Router, private service: LoginService) { }
 
@@ -76,17 +76,17 @@ export class LoginComponent implements OnInit {
     this.registered = false;
     if (this.loginForm.invalid) {
       if(this.loginForm.get('email')?.value === '' && this.loginForm.get('password')?.value === '') {
-        this.dialog.open(DialogBoxInvalidFormComponent, { 
+        this.dialog.open(DialogBoxInvalidFormComponent, {
           data: { message: 'Please fill all the required fields'},
         });
       }
       else if(this.loginForm.get('email')?.value === '' && this.loginForm.get('password')?.value !== '') {
-        this.dialog.open(DialogBoxInvalidFormComponent, { 
+        this.dialog.open(DialogBoxInvalidFormComponent, {
           data: { message: 'Please fill the email field'},
         });
       }
       else {
-        this.dialog.open(DialogBoxInvalidFormComponent, { 
+        this.dialog.open(DialogBoxInvalidFormComponent, {
           data: { message: 'Please fill the password field'},
         });
       }
@@ -107,15 +107,17 @@ export class LoginComponent implements OnInit {
     });
   }
   goUserDeveloper(id : any) {
+    localStorage.setItem("id", id);
     this.router.navigate(['/developers/' + id + '/home']);
   }
   goUserCompany(id : any) {
+    localStorage.setItem("id", id);
     this.router.navigate(['/companies/' + id + '/home']);
   }
   verifyAccount() {
     let email = this.loginForm.get('email')?.value;
     let password = this.loginForm.get('password')?.value;
-    
+
     if (email!== null && password!== null) {
       if (this.logger === 'developer') {
         for (let i = 0; i < this.usersDeveloper.length; i++) {
@@ -134,11 +136,11 @@ export class LoginComponent implements OnInit {
             break;
           }
         }
-        
+
       }
     }
     if(!this.registered) {
-      this.dialog.open(DialogBoxInvalidFormComponent, { 
+      this.dialog.open(DialogBoxInvalidFormComponent, {
         data: { message: 'Email or password incorrect'},
       });
     }

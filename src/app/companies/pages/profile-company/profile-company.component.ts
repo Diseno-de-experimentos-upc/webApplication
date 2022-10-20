@@ -3,9 +3,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatGridList, MatGridTile } from '@angular/material/grid-list';
 import { delay } from 'rxjs';
 import {CompaniesService} from '../../services/companies.service';
-import { ActivatedRoute } from '@angular/router';
-import { toInteger } from 'lodash';
 import { Company } from '../../model/company';
+import {toInteger} from "lodash";
 
 @Component({
   selector: 'app-profile-company',
@@ -31,12 +30,12 @@ export class ProfileCompanyComponent implements OnInit {
   isEmpty: boolean = true;
   isResponsive: boolean = false;
 
-  constructor(private observer: BreakpointObserver, private service: CompaniesService, private route : ActivatedRoute ) { }
+  constructor(private observer: BreakpointObserver, private service: CompaniesService) { }
 
   ngOnInit(): void {
 
-    const id =  toInteger(this.route.parent?.snapshot.paramMap.get('id'));
-
+    //getting id from localStorage
+    const id = toInteger(localStorage.getItem("id"));
     this.ngAfterViewInit();
     this.getRecruiter(id);
     this.getSocialNetworks(id);

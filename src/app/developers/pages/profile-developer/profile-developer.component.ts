@@ -3,7 +3,6 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatGridList, MatGridTile } from '@angular/material/grid-list';
 import { delay } from 'rxjs';
 import { DevelopersService } from '../../services/developers.service';
-import { ActivatedRoute } from '@angular/router';
 import { toInteger } from 'lodash';
 import { Developer } from '../../model/developer';
 
@@ -35,13 +34,13 @@ export class ProfileDeveloperComponent implements OnInit {
 
   constructor(
     private observer: BreakpointObserver,
-    private service: DevelopersService,
-    private route: ActivatedRoute
+    private service: DevelopersService
   ) {}
 
   ngOnInit(): void {
 
-    const id =  toInteger(this.route.parent?.snapshot.paramMap.get('id'));
+    //getting id from localStorage
+    const id = toInteger(localStorage.getItem("id"));
 
     this.getDeveloper(id);
     this.ngAfterViewInit();
