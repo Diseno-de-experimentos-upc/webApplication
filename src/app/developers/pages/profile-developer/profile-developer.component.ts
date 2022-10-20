@@ -2,17 +2,17 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatGridList, MatGridTile } from '@angular/material/grid-list';
 import { delay } from 'rxjs';
-import {CompaniesService} from '../companies/services/companies.service';
+import { DevelopersService } from '../../services/developers.service';
 import { ActivatedRoute } from '@angular/router';
 import { toInteger } from 'lodash';
-import { Company } from '../companies/model/company'; 
+import { Developer } from '../../model/developer';
 
 @Component({
-  selector: 'app-profile-company',
-  templateUrl: './profile-company.component.html',
-  styleUrls: ['./profile-company.component.css']
+  selector: 'app-profile-developer',
+  templateUrl: './profile-developer.component.html',
+  styleUrls: ['./profile-developer.component.css'],
 })
-export class ProfileCompanyComponent implements OnInit {
+export class ProfileDeveloperComponent implements OnInit {
 
   @ViewChild(MatGridList)
   gridList!: MatGridList;
@@ -22,54 +22,61 @@ export class ProfileCompanyComponent implements OnInit {
 
   @ViewChild('second')
   secondGridTile!: MatGridTile;
+
+  certificates: Array<any> = [];
+  studyCenters: Array<any> = [];
   socialNetworks: Array<any> = [];
   facebook : string = "none";
   twitter : string = "none";
   instagram : string = "none";
-  posts : Array<any> = []; 
-  company!: Company;
-  isEmpty: boolean = true;
-  isResponsive: boolean = false;
+  technologies: Array<any> = [];
+  projects: Array<any> = [];
+  developer!: Developer;
 
-  constructor(private observer: BreakpointObserver, private service: CompaniesService, private route : ActivatedRoute ) { }
+  constructor(
+    private observer: BreakpointObserver,
+    private service: DevelopersService,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
 
-    const id =  toInteger(this.route.parent?.snapshot.paramMap.get('id'));    
+    const id =  toInteger(this.route.parent?.snapshot.paramMap.get('id'));
 
+    this.getDeveloper(id);
     this.ngAfterViewInit();
-    this.getRecruiter(id);
+    this.getCertificates(id);
+    this.getStudyCenters(id);
     this.getSocialNetworks(id);
-    this.getPosts(id);
+    this.getTechnologies(id);
+    this.getProjects(id);
   }
 
-  getPosts(id: number) {
-    this.service.GetPosts(id).subscribe((response: any) => {
-      this.posts = response;
-      console.log(this.posts);
+  getDeveloper(id: number) {
+    this.service.GetDeveloperById(id).subscribe((response) => {
+      this.developer = response;
+      console.log(this.developer.image);
+    });
+  }
 
-      if(this.posts.length > 0){
-        this.isEmpty = false;
-      }
-      else{
-        this.isEmpty = true;
-      }
+  getCertificates(id: number) {
+    this.service.GetCetificates(id).subscribe((response: any) => {
+      this.certificates = response;
 
     });
   }
 
-  getRecruiter(id: number) {
-    this.service.GetRecruiterById(id).subscribe((response: any) => {
-      this.company = response;
-      console.log(this.company);
+  getStudyCenters(id: number) {
+    this.service.GetStudyCenters(id).subscribe((response: any) => {
+      this.studyCenters = response;
+
     });
   }
 
   getSocialNetworks(id: number) {
-
     this.service.GetSocialNetworks(id).subscribe((response: any) => {
       this.socialNetworks = response;
-  
+
       let i;
       for(i = 0; i < this.socialNetworks.length; i++){
         if(this.socialNetworks[i].name == "Facebook"){
@@ -82,6 +89,20 @@ export class ProfileCompanyComponent implements OnInit {
           this.instagram = this.socialNetworks[i].user;
         }
       }
+    });
+  }
+
+  getTechnologies(id: number) {
+    this.service.GetTechnologies(id).subscribe((response: any) => {
+      this.technologies = response;
+
+    });
+  }
+
+  getProjects(id: number) {
+    this.service.GetProjects(id).subscribe((response: any) => {
+      this.projects = response;
+
     });
   }
 
@@ -100,8 +121,6 @@ export class ProfileCompanyComponent implements OnInit {
           this.firstGridTile.rowspan = 1;
           this.secondGridTile.rowspan = 3;
 
-          this.isResponsive = true;
-
         } else {
           //full -width
           this.gridList.rowHeight = '88vh';
@@ -112,11 +131,7 @@ export class ProfileCompanyComponent implements OnInit {
           this.firstGridTile.rowspan = 1;
           this.secondGridTile.rowspan = 1;
 
-          this.isResponsive = false;
         }
       });
   }
-
-
-
 }
