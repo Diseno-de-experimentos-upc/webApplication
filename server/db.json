@@ -88,61 +88,71 @@
       "id": 1,
       "full_name": "Elset MacNess",
       "company": "Photojam",
-      "last_message": "I'll waiting for your answer"
+      "last_message": "I'll waiting for your answer",
+      "profile_pic": "https://randomuser.me/api/portraits/men/70.jpg"
     },
     {
       "id": 2,
       "full_name": "Anthony Tesmond",
       "company": "Yodel",
-      "last_message": "I'll waiting for your answer"
+      "last_message": "I'll waiting for your answer",
+      "profile_pic": "https://randomuser.me/api/portraits/men/46.jpg"
     },
     {
       "id": 3,
       "full_name": "Filbert Doldon",
       "company": "Yabox",
-      "last_message": "I'll waiting for your answer"
+      "last_message": "I'll waiting for your answer",
+      "profile_pic": "https://randomuser.me/api/portraits/men/96.jpg"
     },
     {
       "id": 4,
       "full_name": "Marlane Garnall",
       "company": "Photobug",
-      "last_message": "I'll waiting for your answer"
+      "last_message": "I'll waiting for your answer",
+      "profile_pic": "https://randomuser.me/api/portraits/women/47.jpg"
     },
     {
       "id": 5,
       "full_name": "Nap McOwen",
       "company": "Wordware",
-      "last_message": "I'll waiting for your answer"
+      "last_message": "I'll waiting for your answer",
+      "profile_pic": "https://randomuser.me/api/portraits/men/49.jpg"
     },
     {
       "id": 6,
       "full_name": "Patrizius Jamot",
       "company": "Leexo",
-      "last_message": "I'll waiting for your answer"
+      "last_message": "I'll waiting for your answer",
+      "profile_pic": "https://randomuser.me/api/portraits/men/48.jpg"
     },
     {
       "id": 7,
       "full_name": "Warden Calltone",
       "company": "Agivu",
-      "last_message": "I'll waiting for your answer"
+      "last_message": "I'll waiting for your answer",
+      "profile_pic": "https://randomuser.me/api/portraits/men/19.jpg"
     },
     {
       "id": 8,
       "full_name": "Javier Challen",
       "company": "Meemm",
-      "last_message": "I'll waiting for your answer"
+      "last_message": "I'll waiting for your answer",
+      "profile_pic": "https://randomuser.me/api/portraits/men/66.jpg"
     },
     {
       "id": 9,
       "full_name": "Adams Devote",
       "company": "Photospace",
-      "last_message": "I'll waiting for your answer"
+      "last_message": "I'll waiting for your answer",
+      "profile_pic": "https://randomuser.me/api/portraits/men/26.jpg"
     },
     {
       "id": 10,
       "full_name": "Aurthur Sinderson",
       "company": "Topiclounge",
-      "last_message": "I'll waiting for your answer"
+      "last_message": "I'll waiting for your answer",
+      "profile_pic": "https://randomuser.me/api/portraits/men/2.jpg"
     }
   ],
   "developers": [

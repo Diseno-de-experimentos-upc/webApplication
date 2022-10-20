@@ -7,7 +7,7 @@
                     <mat-card class="contact" matRipple [matRippleCentered]="true" (click)="show = !show">
                         <mat-card-header>
                             <div mat-card-avatar>
-                                <img src="https://material.angular.io/assets/img/examples/shiba1.jpg" alt="Recruiter's profile photo" class="RecruiterPhoto">                    
+                                <img [src]="contact.profile_pic" alt="Recruiter's profile photo" class="RecruiterPhoto">                    
                             </div>
                             <mat-card-title>{{contact.full_name}}</mat-card-title>
                             <mat-card-subtitle>{{contact.last_message}}</mat-card-subtitle>
@@ -23,7 +23,7 @@
                     <mat-card class="contact" matRipple [matRippleCentered]="true" (click)="show = !show">
                         <mat-card-header>
                             <div mat-card-avatar>
-                                <img src="https://material.angular.io/assets/img/examples/shiba1.jpg" alt="Recruiter's profile photo" class="RecruiterPhoto">                    
+                                <img [src]="contact.profile_pic" alt="Recruiter's profile photo" class="RecruiterPhoto">                    
                             </div>
                             <mat-card-title>{{contact.full_name}}</mat-card-title>
                             <mat-card-subtitle>{{contact.last_message}}</mat-card-subtitle>
@@ -42,9 +42,9 @@
                     <mat-icon>clear</mat-icon>
                 </button>
                 <div mat-card-avatar>
-                    <img src="https://material.angular.io/assets/img/examples/shiba1.jpg" alt="Recruiter's profile photo" class="RecruiterPhoto">                    
+                    <img src="https://randomuser.me/api/portraits/men/70.jpg" alt="Recruiter's profile photo" class="RecruiterPhoto">                    
                 </div>
-                <mat-card-title>Tomas Sanchez</mat-card-title>
+                <mat-card-title>Elset MacNess</mat-card-title>
                 <mat-card-subtitle>I will wait your answer</mat-card-subtitle>
             </mat-card-header>
         </mat-card>
@@ -77,9 +77,9 @@
     <mat-card class="chat-header">
         <mat-card-header>
             <div mat-card-avatar>
-                <img src="https://material.angular.io/assets/img/examples/shiba1.jpg" alt="Recruiter's profile photo" class="RecruiterPhoto">                    
+                <img src="https://randomuser.me/api/portraits/men/70.jpg" alt="Recruiter's profile photo" class="RecruiterPhoto">                    
             </div>
-            <mat-card-title>Tomas Sanchez</mat-card-title>
+            <mat-card-title>Elset MacNess</mat-card-title>
             <mat-card-subtitle>I will wait your answer</mat-card-subtitle>
         </mat-card-header>
     </mat-card>
