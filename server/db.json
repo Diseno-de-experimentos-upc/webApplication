@@ -24,6 +24,11 @@
       "id": 5,
       "type": "comp",
       "message": "Hola"
+    },
+    {
+      "id": 6,
+      "type": "dev",
+      "message": "como estas?"
     }
   ],
   "contacts": [
@@ -133,8 +138,8 @@
       "banner_image": "https://res.cloudinary.com/practicaldev/image/fetch/s--9ysDPK1I--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/bsden6v0n3eq22khou29.jpg",
       "adreess": "Av. Los Incas 123, Lima, Peru",
       "phone": "498419819",
-      "email": "bay@gmail.com",
-      "password": "123456789",
+      "email": "matthewaleva@gmail.com",
+      "password": "Matthew@123",
       "id": 2
     },
     {
@@ -145,8 +150,8 @@
       "banner_image": "https://www.isdi.education/uploads/media/21-9-medium/03/1873-Blog_Abril_2022_Coding_Horizontal.jpg?v=1-0",
       "adreess": "Av. Los Incas 123, Lima, Peru",
       "phone": "1234567",
-      "email": "micorreo@gmail.com",
-      "password": "123456789",
+      "email": "saenzkenvit@gmail.com",
+      "password": "Kenvit@123",
       "languages": [
         "Java",
         "C#"
@@ -170,7 +175,7 @@
       "adreess": "Av. Los Incas 123, Lima, Peru",
       "phone": "987654327",
       "email": "hectorviv@gmail.com",
-      "password": "hector1234",
+      "password": "Hector@1234",
       "languages": [
         "Java",
         "C#"
@@ -194,7 +199,7 @@
       "adreess": "Av. Los Incas 123, Lima, Peru",
       "phone": "987654311",
       "email": "michaelcarrillo1@gmail.com",
-      "password": "12345678",
+      "password": "michael@Carrillo3",
       "languages": [
         "JavaScript",
         "Python",
@@ -220,7 +225,7 @@
       "adreess": "Av. Los Incas 123, Lima, Peru",
       "phone": "955612911",
       "email": "diazhuarcayaoficial@gmail.com",
-      "password": "123456",
+      "password": "Zen@Diaz123",
       "languages": [
         "Python",
         "C#",
