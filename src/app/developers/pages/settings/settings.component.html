@@ -4,7 +4,7 @@
       <mat-card-title>Settings</mat-card-title>
     </mat-card-header>
     <mat-card-content class="grid">
-      <img src="/assets/images/dev1.jpg" alt="Developer's photo">
+      <img [src]="image" alt="Developer's photo">
       <div>
         <h2>Full Name</h2>
         <mat-card class="fields">{{developer.first_name}} {{developer.last_name}}</mat-card>
