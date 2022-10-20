@@ -25,6 +25,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatRippleModule } from '@angular/material/core';
 import { ScrollingModule } from '@angular/cdk/scrolling';
+import {MatBadgeModule} from '@angular/material/badge';
 /* Login Component */
 import { LoginComponent } from './public/login/login.component';
 /* Register Components */
@@ -40,6 +41,7 @@ import { MessagesComponent } from './developers/pages/messages-developer/message
 import { SettingsDeveloperComponent } from './developers/pages/settings/settings.component';
 import { ProfileDeveloperComponent } from './profile-developer/profile-developer.component';
 import { DialogBoxSettingsDeveloperComponent } from './developers/pages/settings/dialog-box/dialog-box.component';
+import { NotificationsDeveloperComponent } from './developers/pages/notifications-developer/notifications-developer.component';
 /* Company Components */
 import { CompaniesComponent } from './companies/companies.component';
 import { HomeCompanyComponent } from './companies/pages/home-company/home-company.component';
@@ -50,8 +52,12 @@ import { SettingsCompanyComponent } from './companies/pages/settings/settings.co
 import { DialogBoxSettingsComponent } from './companies/pages/settings/dialog-box/dialog-box.component';
 import { DialogCancelComponent } from './companies/pages/settings/dialog-cancel/dialog-cancel.component';
 import { DialogSaveComponent } from './companies/pages/settings/dialog-save/dialog-save.component';
+import { NotificationsCompanyComponent } from './companies/pages/notifications-company/notifications-company.component';
 /* Page Not Found Component */
 import { PageNotFoundComponent } from './public/page-not-found/page-not-found.component';
+
+
+
 
 @NgModule({
   declarations: [
@@ -73,7 +79,8 @@ import { PageNotFoundComponent } from './public/page-not-found/page-not-found.co
     SettingsDeveloperComponent,
     ProfileDeveloperComponent,
     DialogBoxSettingsDeveloperComponent,
-    
+    NotificationsDeveloperComponent,
+
     CompaniesComponent,
     HomeCompanyComponent,
     MessagesCompanyComponent,
@@ -83,8 +90,11 @@ import { PageNotFoundComponent } from './public/page-not-found/page-not-found.co
     DialogBoxSettingsComponent,
     DialogCancelComponent,
     DialogSaveComponent,
-    
+    NotificationsCompanyComponent,
+
     PageNotFoundComponent,
+
+
   ],
   imports: [
     BrowserModule,
@@ -113,6 +123,7 @@ import { PageNotFoundComponent } from './public/page-not-found/page-not-found.co
     MatDividerModule,
     MatRippleModule,
     ScrollingModule,
+    MatBadgeModule
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -17,7 +17,7 @@ export class CompaniesService {
   NewsURL: string = 'http://localhost:3000/news-companies';
   ContactsURL: string = 'http://localhost:3000/contacts';
   MessagesURL: string = 'http://localhost:3000/messages';
-
+  NotificationsURL: string = 'http://localhost:3000/notifications-companies';
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
@@ -92,7 +92,7 @@ export class CompaniesService {
       .post<object>(this.MessagesURL, answer, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
-  
+
   GetPosts(id: number): Observable<object> {
     return this.http
       .get<object>(this.BaseURL + '/' + id + '/posts', this.httpOptions)
@@ -105,6 +105,13 @@ export class CompaniesService {
       .pipe(retry(2), catchError(this.handleError));
   }
 
+  //////Notifications Section /////////
+
+  GetNotifications(): Observable<object> {
+    return this.http
+      .get(this.NotificationsURL, this.httpOptions)
+      .pipe(retry(2),catchError(this.handleError));
+  }
 
 }
 
