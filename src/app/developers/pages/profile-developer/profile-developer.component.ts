@@ -2,10 +2,9 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatGridList, MatGridTile } from '@angular/material/grid-list';
 import { delay } from 'rxjs';
-import { DevelopersService } from '../developers/services/developers.service';
-import { ActivatedRoute } from '@angular/router';
+import { DevelopersService } from '../../services/developers.service';
 import { toInteger } from 'lodash';
-import { Developer } from '../developers/model/developer';
+import { Developer } from '../../model/developer';
 
 @Component({
   selector: 'app-profile-developer',
@@ -32,16 +31,16 @@ export class ProfileDeveloperComponent implements OnInit {
   technologies: Array<any> = [];
   projects: Array<any> = [];
   developer!: Developer;
- 
+
   constructor(
     private observer: BreakpointObserver,
-    private service: DevelopersService,
-    private route: ActivatedRoute
+    private service: DevelopersService
   ) {}
 
   ngOnInit(): void {
 
-    const id =  toInteger(this.route.parent?.snapshot.paramMap.get('id'));    
+    //getting id from localStorage
+    const id = toInteger(localStorage.getItem("id"));
 
     this.getDeveloper(id);
     this.ngAfterViewInit();
@@ -62,21 +61,21 @@ export class ProfileDeveloperComponent implements OnInit {
   getCertificates(id: number) {
     this.service.GetCetificates(id).subscribe((response: any) => {
       this.certificates = response;
-       
+
     });
   }
 
   getStudyCenters(id: number) {
     this.service.GetStudyCenters(id).subscribe((response: any) => {
       this.studyCenters = response;
-    
+
     });
   }
 
   getSocialNetworks(id: number) {
     this.service.GetSocialNetworks(id).subscribe((response: any) => {
       this.socialNetworks = response;
-       
+
       let i;
       for(i = 0; i < this.socialNetworks.length; i++){
         if(this.socialNetworks[i].name == "Facebook"){
@@ -95,14 +94,14 @@ export class ProfileDeveloperComponent implements OnInit {
   getTechnologies(id: number) {
     this.service.GetTechnologies(id).subscribe((response: any) => {
       this.technologies = response;
-   
+
     });
   }
 
   getProjects(id: number) {
     this.service.GetProjects(id).subscribe((response: any) => {
       this.projects = response;
-    
+
     });
   }
 
@@ -120,7 +119,7 @@ export class ProfileDeveloperComponent implements OnInit {
 
           this.firstGridTile.rowspan = 1;
           this.secondGridTile.rowspan = 3;
- 
+
         } else {
           //full -width
           this.gridList.rowHeight = '88vh';

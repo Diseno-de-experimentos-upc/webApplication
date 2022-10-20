@@ -2,10 +2,9 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatGridList, MatGridTile } from '@angular/material/grid-list';
 import { delay } from 'rxjs';
-import {CompaniesService} from '../companies/services/companies.service';
-import { ActivatedRoute } from '@angular/router';
-import { toInteger } from 'lodash';
-import { Company } from '../companies/model/company'; 
+import {CompaniesService} from '../../services/companies.service';
+import { Company } from '../../model/company';
+import {toInteger} from "lodash";
 
 @Component({
   selector: 'app-profile-company',
@@ -26,17 +25,17 @@ export class ProfileCompanyComponent implements OnInit {
   facebook : string = "none";
   twitter : string = "none";
   instagram : string = "none";
-  posts : Array<any> = []; 
+  posts : Array<any> = [];
   company!: Company;
   isEmpty: boolean = true;
   isResponsive: boolean = false;
 
-  constructor(private observer: BreakpointObserver, private service: CompaniesService, private route : ActivatedRoute ) { }
+  constructor(private observer: BreakpointObserver, private service: CompaniesService) { }
 
   ngOnInit(): void {
 
-    const id =  toInteger(this.route.parent?.snapshot.paramMap.get('id'));    
-
+    //getting id from localStorage
+    const id = toInteger(localStorage.getItem("id"));
     this.ngAfterViewInit();
     this.getRecruiter(id);
     this.getSocialNetworks(id);
@@ -69,7 +68,7 @@ export class ProfileCompanyComponent implements OnInit {
 
     this.service.GetSocialNetworks(id).subscribe((response: any) => {
       this.socialNetworks = response;
-  
+
       let i;
       for(i = 0; i < this.socialNetworks.length; i++){
         if(this.socialNetworks[i].name == "Facebook"){

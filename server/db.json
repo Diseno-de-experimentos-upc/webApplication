@@ -76,6 +76,11 @@
       "id": 5,
       "type": "comp",
       "message": "Hola"
+    },
+    {
+      "id": 6,
+      "type": "dev",
+      "message": "como estas?"
     }
   ],
   "contacts": [
@@ -164,7 +169,7 @@
       "banner_image": "https://www.netsolutions.com/assets/images/Digital-analytics-ofc-img.webp",
       "adreess": "Av. Los Incas 123, Lima, Peru",
       "phone": "498419819",
-      "email": "fepedev135@keyido.com",
+      "email": "pedrojiminez@keyido.com",
       "password": "Pedro@123",
       "id": 1
     },
@@ -185,8 +190,8 @@
       "banner_image": "https://res.cloudinary.com/practicaldev/image/fetch/s--9ysDPK1I--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/bsden6v0n3eq22khou29.jpg",
       "adreess": "Av. Los Incas 123, Lima, Peru",
       "phone": "498419819",
-      "email": "bay@gmail.com",
-      "password": "123456789",
+      "email": "matthewaleva@gmail.com",
+      "password": "Matthew@123",
       "id": 2
     },
     {
@@ -197,8 +202,8 @@
       "banner_image": "https://www.isdi.education/uploads/media/21-9-medium/03/1873-Blog_Abril_2022_Coding_Horizontal.jpg?v=1-0",
       "adreess": "Av. Los Incas 123, Lima, Peru",
       "phone": "1234567",
-      "email": "micorreo@gmail.com",
-      "password": "123456789",
+      "email": "saenzkenvit@gmail.com",
+      "password": "Kenvit@123",
       "languages": [
         "Java",
         "C#"
@@ -222,7 +227,7 @@
       "adreess": "Av. Los Incas 123, Lima, Peru",
       "phone": "987654327",
       "email": "hectorviv@gmail.com",
-      "password": "hector1234",
+      "password": "Hector@1234",
       "languages": [
         "Java",
         "C#"
@@ -246,7 +251,7 @@
       "adreess": "Av. Los Incas 123, Lima, Peru",
       "phone": "987654311",
       "email": "michaelcarrillo1@gmail.com",
-      "password": "12345678",
+      "password": "michael@Carrillo3",
       "languages": [
         "JavaScript",
         "Python",
@@ -272,7 +277,7 @@
       "adreess": "Av. Los Incas 123, Lima, Peru",
       "phone": "955612911",
       "email": "diazhuarcayaoficial@gmail.com",
-      "password": "123456",
+      "password": "Zen@Diaz123",
       "languages": [
         "Python",
         "C#",
@@ -324,6 +329,9 @@
     {
       "first_name": "Edmer",
       "last_name": "Jimenez",
+      "description": "Experience as a manager of agile proyects. I work in Facebook meta. Every day is a challenge.",
+      "image": "https://pbs.twimg.com/profile_images/1374076420566224899/wSZ6S8vW_400x400.jpg",
+      "banner_image": "https://img.freepik.com/vector-gratis/fondo-abstracto-naranja-banner-acuarela_1035-18304.jpg?w=2000",
       "phone": "498419819",
       "email": "edmerjimenez@gmail.com",
       "password": "Edemer@12345",
@@ -338,6 +346,9 @@
     {
       "first_name": "Alessandro",
       "last_name": "Velasquez",
+      "description": "Experience as a manager of agile proyects. I work in Instagram. Every day is a challenge.",
+      "image": "https://i.pinimg.com/originals/cb/05/f0/cb05f0ca5a29d510201e2c112aa2c0fa.jpg",
+      "banner_image": "https://img.freepik.com/free-vector/blue-technology-digital-banner-design_1017-32257.jpg?w=2000",
       "phone": "984123876",
       "email": "alessandrovelasquez@gmail.com",
       "password": "Alessandro1234",
@@ -352,6 +363,9 @@
     {
       "first_name": "Pablo",
       "last_name": "Contreras Salas",
+      "description": "Experience as a manager of agile proyects. I work in Amazon. Every day is a challenge.",
+      "image": "https://pbs.twimg.com/profile_images/1040813388463403008/K8mgjhEr_400x400.jpg",
+      "banner_image": "https://img.freepik.com/free-vector/digital-connecting-banner-technology-polygon-background_1035-17960.jpg?w=2000",
       "phone": "980765438",
       "email": "pablocontreras@gmail.com",
       "password": "pablo1234",

@@ -17,14 +17,18 @@ export class DevelopersComponent implements OnInit {
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
   developer!: Developer;
+  profile: boolean = false;
+  currentRoute: string = '';
 
-  constructor(private observer: BreakpointObserver, private router: Router, private route: ActivatedRoute, private service: DevelopersService) { }
-  
+  constructor(private observer: BreakpointObserver, private router: Router, private route: ActivatedRoute, private service: DevelopersService) {
+    this.analizeRoot();
+  }
+
 
   ngOnInit(): void {
     this.ngAfterViewInit();
 
-    const id = toInteger(this.route.snapshot.paramMap.get('id'));
+    const id = toInteger(localStorage.getItem("id"));
     this.service.GetDeveloperById(id).subscribe((response:any)=>{
        this.developer = response;
     });
@@ -44,4 +48,24 @@ export class DevelopersComponent implements OnInit {
         }
       })
   }
+
+  analizeRoot(){
+    this.currentRoute = this.router.url;
+    //find profile string in current route
+    if (this.currentRoute.includes('profile')) {
+      this.profile = true;
+    }
+    else
+    {
+      this.profile = false;
+    }
+  }
+
+  setOption() {
+    this.profile = true;
+ }
+ disableOption(){
+  this.profile = false;
+ }
+
 }

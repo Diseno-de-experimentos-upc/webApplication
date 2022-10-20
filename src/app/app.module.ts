@@ -39,7 +39,7 @@ import { DevelopersComponent } from './developers/developers.component';
 import { HomeComponent } from './developers/pages/home-developer/home.component';
 import { MessagesComponent } from './developers/pages/messages-developer/messages.component';
 import { SettingsDeveloperComponent } from './developers/pages/settings/settings.component';
-import { ProfileDeveloperComponent } from './profile-developer/profile-developer.component';
+import { ProfileDeveloperComponent } from './developers/pages/profile-developer/profile-developer.component';
 import { DialogBoxSettingsDeveloperComponent } from './developers/pages/settings/dialog-box/dialog-box.component';
 import { NotificationsDeveloperComponent } from './developers/pages/notifications-developer/notifications-developer.component';
 /* Company Components */
@@ -47,7 +47,7 @@ import { CompaniesComponent } from './companies/companies.component';
 import { HomeCompanyComponent } from './companies/pages/home-company/home-company.component';
 import { MessagesCompanyComponent } from './companies/pages/messages-company/messages-company.component';
 import { FindYourDevComponent } from './companies/pages/find-your-dev/find-your-dev.component';
-import { ProfileCompanyComponent } from './profile-company/profile-company.component';
+import { ProfileCompanyComponent } from './companies/pages/profile-company/profile-company.component';
 import { SettingsCompanyComponent } from './companies/pages/settings/settings.component';
 import { DialogBoxSettingsComponent } from './companies/pages/settings/dialog-box/dialog-box.component';
 import { DialogCancelComponent } from './companies/pages/settings/dialog-cancel/dialog-cancel.component';
@@ -78,19 +78,19 @@ import { PageNotFoundComponent } from './public/page-not-found/page-not-found.co
     MessagesComponent,
     SettingsDeveloperComponent,
     ProfileDeveloperComponent,
-    DialogBoxSettingsDeveloperComponent,
     NotificationsDeveloperComponent,
-
+    DialogBoxSettingsDeveloperComponent,
+    
     CompaniesComponent,
     HomeCompanyComponent,
     MessagesCompanyComponent,
     FindYourDevComponent,
     ProfileCompanyComponent,
     SettingsCompanyComponent,
+    NotificationsCompanyComponent,
     DialogBoxSettingsComponent,
     DialogCancelComponent,
     DialogSaveComponent,
-    NotificationsCompanyComponent,
 
     PageNotFoundComponent,
 

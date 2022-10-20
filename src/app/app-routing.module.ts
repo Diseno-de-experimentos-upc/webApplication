@@ -8,13 +8,13 @@ import { DeveloperComponent } from './public/register/developer/developer.compon
 import { DevelopersComponent } from './developers/developers.component';
 import { MessagesComponent } from './developers/pages/messages-developer/messages.component';
 import { HomeComponent } from './developers/pages/home-developer/home.component';
-import { ProfileDeveloperComponent } from './profile-developer/profile-developer.component';
+import { ProfileDeveloperComponent } from './developers/pages/profile-developer/profile-developer.component';
 import { SettingsDeveloperComponent } from './developers/pages/settings/settings.component';
 import { NotificationsDeveloperComponent} from "./developers/pages/notifications-developer/notifications-developer.component";
 /* Companies components */
 import { CompanyComponent } from './public/register/company/company.component';
 import { CompaniesComponent } from './companies/companies.component';
-import { ProfileCompanyComponent } from './profile-company/profile-company.component';
+import { ProfileCompanyComponent } from './companies/pages/profile-company/profile-company.component';
 import { FindYourDevComponent } from './companies/pages/find-your-dev/find-your-dev.component';
 import { HomeCompanyComponent  } from './companies/pages/home-company/home-company.component';
 import { MessagesCompanyComponent } from './companies/pages/messages-company/messages-company.component';
@@ -28,7 +28,7 @@ const routes: Routes = [
       {path: 'company', component: CompanyComponent},
     ]},
   {
-    path: 'developers/:id',
+    path: 'developers',
     component: DevelopersComponent,
     children: [
       { path: 'home', component: HomeComponent },
@@ -39,7 +39,7 @@ const routes: Routes = [
     ],
   },
   {
-    path: 'companies/:id',
+    path: 'companies',
     component: CompaniesComponent,
     children: [
       { path: 'home', component: HomeCompanyComponent },
