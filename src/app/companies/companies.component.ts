@@ -31,7 +31,7 @@ export class CompaniesComponent implements OnInit {
       console.log(this.news);
     });
 
-    const id = toInteger(this.route.snapshot.paramMap.get('id'));
+    const id = toInteger(localStorage.getItem("id"));
     this.service.GetRecruiterById(id).subscribe((response: any) => {
       this.company = response;
     });
@@ -70,5 +70,5 @@ export class CompaniesComponent implements OnInit {
   disableOption() {
     this.profile = false;
   }
-  
+
 }

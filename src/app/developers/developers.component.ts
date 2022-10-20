@@ -20,15 +20,15 @@ export class DevelopersComponent implements OnInit {
   profile: boolean = false;
   currentRoute: string = '';
 
-  constructor(private observer: BreakpointObserver, private router: Router, private route: ActivatedRoute, private service: DevelopersService) { 
+  constructor(private observer: BreakpointObserver, private router: Router, private route: ActivatedRoute, private service: DevelopersService) {
     this.analizeRoot();
   }
-  
+
 
   ngOnInit(): void {
     this.ngAfterViewInit();
 
-    const id = toInteger(this.route.snapshot.paramMap.get('id'));
+    const id = toInteger(localStorage.getItem("id"));
     this.service.GetDeveloperById(id).subscribe((response:any)=>{
        this.developer = response;
     });

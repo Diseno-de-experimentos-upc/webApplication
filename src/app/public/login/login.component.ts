@@ -108,11 +108,11 @@ export class LoginComponent implements OnInit {
   }
   goUserDeveloper(id : any) {
     localStorage.setItem("id", id);
-    this.router.navigate(['/developers/' + id + '/home']);
+    this.router.navigate(['/developers/home']);
   }
   goUserCompany(id : any) {
     localStorage.setItem("id", id);
-    this.router.navigate(['/companies/' + id + '/home']);
+    this.router.navigate(['/companies/home']);
   }
   verifyAccount() {
     let email = this.loginForm.get('email')?.value;

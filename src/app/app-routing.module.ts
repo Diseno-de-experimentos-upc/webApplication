@@ -27,7 +27,7 @@ const routes: Routes = [
       {path: 'company', component: CompanyComponent},
     ]},
   {
-    path: 'developers/:id',
+    path: 'developers',
     component: DevelopersComponent,
     children: [
       { path: 'home', component: HomeComponent },
@@ -37,7 +37,7 @@ const routes: Routes = [
     ],
   },
   {
-    path: 'companies/:id',
+    path: 'companies',
     component: CompaniesComponent,
     children: [
       { path: 'home', component: HomeCompanyComponent },
