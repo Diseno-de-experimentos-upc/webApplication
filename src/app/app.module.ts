@@ -75,6 +75,7 @@ import { PageNotFoundComponent } from './public/page-not-found/page-not-found.co
     SettingsDeveloperComponent,
     ProfileDeveloperComponent,
     DialogBoxSettingsDeveloperComponent,
+    NotificationsDeveloperComponent,
 
     CompaniesComponent,
     HomeCompanyComponent,
@@ -85,10 +86,11 @@ import { PageNotFoundComponent } from './public/page-not-found/page-not-found.co
     DialogBoxSettingsComponent,
     DialogCancelComponent,
     DialogSaveComponent,
+    NotificationsCompanyComponent,
 
     PageNotFoundComponent,
-    NotificationsDeveloperComponent,
-    NotificationsCompanyComponent,
+
+
   ],
   imports: [
     BrowserModule,
