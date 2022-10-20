@@ -22,6 +22,8 @@ export class DevelopersService {
   ContactsURL: string = 'http://localhost:3000/contacts';
   MessagesURL: string = 'http://localhost:3000/messages';
 
+  NotificationsURL: string = 'http://localhost:3000/notifications-developers';
+
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -49,7 +51,7 @@ export class DevelopersService {
       .get<Developer>(this.BaseURL, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
-   
+
   GetDeveloperById(id: number): Observable<Developer> {
     return this.http
       .get<Developer>(`${this.BaseURL}/${id}`, this.httpOptions)
@@ -129,6 +131,14 @@ export class DevelopersService {
     return this.http
       .post<object>(this.MessagesURL, answer, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
+  }
+
+  //////Notifications Section /////////
+
+  GetNotifications(): Observable<object> {
+    return this.http
+      .get(this.NotificationsURL, this.httpOptions)
+      .pipe(retry(2),catchError(this.handleError));
   }
 
 }

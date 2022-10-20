@@ -10,6 +10,7 @@ import { MessagesComponent } from './developers/pages/messages-developer/message
 import { HomeComponent } from './developers/pages/home-developer/home.component';
 import { ProfileDeveloperComponent } from './profile-developer/profile-developer.component';
 import { SettingsDeveloperComponent } from './developers/pages/settings/settings.component';
+import { NotificationsDeveloperComponent} from "./developers/pages/notifications-developer/notifications-developer.component";
 /* Companies components */
 import { CompanyComponent } from './public/register/company/company.component';
 import { CompaniesComponent } from './companies/companies.component';
@@ -18,7 +19,7 @@ import { FindYourDevComponent } from './companies/pages/find-your-dev/find-your-
 import { HomeCompanyComponent  } from './companies/pages/home-company/home-company.component';
 import { MessagesCompanyComponent } from './companies/pages/messages-company/messages-company.component';
 import { SettingsCompanyComponent } from './companies/pages/settings/settings.component';
-
+import { NotificationsCompanyComponent } from './companies/pages/notifications-company/notifications-company.component';
 const routes: Routes = [
   {path:'', component:LoginComponent},
   {path:'login', component:LoginComponent},
@@ -34,6 +35,7 @@ const routes: Routes = [
       { path: 'messages', component: MessagesComponent },
       { path: 'profile', component: ProfileDeveloperComponent },
       { path: 'settings', component: SettingsDeveloperComponent},
+      {path: 'notifications', component: NotificationsDeveloperComponent},
     ],
   },
   {
@@ -45,6 +47,7 @@ const routes: Routes = [
       { path: 'profile', component: ProfileCompanyComponent },
       { path: 'find', component: FindYourDevComponent },
       { path: 'settings', component:SettingsCompanyComponent},
+      {path: 'notifications', component: NotificationsCompanyComponent},
     ],
   },
   { path: '**', component: PageNotFoundComponent },
