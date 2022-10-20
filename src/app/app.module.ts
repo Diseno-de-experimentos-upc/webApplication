@@ -60,7 +60,11 @@ import { PageNotFoundComponent } from './public/page-not-found/page-not-found.co
     RegisterComponent,
     DeveloperComponent,
     CompanyComponent,
-    DialogBoxComponent,
+    FindYourDevComponent,
+
+    ProfileDeveloperComponent,
+
+    PageNotFoundComponent,
     DialogBoxInvalidFormComponent,
 
     DevelopersComponent,

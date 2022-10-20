@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {Company} from "../../../companies/model/company";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {CompaniesService} from "../../../companies/services/companies.service";
-import { DialogBoxComponent } from '../dialog-box/dialog-box.component';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogBoxInvalidFormComponent } from '../dialog-box-invalid-form/dialog-box-invalid-form.component';
+import {Router} from "@angular/router";
 @Component({
   selector: 'app-company',
   templateUrl: './company.component.html',
@@ -12,14 +12,14 @@ import { DialogBoxInvalidFormComponent } from '../dialog-box-invalid-form/dialog
 })
 export class CompanyComponent implements OnInit {
 
-
-  comps:Array<any> = [];
+  registered: boolean = false;
+  companies:Array<any> = [];
   TempComp:Company;
   pass:string = "";
 
   registerForm!: FormGroup;
 
-  constructor(private service:CompaniesService, private formBuilder: FormBuilder, public dialog: MatDialog) {
+  constructor(private service:CompaniesService, private formBuilder: FormBuilder, public dialog: MatDialog, private router: Router) {
     this.TempComp = {} as Company;
     this.registerForm = this.formBuilder.group({
       first_name: new FormControl('', { validators:  [Validators.required], updateOn: 'change' }),
@@ -45,28 +45,50 @@ export class CompanyComponent implements OnInit {
     this.setEmailValidation();
     this. setPhoneValidation();
     this.setPaswordValidation();
+    this.service.GetAllRec().subscribe((response:any) => {
+      this.companies = response;
+      console.log(response);
+    });
   }
 
   Add(){
     this.TempComp = this.registerForm.value;
     this.TempComp.id = 0;
     this.service.AddRec(this.TempComp).subscribe((response:any) => {
-      this.comps.push({...response});
-      console.log(this.comps);
+      this.companies.push({...response});
+      console.log(this.companies);
     });
   }
 
   openDialog() {
     if (this.registerForm.invalid) {
-      this.dialog.open(DialogBoxInvalidFormComponent, { 
-        data: 'registerForm',
-      });
+      if(this.registerForm.get('password')?.value !== this.registerForm.get('password_confirm')?.value) {
+        this.dialog.open(DialogBoxInvalidFormComponent, { 
+          data: {message: 'Please confirm the same password!'},
+        });
+      }
+      else{
+        this.dialog.open(DialogBoxInvalidFormComponent, { 
+          data: {message: 'Please fill all the required fields!'},
+        });
+      }
     }
     else {
-      this.dialog.open(DialogBoxComponent, {
-        data: 'registerForm',
-      });
-      this.Add();
+      this.verifyDeveloperUnregistered();
+      if(!this.registered) {
+        this.Add();
+        this.registered = true;
+        this.dialog.open(DialogBoxInvalidFormComponent, { 
+          data: {message: 'You have successfully registered!'},
+        });
+        this.router.navigate(['/login']);
+      }
+      else {
+        this.dialog.open(DialogBoxInvalidFormComponent, { 
+          data: {message: 'This email is already registered!'},
+        });
+      }
+      
     }
   }
 
@@ -150,5 +172,17 @@ export class CompanyComponent implements OnInit {
         this.registerForm.get('password')?.updateValueAndValidity();
     });
   }
-  
+  verifyDeveloperUnregistered() {
+    this.companies.forEach((comp: any) => {
+      if (comp.email === this.registerForm.get('email')?.value) {
+        this.registered = true;
+        return;
+      }
+      else {
+        this.registered = false;
+        return;
+      }
+    });
+    
+  }
 }
