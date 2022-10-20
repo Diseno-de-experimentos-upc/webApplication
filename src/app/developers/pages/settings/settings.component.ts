@@ -5,6 +5,7 @@ import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
 import { DialogBoxSettingsDeveloperComponent } from "./dialog-box/dialog-box.component";
 import { DialogCancelComponent} from "../../../companies/pages/settings/dialog-cancel/dialog-cancel.component";
 import { DialogSaveComponent} from "../../../companies/pages/settings/dialog-save/dialog-save.component";
+import { toInteger } from 'lodash';
 
 @Component({
   selector: 'app-settings',
@@ -14,6 +15,7 @@ import { DialogSaveComponent} from "../../../companies/pages/settings/dialog-sav
 export class SettingsDeveloperComponent implements OnInit {
   email: string = "Email";
   password: string = "Password";
+  image:string = "";
   developer: Developer = {} as Developer;
 
   constructor(
@@ -23,8 +25,9 @@ export class SettingsDeveloperComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.service.GetDevById(2).subscribe((data: Developer) => {
+    this.service.GetDevById(toInteger(localStorage.getItem("id"))).subscribe((data: Developer) => {
       this.developer = data;
+      this.image = this.developer.image;
       console.log(data);
     });
   }

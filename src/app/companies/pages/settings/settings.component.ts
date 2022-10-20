@@ -5,6 +5,7 @@ import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
 import { DialogBoxSettingsComponent} from "./dialog-box/dialog-box.component";
 import { DialogCancelComponent} from "./dialog-cancel/dialog-cancel.component";
 import { DialogSaveComponent} from "./dialog-save/dialog-save.component";
+import { toInteger } from 'lodash';
 
 @Component({
   selector: 'app-settings',
@@ -14,6 +15,7 @@ import { DialogSaveComponent} from "./dialog-save/dialog-save.component";
 export class SettingsCompanyComponent implements OnInit {
   email: string = "Email";
   password: string = "Password";
+  image:string = "";
   recruiter: Company = {} as Company;
 
   constructor(
@@ -23,8 +25,10 @@ export class SettingsCompanyComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.service.GetRecById(3).subscribe((data: Company) => {
+   
+    this.service.GetRecById(toInteger(localStorage.getItem("id"))).subscribe((data: Company) => {
       this.recruiter = data;
+      this.image = this.recruiter.image;
       console.log(data);
     });
   }
