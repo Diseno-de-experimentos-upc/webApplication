@@ -48,6 +48,7 @@ const routes: Routes = [
       { path: 'find', component: FindYourDevComponent },
       { path: 'settings', component:SettingsCompanyComponent},
       {path: 'notifications', component: NotificationsCompanyComponent},
+      { path: 'find-devs', component: FindYourDevComponent },
     ],
   },
   { path: '**', component: PageNotFoundComponent },

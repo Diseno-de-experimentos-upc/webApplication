@@ -47,7 +47,7 @@ export class FindYourDevComponent implements OnInit {
   ];
   frameworkList: Array<string> = [
     'Angular', 'ASP.NET Core', 'Django',
-    'React', 'Vue.js',
+    'React', 'Vue',
   ];
   databaseList: Array<string> = [
     'MySQL', 'Oracle', 'PostgreSQL',
