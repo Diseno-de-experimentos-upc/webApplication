@@ -149,16 +149,6 @@
 }
 
  @media screen and (max-width: 1215px) {
-
-   /* .skills-card {
-      display: flex;
-      flex-direction: column;
-      box-sizing: border-box;
-      width: 100%;
-      box-sizing: border-box;
-      margin: 0.3rem;
-    } */
-
    .recruirer-info {
      display: flex;
      width: 100%;
