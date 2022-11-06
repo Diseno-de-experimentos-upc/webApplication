@@ -13,7 +13,6 @@
   grid-gap: 1rem;
   margin: 1rem;
   grid-column: 1/3;
-  border: 1px solid #ccc;
 }
 
 .find-your-dev__form-field {
@@ -50,7 +49,6 @@ mat-checkbox {
   color: darkgrey;
   align-self: center;
   justify-content: center;
-  border: 1px solid #ccc;;
   margin-left: 9rem;
 }
 mat-form-field {
