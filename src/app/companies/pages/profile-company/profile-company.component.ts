@@ -57,6 +57,14 @@ export class ProfileCompanyComponent implements OnInit {
     });
   }
 
+  deletePost(id:number) {
+    this.service.DeletePost(this.company.id, id).subscribe((response:any) => {
+      this.posts = this.posts.filter((o: any) => {
+        return o.id !==id ? o:false; 
+      })
+    });
+  }
+
   getRecruiter(id: number) {
     this.service.GetRecruiterById(id).subscribe((response: any) => {
       this.company = response;
@@ -83,6 +91,8 @@ export class ProfileCompanyComponent implements OnInit {
       }
     });
   }
+
+
 
   ngAfterViewInit() {
     this.observer

@@ -99,6 +99,11 @@ export class CompaniesService {
       .pipe(retry(2), catchError(this.handleError));
   }
 
+  DeletePost(id_user:number, id: number) {
+    return this.http.delete(`${this.BaseURL}/${id_user}/posts/${id}` , this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+
   GetSocialNetworks(companyId: number): Observable<object> {
     return this.http
       .get<object>(`${this.BaseURL}/${companyId}/company-social-networks`, this.httpOptions)
@@ -113,5 +118,6 @@ export class CompaniesService {
       .pipe(retry(2),catchError(this.handleError));
   }
 
+  
 }
 
