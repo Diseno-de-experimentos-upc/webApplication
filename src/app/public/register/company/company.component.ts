@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {Company} from "../../../companies/model/company";
+import { User } from '../model/user';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {CompaniesService} from "../../../companies/services/companies.service";
+import { LoginService } from '../../services/login.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogBoxInvalidFormComponent } from '../dialog-box-invalid-form/dialog-box-invalid-form.component';
 import {Router} from "@angular/router";
@@ -13,14 +15,15 @@ import {Router} from "@angular/router";
 export class CompanyComponent implements OnInit {
 
   registered: boolean = false;
-  companies:Array<any> = [];
-  TempComp:Company;
+
+  users:Array<any> = [];
+  TempComp: User;
   pass:string = "";
 
   registerForm!: FormGroup;
 
-  constructor(private service:CompaniesService, private formBuilder: FormBuilder, public dialog: MatDialog, private router: Router) {
-    this.TempComp = {} as Company;
+  constructor(private service: LoginService, private formBuilder: FormBuilder, public dialog: MatDialog, private router: Router) {
+    this.TempComp = {} as User;
     this.registerForm = this.formBuilder.group({
       first_name: new FormControl('', { validators:  [Validators.required], updateOn: 'change' }),
       last_name: new FormControl('', { validators:  [Validators.required], updateOn: 'change' }),
@@ -45,18 +48,26 @@ export class CompanyComponent implements OnInit {
     this.setEmailValidation();
     this. setPhoneValidation();
     this.setPaswordValidation();
-    this.service.GetAllRec().subscribe((response:any) => {
-      this.companies = response;
+
+    this.service.getUserAll().subscribe((response:any) => {
+      this.users = response;
       console.log(response);
     });
   }
 
   Add(){
-    this.TempComp = this.registerForm.value;
     this.TempComp.id = 0;
-    this.service.AddRec(this.TempComp).subscribe((response:any) => {
-      this.companies.push({...response});
-      console.log(this.companies);
+    this.TempComp.firstName =  this.registerForm.get('first_name')?.value;
+    this.TempComp.lastName =  this.registerForm.get('last_name')?.value;
+    this.TempComp.phone =  this.registerForm.get('phone')?.value;
+    this.TempComp.email =  this.registerForm.get('email')?.value;
+    this.TempComp.password =  this.registerForm.get('password')?.value;
+    this.TempComp.description =  'I am a recruiter';
+    this.TempComp.role =  'company';
+    this.service.postUser(this.TempComp).subscribe((response:any) => {
+      this.users.push({...response});
+      console.log(this.users);
+      console.log(this.TempComp);
     });
   }
 
@@ -173,14 +184,13 @@ export class CompanyComponent implements OnInit {
     });
   }
   verifyDeveloperUnregistered() {
-    this.companies.forEach((comp: any) => {
-      if (comp.email === this.registerForm.get('email')?.value) {
+    this.users.forEach((user: any) => {
+      if (user.email === this.registerForm.get('email')?.value) {
         this.registered = true;
         return;
       }
       else {
         this.registered = false;
-        return;
       }
     });
     

@@ -4,13 +4,13 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { Developer } from '../../developers/model/developer';
 import { Company } from '../../companies/model/company';
+import { User } from '../register/model/user';
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
-  developerURL = 'http://localhost:3000/developers';
-  companyURL = 'http://localhost:3000/companies';
-  usersURL = 'http://localhost:3000/users';
+  basePath = 'http://localhost:8080/api/v1/users';
+
   constructor(private http: HttpClient) { }
 
 
@@ -34,27 +34,27 @@ export class LoginService {
     );
   }
 
-  getDeveloperAll(): Observable<Developer> {
+  getDeveloperAll(user_role : string): Observable<any> {
     return this.http
-      .get<Developer>(this.developerURL, this.httpOptions)
+      .get<Developer>(`${this.basePath}/searchByRole/${user_role}`, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 
-  getCompanyAll(): Observable<Company> {
+  getCompanyAll(user_role : string): Observable<Company> {
     return this.http
-      .get<Company>(this.companyURL, this.httpOptions)
+      .get<Company>(`${this.basePath}/searchByRole/${user_role}`, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 
   getUserAll(): Observable<object> {
     return this.http
-      .get<object>(this.usersURL, this.httpOptions)
+      .get<object>(this.basePath, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 
-  postUser(user: any): Observable<object> {
+  postUser(user: any): Observable<User> {
     return this.http
-      .post<object>(this.usersURL, user, this.httpOptions)
+      .post<User>(this.basePath, JSON.stringify(user), this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 }

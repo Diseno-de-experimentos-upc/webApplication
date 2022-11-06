@@ -14,4 +14,5 @@ export interface Company{
   email:string,
   password:string,
   phone:string,
+  role : string,
 }

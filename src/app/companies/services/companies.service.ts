@@ -18,6 +18,7 @@ export class CompaniesService {
   ContactsURL: string = 'http://localhost:3000/contacts';
   MessagesURL: string = 'http://localhost:3000/messages';
   NotificationsURL: string = 'http://localhost:3000/notifications-companies';
+  basePath = 'http://localhost:8080/api/v1/users';
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
@@ -123,5 +124,16 @@ export class CompaniesService {
       .pipe(retry(2), catchError(this.handleError));
   }
 
+  GetAllUsers(): Observable<object> {
+    return this.http
+      .get(this.basePath, this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+
+  AddUser(user: Company): Observable<Company> {
+    return this.http
+      .post<Company>(this.basePath, JSON.stringify(user), this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
 }
 
