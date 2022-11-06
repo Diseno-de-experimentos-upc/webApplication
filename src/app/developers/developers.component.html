@@ -42,7 +42,7 @@
     </button>
 
     <button mat-button class="menu-button" (click)="disableOption()" routerLink="notifications">
-      <mat-icon matBadge="4" matBadgeColor="warn">notifications</mat-icon>
+      <mat-icon matBadge="{{notifications.length}}" matBadgeColor="warn" >notifications</mat-icon>
       <span> Notifications</span>
     </button>
 

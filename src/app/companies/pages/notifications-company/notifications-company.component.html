@@ -11,8 +11,8 @@
       <mat-card-subtitle>{{notification.message}}<br> {{notification.date}}</mat-card-subtitle>
 
       <span class="spacer"></span>
-      <button mat-button class="notification-button">
-        <span>View</span>
+      <button mat-button class="notification-button" (click)="DeleteNotificationById(notification.id)">
+        <mat-icon style="color:white">delete</mat-icon>
       </button>
     </mat-card-header>
   </mat-card>

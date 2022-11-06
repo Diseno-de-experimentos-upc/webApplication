@@ -19,6 +19,7 @@ export class DevelopersComponent implements OnInit {
   developer!: Developer;
   profile: boolean = false;
   currentRoute: string = '';
+  notifications: Array<any> = [];
 
   constructor(private observer: BreakpointObserver, private router: Router, private route: ActivatedRoute, private service: DevelopersService) {
     this.analizeRoot();
@@ -27,7 +28,7 @@ export class DevelopersComponent implements OnInit {
 
   ngOnInit(): void {
     this.ngAfterViewInit();
-
+    this.GetAllNotifications();
     const id = toInteger(localStorage.getItem("id"));
     this.service.GetDeveloperById(id).subscribe((response:any)=>{
        this.developer = response;
@@ -67,5 +68,13 @@ export class DevelopersComponent implements OnInit {
  disableOption(){
   this.profile = false;
  }
+
+  GetAllNotifications() {
+    this.service.GetNotifications().subscribe((response: any) => {
+      this.notifications = response;
+      console.log(this.notifications.length);
+    });
+
+  }
 
 }

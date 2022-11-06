@@ -1,24 +1,28 @@
 {
   "notifications-companies": [
     {
+      "id": 1,
       "contact": "Guillermo Diaz",
       "message": "Wants to work for you",
       "profile_photo": "https://www.larazondechivilcoy.com.ar/u/fotografias/fotosnoticias/2014/10/24/5888.jpg",
       "date": "3 hours ago"
     },
     {
+      "id": 2,
       "contact": "Diego Quispe",
       "message": "Wants to work for you",
       "profile_photo": "https://www.superprof.es/imagenes/anuncios/profesor-home-joven-anos-graduado-historia-manejo-del-ingles-gallego.jpg",
       "date": "4 hours ago"
     },
     {
+      "id": 3,
       "contact": "Marcelo Piñas",
       "message": "Wants to work for you",
       "profile_photo": "http://masricos.com/wp-content/uploads/2016/09/Nick-DAloisio-1-385x430.jpeg",
       "date": "5 hours ago"
     },
     {
+      "id": 4,
       "contact": "Piero Perez",
       "message": "Wants to work for you",
       "profile_photo": "https://www.superprof.com.ar/imagenes/avisos/profesor-home-asier-joven-anos-graduado-nutricion-humana-dietetica-master-oficial-destaco-por-capacidad-para-conectar-con.jpg",
@@ -27,24 +31,28 @@
   ],
   "notifications-developers": [
     {
+      "id": 1,
       "contact": "Tomas Sanchez",
       "message": "From Backus is interest on your profile",
       "profile_photo": "https://juliogysels.com/wp-content/uploads/2019/06/perfil_JG_Azul_claro-1024x1024.png",
       "date": "3 hours ago"
     },
     {
+      "id": 2,
       "contact": "Patrizius Jamot",
       "message": "From Backus is interest on your profile",
       "profile_photo": "https://cdn.create.vista.com/api/media/small/25262411/stock-photo-businessman",
       "date": "4 hours ago"
     },
     {
+      "id": 3,
       "contact": "Marlane Garnall",
       "message": "From Backus is interest on your profile",
       "profile_photo": "https://cdn.domestika.org/c_limit,dpr_1.0,f_auto,q_auto,w_820/v1425034585/content-items/001/228/844/sesion-estudio-barcelona-10-original.jpg?1425034585",
       "date": "5 hours ago"
     },
     {
+      "id": 4,
       "contact": "Danfer Trevor",
       "message": "From Backus is interest on your profile",
       "profile_photo": "http://www.fabricadeexperiencias.com.mx//uploads/editorI20190114111616.jpg",

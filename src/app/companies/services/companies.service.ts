@@ -117,7 +117,11 @@ export class CompaniesService {
       .get(this.NotificationsURL, this.httpOptions)
       .pipe(retry(2),catchError(this.handleError));
   }
+  DeleteNotificationById(id: number): Observable<object> {
+    return this.http
+      .delete(`${this.NotificationsURL}/${id}`, this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
 
-  
 }
 

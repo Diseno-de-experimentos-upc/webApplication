@@ -19,6 +19,8 @@ export class CompaniesComponent implements OnInit {
   company!: Company;
   profile: boolean = false;
   currentRoute: string = '';
+  notifications: Array<any> = [];
+
 
   constructor( private observer: BreakpointObserver, private service: CompaniesService, private route: ActivatedRoute,private router: Router ) {
      this.analizeRoot();
@@ -26,6 +28,7 @@ export class CompaniesComponent implements OnInit {
 
   ngOnInit(): void {
     this.ngAfterViewInit();
+    this.GetAllNotifications();
     this.service.GetAllNews().subscribe((response: any) => {
       this.news = response;
       console.log(this.news);
@@ -69,6 +72,12 @@ export class CompaniesComponent implements OnInit {
   }
   disableOption() {
     this.profile = false;
+  }
+  GetAllNotifications() {
+    this.service.GetNotifications().subscribe((response: any) => {
+      this.notifications = response;
+      console.log(this.notifications.length);
+    });
   }
 
 }
