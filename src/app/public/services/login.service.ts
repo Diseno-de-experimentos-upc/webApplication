@@ -8,8 +8,8 @@ import { Company } from '../../companies/model/company';
   providedIn: 'root'
 })
 export class LoginService {
-  developerURL = 'http://localhost:3000/developers';
-  companyURL = 'http://localhost:3000/companies';
+  developerURL = 'http://localhost:8080/api/v1/developers';
+  companyURL = 'http://localhost:8080/api/v1/companies';
   usersURL = 'http://localhost:3000/users';
   constructor(private http: HttpClient) { }
 

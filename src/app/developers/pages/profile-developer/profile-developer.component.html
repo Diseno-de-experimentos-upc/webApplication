@@ -12,7 +12,7 @@
 
             <div class="img-container">
               <div class="card-container">
-                <h1 class="card-title-text">{{developer.first_name}}  {{developer.last_name}} </h1>
+                <h1 class="card-title-text">{{developer.firstName}}  {{developer.lastName}} </h1>
                 <p class="card-paragraph-text">
                   {{developer.description}}
                 </p>
@@ -31,14 +31,6 @@
                       <span>Phone</span>
                       <br />
                       <span> {{developer.phone}} </span>
-                    </div>
-                  </li>
-                  <li>
-                    <mat-icon>location_on</mat-icon>
-                    <div class="inner-li">
-                      <span>Address</span>
-                      <br />
-                      <span>{{developer.adreess}}</span>
                     </div>
                   </li>
                   <!-- facebook account -->
@@ -78,7 +70,7 @@
           <mat-card class="developer-career-info">
             <mat-card-title>
               <div class="img-container-2">
-                <img [src]="developer.banner_image" alt=""
+                <img [src]="developer.bannerImage" alt=""
                   class="img-in" />
               </div>
             </mat-card-title>
@@ -97,7 +89,7 @@
                         <mat-card-title>
                           <p>{{studyCenter.name}}</p>
                         </mat-card-title>
-                        <mat-card-subtitle><span>Percentage</span> {{studyCenter.career_progress}}%</mat-card-subtitle>
+                        <mat-card-subtitle><span>Percentage</span> {{studyCenter.progress}}%</mat-card-subtitle>
                       </mat-card-header>
                       <mat-card-title>
                         <p class="inner-paragraph">
@@ -118,7 +110,7 @@
                     <mat-card *ngFor="let technology of technologies" class="skills-card">
                       <div>
                         <div class="img-container-2">
-                          <img [src]="technology.imgLink" alt="" class="skills-img" />
+                          <img [src]="technology.iconLink" alt="" class="skills-img" />
                         </div>
                         <mat-card-title>
                           <p>{{ technology.name }}</p>
@@ -139,10 +131,10 @@
                   <div class="developer-container">
                     <mat-card *ngFor="let project of projects" class="project-card">
                       <mat-card-header>
-                        <div mat-card-avatar style=" background-image: url({{project.projectImg}});
+                        <div mat-card-avatar style=" background-image: url({{project.iconUrl}});
                         background-size: cover;"></div>
                         <mat-card-title>
-                          <p>{{ project.title }}</p>
+                          <p>{{ project.name }}</p>
                         </mat-card-title>
                         <mat-card-subtitle>{{
                           project.description
@@ -152,7 +144,7 @@
                         <div class="project-content">
                           <mat-icon>link</mat-icon>
                           <span><strong>
-                              <a [href]="project.projectLink" target="_blank">{{ project.projectLink }}/</a>
+                              <a [href]="project.projectUrl" target="_blank">{{ project.projectUrl }}/</a>
                             </strong></span>
                         </div>
                       </mat-card-content>
