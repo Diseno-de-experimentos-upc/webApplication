@@ -14,17 +14,13 @@ import { Developer } from '../model/developer';
 export class DevelopersService {
   BaseURL: string = 'http://localhost:3000/developers';
   NewsURL: string = 'http://localhost:3000/news-developers';
-<<<<<<< Updated upstream
-  ContactsURL: string = 'http://localhost:3000/contacts';
-  MessagesURL: string = 'http://localhost:3000/messages';
-=======
 
   educationUrl: string = 'http://localhost:3000/education';
   digitalProfileUrl: string = 'http://localhost:3000/digital-profiles';
   
   NotificationsURL: string = 'http://localhost:3000/notifications-developers';
 
->>>>>>> Stashed changes
+
 
   httpOptions = {
     headers: new HttpHeaders({
