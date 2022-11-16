@@ -37,6 +37,7 @@ export class ProfileDeveloperComponent implements OnInit {
   education!: Education;
   digitalProfileId: number = 0;
   educationId: number = 0;
+  obtainedDate: string = "";
 
   constructor(
     private observer: BreakpointObserver,
@@ -61,6 +62,7 @@ export class ProfileDeveloperComponent implements OnInit {
     this.getProjects(this.digitalProfileId);
 
     this.getCertificates(this.educationId);
+
     this.getStudyCenters(this.educationId);
 
     this.getSocialNetworks(developerId);
@@ -90,6 +92,10 @@ export class ProfileDeveloperComponent implements OnInit {
   getCertificates(id: number) {
     this.service.GetCertificatesByEducationId(id).subscribe((response: any) => {
       this.certificates = response;
+      console.log("CERTIFICATES:", this.certificates);
+      
+      //get the first 10 characters of the obtained date
+      this.obtainedDate = this.certificates[0].obtainedDate.substring(0, 10);
     });
   }
 

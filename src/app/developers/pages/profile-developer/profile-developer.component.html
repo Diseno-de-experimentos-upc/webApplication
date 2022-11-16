@@ -85,7 +85,7 @@
                    
                     <mat-card *ngFor="let studyCenter of studyCenters" class="education-card">
                       <mat-card-header>
-                        <div mat-card-avatar class="example-header-image"></div>
+                        <img mat-card-avatar src="{{studyCenter.iconUrl}}" />
                         <mat-card-title>
                           <p>{{studyCenter.name}}</p>
                         </mat-card-title>
@@ -131,8 +131,7 @@
                   <div class="developer-container">
                     <mat-card *ngFor="let project of projects" class="project-card">
                       <mat-card-header>
-                        <div mat-card-avatar style=" background-image: url({{project.iconUrl}});
-                        background-size: cover;"></div>
+                        <img mat-card-avatar src="{{project.iconUrl}}" />
                         <mat-card-title>
                           <p>{{ project.name }}</p>
                         </mat-card-title>
@@ -160,7 +159,7 @@
                   <div class="developer-container">
                     <mat-card *ngFor="let certificate of certificates" class="certificate-card card-color">
                       <mat-card-header>
-                        <div mat-card-avatar class="certificate-header-image"></div>
+                        <img mat-card-avatar src="{{certificate.iconUrl}}" />
                         <mat-card-title>
                           <p class="marvel-c">{{ certificate.title }}</p>
                         </mat-card-title>
@@ -169,7 +168,7 @@
                         </mat-card-subtitle>
                       </mat-card-header>
                       <mat-card-content>
-                        <p class="certificate-date">{{ certificate.date }}</p>
+                        <p class="certificate-date">{{ obtainedDate }}</p>
                       </mat-card-content>
                     </mat-card>
                   </div>

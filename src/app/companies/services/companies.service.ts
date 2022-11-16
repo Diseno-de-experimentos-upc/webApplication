@@ -13,7 +13,8 @@ import { Company } from '../model/company';
   providedIn: 'root',
 })
 export class CompaniesService {
-  BaseURL: string = 'http://localhost:3000/companies';
+  BaseURL: string = 'http://localhost:8080/api/v1/companies';
+  socialNetworks = 'http://localhost:8080/api/v1/socialNetworks';
   NewsURL: string = 'http://localhost:3000/news-companies';
   ContactsURL: string = 'http://localhost:3000/contacts';
   MessagesURL: string = 'http://localhost:3000/messages';
@@ -107,6 +108,13 @@ export class CompaniesService {
   GetSocialNetworks(companyId: number): Observable<object> {
     return this.http
       .get<object>(`${this.BaseURL}/${companyId}/company-social-networks`, this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+
+  //////social networks section /////////
+  GetSocialNetworkByUserId(id: number): Observable<object> {
+    return this.http
+      .get<object>(this.socialNetworks + '/user/' + id, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 
