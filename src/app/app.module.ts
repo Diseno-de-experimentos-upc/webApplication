@@ -55,6 +55,7 @@ import { DialogSaveComponent } from './companies/pages/settings/dialog-save/dial
 import { NotificationsCompanyComponent } from './companies/pages/notifications-company/notifications-company.component';
 /* Page Not Found Component */
 import { PageNotFoundComponent } from './public/page-not-found/page-not-found.component';
+import { ToolsDeveloperComponent } from './developers/pages/tools-developer/tools-developer.component';
 
 
 
@@ -93,6 +94,7 @@ import { PageNotFoundComponent } from './public/page-not-found/page-not-found.co
     DialogSaveComponent,
 
     PageNotFoundComponent,
+      ToolsDeveloperComponent,
 
 
   ],

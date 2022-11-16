@@ -1,0 +1,22 @@
+.inner-content {
+    height: auto;
+    margin: 16px 16px 0px 32px;
+    background-color: #efefef;
+    border-radius: 10px;
+  }
+
+  .developer-personal-info {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    height: 95%;
+  }
+
+  .developer-career-info {
+    display: flex;
+    width: 980%;
+    flex-direction: column;
+    margin: 1rem;
+    overflow: auto;
+    height: 95%;
+  }

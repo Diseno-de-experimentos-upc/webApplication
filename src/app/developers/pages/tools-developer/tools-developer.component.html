@@ -1,0 +1,31 @@
+<mat-sidenav-container>
+    <mat-sidenav-content>
+     <div class="inner-content mat-elevation-z8">
+       <mat-grid-list cols="4" rowHeight="88vh">
+         <mat-grid-tile #first colspan="1" rowspan="1">
+           <mat-card class="developer-personal-info">
+            <mat-card-content>
+                <h1>Choose an option</h1>
+                <mat-form-field appearance="fill">
+                    <mat-label>Favorite food</mat-label>
+                    <mat-select [(ngModel)]="selectedValue" name="food">
+                      <mat-option *ngFor="let tool of tools" [value]="tool.value" [routerLink]="tool.route">
+                        {{tool.viewValue}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+            </mat-card-content>
+           </mat-card>
+         </mat-grid-tile>
+ 
+         <mat-grid-tile #second colspan="3" rowspan="1">
+           <mat-card class="developer-career-info">
+            <mat-sidenav-content>
+                     <router-outlet></router-outlet>
+               </mat-sidenav-content>
+           </mat-card>
+         </mat-grid-tile>
+       </mat-grid-list>
+     </div>
+   </mat-sidenav-content>
+ </mat-sidenav-container>
