@@ -2,15 +2,15 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse,  HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
-import { Developer } from '../../developers/model/developer';
-import { Company } from '../../companies/model/company';
-import { User } from '../register/model/user';
+import { Developer } from '../register/model/developer';
+import { Company } from '../register/model/company';
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
   basePath = 'http://localhost:8080/api/v1/users';
-
+  urlDeveloper = 'http://localhost:8080/api/v1/developers';
+  urlCompany = 'http://localhost:8080/api/v1/companies';
   constructor(private http: HttpClient) { }
 
 
@@ -34,15 +34,27 @@ export class LoginService {
     );
   }
 
-  getDeveloperAll(user_role : string): Observable<any> {
+  getDeveloperAll(): Observable<any> {
     return this.http
-      .get<Developer>(`${this.basePath}/searchByRole/${user_role}`, this.httpOptions)
+      .get<Developer>(`${this.urlDeveloper}`, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 
-  getCompanyAll(user_role : string): Observable<Company> {
+  postDeveloper(developer: Developer): Observable<Developer> {
     return this.http
-      .get<Company>(`${this.basePath}/searchByRole/${user_role}`, this.httpOptions)
+      .post<Developer>(`${this.urlDeveloper}`, developer, this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+
+  getCompanyAll(): Observable<Company> {
+    return this.http
+      .get<Company>(`${this.urlCompany}`, this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+
+  postCompany(company: Company): Observable<Company> {
+    return this.http
+      .post<Company>(`${this.urlCompany}`, company, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 
@@ -52,9 +64,4 @@ export class LoginService {
       .pipe(retry(2), catchError(this.handleError));
   }
 
-  postUser(user: any): Observable<User> {
-    return this.http
-      .post<User>(this.basePath, JSON.stringify(user), this.httpOptions)
-      .pipe(retry(2), catchError(this.handleError));
-  }
 }

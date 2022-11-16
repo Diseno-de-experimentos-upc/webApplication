@@ -9,9 +9,8 @@ import {
   ValidatorFn,
   Validators,
 } from '@angular/forms';
-import { Developer } from 'src/app/developers/model/developer';
+import { Developer } from '../model/developer';
 import { User } from '../model/user';
-import { DevelopersService } from 'src/app/developers/services/developers.service';
 import { LoginService } from '../../services/login.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogBoxInvalidFormComponent } from '../dialog-box-invalid-form/dialog-box-invalid-form.component';
@@ -26,10 +25,10 @@ export class DeveloperComponent implements OnInit {
 
   mismatch: boolean = false;
   registered: boolean = false;
-  devs: Array<any> = [];
-  TempDev: User;
+  TempDev: Developer;
   pass: string = '';
   registerForm!: FormGroup;
+  users: Array<User> = [];
 
   languagesList: Array<string> = [
     'JavaScript',
@@ -59,7 +58,7 @@ export class DeveloperComponent implements OnInit {
 
   constructor( private service: LoginService, private formBuilder: FormBuilder, public dialog: MatDialog, private router: Router) {
     
-    this.TempDev = {} as User;
+    this.TempDev = {} as Developer;
     this.registerForm = this.formBuilder.group({
       first_name: new FormControl('', { validators:  [Validators.required], updateOn: 'change' }),
       last_name: new FormControl('', { validators:  [Validators.required], updateOn: 'change' }),
@@ -79,27 +78,26 @@ export class DeveloperComponent implements OnInit {
 
   ngOnInit(): void {
     this.setEmailValidation();
-    this. setPhoneValidation();
+    this.setPhoneValidation();
     this.setPaswordValidation();
-    this.service.getDeveloperAll('developer').subscribe((response: any) => {
-      this.devs = response;
-      console.log(this.devs);
+    this.service.getUserAll().subscribe((response: any) => {
+      this.users = response;
+      console.log(this.users);
     });
   }
 
   Add() {
-
-    this.TempDev.id = 0;
     this.TempDev.firstName =  this.registerForm.get('first_name')?.value;
     this.TempDev.lastName =  this.registerForm.get('last_name')?.value;
     this.TempDev.phone =  this.registerForm.get('phone')?.value;
     this.TempDev.email =  this.registerForm.get('email')?.value;
     this.TempDev.password =  this.registerForm.get('password')?.value;
-    this.TempDev.description =  'I am a recruiter';
+    this.TempDev.description =  'I am a developer';
     this.TempDev.role =  'developer';
-    this.service.postUser(this.TempDev).subscribe((response:any) => {
-      this.devs.push({...response});
-      console.log(this.devs);
+    this.TempDev.image = 'https://d500.epimg.net/cincodias/imagenes/2016/07/04/lifestyle/1467646262_522853_1467646344_noticia_normal.jpg';
+    this.TempDev.bannerImage = 'https://thumbs.dreamstime.com/b/internet-information-technology-businessman-hand-showing-concept-75784736.jpg';
+
+    this.service.postDeveloper(this.TempDev).subscribe((response:any) => {
       console.log(this.TempDev);
     });
   }
@@ -216,14 +214,13 @@ export class DeveloperComponent implements OnInit {
     });
   }
   verifyDeveloperUnregistered() {
-    this.devs.forEach((dev: any) => {
-      if (dev.email === this.registerForm.get('email')?.value) {
+    this.users.forEach((user: any) => {
+      if (user.email === this.registerForm.get('email')?.value) {
         this.registered = true;
         return;
       }
       else {
         this.registered = false;
-        return;
       }
     });
     
