@@ -10,7 +10,9 @@ import {
   Validators,
 } from '@angular/forms';
 import { Developer } from 'src/app/developers/model/developer';
+import { User } from '../model/user';
 import { DevelopersService } from 'src/app/developers/services/developers.service';
+import { LoginService } from '../../services/login.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogBoxInvalidFormComponent } from '../dialog-box-invalid-form/dialog-box-invalid-form.component';
 import { Router } from '@angular/router';
@@ -25,7 +27,7 @@ export class DeveloperComponent implements OnInit {
   mismatch: boolean = false;
   registered: boolean = false;
   devs: Array<any> = [];
-  TempDev: Developer;
+  TempDev: User;
   pass: string = '';
   registerForm!: FormGroup;
 
@@ -55,9 +57,9 @@ export class DeveloperComponent implements OnInit {
     'Vue.js',
   ];
 
-  constructor( private service: DevelopersService, private formBuilder: FormBuilder, public dialog: MatDialog, private router: Router) {
+  constructor( private service: LoginService, private formBuilder: FormBuilder, public dialog: MatDialog, private router: Router) {
     
-    this.TempDev = {} as Developer;
+    this.TempDev = {} as User;
     this.registerForm = this.formBuilder.group({
       first_name: new FormControl('', { validators:  [Validators.required], updateOn: 'change' }),
       last_name: new FormControl('', { validators:  [Validators.required], updateOn: 'change' }),
@@ -79,18 +81,26 @@ export class DeveloperComponent implements OnInit {
     this.setEmailValidation();
     this. setPhoneValidation();
     this.setPaswordValidation();
-    this.service.GetAllDevs().subscribe((response: any) => {
+    this.service.getDeveloperAll('developer').subscribe((response: any) => {
       this.devs = response;
       console.log(this.devs);
     });
   }
 
   Add() {
-    this.TempDev = this.registerForm.value;
+
     this.TempDev.id = 0;
-    this.service.AddDev(this.TempDev).subscribe((response: any) => {
-      this.devs.push({ ...response });
+    this.TempDev.firstName =  this.registerForm.get('first_name')?.value;
+    this.TempDev.lastName =  this.registerForm.get('last_name')?.value;
+    this.TempDev.phone =  this.registerForm.get('phone')?.value;
+    this.TempDev.email =  this.registerForm.get('email')?.value;
+    this.TempDev.password =  this.registerForm.get('password')?.value;
+    this.TempDev.description =  'I am a recruiter';
+    this.TempDev.role =  'developer';
+    this.service.postUser(this.TempDev).subscribe((response:any) => {
+      this.devs.push({...response});
       console.log(this.devs);
+      console.log(this.TempDev);
     });
   }
 
