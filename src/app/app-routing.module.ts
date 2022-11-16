@@ -20,6 +20,7 @@ import { HomeCompanyComponent  } from './companies/pages/home-company/home-compa
 import { MessagesCompanyComponent } from './companies/pages/messages-company/messages-company.component';
 import { SettingsCompanyComponent } from './companies/pages/settings/settings.component';
 import { NotificationsCompanyComponent } from './companies/pages/notifications-company/notifications-company.component';
+import { MakePostComponent } from './companies/pages/make-post/make-post.component';
 const routes: Routes = [
   {path:'', component:LoginComponent},
   {path:'login', component:LoginComponent},
@@ -47,8 +48,9 @@ const routes: Routes = [
       { path: 'profile', component: ProfileCompanyComponent },
       { path: 'find', component: FindYourDevComponent },
       { path: 'settings', component:SettingsCompanyComponent},
-      {path: 'notifications', component: NotificationsCompanyComponent},
+      { path: 'notifications', component: NotificationsCompanyComponent},
       { path: 'find-devs', component: FindYourDevComponent },
+      { path: 'make-post', component: MakePostComponent},
     ],
   },
   { path: '**', component: PageNotFoundComponent },
