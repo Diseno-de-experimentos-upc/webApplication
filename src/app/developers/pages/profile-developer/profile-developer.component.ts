@@ -107,22 +107,22 @@ export class ProfileDeveloperComponent implements OnInit {
   }
 
   getSocialNetworks(id: number) {
-    // this.service.GetSocialNetworks(id).subscribe((response: any) => {
-    //   this.socialNetworks = response;
+    this.service.GetSocialNetworkByUserId(id).subscribe((response: any) => {
+      this.socialNetworks = response;
 
-    //   let i;
-    //   for(i = 0; i < this.socialNetworks.length; i++){
-    //     if(this.socialNetworks[i].name == "Facebook"){
-    //       this.facebook = this.socialNetworks[i].user;
-    //     }
-    //     if(this.socialNetworks[i].name == "Twitter"){
-    //       this.twitter = this.socialNetworks[i].user;
-    //     }
-    //     if(this.socialNetworks[i].name == "Instagram"){
-    //       this.instagram = this.socialNetworks[i].user;
-    //     }
-    //   }
-    // });
+      let i;
+      for(i = 0; i < this.socialNetworks.length; i++){
+        if(this.socialNetworks[i].nameSocialNetwork == "Facebook"){
+          this.facebook = this.socialNetworks[i].urlSocialNetwork;
+        }
+        if(this.socialNetworks[i].nameSocialNetwork == "Twitter"){
+          this.twitter = this.socialNetworks[i].urlSocialNetwork;
+        }
+        if(this.socialNetworks[i].nameSocialNetwork == "Instagram"){
+          this.instagram = this.socialNetworks[i].urlSocialNetwork;
+        }
+      }
+    });
   }
 
   getTechnologies(id: number) {

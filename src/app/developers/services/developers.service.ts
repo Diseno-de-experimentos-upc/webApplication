@@ -21,6 +21,7 @@ export class DevelopersService {
   frameworkUrl: string = 'http://localhost:8080/api/v1/frameworks';
   programingLanguagesUrl: string = 'http://localhost:8080/api/v1/programmingLanguages';
   projectsUrl: string = 'http://localhost:8080/api/v1/projects';
+  socialNetworks = 'http://localhost:8080/api/v1/socialNetworks';
 
   digitalProfileUrl: string = 'http://localhost:8080/api/v1/digital_profiles';
   educationUrl: string = 'http://localhost:8080/api/v1/educations';
@@ -130,11 +131,12 @@ export class DevelopersService {
       .pipe(retry(2), catchError(this.handleError));
   }
 
-  // GetSocialNetworks(digitalProfileId: number): Observable<object> {
-  //   return this.http
-  //     .get<object>(`${this.digitalProfileUrl}/${digitalProfileId}/social-networks`, this.httpOptions)
-  //     .pipe(retry(2), catchError(this.handleError));
-  // }
+  //////social networks section /////////
+  GetSocialNetworkByUserId(id: number): Observable<object> {
+    return this.http
+      .get<object>(this.socialNetworks + '/user/' + id, this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
  
   GetProjectsByDigitalProfileId(digitalProfileId: number): Observable<object> {
     return this.http
