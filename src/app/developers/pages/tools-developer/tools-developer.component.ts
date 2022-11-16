@@ -19,10 +19,9 @@ export class ToolsDeveloperComponent implements OnInit {
     {value: 'project-0', viewValue: 'Project', route: 'project'},
     {value: 'certificate-1', viewValue: 'Certificate', route: 'certificate'},
     {value: 'database-2', viewValue: 'Database', route: 'database'},
-    {value: 'programmingLanguage-3', viewValue: 'Programming Language', route: 'programmingLanguage'},
+    {value: 'programmingLanguage-3', viewValue: 'Programming Language', route: 'programming-language'},
     {value: 'framework-4', viewValue: 'Framework', route: 'framework'},
-    {value: 'database-5', viewValue: 'Database', route: 'database'},
-    {value: 'studyCenter-6', viewValue: 'Study Center', route: 'studyCenter'},
+    {value: 'studyCenter-5', viewValue: 'Study Center', route: 'study-center'},
   ];
 
   constructor() { }
