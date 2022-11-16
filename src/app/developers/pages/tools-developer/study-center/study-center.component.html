@@ -1,1 +1,44 @@
-<p>study-center works!</p>
+<div class="title">
+    <p>Publish a new study centers</p>
+  </div>
+  <form class="make-post-form">
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Name</mat-label>
+        <input matInput placeholder="Ex. Boston University">
+      </mat-form-field>
+    
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Description</mat-label>
+        <textarea matInput placeholder="Ex. Bachelor in Computer Science Engineering"></textarea>
+      </mat-form-field>
+  
+      <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Logo URL </mat-label>
+          <textarea matInput placeholder="Ex. https://th.bing.com/th/id/OIP.qNV2XkiYJLiFse9UFGoVOQHaE0?pid=ImgDet&rs=1"></textarea>
+        </mat-form-field>
+    
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Career Progress </mat-label>
+            <textarea matInput placeholder="Ex. 50"></textarea>
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Entry date</mat-label>
+            <input matInput [matDatepicker]="picker">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+      
+     
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Graduation date</mat-label>
+            <input matInput [matDatepicker]="picker">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+     
+
+    </form>
+    <div class = "div-btn">
+      <button mat-raised-button color="primary" class="btn-send-post">Publish</button>
+    </div>

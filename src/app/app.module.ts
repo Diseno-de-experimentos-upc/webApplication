@@ -64,6 +64,9 @@ import { FrameworkComponent } from './developers/pages/tools-developer/framework
 import { StudyCenterComponent } from './developers/pages/tools-developer/study-center/study-center.component';
 
 
+//Tools
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
 
 
 @NgModule({
@@ -107,6 +110,7 @@ import { StudyCenterComponent } from './developers/pages/tools-developer/study-c
       ProgrammingLanguageComponent,
       FrameworkComponent,
       StudyCenterComponent,
+      
 
 
   ],
@@ -137,7 +141,9 @@ import { StudyCenterComponent } from './developers/pages/tools-developer/study-c
     MatDividerModule,
     MatRippleModule,
     ScrollingModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [],
   bootstrap: [AppComponent],
