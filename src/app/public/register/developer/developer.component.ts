@@ -11,6 +11,7 @@ import {
 } from '@angular/forms';
 import { Developer } from '../model/developer';
 import { User } from '../model/user';
+import { DigitalProfile } from '../model/digitalprofile';
 import { LoginService } from '../../services/login.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogBoxInvalidFormComponent } from '../dialog-box-invalid-form/dialog-box-invalid-form.component';
@@ -29,6 +30,7 @@ export class DeveloperComponent implements OnInit {
   pass: string = '';
   registerForm!: FormGroup;
   users: Array<User> = [];
+  digitalProfile: DigitalProfile;
 
   languagesList: Array<string> = [
     'JavaScript',
@@ -57,7 +59,7 @@ export class DeveloperComponent implements OnInit {
   ];
 
   constructor( private service: LoginService, private formBuilder: FormBuilder, public dialog: MatDialog, private router: Router) {
-    
+    this.digitalProfile = {} as DigitalProfile;
     this.TempDev = {} as Developer;
     this.registerForm = this.formBuilder.group({
       first_name: new FormControl('', { validators:  [Validators.required], updateOn: 'change' }),
@@ -86,6 +88,13 @@ export class DeveloperComponent implements OnInit {
     });
   }
 
+  AddDigitalProfile() {
+    this.digitalProfile.name = "Digital Profile " + this.registerForm.get("first_name")?.value;
+    this.service.postDigitalProfile(this.digitalProfile, this.users.length).subscribe((response:any) => {
+      console.log(response);
+    });
+  }
+
   Add() {
     this.TempDev.firstName =  this.registerForm.get('first_name')?.value;
     this.TempDev.lastName =  this.registerForm.get('last_name')?.value;
@@ -99,7 +108,10 @@ export class DeveloperComponent implements OnInit {
 
     this.service.postDeveloper(this.TempDev).subscribe((response:any) => {
       console.log(this.TempDev);
+      this.users.push(this.TempDev);
+      console.log(this.users);
     });
+    this.AddDigitalProfile();
   }
 
   openDialog() {

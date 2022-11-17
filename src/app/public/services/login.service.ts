@@ -11,6 +11,10 @@ export class LoginService {
   basePath = 'http://localhost:8080/api/v1/users';
   urlDeveloper = 'http://localhost:8080/api/v1/developers';
   urlCompany = 'http://localhost:8080/api/v1/companies';
+  urlDigitalProfile = "http://localhost:8080/api/v1/digital_profiles";
+  urlDatabase = 'http://localhost:8080/api/v1/databases';
+  urlFrameworks = 'http://localhost:8080/api/v1/frameworks';
+  urlLenguages = 'http://localhost:8080/api/v1/programmingLanguages';
   constructor(private http: HttpClient) { }
 
 
@@ -64,4 +68,27 @@ export class LoginService {
       .pipe(retry(2), catchError(this.handleError));
   }
 
+  postDigitalProfile(digitalProfile: object, id: number): Observable<object> {
+    return this.http
+      .post<object>(`${this.urlDigitalProfile}/${id}`, digitalProfile, this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+
+  postDatabase(database: object): Observable<object> {
+    return this.http
+      .post<object>(`${this.urlDatabase}`, database, this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+
+  postFramework(framework: object): Observable<object> {
+    return this.http
+      .post<object>(`${this.urlFrameworks}`, framework, this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+
+  postLenguage(lenguage: object): Observable<object> {
+    return this.http
+      .post<object>(`${this.urlLenguages}`, lenguage, this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
 }

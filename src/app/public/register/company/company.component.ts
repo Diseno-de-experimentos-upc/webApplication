@@ -6,6 +6,7 @@ import { LoginService } from '../../services/login.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogBoxInvalidFormComponent } from '../dialog-box-invalid-form/dialog-box-invalid-form.component';
 import {Router} from "@angular/router";
+import { DigitalProfile } from '../model/digitalprofile';
 @Component({
   selector: 'app-company',
   templateUrl: './company.component.html',
@@ -19,9 +20,13 @@ export class CompanyComponent implements OnInit {
   TempComp: Company;
   pass:string = "";
   registerForm!: FormGroup;
+  digitalProfile: DigitalProfile;
 
   constructor(private service: LoginService, private formBuilder: FormBuilder, public dialog: MatDialog, private router: Router) {
+    
     this.TempComp = {} as Company;
+    this.digitalProfile = {} as DigitalProfile;
+
     this.registerForm = this.formBuilder.group({
       first_name: new FormControl('', { validators:  [Validators.required], updateOn: 'change' }),
       last_name: new FormControl('', { validators:  [Validators.required], updateOn: 'change' }),
@@ -70,8 +75,9 @@ export class CompanyComponent implements OnInit {
     this.TempComp.role =  'company';
     this.TempComp.ruc =  this.registerForm.get('ruc')?.value;
     this.service.postCompany(this.TempComp).subscribe((response:any) => {
-      this.users.push({...response});
       console.log(this.TempComp);
+      this.users.push({...response});
+      console.log(this.users);
     });
   }
 
