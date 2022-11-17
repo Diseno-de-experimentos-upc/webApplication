@@ -50,7 +50,7 @@ export class MessagesComponent implements OnInit {
         "id":0,
         "message": this.answer,
         "emitter": {
-          "id": 3
+          "id": 1
         },
         "receiver": {
             "id": contactId

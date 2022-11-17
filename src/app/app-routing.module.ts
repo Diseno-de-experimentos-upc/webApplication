@@ -14,7 +14,7 @@ import { HomeCompanyComponent } from './companies/pages/home-company/home-compan
 import { MessagesCompanyComponent } from './companies/pages/messages-company/messages-company.component';
 
 const routes: Routes = [
-  {path:'', component:LoginComponent},
+  { path: '', component: LoginComponent },
   {
     path: 'register',
     component: RegisterComponent,
