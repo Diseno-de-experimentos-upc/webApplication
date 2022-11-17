@@ -14,9 +14,23 @@
 
   .developer-career-info {
     display: flex;
-    width: 980%;
+    width: 98%;
     flex-direction: column;
     margin: 1rem;
     overflow: auto;
     height: 95%;
+  }
+
+  .title{
+    margin-top: 50px;
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  .field{
+    display: flex;
+    align-items: center;
+    margin: auto;
+    align-content: center;
+    justify-content: center;
   }

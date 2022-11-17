@@ -20,7 +20,7 @@
           <mat-error *ngIf="iconUrl?.errors?.['required']">Certificate Icon is <strong>required</strong></mat-error>
         </mat-form-field>
 
-        <mat-form-field appearance="fill" class="example-form-field">
+        <mat-form-field appearance="fill" class="example-full-width">
             <mat-label>Obtained Date</mat-label>
             <input matInput [matDatepicker]="datepicker" (dateChange)="dateChanged($event)"  name="obtainedDate" formControlName="obtainedDate" >
           <mat-error *ngIf="obtainedDate?.errors?.['required']">Obtained Date is <strong>required</strong></mat-error>

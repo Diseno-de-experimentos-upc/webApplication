@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { BreakpointObserver } from '@angular/cdk/layout';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatGridList, MatGridTile } from '@angular/material/grid-list';
+import { delay } from 'rxjs';
 
 interface Tool {
   value: string;
@@ -15,6 +18,15 @@ export class ToolsDeveloperComponent implements OnInit {
 
   selectedValue!: string; 
 
+  @ViewChild(MatGridList)
+  gridList!: MatGridList;
+
+  @ViewChild('first')
+  firstGridTile!: MatGridTile;
+
+  @ViewChild('second')
+  secondGridTile!: MatGridTile;
+
   tools: Tool[] = [
     {value: 'project-0', viewValue: 'Project', route: 'project'},
     {value: 'certificate-1', viewValue: 'Certificate', route: 'certificate'},
@@ -24,9 +36,39 @@ export class ToolsDeveloperComponent implements OnInit {
     {value: 'studyCenter-5', viewValue: 'Study Center', route: 'study-center'},
   ];
 
-  constructor() { }
+  constructor(private observer: BreakpointObserver,) { }
 
   ngOnInit(): void {
+  }
+
+
+  ngAfterViewInit() {
+    this.observer
+      .observe(['(max-width: 1215px)'])
+      .pipe(delay(1))
+      .subscribe((res) => {
+        if (res.matches) {
+          //responsive
+          this.gridList.rowHeight = '40vh';
+
+          this.firstGridTile.colspan = 4;
+          this.secondGridTile.colspan = 4;
+
+          this.firstGridTile.rowspan = 1;
+          this.secondGridTile.rowspan = 2;
+
+        } else {
+          //full -width
+          this.gridList.rowHeight = '88vh';
+
+          this.firstGridTile.colspan = 1;
+          this.secondGridTile.colspan = 3;
+
+          this.firstGridTile.rowspan = 1;
+          this.secondGridTile.rowspan = 1;
+
+        }
+      });
   }
 
 }

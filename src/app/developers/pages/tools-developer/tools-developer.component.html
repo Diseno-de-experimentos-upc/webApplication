@@ -5,8 +5,12 @@
          <mat-grid-tile #first colspan="1" rowspan="1">
            <mat-card class="developer-personal-info">
             <mat-card-content>
-                <h1>Choose an option</h1>
-                <mat-form-field appearance="fill">
+                <div class="title">
+                  <p>Choose an option</p>
+                </div>
+
+                <div class="field">
+                  <mat-form-field appearance="fill">
                     <mat-label>Choose an option</mat-label>
                     <mat-select [(ngModel)]="selectedValue" name="food">
                       <mat-option *ngFor="let tool of tools" [value]="tool.value" [routerLink]="tool.route">
@@ -14,9 +18,10 @@
                       </mat-option>
                     </mat-select>
                   </mat-form-field>
+                </div>
             </mat-card-content>
            </mat-card>
-         </mat-grid-tile>
+          </mat-grid-tile>
  
          <mat-grid-tile #second colspan="3" rowspan="1">
            <mat-card class="developer-career-info">
