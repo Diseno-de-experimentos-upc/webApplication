@@ -21,6 +21,7 @@ export class ToolsService {
   frameWorkUrl: string = 'http://localhost:8080/api/v1/frameworks';
   programingLanguageUrl: string = 'http://localhost:8080/api/v1/programmingLanguages';
   certificateUrl: string = 'http://localhost:8080/api/v1/certificates';
+  studyCenterUrl: string = 'http://localhost:8080/api/v1/study-centers';
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -87,7 +88,13 @@ export class ToolsService {
         .pipe(retry(2), catchError(this.handleError));
     }
    
-  
+    //create study center with especific education id
+    createStudyCenter(studyCenter: object, educationId: number): Observable<object> {
+      return this.http
+        .post(`${this.studyCenterUrl}/${educationId}`, studyCenter, this.httpOptions)
+        .pipe(retry(2), catchError(this.handleError));
+    }
+
     //Get Digital Profile by developer id
     GetDigitalProfileByDevId(id: number): Observable<object> {
       return this.http

@@ -1,44 +1,50 @@
 <div class="title">
     <p>Publish a new study centers</p>
   </div>
-  <form class="make-post-form">
-      <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Name</mat-label>
-        <input matInput placeholder="Ex. Boston University">
-      </mat-form-field>
-    
-      <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Description</mat-label>
-        <textarea matInput placeholder="Ex. Bachelor in Computer Science Engineering"></textarea>
-      </mat-form-field>
+  <form class="make-post-form" [formGroup]="registerFormStudyCenter">
   
-      <mat-form-field class="example-full-width" appearance="fill">
-          <mat-label>Logo URL </mat-label>
-          <textarea matInput placeholder="Ex. https://th.bing.com/th/id/OIP.qNV2XkiYJLiFse9UFGoVOQHaE0?pid=ImgDet&rs=1"></textarea>
-        </mat-form-field>
-    
-        <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Career Progress </mat-label>
-            <textarea matInput placeholder="Ex. 50"></textarea>
+
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Study center name</mat-label>
+            <input matInput placeholder="Ex. Boston University" name="name" formControlName="name"/>
+            <mat-error *ngIf="name?.errors?.['required']">Study center name is <strong>required</strong></mat-error>
+          </mat-form-field>
+        
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Description</mat-label>
+            <input matInput placeholder="Bachelors in software engineering" name="description" formControlName="description"/>
+            <mat-error *ngIf="description?.errors?.['required']">Description is <strong>required</strong></mat-error>
+          </mat-form-field>
+      
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Study center Logo URL</mat-label>
+            <input matInput placeholder="EX. https://th.bing.com/th/id/OIP.qNV2XkiYJLiFse9UFGoVOQHaE0?pid=ImgDet&rs=1" name="iconUrl" formControlName="iconUrl"/>
+            <mat-error *ngIf="iconUrl?.errors?.['required']">Study center Icon is <strong>required</strong></mat-error>
           </mat-form-field>
 
           <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Entry date</mat-label>
-            <input matInput [matDatepicker]="picker">
-            <mat-hint>MM/DD/YYYY</mat-hint>
-            <mat-datepicker #picker></mat-datepicker>
+            <mat-label>Career Progress</mat-label>
+            <input matInput placeholder="Ex. 50" name="progress" formControlName="progress"/>
+            <mat-error *ngIf="progress?.errors?.['required']">Career progress is <strong>required</strong></mat-error>
           </mat-form-field>
-      
-     
+  
+
           <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Graduation date</mat-label>
-            <input matInput [matDatepicker]="picker">
-            <mat-hint>MM/DD/YYYY</mat-hint>
-            <mat-datepicker #picker></mat-datepicker>
+            <mat-label>Enter your entry and graduation date</mat-label>
+            <mat-date-range-input [rangePicker]="picker">
+              <input matStartDate placeholder="Ex. 10/12/2020" (dateChange)="dateChanged($event)" name="entryDate" formControlName="entryDate">
+              <mat-error *ngIf="entryDate?.errors?.['required']">Entry Date is <strong>required</strong></mat-error>
+
+              <input matEndDate placeholder="Ex. 07/11/2025" (dateChange)="dateChanged2($event)" name="graduationDate" formControlName="graduationDate">
+              <mat-error *ngIf="graduationDate?.errors?.['required']">Graduation Date is <strong>required</strong></mat-error>
+            </mat-date-range-input>
+            <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-date-range-picker #picker></mat-date-range-picker>
           </mat-form-field>
-     
+
 
     </form>
     <div class = "div-btn">
-      <button mat-raised-button color="primary" class="btn-send-post">Publish</button>
+      <button mat-raised-button color="primary" class="btn-send-post" (click)="addStudyCenter()" >Publish</button>
     </div>
