@@ -20,6 +20,13 @@ import { HomeCompanyComponent  } from './companies/pages/home-company/home-compa
 import { MessagesCompanyComponent } from './companies/pages/messages-company/messages-company.component';
 import { SettingsCompanyComponent } from './companies/pages/settings/settings.component';
 import { NotificationsCompanyComponent } from './companies/pages/notifications-company/notifications-company.component';
+import { ToolsDeveloperComponent } from './developers/pages/tools-developer/tools-developer.component';
+import { ProjectComponent } from './developers/pages/tools-developer/project/project.component';
+import { CertificateComponent } from './developers/pages/tools-developer/certificate/certificate.component';
+import { DatabaseComponent } from './developers/pages/tools-developer/database/database.component';
+import { ProgrammingLanguageComponent } from './developers/pages/tools-developer/programming-language/programming-language.component';
+import { FrameworkComponent } from './developers/pages/tools-developer/framework/framework.component';
+import { StudyCenterComponent } from './developers/pages/tools-developer/study-center/study-center.component';
 const routes: Routes = [
   {path:'', component:LoginComponent},
   {path:'login', component:LoginComponent},
@@ -33,6 +40,16 @@ const routes: Routes = [
     children: [
       { path: 'home', component: HomeComponent },
       { path: 'messages', component: MessagesComponent },
+      { path: 'tools', component: ToolsDeveloperComponent, 
+        children: [
+          { path: 'project', component: ProjectComponent },
+          { path: 'certificate', component: CertificateComponent },
+          { path: 'database', component: DatabaseComponent },
+          { path: 'programming-language', component: ProgrammingLanguageComponent },
+          { path: 'framework', component: FrameworkComponent },
+          { path: 'study-center', component: StudyCenterComponent },
+        ], 
+      },
       { path: 'profile', component: ProfileDeveloperComponent },
       { path: 'settings', component: SettingsDeveloperComponent},
       {path: 'notifications', component: NotificationsDeveloperComponent},

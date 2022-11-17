@@ -1,0 +1,40 @@
+<div class="title">
+    <p>Publish a new certificate</p>
+  </div>
+  <form class="make-post-form"  [formGroup]="registerFormCertificate" >
+      <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Certificate title</mat-label>
+          <input matInput placeholder="Ex. Ex. Google" name="title" formControlName="title"/>
+          <mat-error *ngIf="title?.errors?.['required']">Title is <strong>required</strong></mat-error>
+        </mat-form-field>
+      
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Description</mat-label>
+          <input matInput placeholder="Ex. Junior Developer" name="description" formControlName="description"/>
+          <mat-error *ngIf="description?.errors?.['required']">Description is <strong>required</strong></mat-error>
+        </mat-form-field>
+    
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Certificate icon URL</mat-label>
+          <input matInput placeholder="EX. https://th.bing.com/th/id/OIP.qNV2XkiYJLiFse9UFGoVOQHaE0?pid=ImgDet&rs=1" name="iconUrl" formControlName="iconUrl"/>
+          <mat-error *ngIf="iconUrl?.errors?.['required']">Certificate Icon is <strong>required</strong></mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="example-full-width">
+            <mat-label>Obtained Date</mat-label>
+            <input matInput [matDatepicker]="datepicker" (dateChange)="dateChanged($event)"  name="obtainedDate" formControlName="obtainedDate" >
+          <mat-error *ngIf="obtainedDate?.errors?.['required']">Obtained Date is <strong>required</strong></mat-error>
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+            <mat-datepicker #datepicker>
+              <mat-datepicker-actions>
+                <button mat-button matDatepickerCancel>Cancel</button>
+                <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
+              </mat-datepicker-actions>
+            </mat-datepicker>
+          </mat-form-field>
+
+    </form>
+    <div class = "div-btn">
+      <button mat-raised-button color="primary" class="btn-send-post" (click)="addCertificate()" >Publish</button>
+    </div>
