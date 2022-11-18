@@ -12,7 +12,7 @@
 
     <mat-form-field appearance="fill" class="find-your-dev__form-field">
       <mat-label>Specialty type</mat-label>
-      <mat-select multiple formControlName="specialty_type">
+      <mat-select formControlName="specialty_type">
         <mat-option *ngFor="let specialty of specialtyType" [value]="specialty">
           {{specialty}}
         </mat-option>
@@ -30,7 +30,7 @@
 
     <mat-form-field appearance="fill" class="find-your-dev__form-field">
       <mat-label>Programming language</mat-label>
-      <mat-select multiple formControlName="programming_languages">
+      <mat-select formControlName="programming_languages">
         <mat-option *ngFor="let language of programmingLanguages" [value]="language">
           {{language}}
         </mat-option>
@@ -42,7 +42,7 @@
     <div *ngIf=isCheckedFramework>
       <mat-form-field appearance="fill" class="find-your-dev__form-field" id="ext">
         <mat-label>Frameworks</mat-label>
-        <mat-select multiple formControlName="frameworks">
+        <mat-select formControlName="frameworks">
           <mat-option *ngFor="let framework of frameworkList" [value]="framework">
             {{framework}}
           </mat-option>
@@ -54,7 +54,7 @@
     <div *ngIf=isCheckedDatabase>
       <mat-form-field appearance="fill" class="find-your-dev__form-field" id="ext2">
         <mat-label>Databases</mat-label>
-        <mat-select multiple formControlName="databases">
+        <mat-select formControlName="databases">
           <mat-option *ngFor="let database of databaseList" [value]="database">
             {{database}}
           </mat-option>
@@ -67,7 +67,7 @@
     <h2>Results</h2>
     <mat-card-content *ngFor="let dev of devs">
       <img class="avatar mat-elevation-z8" src={{dev.image}} width="180%">
-      <p>{{dev.first_name}} {{dev.last_name}}</p>
+      <p>{{dev.description}} {{dev.description}}</p>
     </mat-card-content>
   </mat-card>
 </div>
