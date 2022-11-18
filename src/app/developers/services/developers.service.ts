@@ -7,6 +7,7 @@ import {
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { Developer } from '../model/developer';
+import { Framework } from '../model/framework';
 
 @Injectable({
   providedIn: 'root',
@@ -23,6 +24,8 @@ export class DevelopersService {
   MessagesURL: string = 'http://localhost:3000/messages';
 
   NotificationsURL: string = 'http://localhost:3000/notifications-developers';
+
+  backURL: string = 'http://localhost:8080/api/v1/users/searchByFrameworkAndProgrammingLanguageAndDatabase';
 
 
   httpOptions = {
@@ -49,6 +52,12 @@ export class DevelopersService {
   GetAllDevs(): Observable<Developer> {
     return this.http
       .get<Developer>(this.BaseURL, this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+
+  GetDevsByFrameworkAndLanguageAndDatabase(framework: string, language: string, database: string): Observable<object> {
+    return this.http
+      .get<object>(`${this.backURL}/${framework}&${language}&${database}`, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 

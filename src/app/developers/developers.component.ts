@@ -53,7 +53,7 @@ export class DevelopersComponent implements OnInit {
   analizeRoot(){
     this.currentRoute = this.router.url;
     //find profile string in current route
-    if (this.currentRoute.includes('profile')) {
+    if (this.currentRoute.includes('profile') || this.currentRoute.includes('tools') ) {
       this.profile = true;
     }
     else

@@ -71,7 +71,12 @@ export class FindYourDevComponent implements OnInit {
     this.isCheckedFramework = !this.isCheckedFramework;
   }
   getDevs(): void {
-    this.service.GetAllDevs().subscribe((data:any) => {
+    const fr = this.filterForm.value.frameworks;
+    const pl = this.filterForm.value.programming_languages;
+    const db = this.filterForm.value.databases;
+    console.log(fr, pl, db);
+    //this.service.GetAllDevs().subscribe((data:any) => {
+      this.service.GetDevsByFrameworkAndLanguageAndDatabase(fr, pl, db).subscribe((data:any) => {
       this.devs = data;
       console.log(data);
     });
