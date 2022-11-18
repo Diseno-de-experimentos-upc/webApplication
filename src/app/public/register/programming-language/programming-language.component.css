@@ -1,50 +1,50 @@
-.register-dev-form{
-    /*background-color: #02AAEE;*/
-    background-color: red;
-    width: 100%;
-    height: 75%;
-    margin: auto auto;
-    justify-content: center;
-    text-align: center;
+.form-container{
+  box-sizing: border-box;
+  position: absolute;
+  width: 60%;
+  height: 80%;
+  left: 20%;
+  top: 10%;
+  background: #02AAEE;
+  /*#02AAEE*/
+  border: 1px solid #000000;
+  box-shadow: 0px 4px 4px rgba(0,0,0,0.25);
+  border-radius: 14px;
+
 }
-
-.main-div {
-  height: 40%;
-  align-items: center;
-  background-color: #02AAEE;
-  width: 90%;
-  margin: auto auto;
-}
-
-
-.main-div .mat-form-field {
-  background-color: #FFFFFF;
-  font-size: 0.7rem;
-  margin: 1% 1%;
+.form-container .copyrigth p{
+  color: #FFFFFF;
+  font-size: 1rem;
+  margin-top: 2%;
   text-align: center;
-  width: 30%;
 }
-
+.form-container .title h1{
+  font-size: 1.5rem;
+  margin-top: 1%;
+  text-align: center;
+  font-weight: bold;
+}
 
 .professional-info{
     background-color: #007BBB; /* #007BBB */
     border-radius: 20px;
     border: 1px solid #000000;
-    align-items: center;
-    width: 90%;
-    height: 40%;
-    margin: 1% auto;
+    width: 80%;
+    height: 60%;
+    margin: auto auto;
+    justify-content: center;
+    text-align: center;
 }
 
 .professional-info .mat-form-field {
   background-color: #FFFFFF;
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   margin: 1% 1%;
   text-align: center;
-  width: 30%;
+  width: 60%;
 }
 
-h3{
+.professional-info .register-dev-form h3{
   margin: 3%;
   font-size: 1.2rem;
   font-weight: bold;
@@ -52,77 +52,86 @@ h3{
   text-align: center;
 }
 
-.register-dev-form .btn-register{
+.form-container .button-finish{
+  text-align: center;
+  justify-content: center;
+  margin: 2% auto;
+}
+.form-container .btn-register{
+  font-size: 2vh;
   background-color: #000000;
   color: #FFFFFF;
   width: 40%;
   height: 10%;
-  margin: 1% auto;
-  text-align: center;
-  font-size: 1.8vh;
+  padding: 0;
 }
-
+/*--------------------------------- Responsive Styles for cellphone-------------*/
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
-  .register-dev-form{
-    background-color: #02AAEE;
-    width: 100%;
-    height: 75%;
-    margin: auto auto;
-    justify-content: center;
-    text-align: center;
-  }
-
-  .main-div {
-    height: 40%;
-    align-items: center;
-    background-color: #02AAEE;
+  .form-container{
+    box-sizing: border-box;
+    position: absolute;
     width: 90%;
-    margin: auto auto;
+    height: 70%;
+    left: 5%;
+    top: 15%;
+    background: #02AAEE;
+    /*#02AAEE*/
+    border: 1px solid #000000;
+    box-shadow: 0px 4px 4px rgba(0,0,0,0.25);
+    border-radius: 14px;
+  
   }
-  
-  
-  .main-div .mat-form-field {
-    background-color: #FFFFFF;
-    font-size: 0.7rem;
-    margin: 1% 2%;
+  .form-container .copyrigth p{
+    color: #FFFFFF;
+    font-size: 1rem;
+    margin-top: 5%;
     text-align: center;
-    width: 40%;
   }
-  
+  .form-container .title h1{
+    font-size: 1.5rem;
+    margin-top: 1%;
+    text-align: center;
+    font-weight: bold;
+  }
   
   .professional-info{
       background-color: #007BBB; /* #007BBB */
       border-radius: 20px;
       border: 1px solid #000000;
-      align-items: center;
       width: 90%;
-      height: 45%;
-      margin: 4% auto;
+      height: 60%;
+      margin: 5% auto;
+      justify-content: center;
+      text-align: center;
   }
   
   .professional-info .mat-form-field {
     background-color: #FFFFFF;
-    font-size: 0.7rem;
-    margin: 1% 2%;
+    font-size: 0.8rem;
+    margin: 1% 1%;
     text-align: center;
-    width: 30%;
+    width: 60%;
   }
   
-  h3{
-    margin: 5%;
+  .professional-info .register-dev-form h3{
+    margin: 3%;
     font-size: 1.2rem;
     font-weight: bold;
     text-decoration: underline;
     text-align: center;
   }
   
-  .register-dev-form .btn-register{
+  .form-container .button-finish{
+    text-align: center;
+    justify-content: center;
+    margin: 2% auto;
+  }
+  .form-container .btn-register{
+    font-size: 2vh;
     background-color: #000000;
     color: #FFFFFF;
     width: 40%;
     height: 10%;
-    margin: 0% auto;
-    text-align: center;
-    font-size: 1.8vh;
+    padding: 0;
   }
 }

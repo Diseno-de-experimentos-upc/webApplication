@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { toInteger } from 'lodash';
 import { LoginService } from 'src/app/public/services/login.service';
 import { DialogBoxInvalidFormComponent } from '../dialog-box-invalid-form/dialog-box-invalid-form.component';
 import { Database } from '../model/database';
@@ -17,14 +18,7 @@ import { User } from '../model/user';
   styleUrls: ['./programming-language.component.css']
 })
 export class ProgrammingLanguageComponent implements OnInit {
-
-  mismatch: boolean = false;
-  registered: boolean = false;
-  TempDev: Developer;
-  userDev: User;
-  pass: string = '';
   registerForm!: FormGroup;
-  users: Array<User> = [];
   language: Language;
   database: Database;
   frameWork: Framework;
@@ -57,19 +51,11 @@ export class ProgrammingLanguageComponent implements OnInit {
 
   constructor(private service: LoginService, private formBuilder: FormBuilder, public dialog: MatDialog, private router: Router) {
     this.digitalProfile = {} as DigitalProfile;
-    this.userDev = {} as User;
     this.language = {} as  Language;
     this.database = {} as Database;
     this.frameWork = {} as Framework;
-    this.TempDev = {} as Developer;
 
     this.registerForm = this.formBuilder.group({
-      first_name: new FormControl('', { validators:  [Validators.required], updateOn: 'change' }),
-      last_name: new FormControl('', { validators:  [Validators.required], updateOn: 'change' }),
-      phone:new FormControl('', { validators:  [Validators.required, Validators.minLength(9), Validators.maxLength(9), Validators.pattern('^[0-9]*$')], updateOn: 'change' }),
-      email: new FormControl('', { validators:  [Validators.required, Validators.email, Validators.pattern('[a-z0-9]+@[a-z]+\.[a-z]{2,3}')], updateOn: 'change' }),
-      password: new FormControl('', { validators:  [Validators.required, Validators.minLength(8), Validators.maxLength(16)], updateOn: 'change' }),
-      password_confirm: new FormControl('', { validators: [Validators.required, Validators.minLength(8), Validators.maxLength(16)], updateOn: 'change' }),
       languages: [''],
       databases: [''],
       frameworks: [''],
@@ -78,26 +64,18 @@ export class ProgrammingLanguageComponent implements OnInit {
     );
   }
 
-    ngOnInit(): void {
-    this.setEmailValidation();
-    this.setPhoneValidation();
-    this.setPaswordValidation();
-    this.service.getAllUser().subscribe((response: any) => {
-      this.users = response;
-      //console.log(this.users);
+  ngOnInit(): void {
+    //getting id from localStorage
+    const id = toInteger(localStorage.getItem("id"));
+    this.service.getDigitalProfileByDeveloperId(id).subscribe((response: any) => {
+      this.digitalProfile = response;
+      console.log(this.digitalProfile);
     });
-    /* this.service.getDigitalProfileByDeveloperId(17).subscribe((response: any) => {
-      this.digitalProfile = response;     
-    }); */
     
   }
 
-  AddProgrammingLanguages(developerId: number){
-    this.service.getDigitalProfileByDeveloperId(developerId).subscribe((response: any) => {
-      console.log(response);
-    });
+  AddProgrammingLanguages(){
     for (let i = 0; i < this.registerForm.get('languages')?.value.length; i++) {
-      console.log(this.registerForm.get('languages')?.value[i]);
       this.language.name = this.registerForm.get('languages')?.value.at(i);
       this.language.description = "I am expert with programming language " + this.registerForm.get('languages')?.value.at(i);
       if(this.language.name === 'JavaScript'){
@@ -127,13 +105,13 @@ export class ProgrammingLanguageComponent implements OnInit {
       else {
         this.language.iconLink = "https://e7.pngegg.com/pngimages/383/488/png-clipart-ruby-on-rails-programming-language-computer-programming-logo-ruby-ruby-scripting-language-thumbnail.png";
       }
-      this.service.postLenguage(this.language, 1).subscribe((response2:any) => {
+      this.service.postLenguage(this.language, this.digitalProfile.id).subscribe((response2:any) => {
         console.log(response2);
       });
     }
   }
 
-  AddDatabases(developerId: number){
+  AddDatabases(){
     for (let i = 0; i < this.registerForm.get('databases')?.value.length; i++){
       this.database.name = this.registerForm.get('databases')?.value[i];
       this.database.description = "I am expert with database" + this.registerForm.get('databases')?.value[i];
@@ -152,16 +130,13 @@ export class ProgrammingLanguageComponent implements OnInit {
       else {
         this.database.iconLink = "https://logodix.com/logo/2090013.jpg";
       }
-      this.service.getDigitalProfileByDeveloperId(developerId).subscribe((response: any) => {
-        this.digitalProfile = response;
-        this.service.postDatabase(this.database, this.digitalProfile.id).subscribe((response:any) => {
-          console.log(response);
-        });
-      });      
+      this.service.postDatabase(this.database, this.digitalProfile.id).subscribe((response:any) => {
+        console.log(response);
+      });    
     }
   }
 
-  AddFrameworks(developerId: number){
+  AddFrameworks(){
     for(let i= 0; i < this.registerForm.get('frameworks')?.value.length; i++){
       this.frameWork.name = this.registerForm.get('frameworks')?.value[i];
       this.frameWork.description = "I am expert with framework " + this.registerForm.get('frameworks')?.value[i];
@@ -180,118 +155,43 @@ export class ProgrammingLanguageComponent implements OnInit {
       else if (this.frameWork.name === 'Vue.js'){
         this.frameWork.iconLink = "https://upload.wikimedia.org/wikipedia/commons/9/95/Vue.js_Logo_2.svg";
       }
-     
-      this.service.getDigitalProfileByDeveloperId(developerId).subscribe((response: any) => {
-        this.digitalProfile = response;
-        //console.log(response);
-        this.service.postFramework(this.frameWork, this.digitalProfile.id).subscribe((response:any) => {
-          console.log(response);
-        });
+      this.service.postFramework(this.frameWork, this.digitalProfile.id).subscribe((response:any) => {
+        console.log(response);
       });
     }
 
-    
-  }
-
-  AddDigitalProfile() {
-    this.service.getUserByEmail(this.registerForm.get("email")?.value).subscribe((response: any) => {
-      this.userDev = response;
-      //console.log(response);
-      this.digitalProfile.name = "Digital Profile " + this.registerForm.get("first_name")?.value;
-    
-      this.service.postDigitalProfile(this.digitalProfile, this.userDev.id).subscribe((response:any) => {
-        //console.log(response);
-      });
-      /* if (this.registerForm.get('languages')?.value.length > 0)
-        this.AddProgrammingLanguages(this.userDev.id);
-
-      if(this.registerForm.get('databases')?.value.length > 0)
-        this.AddDatabases(this.userDev.id);
-      
-      if(this.registerForm.get('frameworks')?.value.length > 0)
-        this.AddFrameworks(this.userDev.id); */
-    });
-    
-  }
-
-  Add() {
-    this.TempDev.firstName =  this.registerForm.get('first_name')?.value;
-    this.TempDev.lastName =  this.registerForm.get('last_name')?.value;
-    this.TempDev.phone =  this.registerForm.get('phone')?.value;
-    this.TempDev.email =  this.registerForm.get('email')?.value;
-    this.TempDev.password =  this.registerForm.get('password')?.value;
-    this.TempDev.description =  'I am a developer';
-    this.TempDev.role =  'developer';
-    this.TempDev.image = 'https://d500.epimg.net/cincodias/imagenes/2016/07/04/lifestyle/1467646262_522853_1467646344_noticia_normal.jpg';
-    this.TempDev.bannerImage = 'https://thumbs.dreamstime.com/b/internet-information-technology-businessman-hand-showing-concept-75784736.jpg';
-
-    this.service.postDeveloper(this.TempDev).subscribe((response:any) => {
-      //console.log(response);
-      //console.log(this.users);
-    });
-    this.ngOnInit();
-    this.AddDigitalProfile();
-    this.ngOnInit();
-    console.log(this.userDev.id);
     
   }
   
   openDialog() {
-    if (this.registerForm.invalid) {
-      if(this.registerForm.get('password')?.value !== this.registerForm.get('password_confirm')?.value) {
-        this.dialog.open(DialogBoxInvalidFormComponent, { 
-          data: {message: 'Please confirm the same password!'},
-        });
-      }
-      else{
-        this.dialog.open(DialogBoxInvalidFormComponent, { 
-          data: {message: 'Please fill all the required fields!'},
-        });
-      }
+    if (this.registerForm.get('languages')?.value.length !== 0 && 
+        this.registerForm.get('databases')?.value.length !== 0 && 
+        this.registerForm.get('frameworks')?.value.length !== 0){
+          if(this.registerForm.get('languages')?.value.length > 0)
+        this.AddProgrammingLanguages();
+      
+      if(this.registerForm.get('databases')?.value.length > 0)
+        this.AddDatabases();
+      
+      if(this.registerForm.get('frameworks')?.value.length > 0)
+        this.AddFrameworks();
+      
+      this.dialog.open(DialogBoxInvalidFormComponent, { 
+        data: {message: 'You added data to your profile, You will be redirect to login!'},
+      });
+      this.router.navigate(['/login']);
+      localStorage.removeItem('id');
     }
     else {
-      this.verifyDeveloperUnregistered();
-      if(!this.registered) {
-        this.Add();
-        this.registered = true;
-        this.dialog.open(DialogBoxInvalidFormComponent, { 
-          data: {message: 'You have successfully registered!'},
-        });
-        this.router.navigate(['/login']);
-      }
-      else {
-        this.dialog.open(DialogBoxInvalidFormComponent, { 
-          data: {message: 'This email is already registered!'},
-        });
-      }
-      
+      this.dialog.open(DialogBoxInvalidFormComponent, { 
+        data: {message: 'You did not select any language to your profile, You will be redirect to login!'},
+      });
+      this.router.navigate(['/login']);
+        localStorage.removeItem('id');
     }
   }
 
-    //Properties
-  get email() {
-    return this.registerForm.get('email');
-  }
-  get password() {
-    return this.registerForm.get('password');
-  }
-
-  get phone() {
-    return this.registerForm.get('phone');
-  }
-
-  get first_name() {
-    return this.registerForm.get('first_name');
-  }
-
-  get password_confirm() {
-    return this.registerForm.get('password_confirm');
-  }
-  
-  get last_name() {
-    return this.registerForm.get('last_name');
-  }
-
+  //Properties
   get languages() {
     return this.registerForm.get('languages');
   }
@@ -304,74 +204,12 @@ export class ProgrammingLanguageComponent implements OnInit {
     return this.registerForm.get('frameworks');
   }
 
-  setEmailValidation() {
-    
-
-    const emailControl = this.registerForm.get('email');
-      //Default validation
-    emailControl?.setValidators([Validators.required, Validators.email, Validators.pattern('[a-z0-9]+@[a-z]+\.[a-z]{2,3}')]);
-    this.registerForm.get('email')?.valueChanges.subscribe(value => {
-      if (value === 'admin@digitalmind.com') {
-        this.registerForm.get('email')?.setValidators([Validators.required]);
-      } else {
-        this.registerForm.get('email')?.setValidators([Validators.required, Validators.email, Validators.pattern('[a-z0-9]+@[a-z]+\.[a-z]{2,3}')]);
-      }
-        this.registerForm.get('email')?.updateValueAndValidity();
+  back(): void {
+    this.dialog.open(DialogBoxInvalidFormComponent, { 
+      data: {message: 'You did not select any language to your profile, You will be redirect to login!'},
     });
-    
-  }
-
-  setPhoneValidation() {
-    const phoneControl = this.registerForm.get('phone');
-    phoneControl?.setValidators([Validators.required, Validators.pattern('^[0-9]*$'), Validators.minLength(9), Validators.maxLength(9)]);
-    this.registerForm.get('phone')?.valueChanges.subscribe(value => {
-      if (value.length < 9 || value.length > 9) {
-        this.registerForm.get('phone')?.setValidators([Validators.required, Validators.minLength(9), Validators.maxLength(9)]);
-      } else {
-        this.registerForm.get('phone')?.setValidators([Validators.required, Validators.pattern('^[0-9]*$')]);
-      }
-        this.registerForm.get('phone')?.updateValueAndValidity();
-    });
-  }
-
-
-
-  MustMatch( password: any, password_confirm: any) {
-    return (formGroup: FormGroup) => {
-      const passwordControl = formGroup.controls[password];
-      const passwordConfirmControl = formGroup.controls[password_confirm];
-
-      if (passwordConfirmControl.errors && !passwordConfirmControl.errors['mustMatch']) {
-        return;
-      }
-      if (passwordControl.value !== passwordConfirmControl.value) {
-        passwordConfirmControl.setErrors({ MustMatch: true });
-      } else {
-        passwordConfirmControl.setErrors(null);
-      }
-    };
+    this.router.navigate(['/login']);
+      localStorage.removeItem('id');
   }
   
-  setPaswordValidation() {
-    this.registerForm.get('password')?.valueChanges.subscribe(value => {
-      if (value.length < 8 || value.length > 16) {
-        this.registerForm.get('password')?.setValidators([Validators.required, Validators.minLength(8), Validators.maxLength(16)]);
-      } else {
-        this.registerForm.get('password')?.setValidators([Validators.required, Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*]).{8,16}$')]);
-      }
-        this.registerForm.get('password')?.updateValueAndValidity();
-    });
-  }
-  verifyDeveloperUnregistered() {
-    this.users.forEach((user: any) => {
-      if (user.email === this.registerForm.get('email')?.value) {
-        this.registered = true;
-        return;
-      }
-      else {
-        this.registered = false;
-      }
-    });
-    
-  }
 }

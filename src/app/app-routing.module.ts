@@ -27,10 +27,9 @@ const routes: Routes = [
   {path: 'register', component: RegisterComponent, children: [
       {path: 'developer', component: DeveloperComponent},
       {path: 'company', component: CompanyComponent},
-      {path: 'languages', component: ProgrammingLanguageComponent},
     ]
   },
-  
+  {path: 'register/developer/languages', component: ProgrammingLanguageComponent},
   {
     path: 'developers',
     component: DevelopersComponent,
