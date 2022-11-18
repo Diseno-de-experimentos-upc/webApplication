@@ -4,6 +4,7 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { Developer } from '../register/model/developer';
 import { Company } from '../register/model/company';
+import { DigitalProfile } from '../register/model/digitalprofile';
 @Injectable({
   providedIn: 'root'
 })
@@ -80,9 +81,9 @@ export class LoginService {
       .pipe(retry(2), catchError(this.handleError));
   }
 
-  getDigitalProfileByDeveloperId(id: number): Observable<object> {
+  getDigitalProfileByDeveloperId(id: number): Observable<Object> {
     return this.http
-      .get<object>(`${this.urlDigitalProfile}/developer/${id}`, this.httpOptions)
+      .get<DigitalProfile>(`${this.urlDigitalProfile}/developer/${id}`, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 

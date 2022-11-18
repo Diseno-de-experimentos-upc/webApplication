@@ -1,4 +1,4 @@
-  <form class="register-dev-form" [formGroup]="registerForm">
+<form class="register-dev-form" [formGroup]="registerForm">
     <div class="main-div">
       <mat-form-field class="register-dev__firstname" appearance="fill">
         <mat-label>First Name</mat-label>
@@ -47,9 +47,32 @@
         <mat-error *ngIf="password_confirm?.errors?.['maxlength']">Maximum 16 <strong>characters</strong></mat-error>
         <mat-error *ngIf="password_confirm?.errors?.['MustMatch']">Do not match <strong>password</strong></mat-error>
       </mat-form-field>
-      <div>
-        <button mat-button color="primary" class="btn-register" (click)="openDialog()">Create Account</button>
-      </div>
-    </div>     
-  
+
+    </div>
+    <div class="professional-info" >
+      <h3>Enter your professional info </h3>
+
+      <mat-form-field appearance="fill" class="register-dev__languages">
+        <mat-label>Languages</mat-label>
+        <mat-select multiple formControlName="languages">
+          <mat-option *ngFor="let language of languagesList" [value]="language">{{language}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="register-dev__databases">
+        <mat-label>Databases</mat-label>
+        <mat-select multiple formControlName="databases">
+          <mat-option *ngFor="let database of databasesList" [value]="database">{{database}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="register-dev__frameworks">
+        <mat-label>Frameworks</mat-label>
+        <mat-select multiple formControlName="frameworks">
+          <mat-option *ngFor="let framework of frameworksList" [value]="framework">{{framework}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+  </div>
+      
+  <button mat-button color="primary" class="btn-register" (click)="openDialog()">Create Account</button>
 </form>
