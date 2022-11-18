@@ -62,22 +62,6 @@ export class DeveloperComponent implements OnInit {
     
   }
 
-  AddDigitalProfile() {
-    this.service.getUserByEmail(this.registerForm.get("email")?.value).subscribe((response: any) => {
-      this.userDev = response;
-      localStorage.setItem('id', this.userDev.id.toString());
-      console.log('Get User by email');
-      console.log(response);
-      this.digitalProfile.name = "Digital Profile " + this.registerForm.get("first_name")?.value;
-    
-      this.service.postDigitalProfile(this.digitalProfile, this.userDev.id).subscribe((response:any) => {
-        console.log('Post Digital Profile');
-        console.log(response);
-      });
-    });
-    
-  }
-
   Add() {
     this.TempDev.firstName =  this.registerForm.get('first_name')?.value;
     this.TempDev.lastName =  this.registerForm.get('last_name')?.value;
@@ -115,13 +99,9 @@ export class DeveloperComponent implements OnInit {
         this.Add();
         this.registered = true;
         this.dialog.open(DialogBoxInvalidFormComponent, { 
-          data: {message: 'You have registered successfully! Next page you can added some skills to your profile'},
-          
+          data: {message: 'You have registered successfully! You will be redirect to login.'},
         });
-        this.dialog.afterAllClosed.subscribe(() => {
-          this.AddDigitalProfile();
-        });
-        this.router.navigate(['/register/developer/languages']);
+        this.router.navigate(['/login']);
       }
       else {
         this.dialog.open(DialogBoxInvalidFormComponent, { 

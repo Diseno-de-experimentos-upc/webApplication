@@ -20,7 +20,6 @@ import { HomeCompanyComponent  } from './companies/pages/home-company/home-compa
 import { MessagesCompanyComponent } from './companies/pages/messages-company/messages-company.component';
 import { SettingsCompanyComponent } from './companies/pages/settings/settings.component';
 import { NotificationsCompanyComponent } from './companies/pages/notifications-company/notifications-company.component';
-import { ProgrammingLanguageComponent } from './public/register/programming-language/programming-language.component';
 const routes: Routes = [
   {path:'', component:LoginComponent},
   {path:'login', component:LoginComponent},
@@ -29,7 +28,6 @@ const routes: Routes = [
       {path: 'company', component: CompanyComponent},
     ]
   },
-  {path: 'register/developer/languages', component: ProgrammingLanguageComponent},
   {
     path: 'developers',
     component: DevelopersComponent,

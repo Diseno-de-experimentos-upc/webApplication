@@ -55,9 +55,6 @@ import { DialogSaveComponent } from './companies/pages/settings/dialog-save/dial
 import { NotificationsCompanyComponent } from './companies/pages/notifications-company/notifications-company.component';
 /* Page Not Found Component */
 import { PageNotFoundComponent } from './public/page-not-found/page-not-found.component';
-import { ProgrammingLanguageComponent } from './public/register/programming-language/programming-language.component';
-
-
 
 
 @NgModule({
@@ -94,7 +91,6 @@ import { ProgrammingLanguageComponent } from './public/register/programming-lang
     DialogSaveComponent,
 
     PageNotFoundComponent,
-      ProgrammingLanguageComponent,
 
 
   ],
