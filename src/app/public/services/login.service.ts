@@ -62,7 +62,7 @@ export class LoginService {
       .pipe(retry(2), catchError(this.handleError));
   }
 
-  getUserAll(): Observable<object> {
+  getAllUser(): Observable<object> {
     return this.http
       .get<object>(this.basePath, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
@@ -74,21 +74,44 @@ export class LoginService {
       .pipe(retry(2), catchError(this.handleError));
   }
 
-  postDatabase(database: object): Observable<object> {
+  getAllDigitalProfile(): Observable<object> {
     return this.http
-      .post<object>(`${this.urlDatabase}`, database, this.httpOptions)
+      .get<object>(`${this.urlDigitalProfile}`, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 
-  postFramework(framework: object): Observable<object> {
+  getDigitalProfileByDeveloperId(id: number): Observable<object> {
     return this.http
-      .post<object>(`${this.urlFrameworks}`, framework, this.httpOptions)
+      .get<object>(`${this.urlDigitalProfile}/developer/${id}`, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 
-  postLenguage(lenguage: object): Observable<object> {
+  postDatabase(database: object, id: number): Observable<object> {
     return this.http
-      .post<object>(`${this.urlLenguages}`, lenguage, this.httpOptions)
+      .post<object>(`${this.urlDatabase}/${id}`, database, this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+
+  postFramework(framework: object, id: number): Observable<object> {
+    return this.http
+      .post<object>(`${this.urlFrameworks}/${id}`, framework, this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+  getAllFrameworks(): Observable<object> {
+    return this.http
+      .get<object>(`${this.urlFrameworks}`, this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+
+  postLenguage(lenguage: object, id: number): Observable<object> {
+    return this.http
+      .post<object>(`${this.urlLenguages}/${id}`, lenguage, this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+
+  getUserByEmail(email: string): Observable<object> {
+    return this.http
+      .get<object>(`${this.basePath}/searchByEmail/${email}`, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 }

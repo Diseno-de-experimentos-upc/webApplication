@@ -1,7 +1,7 @@
-export interface Frameworks{
+export interface Framework{
     id: number,
     description: string,
-    icon_link: string,
+    iconLink: string,
     name: string,
     digital_profile_id: number
   }

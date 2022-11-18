@@ -32,11 +32,11 @@ export class LoginComponent implements OnInit {
     this.setPaswordValidation();
     this.service.getDeveloperAll().subscribe((response: any) => {
       this.usersDeveloper = response;
-      console.log(this.usersDeveloper);
+      //console.log(this.usersDeveloper);
     });
     this.service.getCompanyAll().subscribe((response: any) => {
       this.usersCompany = response;
-      console.log(this.usersCompany);
+      //console.log(this.usersCompany);
     });
   }
 

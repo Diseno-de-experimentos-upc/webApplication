@@ -11,11 +11,15 @@ import {
 } from '@angular/forms';
 import { Developer } from '../model/developer';
 import { User } from '../model/user';
+import { Language } from '../model/language';
+import { Database } from '../model/database';
+import { Framework } from '../model/framework';
 import { DigitalProfile } from '../model/digitalprofile';
 import { LoginService } from '../../services/login.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogBoxInvalidFormComponent } from '../dialog-box-invalid-form/dialog-box-invalid-form.component';
 import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-developer',
@@ -27,11 +31,14 @@ export class DeveloperComponent implements OnInit {
   mismatch: boolean = false;
   registered: boolean = false;
   TempDev: Developer;
+  userDev: User;
   pass: string = '';
   registerForm!: FormGroup;
   users: Array<User> = [];
+  language: Language;
+  database: Database;
+  frameWork: Framework;
   digitalProfile: DigitalProfile;
-
   languagesList: Array<string> = [
     'JavaScript',
     'Python',
@@ -60,6 +67,10 @@ export class DeveloperComponent implements OnInit {
 
   constructor( private service: LoginService, private formBuilder: FormBuilder, public dialog: MatDialog, private router: Router) {
     this.digitalProfile = {} as DigitalProfile;
+    this.userDev = {} as User;
+    this.language = {} as  Language;
+    this.database = {} as Database;
+    this.frameWork = {} as Framework;
     this.TempDev = {} as Developer;
     this.registerForm = this.formBuilder.group({
       first_name: new FormControl('', { validators:  [Validators.required], updateOn: 'change' }),
@@ -82,17 +93,130 @@ export class DeveloperComponent implements OnInit {
     this.setEmailValidation();
     this.setPhoneValidation();
     this.setPaswordValidation();
-    this.service.getUserAll().subscribe((response: any) => {
+    this.service.getAllUser().subscribe((response: any) => {
       this.users = response;
-      console.log(this.users);
+      //console.log(this.users);
     });
   }
 
+  AddProgrammingLanguages(developerId: number){
+    for (let i = 0; i < this.registerForm.get('languages')?.value.length; i++) {
+      console.log(this.registerForm.get('languages')?.value.at(i));
+      this.language.name = this.registerForm.get('languages')?.value.at(i);
+      this.language.description = "I am expert with programming language " + this.registerForm.get('languages')?.value.at(i);
+      if(this.language.name === 'JavaScript'){
+        this.language.iconLink = "https://upload.wikimedia.org/wikipedia/commons/9/99/Unofficial_JavaScript_logo_2.svg";
+      }
+      else if(this.language.name === 'Python'){
+        this.language.iconLink = "https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg";
+      }
+      else if (this.language.name === 'Java'){
+        this.language.iconLink = "https://upload.wikimedia.org/wikipedia/commons/3/30/Java_programming_language_logo.svg";
+      }
+      else if (this.language.name === "C#"){
+        this.language.iconLink = "https://upload.wikimedia.org/wikipedia/commons/0/0d/C_Sharp_wordmark.svg";
+      }
+      else if (this.language.name === 'C++'){
+        this.language.iconLink = "https://upload.wikimedia.org/wikipedia/commons/1/18/ISO_C%2B%2B_Logo.svg";
+      }
+      else if (this.language.name === 'TypeScript'){
+        this.language.iconLink = "https://upload.wikimedia.org/wikipedia/commons/4/4c/Typescript_logo_2020.svg";
+      }
+      else if (this.language.name === 'Shell'){
+        this.language.iconLink = "https://upload.wikimedia.org/wikipedia/commons/4/4b/Bash_Logo_Colored.svg";
+      }
+      else if (this.language.name === 'C'){
+        this.language.iconLink = "https://upload.wikimedia.org/wikipedia/commons/3/35/The_C_Programming_Language_logo.svg";
+      }
+      else {
+        this.language.iconLink = "https://e7.pngegg.com/pngimages/383/488/png-clipart-ruby-on-rails-programming-language-computer-programming-logo-ruby-ruby-scripting-language-thumbnail.png";
+      }
+      this.service.getDigitalProfileByDeveloperId(developerId).subscribe((response: any) => {
+        this.digitalProfile = response;
+        this.service.postLenguage(this.language, this.digitalProfile.id).subscribe((response:any) => {
+          console.log(response);
+        });
+      });
+    }
+  }
+
+  AddDatabases(developerId: number){
+    for (let i = 0; i < this.registerForm.get('databases')?.value.length; i++){
+      this.database.name = this.registerForm.get('databases')?.value[i];
+      this.database.description = "I am expert with database" + this.registerForm.get('databases')?.value[i];
+      if(this.database.name === 'MySQL'){
+        this.database.iconLink = "https://pngimg.com/uploads/mysql/mysql_PNG22.png";
+      }
+      else if(this.database.name === 'Oracle'){
+        this.database.iconLink = "https://www.iconshock.com/image/Stroke/Database/oracle/";
+      }
+      else if (this.database.name === 'PostgreSQL'){
+        this.database.iconLink = "https://upload.wikimedia.org/wikipedia/commons/2/29/Postgresql_elephant.svg";
+      }
+      else if (this.database.name === 'Microsoft SQL Server'){
+        this.database.iconLink = "https://i.pinimg.com/originals/ae/09/c5/ae09c54080a6ae50d58459ea3193835c.png";
+      }
+      else {
+        this.database.iconLink = "https://logodix.com/logo/2090013.jpg";
+      }
+      this.service.getDigitalProfileByDeveloperId(developerId).subscribe((response: any) => {
+        this.digitalProfile = response;
+        this.service.postDatabase(this.database, this.digitalProfile.id).subscribe((response:any) => {
+          console.log(response);
+        });
+      });      
+    }
+  }
+
+  AddFrameworks(developerId: number){
+    for(let i= 0; i < this.registerForm.get('frameworks')?.value.length; i++){
+      this.frameWork.name = this.registerForm.get('frameworks')?.value[i];
+      this.frameWork.description = "I am expert with framework " + this.registerForm.get('frameworks')?.value[i];
+      if(this.frameWork.name === 'Angular'){
+        this.frameWork.iconLink = "https://upload.wikimedia.org/wikipedia/commons/c/ca/AngularJS_logo.svg";
+      }
+      else if(this.frameWork.name === 'ASP.NET Core'){
+        this.frameWork.iconLink = "https://ih0.redbubble.net/image.366684650.5673/flat,750x,075,f-pad,750x1000,f8f8f8.u1.jpg";
+      }
+      else if (this.frameWork.name === 'Django'){
+        this.frameWork.iconLink = "https://th.bing.com/th/id/OIP.XltbHSe7XNacUtF12tymrgHaCl?pid=ImgDet&rs=1";
+      }
+      else if(this.frameWork.name === 'React'){
+        this.frameWork.iconLink = "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg";
+      }
+      else if (this.frameWork.name === 'Vue.js'){
+        this.frameWork.iconLink = "https://upload.wikimedia.org/wikipedia/commons/9/95/Vue.js_Logo_2.svg";
+      }
+     
+      this.service.getDigitalProfileByDeveloperId(developerId).subscribe((response: any) => {
+        this.digitalProfile = response;
+        //console.log(response);
+        this.service.postFramework(this.frameWork, this.digitalProfile.id).subscribe((response:any) => {
+          console.log(response);
+        });
+      });
+    }
+
+    
+  }
+
   AddDigitalProfile() {
-    this.digitalProfile.name = "Digital Profile " + this.registerForm.get("first_name")?.value;
-    this.service.postDigitalProfile(this.digitalProfile, this.users.length).subscribe((response:any) => {
-      console.log(response);
+    this.service.getUserByEmail(this.registerForm.get("email")?.value).subscribe((response: any) => {
+      this.userDev = response;
+      //console.log(response);
+      this.digitalProfile.name = "Digital Profile " + this.registerForm.get("first_name")?.value;
+    
+      this.service.postDigitalProfile(this.digitalProfile, this.userDev.id).subscribe((response:any) => {
+        //console.log(response);
+      });
+      if(this.registerForm.get('languages')?.value.length > 0)
+        this.AddProgrammingLanguages(this.userDev.id);
+      if(this.registerForm.get('databases')?.value.length > 0)
+        this.AddDatabases(this.userDev.id);
+      if(this.registerForm.get('frameworks')?.value.length > 0)
+        this.AddFrameworks(this.userDev.id);
     });
+    
   }
 
   Add() {
@@ -107,13 +231,14 @@ export class DeveloperComponent implements OnInit {
     this.TempDev.bannerImage = 'https://thumbs.dreamstime.com/b/internet-information-technology-businessman-hand-showing-concept-75784736.jpg';
 
     this.service.postDeveloper(this.TempDev).subscribe((response:any) => {
-      console.log(this.TempDev);
+      //console.log(response);
       this.users.push(this.TempDev);
-      console.log(this.users);
+      //console.log(this.users);
     });
+
     this.AddDigitalProfile();
   }
-
+  
   openDialog() {
     if (this.registerForm.invalid) {
       if(this.registerForm.get('password')?.value !== this.registerForm.get('password_confirm')?.value) {
@@ -170,7 +295,21 @@ export class DeveloperComponent implements OnInit {
     return this.registerForm.get('last_name');
   }
 
+  get languages() {
+    return this.registerForm.get('languages');
+  }
+
+  get databases() {
+    return this.registerForm.get('databases');
+  }
+
+  get frameworks() {
+    return this.registerForm.get('frameworks');
+  }
+
   setEmailValidation() {
+    
+
     const emailControl = this.registerForm.get('email');
       //Default validation
     emailControl?.setValidators([Validators.required, Validators.email, Validators.pattern('[a-z0-9]+@[a-z]+\.[a-z]{2,3}')]);
@@ -182,6 +321,7 @@ export class DeveloperComponent implements OnInit {
       }
         this.registerForm.get('email')?.updateValueAndValidity();
     });
+    
   }
 
   setPhoneValidation() {

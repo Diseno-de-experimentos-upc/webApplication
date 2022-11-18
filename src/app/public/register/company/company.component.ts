@@ -52,7 +52,7 @@ export class CompanyComponent implements OnInit {
     this. setPhoneValidation();
     this.setPaswordValidation();
 
-    this.service.getUserAll().subscribe((response:any) => {
+    this.service.getAllUser().subscribe((response:any) => {
       this.users = response;
       console.log(response);
     });
