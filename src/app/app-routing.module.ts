@@ -27,6 +27,7 @@ import { DatabaseComponent } from './developers/pages/tools-developer/database/d
 import { ProgrammingLanguageComponent } from './developers/pages/tools-developer/programming-language/programming-language.component';
 import { FrameworkComponent } from './developers/pages/tools-developer/framework/framework.component';
 import { StudyCenterComponent } from './developers/pages/tools-developer/study-center/study-center.component';
+import { MakePostComponent } from './companies/pages/make-post/make-post.component';
 const routes: Routes = [
   {path:'', component:LoginComponent},
   {path:'login', component:LoginComponent},
@@ -66,6 +67,7 @@ const routes: Routes = [
       { path: 'settings', component:SettingsCompanyComponent},
       { path: 'notifications', component: NotificationsCompanyComponent},
       { path: 'find-devs', component: FindYourDevComponent },
+      { path: 'make-post', component: MakePostComponent},
     ],
   },
   { path: '**', component: PageNotFoundComponent },
