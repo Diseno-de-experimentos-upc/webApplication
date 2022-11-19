@@ -11,7 +11,7 @@ export interface Company{
   role : string,
 
   
-  company_name: string,
+  name: string,
   ruc: string,
   owner: string,
   address: string,

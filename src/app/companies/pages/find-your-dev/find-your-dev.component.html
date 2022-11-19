@@ -36,38 +36,38 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
+    
+    <mat-form-field appearance="fill" class="find-your-dev__form-field" id="ext2">
+      <mat-label>Databases</mat-label>
+      <mat-select formControlName="databases">
+        <mat-option *ngFor="let database of databaseList" [value]="database">
+          {{database}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
 
-    <mat-checkbox color="primary" (change)="changeValueFramework()" [checked]=isCheckedFramework formControlName="check_framework">Frameworks</mat-checkbox>
-
-    <div *ngIf=isCheckedFramework>
-      <mat-form-field appearance="fill" class="find-your-dev__form-field" id="ext">
-        <mat-label>Frameworks</mat-label>
-        <mat-select formControlName="frameworks">
-          <mat-option *ngFor="let framework of frameworkList" [value]="framework">
-            {{framework}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
-
-    <mat-checkbox color="primary" (change)="changeValueDatabase()" [checked]=isCheckedDatabase formControlName="check_database">Databases</mat-checkbox>
-    <div *ngIf=isCheckedDatabase>
-      <mat-form-field appearance="fill" class="find-your-dev__form-field" id="ext2">
-        <mat-label>Databases</mat-label>
-        <mat-select formControlName="databases">
-          <mat-option *ngFor="let database of databaseList" [value]="database">
-            {{database}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
+    <mat-form-field appearance="fill" class="find-your-dev__form-field" id="ext">
+      <mat-label>Frameworks</mat-label>
+      <mat-select formControlName="frameworks">
+        <mat-option *ngFor="let framework of frameworkList" [value]="framework">
+          {{framework}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
     <button mat-raised-button color="primary" class="btn-register" (click)="openDialog()">Search</button>
   </div>
   <mat-card class="devs-card">
     <h2>Results</h2>
-    <mat-card-content *ngFor="let dev of devs">
-      <img class="avatar mat-elevation-z8" src={{dev.image}} width="180%">
-      <p>{{dev.firstName}} {{dev.lastName}}</p>
-    </mat-card-content>
+      <div *ngIf="devs.length != 0; else elseBlock">
+        <mat-card-content *ngFor="let dev of devs">
+          <img class="avatar mat-elevation-z8" src={{dev.image}} width="180%" (click)="openDialog()">
+          <div style="display: flex;">
+            <h3>{{dev.firstName}} {{dev.lastName}}</h3>
+            <button mat-icon-button color="primary" (click)="openMessageDialog(dev.id)">
+              <mat-icon>chat</mat-icon>
+            </button>
+          </div>
+      </mat-card-content></div>
+      <ng-template #elseBlock></ng-template>
   </mat-card>
 </div>

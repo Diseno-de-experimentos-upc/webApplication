@@ -7,7 +7,6 @@ import { DialogBoxSettingsDeveloperComponent } from "./dialog-box/dialog-box.com
 import { DialogCancelComponent} from "../../../companies/pages/settings/dialog-cancel/dialog-cancel.component";
 import { DialogSaveComponent} from "../../../companies/pages/settings/dialog-save/dialog-save.component";
 import { toInteger } from 'lodash';
-import { Framework } from '../../model/framework';
 
 @Component({
   selector: 'app-settings',
@@ -17,7 +16,8 @@ import { Framework } from '../../model/framework';
 export class SettingsDeveloperComponent implements OnInit {
   email: string = "Email";
   password: string = "Password";
-  image:string = "";
+  image: string = "Image";
+  phone: string = "Phone";
   developer: Developer = {} as Developer;
   frameworkNames!: Array<string>;
   databaseNames!: Array<string>;
@@ -34,7 +34,6 @@ export class SettingsDeveloperComponent implements OnInit {
   ngOnInit(): void {
     this.service.GetDevById(toInteger(localStorage.getItem("id"))).subscribe((data: Developer) => {
       this.developer = data;
-      this.image = this.developer.image;
       console.log(data);
     });
     this.toolsService.GetFrameworkByDevId(toInteger(localStorage.getItem("id"))).subscribe((data2: any) => {
@@ -83,6 +82,7 @@ export class SettingsDeveloperComponent implements OnInit {
       if (result) {
         console.log("Saving!");
         this.updateDev();
+        location.reload();
       }
       else {
         console.log("Not saving!");
@@ -99,9 +99,21 @@ export class SettingsDeveloperComponent implements OnInit {
         _title: title
       };
     }
-    else {
+    else if (title == "Password") {
       dialogConfig.data = {
         _text: this.developer.password,
+        _title: title
+      };
+    } else if (title == "Image") {
+      dialogConfig.width = "20%";
+      dialogConfig.data = {
+        _text: this.developer.image,
+        _title: title
+      };
+    }
+    else {
+      dialogConfig.data = {
+        _text: this.developer.phone,
         _title: title
       };
     }
@@ -111,8 +123,12 @@ export class SettingsDeveloperComponent implements OnInit {
       if (title == "Email") {
         this.developer.email = result;
       }
-      else {
+      else if (title == "Password") {
         this.developer.password = result;
+      } else if (title == "Image") {
+        this.developer.image = result;
+      } else {
+        this.developer.phone = result;
       }
     });
   }

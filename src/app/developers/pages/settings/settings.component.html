@@ -4,14 +4,17 @@
       <mat-card-title>Settings</mat-card-title>
     </mat-card-header>
     <mat-card-content class="grid">
-      <img [src]="image" alt="Developer's photo">
+      <img src={{developer.image}} (click)="openDialog(image)" alt="Developer's photo">
       <div>
         <h2>Full Name</h2>
         <mat-card class="fields">{{developer.firstName}} {{developer.lastName}}</mat-card>
       </div>
       <div>
         <h2>Phone Number</h2>
-        <mat-card class="fields">{{developer.phone}}</mat-card>
+        <mat-card class="fields" id='-password'>
+          {{developer.phone}}
+          <a href="javascript:void(0)" class="edit" (click)="openDialog(phone)"><mat-icon>edit</mat-icon></a>
+        </mat-card>
       </div>
       <div>
         <h2>Email</h2>

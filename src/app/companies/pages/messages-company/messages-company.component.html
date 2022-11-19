@@ -7,9 +7,9 @@
                         <mat-card class="contact" matRipple [matRippleCentered]="true" (click)="show = !show; contactDescription = contact.receiver.description; contactName = contact.receiver.firstName + ' ' + contact.receiver.lastName; contactId=contact.receiver.id; contactPhoto=contact.receiver.image; GetMessages(contact.receiver.id)">
                             <mat-card-header>
                                 <div mat-card-avatar>
-                                    <img [src]="contact.emitter.image" alt="Developer's profile photo" class="DeveloperPhoto">                   
+                                    <img [src]="contact.receiver.image" alt="Developer's profile photo" class="DeveloperPhoto">                   
                                 </div>
-                                <mat-card-title>{{contact.emitter.firstName + " " + contact.emitter.lastName}}</mat-card-title>
+                                <mat-card-title>{{contact.receiver.firstName + " " + contact.receiver.lastName}}</mat-card-title>
                                 <mat-card-subtitle>{{contact.message}}</mat-card-subtitle>
                             </mat-card-header>
                         </mat-card>
@@ -23,7 +23,7 @@
                         <mat-card class="contact" matRipple [matRippleCentered]="true" (click)="show = !show; contactDescription = contact.receiver.description; contactName = contact.receiver.firstName + ' ' + contact.receiver.lastName; contactId=contact.receiver.id; contactPhoto=contact.receiver.image; GetMessages(contact.receiver.id)">
                             <mat-card-header>
                                 <div mat-card-avatar>
-                                    <img [src]="contact.emitter.image" alt="Developer's profile photo" class="DeveloperPhoto">                    
+                                    <img [src]="contact.receiver.image" alt="Developer's profile photo" class="DeveloperPhoto">                    
                                 </div>
                                 <mat-card-title>{{contact.receiver.firstName + " " + contact.receiver.lastName}}</mat-card-title>
                                 <mat-card-subtitle>{{contact.message}}</mat-card-subtitle>

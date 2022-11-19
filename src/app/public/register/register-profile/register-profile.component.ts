@@ -73,7 +73,7 @@ export class RegisterProfileComponent implements OnInit,AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    const id = toInteger(localStorage.getItem("id_register"));
+    const id = toInteger(localStorage.getItem("id_register")??"");
     this.service.getDigitalProfileByDeveloperId(id).subscribe((response:any) => {
       this.digitalProfile = response;  
       console.log("Digital Profile Into Languages: " + JSON.stringify(this.digitalProfile));
