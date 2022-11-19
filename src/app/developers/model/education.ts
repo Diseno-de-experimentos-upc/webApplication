@@ -1,3 +1,4 @@
+ 
 import { DigitalProfile } from "./digitalProfile";
 
 
@@ -7,3 +8,4 @@ export interface Education {
     digitalProfile: DigitalProfile
   }
   
+ 
