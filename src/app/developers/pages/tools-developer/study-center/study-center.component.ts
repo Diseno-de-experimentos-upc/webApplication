@@ -102,22 +102,18 @@ export class StudyCenterComponent implements OnInit {
       localStorage.setItem("digitalProfileId", this.digitalProfile.id.toString());
     });
     
-    //get education by digital profile id
-    this.service.GetEducationByDigitalProfileId(toInteger(localStorage.getItem("digitalProfileId"))).subscribe((data: any) => {
-      this.education = data;
-      localStorage.setItem("educationId", this.education.id.toString());
-    });
-
+ 
     this.TempStudyCenter.education_id = toInteger(localStorage.getItem("educationId"));
 
     if(this.registerFormStudyCenter.valid){ 
 
       console.log(this.TempStudyCenter);
-      //call the service to add the project
+ 
       this.service.createStudyCenter(this.TempStudyCenter, this.TempStudyCenter.education_id).subscribe((data) => {
         console.log(data);
       }
       );
+      alert("Study Center added successfully");
     }
     else{
       alert("Please, fill all the fields");

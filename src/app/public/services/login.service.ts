@@ -21,6 +21,8 @@ export class LoginService {
   urlDatabase = 'http://localhost:8080/api/v1/databases';
   urlFrameworks = 'http://localhost:8080/api/v1/frameworks';
   urlLenguages = 'http://localhost:8080/api/v1/programmingLanguages';
+  educationUrl: string = 'http://localhost:8080/api/v1/educations';
+
  
   constructor(private http: HttpClient) { }
 
@@ -92,7 +94,12 @@ export class LoginService {
       .get<DigitalProfile>(`${this.urlDigitalProfile}/developer/${id}`, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
-
+  GetEducationByDigitalProfileId(id: number): Observable<object> {
+    return this.http
+      .get(`${this.educationUrl}/digitalProfile/${id}`, this.httpOptions) 
+      .pipe(retry(2), catchError(this.handleError));
+  }
+ 
   postDatabase(database: object, id: number): Observable<object> {
     return this.http
       .post<object>(`${this.urlDatabase}/${id}`, database, this.httpOptions)
@@ -121,4 +128,17 @@ export class LoginService {
       .get<object>(`${this.basePath}/searchByEmail/${email}`, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
+
+  //create a post request to create a new education with specific digital profile id
+  postEducation(education: object, id: number): Observable<object> {
+    return this.http
+      .post<object>(`${this.educationUrl}/${id}`, education, this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+  GetDigitalProfileByDevId(id: number): Observable<object> {
+    return this.http
+      .get(`${this.urlDigitalProfile}/developer/${id}`, this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
 }
+

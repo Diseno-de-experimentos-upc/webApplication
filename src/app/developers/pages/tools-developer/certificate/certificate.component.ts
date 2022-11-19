@@ -65,17 +65,13 @@ export class CertificateComponent implements OnInit {
     this.TempCertificate.obtainedDate = this.obteinedDate;
 
    console.log(this.TempCertificate);
-
-   //const userId = toInteger(localStorage.getItem("id"));
-  //TODO: connectar por ID ABAJOW
-
-    // get digittal profile by user id
-    this.service.GetDigitalProfileByDevId(2).subscribe((data: any) => {
+ 
+  
+    this.service.GetDigitalProfileByDevId(toInteger(localStorage.getItem("id"))).subscribe((data: any) => {
       this.digitalProfile = data;
       localStorage.setItem("digitalProfileId", this.digitalProfile.id.toString());
     });
     
-    //get education by digital profile id
     this.service.GetEducationByDigitalProfileId(toInteger(localStorage.getItem("digitalProfileId"))).subscribe((data: any) => {
       this.education = data;
       localStorage.setItem("educationId", this.education.id.toString());
@@ -91,6 +87,7 @@ export class CertificateComponent implements OnInit {
         console.log(data);
       }
       );
+      alert("Certificate added successfully");
     }
     else{
       alert("Please, fill all the fields");

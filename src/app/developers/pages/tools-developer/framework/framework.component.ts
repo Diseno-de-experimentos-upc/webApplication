@@ -43,15 +43,6 @@ export class FrameworkComponent implements OnInit {
   addFramework(){
     this.TempFramework = this.registerFormFramework.value;
     this.TempFramework.id = 0;
-
-   const userId = toInteger(localStorage.getItem("id"));
-  //TODO: connectar por ID ABAJOW
-
-    // get digittal profile by user id
-    this.service.GetDigitalProfileByDevId(userId).subscribe((data: any) => {
-      this.digitalProfile = data;
-      localStorage.setItem("digitalProfileId", this.digitalProfile.id.toString());
-    });
     
     this.TempFramework.digitalProfile_id = toInteger(localStorage.getItem("digitalProfileId"));
  
@@ -63,6 +54,8 @@ export class FrameworkComponent implements OnInit {
         console.log(data);
       }
       );
+
+      alert("Framework added successfully");
     }
     else{
       alert("Please, fill all the fields");

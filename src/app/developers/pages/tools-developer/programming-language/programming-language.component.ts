@@ -44,14 +44,6 @@ export class ProgrammingLanguageComponent implements OnInit {
     this.TempProgrammingLanguage = this.registerFormProgrammingLanguage.value;
     this.TempProgrammingLanguage.id = 0;
 
-   const userId = toInteger(localStorage.getItem("id"));
-  //TODO: connectar por ID ABAJOW
-
-    // get digittal profile by user id
-    this.service.GetDigitalProfileByDevId(userId).subscribe((data: any) => {
-      this.digitalProfile = data;
-      localStorage.setItem("digitalProfileId", this.digitalProfile.id.toString());
-    });
     
     this.TempProgrammingLanguage.digitalProfile_id = toInteger(localStorage.getItem("digitalProfileId"));
 
@@ -62,6 +54,7 @@ export class ProgrammingLanguageComponent implements OnInit {
         console.log(data);
       }
       );
+      alert("Programming Language added successfully");
     }
     else{
       alert("Please, fill all the fields");

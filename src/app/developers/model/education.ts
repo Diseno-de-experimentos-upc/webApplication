@@ -1,11 +1,7 @@
- 
-import { DigitalProfile } from "./digitalProfile";
-
-
 export interface Education {
     id:number,
     career:string,
-    digitalProfile: DigitalProfile
-  }
+    digitalProfile_id: number
+ }
   
  

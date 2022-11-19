@@ -51,10 +51,8 @@ export class ProfileDeveloperComponent implements OnInit {
 
     this.getDeveloper(developerId);
     this.ngAfterViewInit();
-    this.getDigitalProfile(developerId);
- 
+  
     this.digitalProfileId = toInteger(localStorage.getItem("digitalProfileId"));
-    this.getEducation(this.digitalProfileId);
 
     this.educationId = toInteger(localStorage.getItem("educationId"));
 
@@ -68,13 +66,7 @@ export class ProfileDeveloperComponent implements OnInit {
     this.getSocialNetworks(developerId);
   }
 
-  getEducation(id: number) {
-    this.service.GetEducationByDigitalProfileId(id).subscribe((response: any) => {
-      this.education = response;
-      localStorage.setItem("educationId", this.education.id.toString());
-    });
-  }
-  
+ 
   getDeveloper(id: number) {
     this.service.GetDeveloperById(id).subscribe((response) => {
       this.developer = response;
@@ -82,12 +74,7 @@ export class ProfileDeveloperComponent implements OnInit {
     });
   }
 
-  getDigitalProfile(id: number) {
-    this.service.GetDigitalProfileByDeveloperId(id).subscribe((response : any) => {
-      this.digitalProfile = response;
-      localStorage.setItem("digitalProfileId", this.digitalProfile.id.toString());
-    });
-  }
+ 
 
   getCertificates(id: number) {
     this.service.GetCertificatesByEducationId(id).subscribe((response: any) => {

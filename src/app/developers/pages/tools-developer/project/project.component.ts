@@ -55,17 +55,7 @@ export class ProjectComponent implements OnInit {
     this.TempProject = this.registerForm.value;
     this.TempProject.id = 0;
 
-   //const userId = toInteger(localStorage.getItem("id"));
-  //TODO: connectar por ID ABAJOW
-
-    // get digittal profile by user id
-    this.service.GetDigitalProfileByDevId(2).subscribe((data: any) => {
-      this.digitalProfile = data;
-      localStorage.setItem("digitalProfileId", this.digitalProfile.id.toString());
-    });
-    
     this.TempProject.digitalProfile_id = toInteger(localStorage.getItem("digitalProfileId"));
- 
 
     if(this.registerForm.valid){ 
 
@@ -74,6 +64,7 @@ export class ProjectComponent implements OnInit {
         console.log(data);
       }
       );
+      alert("Project added successfully");
     }
     else{
       alert("Please, fill all the fields");
