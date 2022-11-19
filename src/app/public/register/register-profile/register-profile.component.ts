@@ -69,8 +69,7 @@ export class RegisterProfileComponent implements OnInit,AfterViewInit {
       location.reload() 
     } else {
       localStorage.removeItem('foo') 
-    }
-    
+    }    
   }
 
   ngAfterViewInit(): void {
@@ -210,15 +209,16 @@ export class RegisterProfileComponent implements OnInit,AfterViewInit {
       this.dialog.open(DialogBoxInvalidFormComponent, { 
         data: {message: 'You added data to your profile, You will be redirect to login!'},
       });
+      localStorage.clear();
       this.router.navigate(['/login']);
-      localStorage.removeItem('id_register');
     }
     else {
       this.dialog.open(DialogBoxInvalidFormComponent, { 
         data: {message: 'You did not select any language to your profile, You will be redirect to login!'},
       });
+      localStorage.clear();
       this.router.navigate(['/login']);
-      localStorage.removeItem('id_register');
+      
     }
   }
 
@@ -239,7 +239,7 @@ export class RegisterProfileComponent implements OnInit,AfterViewInit {
     this.dialog.open(DialogBoxInvalidFormComponent, { 
       data: {message: 'You did not select any language to your profile, You will be redirect to login!'},
     });
-    this.router.navigate(['/login']);
-      localStorage.removeItem('id_register');
+    localStorage.clear();
+    this.router.navigate(['/login']); 
   }
 }
