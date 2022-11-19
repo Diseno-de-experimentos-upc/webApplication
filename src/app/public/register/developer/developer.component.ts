@@ -74,6 +74,7 @@ export class DeveloperComponent implements OnInit {
       console.log('Post Digital Profile');
       console.log(response);
     });
+    
   }
 
   Add() {
@@ -112,11 +113,13 @@ export class DeveloperComponent implements OnInit {
       if(!this.registered) {
         this.Add();
         this.registered = true;
-        this.dialog.open(DialogBoxInvalidFormComponent, { 
-          data: {message: 'You have registered successfully! You will be redirect to login.'},
-        });
+        /* this.dialog.open(DialogBoxInvalidFormComponent, { 
+          data: {message: 'You have registered successfully! Next page you can added some skills to your profile'},
+        }); */
         this.AddDigitalProfile();
-        this.router.navigate(['/login']);
+        if(this.digitalProfile.name != "Digital Profile ") {
+          this.router.navigate(['register/developer-profile']);
+        }
       }
       else {
         this.dialog.open(DialogBoxInvalidFormComponent, { 

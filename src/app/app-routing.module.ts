@@ -36,6 +36,7 @@ const routes: Routes = [
       {path: 'company', component: CompanyComponent},
     ]
   },
+  {path: 'register/developer-profile', component: ProgrammingLanguageComponent},
   {
     path: 'developers',
     component: DevelopersComponent,
