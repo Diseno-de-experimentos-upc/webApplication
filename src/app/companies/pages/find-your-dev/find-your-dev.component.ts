@@ -8,6 +8,7 @@ import { MatDialog } from '@angular/material/dialog';
 
 import { DialogBoxInvalidFormComponent } from '../../../public/register/dialog-box-invalid-form/dialog-box-invalid-form.component';
 import { isNull } from 'lodash';
+import { MessageDialogComponent } from './message-dialog/message-dialog.component';
 
 @Component({
   selector: 'app-find-your-dev',
@@ -82,9 +83,9 @@ export class FindYourDevComponent implements OnInit {
     });
   }
 
-  openMessageDialog() {
-    this.dialog.open(DialogBoxInvalidFormComponent, {
-      data: 'registerForm',
+  openMessageDialog(id:number) {
+    this.dialog.open(MessageDialogComponent, {
+      data: id,
     });
   }
   openDialog() {
@@ -115,6 +116,12 @@ export class FindYourDevComponent implements OnInit {
           this.sidenav.open();
         }
       })
+  }
+
+  CreateMessage(devId:number){
+    this.dialog.open(DialogBoxInvalidFormComponent, {
+      data: 'registerForm',
+    });
   }
 
 }

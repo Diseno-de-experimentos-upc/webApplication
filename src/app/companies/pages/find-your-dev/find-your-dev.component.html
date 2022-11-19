@@ -60,8 +60,13 @@
     <h2>Results</h2>
       <div *ngIf="devs.length != 0; else elseBlock">
         <mat-card-content *ngFor="let dev of devs">
-        <img class="avatar mat-elevation-z8" src={{dev.image}} width="180%" (click)="openDialog()">
-        <h3>{{dev.firstName}} {{dev.lastName}}</h3>
+          <img class="avatar mat-elevation-z8" src={{dev.image}} width="180%" (click)="openDialog()">
+          <div style="display: flex;">
+            <h3>{{dev.firstName}} {{dev.lastName}}</h3>
+            <button mat-icon-button color="primary" (click)="openMessageDialog(dev.id)">
+              <mat-icon>chat</mat-icon>
+            </button>
+          </div>
       </mat-card-content></div>
       <ng-template #elseBlock></ng-template>
   </mat-card>
