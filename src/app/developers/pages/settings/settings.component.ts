@@ -83,6 +83,7 @@ export class SettingsDeveloperComponent implements OnInit {
       if (result) {
         console.log("Saving!");
         this.updateDev();
+        location.reload();
       }
       else {
         console.log("Not saving!");
@@ -99,10 +100,16 @@ export class SettingsDeveloperComponent implements OnInit {
         _title: title
       };
     }
-    else {
+    else if (title == "Password") {
       dialogConfig.data = {
         _text: this.developer.password,
         _title: title
+      };
+    } else {
+      dialogConfig.width = "20%";
+      dialogConfig.data = {
+        _text: this.developer.image,
+        _title: "Photo"
       };
     }
     const dialogRef = this.dialog.open(DialogBoxSettingsDeveloperComponent, dialogConfig);
@@ -111,8 +118,10 @@ export class SettingsDeveloperComponent implements OnInit {
       if (title == "Email") {
         this.developer.email = result;
       }
-      else {
+      else if (title == "Password") {
         this.developer.password = result;
+      } else {
+        this.developer.image = result;
       }
     });
   }

@@ -4,7 +4,7 @@
       <mat-card-title>Settings</mat-card-title>
     </mat-card-header>
     <mat-card-content class="grid">
-      <img [src]="image" alt="Developer's photo">
+      <img [src]="image" (click)="openDialog(image)" alt="Developer's photo" matBadge="22" matBadgePosition="before">
       <div>
         <h2>Full Name</h2>
         <mat-card class="fields">{{developer.firstName}} {{developer.lastName}}</mat-card>

@@ -7,6 +7,7 @@ import { DevelopersService } from '../../../developers/services/developers.servi
 import { MatDialog } from '@angular/material/dialog';
 
 import { DialogBoxInvalidFormComponent } from '../../../public/register/dialog-box-invalid-form/dialog-box-invalid-form.component';
+import { isNull } from 'lodash';
 
 @Component({
   selector: 'app-find-your-dev',
@@ -75,13 +76,17 @@ export class FindYourDevComponent implements OnInit {
     const pl = this.filterForm.value.programming_languages;
     const db = this.filterForm.value.databases;
     console.log(fr, pl, db);
-    //this.service.GetAllDevs().subscribe((data:any) => {
       this.service.GetDevsByFrameworkAndLanguageAndDatabase(fr, pl, db).subscribe((data:any) => {
       this.devs = data;
       console.log(data);
     });
   }
 
+  openMessageDialog() {
+    this.dialog.open(DialogBoxInvalidFormComponent, {
+      data: 'registerForm',
+    });
+  }
   openDialog() {
     if (this.filterForm.invalid) {
       this.dialog.open(DialogBoxInvalidFormComponent, {
