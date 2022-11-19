@@ -110,21 +110,21 @@ export class DevelopersService {
 
   //////Messages Section /////////
 
-  GetContacts(): Observable<object> {
+  GetContacts(UserId:number): Observable<object> {
     return this.http
-      .get<object>(`http://localhost:8080/api/v1/users/${2}/messages/LastMessageDeveloper`, this.httpOptions)
+      .get<object>(`http://localhost:8080/api/v1/users/${UserId}/messages/LastMessageDeveloper`, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
   
-  GetMessages(contactId: number): Observable<object> {
+  GetMessages(contactId: number, UserId:number): Observable<object> {
     return this.http
-      .get(`http://localhost:8080/api/v1/users/${2}/messages/${contactId}`, this.httpOptions)
+      .get(`http://localhost:8080/api/v1/users/${UserId}/messages/${contactId}`, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 
-  SendMessage(answer: object, contactId: number): Observable<object> {
+  SendMessage(answer: object, contactId: number, UserId:number): Observable<object> {
     return this.http
-      .post<object>(`http://localhost:8080/api/v1/users/${2}/messages/${contactId}`, answer, this.httpOptions)
+      .post<object>(`http://localhost:8080/api/v1/users/${UserId}/messages/${contactId}`, answer, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 
