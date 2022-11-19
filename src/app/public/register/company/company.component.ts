@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import {Company} from "../../../companies/model/company";
+import {Company} from "../model/company";
+import { User } from '../model/user';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {CompaniesService} from "../../../companies/services/companies.service";
+import { LoginService } from '../../services/login.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogBoxInvalidFormComponent } from '../dialog-box-invalid-form/dialog-box-invalid-form.component';
 import {Router} from "@angular/router";
+import { DigitalProfile } from '../model/digitalprofile';
 @Component({
   selector: 'app-company',
   templateUrl: './company.component.html',
@@ -13,14 +15,18 @@ import {Router} from "@angular/router";
 export class CompanyComponent implements OnInit {
 
   registered: boolean = false;
-  companies:Array<any> = [];
-  TempComp:Company;
+
+  users:Array<User> = [];
+  TempComp: Company;
   pass:string = "";
-
   registerForm!: FormGroup;
+  digitalProfile: DigitalProfile;
 
-  constructor(private service:CompaniesService, private formBuilder: FormBuilder, public dialog: MatDialog, private router: Router) {
+  constructor(private service: LoginService, private formBuilder: FormBuilder, public dialog: MatDialog, private router: Router) {
+    
     this.TempComp = {} as Company;
+    this.digitalProfile = {} as DigitalProfile;
+
     this.registerForm = this.formBuilder.group({
       first_name: new FormControl('', { validators:  [Validators.required], updateOn: 'change' }),
       last_name: new FormControl('', { validators:  [Validators.required], updateOn: 'change' }),
@@ -45,18 +51,33 @@ export class CompanyComponent implements OnInit {
     this.setEmailValidation();
     this. setPhoneValidation();
     this.setPaswordValidation();
-    this.service.GetAllRec().subscribe((response:any) => {
-      this.companies = response;
+
+    this.service.getAllUser().subscribe((response:any) => {
+      this.users = response;
       console.log(response);
     });
   }
 
   Add(){
-    this.TempComp = this.registerForm.value;
-    this.TempComp.id = 0;
-    this.service.AddRec(this.TempComp).subscribe((response:any) => {
-      this.companies.push({...response});
-      console.log(this.companies);
+    this.TempComp.address = this.registerForm.get('address')?.value;
+    this.TempComp.bannerImage = 'https://blog.vantagecircle.com/content/images/size/w1000/2019/03/7-Ways-to-Build-a-Strong-Company-Culture.png';
+    this.TempComp.city = this.registerForm.get('city')?.value;
+    this.TempComp.country = this.registerForm.get('country')?.value;
+    this.TempComp.description =  'I am a recruiter';
+    this.TempComp.email =  this.registerForm.get('email')?.value;
+    this.TempComp.firstName =  this.registerForm.get('first_name')?.value;
+    this.TempComp.image = 'https://d500.epimg.net/cincodias/imagenes/2016/07/04/lifestyle/1467646262_522853_1467646344_noticia_normal.jpg';
+    this.TempComp.lastName =  this.registerForm.get('last_name')?.value;
+    this.TempComp.name=  this.registerForm.get('company_name')?.value;
+    this.TempComp.owner =  this.registerForm.get('owner_name')?.value;
+    this.TempComp.password =  this.registerForm.get('password')?.value;
+    this.TempComp.phone =  this.registerForm.get('phone')?.value;
+    this.TempComp.role =  'company';
+    this.TempComp.ruc =  this.registerForm.get('ruc')?.value;
+    this.service.postCompany(this.TempComp).subscribe((response:any) => {
+      console.log(this.TempComp);
+      this.users.push({...response});
+      console.log(this.users);
     });
   }
 
@@ -114,6 +135,31 @@ export class CompanyComponent implements OnInit {
   get last_name() {
     return this.registerForm.get('last_name');
   }
+
+  get company_name() {
+    return this.registerForm.get('company_name');
+  }
+
+  get ruc() {
+    return this.registerForm.get('ruc');
+  }
+
+  get owner_name() {
+    return this.registerForm.get('owner_name');
+  }
+
+  get address() {
+    return this.registerForm.get('address');
+  }
+
+  get country() {
+    return this.registerForm.get('country');
+  }
+
+  get city() {
+    return this.registerForm.get('city');
+  }
+  
 
   setEmailValidation() {
     const emailControl = this.registerForm.get('email');
@@ -173,14 +219,13 @@ export class CompanyComponent implements OnInit {
     });
   }
   verifyDeveloperUnregistered() {
-    this.companies.forEach((comp: any) => {
-      if (comp.email === this.registerForm.get('email')?.value) {
+    this.users.forEach((user: any) => {
+      if (user.email === this.registerForm.get('email')?.value) {
         this.registered = true;
         return;
       }
       else {
         this.registered = false;
-        return;
       }
     });
     

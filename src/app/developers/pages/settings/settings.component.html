@@ -28,12 +28,12 @@
         </mat-card>
       </div>
       <div>
-        <h2>Languages</h2>
-        <mat-card class="fields">{{developer.languages}}</mat-card>
+        <h2>Databases</h2>
+        <mat-card class="fields">{{this.databaseNames.join(', ').toString()}}</mat-card>
       </div>
       <div>
         <h2>Frameworks</h2>
-        <mat-card class="fields">{{developer.frameworks}}</mat-card>
+        <mat-card class="fields">{{this.frameworkNames.join(', ').toString()}}</mat-card>
       </div>
     </mat-card-content>
     <mat-card-actions>

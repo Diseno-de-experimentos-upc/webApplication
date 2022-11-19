@@ -7,6 +7,7 @@ import {
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { Developer } from '../model/developer';
+import { Framework } from '../model/framework';
 
 @Injectable({
   providedIn: 'root',
@@ -14,7 +15,7 @@ import { Developer } from '../model/developer';
 export class DevelopersService {
   BaseURL: string = 'http://localhost:8080/api/v1/developers';
   NewsURL: string = 'http://localhost:3000/news-developers';
-
+ 
   certificateUrl: string = 'http://localhost:8080/api/v1/certificates';
   studyCenterUrl: string = 'http://localhost:8080/api/v1/study-centers';
   databaseUrl: string = 'http://localhost:8080/api/v1/databases';
@@ -22,6 +23,7 @@ export class DevelopersService {
   programingLanguagesUrl: string = 'http://localhost:8080/api/v1/programmingLanguages';
   projectsUrl: string = 'http://localhost:8080/api/v1/projects';
   socialNetworks = 'http://localhost:8080/api/v1/socialNetworks';
+ 
 
   digitalProfileUrl: string = 'http://localhost:8080/api/v1/digital_profiles';
   educationUrl: string = 'http://localhost:8080/api/v1/educations';
@@ -30,6 +32,8 @@ export class DevelopersService {
   MessagesURL: string = 'http://localhost:3000/messages';
 
   NotificationsURL: string = 'http://localhost:3000/notifications-developers';
+
+  backURL: string = 'http://localhost:8080/api/v1/users/searchByFrameworkAndProgrammingLanguageAndDatabase';
 
 
   httpOptions = {
@@ -56,6 +60,12 @@ export class DevelopersService {
   GetAllDevs(): Observable<Developer> {
     return this.http
       .get<Developer>(this.BaseURL, this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+
+  GetDevsByFrameworkAndLanguageAndDatabase(framework: string, language: string, database: string): Observable<object> {
+    return this.http
+      .get<object>(`${this.backURL}/${framework}&${language}&${database}`, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 
@@ -147,21 +157,21 @@ export class DevelopersService {
 
   //////Messages Section /////////
 
-  GetContacts(): Observable<object> {
+  GetContacts(UserId:number): Observable<object> {
     return this.http
-      .get<object>(this.ContactsURL, this.httpOptions)
+      .get<object>(`http://localhost:8080/api/v1/users/${UserId}/messages/LastMessageDeveloper`, this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+  
+  GetMessages(contactId: number, UserId:number): Observable<object> {
+    return this.http
+      .get(`http://localhost:8080/api/v1/users/${UserId}/messages/${contactId}`, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 
-  GetMessages(): Observable<object> {
+  SendMessage(answer: object, contactId: number, UserId:number): Observable<object> {
     return this.http
-      .get(this.MessagesURL, this.httpOptions)
-      .pipe(retry(2), catchError(this.handleError));
-  }
-
-  SendMessage(answer: object): Observable<object> {
-    return this.http
-      .post<object>(this.MessagesURL, answer, this.httpOptions)
+      .post<object>(`http://localhost:8080/api/v1/users/${UserId}/messages/${contactId}`, answer, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 

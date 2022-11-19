@@ -14,11 +14,14 @@ import { Company } from '../model/company';
 })
 export class CompaniesService {
   BaseURL: string = 'http://localhost:8080/api/v1/companies';
+
   socialNetworks = 'http://localhost:8080/api/v1/socialNetworks';
+ 
   NewsURL: string = 'http://localhost:3000/news-companies';
   ContactsURL: string = 'http://localhost:3000/contacts';
   MessagesURL: string = 'http://localhost:3000/messages';
   NotificationsURL: string = 'http://localhost:3000/notifications-companies';
+  basePath = 'http://localhost:8080/api/v1/users';
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
@@ -76,21 +79,21 @@ export class CompaniesService {
 
   //////Messages Section /////////
 
-  GetContacts(): Observable<object> {
+  GetContacts(UserId:number): Observable<object> {
     return this.http
-      .get<object>(this.ContactsURL, this.httpOptions)
+      .get<object>(`http://localhost:8080/api/v1/users/${UserId}/messages/LastMessageCompany`, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 
-  GetMessages(): Observable<object> {
+  GetMessages(contactId: number, UserId:number): Observable<object> {
     return this.http
-      .get(this.MessagesURL, this.httpOptions)
+      .get(`http://localhost:8080/api/v1/users/${UserId}/messages/${contactId}`, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 
-  SendMessage(answer: object): Observable<object> {
+  SendMessage(answer: object, contactId:number, UserId:number): Observable<object> {
     return this.http
-      .post<object>(this.MessagesURL, answer, this.httpOptions)
+      .post<object>(`http://localhost:8080/api/v1/users/${UserId}/messages/${contactId}`, answer, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 
@@ -131,5 +134,16 @@ export class CompaniesService {
       .pipe(retry(2), catchError(this.handleError));
   }
 
+  GetAllUsers(): Observable<object> {
+    return this.http
+      .get(this.basePath, this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+
+  AddUser(user: Company): Observable<Company> {
+    return this.http
+      .post<Company>(this.basePath, JSON.stringify(user), this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
 }
 

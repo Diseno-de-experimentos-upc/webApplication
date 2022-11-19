@@ -1,3 +1,7 @@
+import { Database } from "./database";
+import { Framework } from "./framework";
+import { ProgrammingLanguage } from "./programmingLanguage";
+
 export interface Developer{
   id:number,
   firstName:string,
@@ -9,8 +13,8 @@ export interface Developer{
   email:string,
   password:string,
   phone:string,
-  role:string,
-  databases:Array<string>,
-  languages:Array<string>,
-  frameworks:Array<string> 
+  databases:Array<Database>,
+  languages:Array<ProgrammingLanguage>,
+  frameworks:Array<Framework>
+ 
 }
