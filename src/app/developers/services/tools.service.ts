@@ -43,7 +43,24 @@ export class ToolsService {
       'something happened with request, please try again later'
     );
   }
-
+// Get Framework by developer id
+    GetFrameworkByDevId(id: number): Observable<object> {
+      return this.http
+        .get(`${this.frameWorkUrl}/developer/${id}`, this.httpOptions)
+        .pipe(retry(2), catchError(this.handleError));
+    }
+// Get Database by digital profile id
+    GetDatabaseByDevId(id: number): Observable<object> {
+      return this.http
+        .get(`${this.databaseUrl}/developer/${id}`, this.httpOptions)
+        .pipe(retry(2), catchError(this.handleError));
+    }
+// Get Programming Language by digital profile id
+    GetProgrammingLanguageByDevId(id: number): Observable<object> {
+      return this.http
+        .get(`${this.programingLanguageUrl}/developer/${id}`, this.httpOptions)
+        .pipe(retry(2), catchError(this.handleError));
+    }
 ////// Delopersd Tools///////
   // create a new project with especific digital profile
   createProject(project: object, digitalProfileId: number): Observable<object> {

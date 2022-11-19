@@ -22,9 +22,7 @@ export class LoginComponent implements OnInit {
     email : ["", {validators: [Validators.required, Validators.email], updateOn: 'change'}],
     password : ["", {validators: [Validators.required, Validators.minLength(8)], updateOn: 'change'}],
   });
-
-
-
+  
   constructor(private formBuilder: FormBuilder, public dialog: MatDialog, private router: Router, private service: LoginService) { }
 
   ngOnInit(): void {
@@ -32,11 +30,11 @@ export class LoginComponent implements OnInit {
     this.setPaswordValidation();
     this.service.getDeveloperAll().subscribe((response: any) => {
       this.usersDeveloper = response;
-      console.log(this.usersDeveloper);
+      //console.log(this.usersDeveloper);
     });
     this.service.getCompanyAll().subscribe((response: any) => {
       this.usersCompany = response;
-      console.log(this.usersCompany);
+      //console.log(this.usersCompany);
     });
   }
 

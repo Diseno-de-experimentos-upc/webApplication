@@ -34,7 +34,8 @@ const routes: Routes = [
   {path: 'register', component: RegisterComponent, children: [
       {path: 'developer', component: DeveloperComponent},
       {path: 'company', component: CompanyComponent},
-    ]},
+    ]
+  },
   {
     path: 'developers',
     component: DevelopersComponent,

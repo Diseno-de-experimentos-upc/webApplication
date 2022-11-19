@@ -2,15 +2,20 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse,  HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
-import { Developer } from '../../developers/model/developer';
-import { Company } from '../../companies/model/company';
+import { Developer } from '../register/model/developer';
+import { Company } from '../register/model/company';
+import { DigitalProfile } from '../register/model/digitalprofile';
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
-  developerURL = 'http://localhost:3000/developers';
-  companyURL = 'http://localhost:3000/companies';
-  usersURL = 'http://localhost:3000/users';
+  basePath = 'http://localhost:8080/api/v1/users';
+  urlDeveloper = 'http://localhost:8080/api/v1/developers';
+  urlCompany = 'http://localhost:8080/api/v1/companies';
+  urlDigitalProfile = "http://localhost:8080/api/v1/digital_profiles";
+  urlDatabase = 'http://localhost:8080/api/v1/databases';
+  urlFrameworks = 'http://localhost:8080/api/v1/frameworks';
+  urlLenguages = 'http://localhost:8080/api/v1/programmingLanguages';
   constructor(private http: HttpClient) { }
 
 
@@ -34,27 +39,80 @@ export class LoginService {
     );
   }
 
-  getDeveloperAll(): Observable<Developer> {
+  getDeveloperAll(): Observable<any> {
     return this.http
-      .get<Developer>(this.developerURL, this.httpOptions)
+      .get<Developer>(`${this.urlDeveloper}`, this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+
+  postDeveloper(developer: Developer): Observable<Developer> {
+    return this.http
+      .post<Developer>(`${this.urlDeveloper}`, developer, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 
   getCompanyAll(): Observable<Company> {
     return this.http
-      .get<Company>(this.companyURL, this.httpOptions)
+      .get<Company>(`${this.urlCompany}`, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 
-  getUserAll(): Observable<object> {
+  postCompany(company: Company): Observable<Company> {
     return this.http
-      .get<object>(this.usersURL, this.httpOptions)
+      .post<Company>(`${this.urlCompany}`, company, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 
-  postUser(user: any): Observable<object> {
+  getAllUser(): Observable<object> {
     return this.http
-      .post<object>(this.usersURL, user, this.httpOptions)
+      .get<object>(this.basePath, this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+
+  postDigitalProfile(digitalProfile: object, id: number): Observable<object> {
+    return this.http
+      .post<object>(`${this.urlDigitalProfile}/${id}`, digitalProfile, this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+
+  getAllDigitalProfile(): Observable<object> {
+    return this.http
+      .get<object>(`${this.urlDigitalProfile}`, this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+
+  getDigitalProfileByDeveloperId(id: number): Observable<Object> {
+    return this.http
+      .get<DigitalProfile>(`${this.urlDigitalProfile}/developer/${id}`, this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+
+  postDatabase(database: object, id: number): Observable<object> {
+    return this.http
+      .post<object>(`${this.urlDatabase}/${id}`, database, this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+
+  postFramework(framework: object, id: number): Observable<object> {
+    return this.http
+      .post<object>(`${this.urlFrameworks}/${id}`, framework, this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+  getAllFrameworks(): Observable<object> {
+    return this.http
+      .get<object>(`${this.urlFrameworks}`, this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+
+  postLenguage(lenguage: object, id: number): Observable<object> {
+    return this.http
+      .post<object>(`${this.urlLenguages}/${id}`, lenguage, this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+
+  getUserByEmail(email: string): Observable<object> {
+    return this.http
+      .get<object>(`${this.basePath}/searchByEmail/${email}`, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 }

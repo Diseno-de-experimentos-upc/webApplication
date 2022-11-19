@@ -44,11 +44,11 @@ export class ProgrammingLanguageComponent implements OnInit {
     this.TempProgrammingLanguage = this.registerFormProgrammingLanguage.value;
     this.TempProgrammingLanguage.id = 0;
 
-   //const userId = toInteger(localStorage.getItem("id"));
+   const userId = toInteger(localStorage.getItem("id"));
   //TODO: connectar por ID ABAJOW
 
     // get digittal profile by user id
-    this.service.GetDigitalProfileByDevId(2).subscribe((data: any) => {
+    this.service.GetDigitalProfileByDevId(userId).subscribe((data: any) => {
       this.digitalProfile = data;
       localStorage.setItem("digitalProfileId", this.digitalProfile.id.toString());
     });

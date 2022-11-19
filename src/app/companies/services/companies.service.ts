@@ -13,11 +13,12 @@ import { Company } from '../model/company';
   providedIn: 'root',
 })
 export class CompaniesService {
-  BaseURL: string = 'http://localhost:3000/companies';
+  BaseURL: string = 'http://localhost:8080/api/v1/companies';
   NewsURL: string = 'http://localhost:3000/news-companies';
   ContactsURL: string = 'http://localhost:3000/contacts';
   MessagesURL: string = 'http://localhost:3000/messages';
   NotificationsURL: string = 'http://localhost:3000/notifications-companies';
+  basePath = 'http://localhost:8080/api/v1/users';
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
@@ -123,5 +124,16 @@ export class CompaniesService {
       .pipe(retry(2), catchError(this.handleError));
   }
 
+  GetAllUsers(): Observable<object> {
+    return this.http
+      .get(this.basePath, this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+
+  AddUser(user: Company): Observable<Company> {
+    return this.http
+      .post<Company>(this.basePath, JSON.stringify(user), this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
 }
 
