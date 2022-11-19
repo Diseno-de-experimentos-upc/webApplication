@@ -15,8 +15,6 @@ import { Company } from '../model/company';
 export class CompaniesService {
   BaseURL: string = 'http://localhost:8080/api/v1/companies';
   NewsURL: string = 'http://localhost:3000/news-companies';
-  ContactsURL: string = 'http://localhost:3000/contacts';
-  MessagesURL: string = 'http://localhost:3000/messages';
   NotificationsURL: string = 'http://localhost:3000/notifications-companies';
   basePath = 'http://localhost:8080/api/v1/users';
   httpOptions = {

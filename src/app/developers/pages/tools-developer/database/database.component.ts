@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { toInteger } from 'lodash';
 import { Database } from 'src/app/developers/model/database';
 import { DigitalProfile } from 'src/app/developers/model/digitalProfile';
@@ -8,66 +13,74 @@ import { ToolsService } from 'src/app/developers/services/tools.service';
 @Component({
   selector: 'app-database',
   templateUrl: './database.component.html',
-  styleUrls: ['./database.component.css']
+  styleUrls: ['./database.component.css'],
 })
 export class DatabaseComponent implements OnInit {
-
-  TempDatabase : Database;
+  TempDatabase: Database;
   registerFormDatabase!: FormGroup;
   formIsValid: boolean = false;
   digitalProfile!: DigitalProfile;
-  
-  constructor(private formBuilder: FormBuilder, private service: ToolsService) { 
+
+  constructor(private formBuilder: FormBuilder, private service: ToolsService) {
     this.TempDatabase = {} as Database;
     this.registerFormDatabase = this.formBuilder.group({
-      name: new FormControl('', { validators:  [Validators.required], updateOn: 'change' }),
-      description: new FormControl('', { validators:  [Validators.required], updateOn: 'change' }),
-      iconLink: new FormControl('', { validators:  [Validators.required], updateOn: 'change' }),
+      name: new FormControl('', {
+        validators: [Validators.required],
+        updateOn: 'change',
+      }),
+      description: new FormControl('', {
+        validators: [Validators.required],
+        updateOn: 'change',
+      }),
+      iconLink: new FormControl('', {
+        validators: [Validators.required],
+        updateOn: 'change',
+      }),
     });
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   get name() {
     return this.registerFormDatabase.get('name');
   }
 
-  get description(){
+  get description() {
     return this.registerFormDatabase.get('description');
   }
 
-  get iconLink(){
+  get iconLink() {
     return this.registerFormDatabase.get('iconLink');
   }
-  addDatabase(){
+  addDatabase() {
     this.TempDatabase = this.registerFormDatabase.value;
     this.TempDatabase.id = 0;
 
-   const userId = toInteger(localStorage.getItem("id"));
-  //TODO: connectar por ID ABAJOW
+    const userId = toInteger(localStorage.getItem('id'));
+    //TODO: connectar por ID ABAJOW
 
     // get digittal profile by user id
     this.service.GetDigitalProfileByDevId(userId).subscribe((data: any) => {
       this.digitalProfile = data;
-      localStorage.setItem("digitalProfileId", this.digitalProfile.id.toString());
-    });
-    
-    this.TempDatabase.digitalProfile_id = toInteger(localStorage.getItem("digitalProfileId"));
- 
-
-    if(this.registerFormDatabase.valid){ 
-
-      //call the service to add the project
-      this.service.createDatabase(this.TempDatabase, this.TempDatabase.digitalProfile_id).subscribe((data) => {
-        console.log(data);
-      }
+      localStorage.setItem(
+        'digitalProfileId',
+        this.digitalProfile.id.toString()
       );
-    }
-    else{
-      alert("Please, fill all the fields");
-    }
+    });
 
+    this.TempDatabase.digitalProfile_id = toInteger(
+      localStorage.getItem('digitalProfileId')
+    );
+
+    if (this.registerFormDatabase.valid) {
+      //call the service to add the project
+      this.service
+        .createDatabase(this.TempDatabase, this.TempDatabase.digitalProfile_id)
+        .subscribe((data) => {
+          console.log(data);
+        });
+    } else {
+      alert('Please, fill all the fields');
+    }
   }
-
 }
