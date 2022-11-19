@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, AfterViewInit, OnInit} from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
@@ -6,23 +6,24 @@ import { toInteger } from 'lodash';
 import { LoginService } from 'src/app/public/services/login.service';
 import { DialogBoxInvalidFormComponent } from '../dialog-box-invalid-form/dialog-box-invalid-form.component';
 import { Database } from '../model/database';
-import { Developer } from '../model/developer';
-import { DigitalProfile } from '../model/digitalprofile';
 import { Framework } from '../model/framework';
 import { Language } from '../model/language';
-import { User } from '../model/user';
 
 @Component({
   selector: 'app-programming-language',
   templateUrl: './programming-language.component.html',
   styleUrls: ['./programming-language.component.css']
 })
-export class ProgrammingLanguageComponent implements OnInit {
+
+export class ProgrammingLanguageComponent implements OnInit, AfterViewInit {
+  
+  email: string | undefined;
   registerForm!: FormGroup;
+  userDev: any;
   language: Language;
   database: Database;
   frameWork: Framework;
-  digitalProfile: DigitalProfile;
+  digitalProfile: any;
   languagesList: Array<string> = [
     'JavaScript',
     'Python',
@@ -50,29 +51,60 @@ export class ProgrammingLanguageComponent implements OnInit {
   ];
 
   constructor(private service: LoginService, private formBuilder: FormBuilder, public dialog: MatDialog, private router: Router) {
-    this.digitalProfile = {} as DigitalProfile;
+    this.digitalProfile = {} as any;
     this.language = {} as  Language;
     this.database = {} as Database;
     this.frameWork = {} as Framework;
-
+    this.userDev = {} as any;
+    
     this.registerForm = this.formBuilder.group({
       languages: [''],
       databases: [''],
       frameworks: [''],
-    },
-    
-    );
+    });
   }
 
   ngOnInit(): void {
-    //getting id from localStorage
-    const id = toInteger(localStorage.getItem("id"));
-    this.service.getDigitalProfileByDeveloperId(id).subscribe((response: any) => {
-      this.digitalProfile = response;
-      console.log(this.digitalProfile);
-    });
+    if (!localStorage.getItem('foo')) { 
+      localStorage.setItem('foo', 'no reload') 
+      location.reload() 
+    } else {
+      localStorage.removeItem('foo') 
+    }
     
   }
+
+  ngAfterViewInit(): void {
+    const id = toInteger(localStorage.getItem("id"));
+    this.service.getDigitalProfileByDeveloperId(id).subscribe((response:any) => {
+      this.digitalProfile = response;  
+      console.log("Digital Profile Into Languages: " + JSON.stringify(this.digitalProfile));
+    });
+    this.service.getUserById(id).subscribe((response:any) => {
+      this.userDev = response;
+      console.log("Developer: " + JSON.stringify(this.userDev));
+    });
+  }
+
+  
+
+  getLanguages(){
+    return this.registerForm.get('languages')?.value;
+  }
+  getDatabases(){
+    return this.registerForm.get('databases')?.value;
+  }
+
+  getFrameworks(){
+    return this.registerForm.get('frameworks')?.value;
+  }
+
+  async GetDigitalProfile(){
+    const data = await this.service.getDigitalProfileByDeveloperId(this.userDev.id).toPromise();
+    this.digitalProfile = data;
+    console.log("Digital Profile: " + JSON.stringify(data));
+  }
+
 
   AddProgrammingLanguages(){
     for (let i = 0; i < this.registerForm.get('languages')?.value.length; i++) {
@@ -164,10 +196,10 @@ export class ProgrammingLanguageComponent implements OnInit {
   }
   
   openDialog() {
-    if (this.registerForm.get('languages')?.value.length !== 0 && 
-        this.registerForm.get('databases')?.value.length !== 0 && 
+    this.GetDigitalProfile();
+    if (this.registerForm.get('languages')?.value.length !== 0 && this.registerForm.get('databases')?.value.length !== 0 && 
         this.registerForm.get('frameworks')?.value.length !== 0){
-          if(this.registerForm.get('languages')?.value.length > 0)
+      if(this.registerForm.get('languages')?.value.length > 0)
         this.AddProgrammingLanguages();
       
       if(this.registerForm.get('databases')?.value.length > 0)
@@ -187,7 +219,7 @@ export class ProgrammingLanguageComponent implements OnInit {
         data: {message: 'You did not select any language to your profile, You will be redirect to login!'},
       });
       this.router.navigate(['/login']);
-        localStorage.removeItem('id');
+      localStorage.removeItem('id');
     }
   }
 

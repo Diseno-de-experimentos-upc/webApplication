@@ -28,7 +28,7 @@ export class DeveloperComponent implements OnInit {
   mismatch: boolean = false;
   registered: boolean = false;
   TempDev: Developer;
-  userDev: User;
+  userDev: any;
   pass: string = '';
   registerForm!: FormGroup;
   users: Array<User> = [];
@@ -36,7 +36,7 @@ export class DeveloperComponent implements OnInit {
 
   constructor(private service: LoginService, private formBuilder: FormBuilder, public dialog: MatDialog, private router: Router) {
     this.digitalProfile = {} as DigitalProfile;
-    this.userDev = {} as User;
+    this.userDev = {} as any;
     this.TempDev = {} as Developer;
     this.registerForm = this.formBuilder.group({
       first_name: new FormControl('', { validators:  [Validators.required], updateOn: 'change' }),
@@ -62,20 +62,17 @@ export class DeveloperComponent implements OnInit {
     
   }
 
-  AddDigitalProfile() {
-    this.service.getUserByEmail(this.registerForm.get("email")?.value).subscribe((response: any) => {
-      this.userDev = response;
-      localStorage.setItem('id', this.userDev.id.toString());
-      console.log('Get User by email');
+  async AddDigitalProfile() {
+    const data = await this.service.getUserByEmail(this.registerForm.get("email")?.value).toPromise();
+    this.userDev = data;
+    localStorage.setItem('id', this.userDev.id.toString());
+    console.log('Get User by email');
+    console.log(JSON.stringify(data));
+    this.digitalProfile.name = "Digital Profile " + this.registerForm.get("first_name")?.value;
+    this.service.postDigitalProfile(this.digitalProfile, this.userDev.id).subscribe((response:any) => {
+      console.log('Post Digital Profile');
       console.log(response);
-      this.digitalProfile.name = "Digital Profile " + this.registerForm.get("first_name")?.value;
-    
-      this.service.postDigitalProfile(this.digitalProfile, this.userDev.id).subscribe((response:any) => {
-        console.log('Post Digital Profile');
-        console.log(response);
-      });
     });
-    
   }
 
   Add() {
@@ -114,14 +111,13 @@ export class DeveloperComponent implements OnInit {
       if(!this.registered) {
         this.Add();
         this.registered = true;
-        this.dialog.open(DialogBoxInvalidFormComponent, { 
+        /* this.dialog.open(DialogBoxInvalidFormComponent, { 
           data: {message: 'You have registered successfully! Next page you can added some skills to your profile'},
-          
-        });
-        this.dialog.afterAllClosed.subscribe(() => {
-          this.AddDigitalProfile();
-        });
-        this.router.navigate(['/register/developer/languages']);
+        }); */
+        this.AddDigitalProfile();
+        if(this.digitalProfile.name != "Digital Profile ") {
+          this.router.navigate(['register/developer-profile']);
+        }
       }
       else {
         this.dialog.open(DialogBoxInvalidFormComponent, { 

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse,  HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse,  HttpEvent,  HttpHandler,  HttpHeaders, HttpRequest } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { Developer } from '../register/model/developer';
@@ -8,7 +8,7 @@ import { DigitalProfile } from '../register/model/digitalprofile';
 @Injectable({
   providedIn: 'root'
 })
-export class LoginService {
+export class LoginService{
   basePath = 'http://localhost:8080/api/v1/users';
   urlDeveloper = 'http://localhost:8080/api/v1/developers';
   urlCompany = 'http://localhost:8080/api/v1/companies';
@@ -17,6 +17,9 @@ export class LoginService {
   urlFrameworks = 'http://localhost:8080/api/v1/frameworks';
   urlLenguages = 'http://localhost:8080/api/v1/programmingLanguages';
   constructor(private http: HttpClient) { }
+  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    throw new Error('Method not implemented.');
+  }
 
 
   //http options
@@ -113,6 +116,12 @@ export class LoginService {
   getUserByEmail(email: string): Observable<object> {
     return this.http
       .get<object>(`${this.basePath}/searchByEmail/${email}`, this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+  
+  getUserById(id: number): Observable<object> {
+    return this.http
+      .get<object>(`${this.basePath}/${id}`, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 }
