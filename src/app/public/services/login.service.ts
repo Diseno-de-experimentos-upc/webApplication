@@ -9,6 +9,11 @@ import { DigitalProfile } from '../register/model/digitalprofile';
   providedIn: 'root'
 })
 export class LoginService {
+ 
+  developerURL = 'http://localhost:8080/api/v1/developers';
+  companyURL = 'http://localhost:8080/api/v1/companies';
+  usersURL = 'http://localhost:3000/users';
+ 
   basePath = 'http://localhost:8080/api/v1/users';
   urlDeveloper = 'http://localhost:8080/api/v1/developers';
   urlCompany = 'http://localhost:8080/api/v1/companies';
@@ -16,6 +21,7 @@ export class LoginService {
   urlDatabase = 'http://localhost:8080/api/v1/databases';
   urlFrameworks = 'http://localhost:8080/api/v1/frameworks';
   urlLenguages = 'http://localhost:8080/api/v1/programmingLanguages';
+ 
   constructor(private http: HttpClient) { }
 
 

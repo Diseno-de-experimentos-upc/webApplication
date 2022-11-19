@@ -8,7 +8,7 @@ export interface Developer{
   lastName:string,
   description:string,
   image:string,
-  banner_image:string,
+  bannerImage:string,
   adreess:string,
   email:string,
   password:string,
@@ -16,4 +16,5 @@ export interface Developer{
   databases:Array<Database>,
   languages:Array<ProgrammingLanguage>,
   frameworks:Array<Framework>
+ 
 }

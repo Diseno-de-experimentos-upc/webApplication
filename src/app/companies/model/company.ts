@@ -17,4 +17,4 @@ export interface Company{
   address: string,
   locality: string,
   city: string,
-}
+ 
