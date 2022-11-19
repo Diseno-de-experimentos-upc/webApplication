@@ -22,9 +22,7 @@ export class LoginComponent implements OnInit {
     email : ["", {validators: [Validators.required, Validators.email], updateOn: 'change'}],
     password : ["", {validators: [Validators.required, Validators.minLength(8)], updateOn: 'change'}],
   });
-
-
-
+  
   constructor(private formBuilder: FormBuilder, public dialog: MatDialog, private router: Router, private service: LoginService) { }
 
   ngOnInit(): void {

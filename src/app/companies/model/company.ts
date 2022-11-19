@@ -1,11 +1,11 @@
 export interface Company{
-  banner_image:string,
+  bannerImage:string,
   description:string,
   email:string,
-  first_name:string,
+  firstName:string,
   id:number,
   image:string,
-  last_name:string,
+  lastName:string,
   password:string,
   phone:string,
   role : string,
@@ -13,7 +13,7 @@ export interface Company{
   
   company_name: string,
   ruc: string,
-  owner_name: string,
+  owner: string,
   address: string,
   locality: string,
   city: string,

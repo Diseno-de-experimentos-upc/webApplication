@@ -13,11 +13,11 @@ import { Framework } from '../model/framework';
   providedIn: 'root',
 })
 export class DevelopersService {
-  BaseURL: string = 'http://localhost:3000/developers';
+  BaseURL: string = 'http://localhost:8080/api/v1/developers';
   NewsURL: string = 'http://localhost:3000/news-developers';
 
   educationUrl: string = 'http://localhost:3000/education';
-  digitalProfileUrl: string = 'http://localhost:3000/digital-profiles';
+  digitalProfileUrl: string = 'http://localhost:8080/api/v1/digital_profiles';
 
 
   ContactsURL: string = 'http://localhost:3000/contacts';
