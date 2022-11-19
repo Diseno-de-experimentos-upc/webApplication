@@ -14,7 +14,9 @@ export class MessagesCompanyComponent implements OnInit {
   answer: string = "";
   show: boolean = false;
   mobile:boolean = false;
-
+  contactName: string = "Contact Name";
+  contactDescription: string = "Contact Description";
+  contactId: number = 0;
 
   constructor(private service: CompaniesService, private breakpoint: BreakpointObserver) { }
 
@@ -29,7 +31,6 @@ export class MessagesCompanyComponent implements OnInit {
       }
     });
     this.GetContacts();
-    this.GetMessages();
   }
 
   GetContacts(){
@@ -38,20 +39,26 @@ export class MessagesCompanyComponent implements OnInit {
     });
   }
 
-  GetMessages(){
-    this.service.GetMessages().subscribe((response:any) => {
+  GetMessages(id: number){
+    this.service.GetMessages(id).subscribe((response:any) => {
       this.messages = response;
+      console.log(response)
     });
   }
 
-  SendMessage(){
+  SendMessage(contactId: number){
     let TempAnswer:object = {
-        "id":0,
-        "type": "comp",
-        "message": this.answer
+      "id":0,
+      "message": this.answer,
+      "emitter": {
+        "id": 3
+      },
+      "receiver": {
+          "id": contactId
+      }
     }
 
-    this.service.SendMessage(TempAnswer).subscribe(response => {                
+    this.service.SendMessage(TempAnswer, contactId).subscribe(response => {                
         this.messages.push(response);
     });
 

@@ -17,13 +17,8 @@ export class DevelopersService {
 
   educationUrl: string = 'http://localhost:3000/education';
   digitalProfileUrl: string = 'http://localhost:3000/digital-profiles';
-
-
-  ContactsURL: string = 'http://localhost:3000/contacts';
-  MessagesURL: string = 'http://localhost:3000/messages';
-
+  
   NotificationsURL: string = 'http://localhost:3000/notifications-developers';
-
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -117,19 +112,19 @@ export class DevelopersService {
 
   GetContacts(): Observable<object> {
     return this.http
-      .get<object>(this.ContactsURL, this.httpOptions)
+      .get<object>(`http://localhost:8080/api/v1/users/${2}/messages/LastMessageDeveloper`, this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+  
+  GetMessages(contactId: number): Observable<object> {
+    return this.http
+      .get(`http://localhost:8080/api/v1/users/${2}/messages/${contactId}`, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 
-  GetMessages(): Observable<object> {
+  SendMessage(answer: object, contactId: number): Observable<object> {
     return this.http
-      .get(this.MessagesURL, this.httpOptions)
-      .pipe(retry(2), catchError(this.handleError));
-  }
-
-  SendMessage(answer: object): Observable<object> {
-    return this.http
-      .post<object>(this.MessagesURL, answer, this.httpOptions)
+      .post<object>(`http://localhost:8080/api/v1/users/${2}/messages/${contactId}`, answer, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 

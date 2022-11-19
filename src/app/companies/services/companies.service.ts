@@ -77,19 +77,19 @@ export class CompaniesService {
 
   GetContacts(): Observable<object> {
     return this.http
-      .get<object>(this.ContactsURL, this.httpOptions)
+      .get<object>(`http://localhost:8080/api/v1/users/${3}/messages/LastMessageCompany`, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 
-  GetMessages(): Observable<object> {
+  GetMessages(contactId: number): Observable<object> {
     return this.http
-      .get(this.MessagesURL, this.httpOptions)
+      .get(`http://localhost:8080/api/v1/users/${3}/messages/${contactId}`, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 
-  SendMessage(answer: object): Observable<object> {
+  SendMessage(answer: object, contactId:number): Observable<object> {
     return this.http
-      .post<object>(this.MessagesURL, answer, this.httpOptions)
+      .post<object>(`http://localhost:8080/api/v1/users/${3}/messages/${contactId}`, answer, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 
