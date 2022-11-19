@@ -7,22 +7,33 @@ import {
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { Developer } from '../model/developer';
+import { Framework } from '../model/framework';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DevelopersService {
-  BaseURL: string = 'http://localhost:3000/developers';
+  BaseURL: string = 'http://localhost:8080/api/v1/developers';
   NewsURL: string = 'http://localhost:3000/news-developers';
+ 
+  certificateUrl: string = 'http://localhost:8080/api/v1/certificates';
+  studyCenterUrl: string = 'http://localhost:8080/api/v1/study-centers';
+  databaseUrl: string = 'http://localhost:8080/api/v1/databases';
+  frameworkUrl: string = 'http://localhost:8080/api/v1/frameworks';
+  programingLanguagesUrl: string = 'http://localhost:8080/api/v1/programmingLanguages';
+  projectsUrl: string = 'http://localhost:8080/api/v1/projects';
+  socialNetworks = 'http://localhost:8080/api/v1/socialNetworks';
+ 
 
-  educationUrl: string = 'http://localhost:3000/education';
-  digitalProfileUrl: string = 'http://localhost:3000/digital-profiles';
-
+  digitalProfileUrl: string = 'http://localhost:8080/api/v1/digital_profiles';
+  educationUrl: string = 'http://localhost:8080/api/v1/educations';
 
   ContactsURL: string = 'http://localhost:3000/contacts';
   MessagesURL: string = 'http://localhost:3000/messages';
 
   NotificationsURL: string = 'http://localhost:3000/notifications-developers';
+
+  backURL: string = 'http://localhost:8080/api/v1/users/searchByFrameworkAndProgrammingLanguageAndDatabase';
 
 
   httpOptions = {
@@ -49,6 +60,12 @@ export class DevelopersService {
   GetAllDevs(): Observable<Developer> {
     return this.http
       .get<Developer>(this.BaseURL, this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+
+  GetDevsByFrameworkAndLanguageAndDatabase(framework: string, language: string, database: string): Observable<object> {
+    return this.http
+      .get<object>(`${this.backURL}/${framework}&${language}&${database}`, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 
@@ -82,54 +99,79 @@ export class DevelopersService {
       .pipe(retry(2), catchError(this.handleError));
   }
 
-  GetCetificates(educationId: number): Observable<object> {
+  GetDigitalProfileByDeveloperId(developerId: number): Observable<object> {
     return this.http
-      .get<object>(`${this.educationUrl}/${educationId}/certificates`, this.httpOptions)
+      .get<object>(`${this.digitalProfileUrl}/developer/${developerId}`, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 
-  GetStudyCenters(educationId: number): Observable<object> {
+  GetEducationByDigitalProfileId(digitalProfileId: number): Observable<object> {
     return this.http
-      .get<object>(`${this.educationUrl}/${educationId}/study-centers`, this.httpOptions)
+      .get<object>(`${this.educationUrl}/digitalProfile/${digitalProfileId}`, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 
-  GetSocialNetworks(digitalProfileId: number): Observable<object> {
+  GetDatabaseByDigitalProfileId(digitalProfileId: number): Observable<object> {
     return this.http
-      .get<object>(`${this.digitalProfileUrl}/${digitalProfileId}/social-networks`, this.httpOptions)
+      .get<object>(`${this.databaseUrl}/digitalProfile/${digitalProfileId}`, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 
-  GetTechnologies(digitalProfileId: number): Observable<object> {
+  GetFrameworkByDigitalProfileId(digitalProfileId: number): Observable<object> {
     return this.http
-      .get<object>(`${this.digitalProfileUrl}/${digitalProfileId}/technologies`, this.httpOptions)
+      .get<object>(`${this.frameworkUrl}/digitalProfile/${digitalProfileId}`, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 
-  GetProjects(digitalProfileId: number): Observable<object> {
+  GetProgrammingLanguagesByDigitalProfileId(digitalProfileId: number): Observable<object> {
     return this.http
-      .get<object>(`${this.digitalProfileUrl}/${digitalProfileId}/projects`, this.httpOptions)
+      .get<object>(`${this.programingLanguagesUrl}/digitalProfile/${digitalProfileId}`, this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+
+  GetCertificatesByEducationId(educationId: number): Observable<object> {
+    return this.http
+      .get<object>(`${this.certificateUrl}/education/${educationId}`, this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+
+   GetStudyCentersByEducationId(educationId: number): Observable<object> {
+    return this.http
+      .get<object>(`${this.studyCenterUrl}/education/${educationId}`, this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+
+  //////social networks section /////////
+  GetSocialNetworkByUserId(id: number): Observable<object> {
+    return this.http
+      .get<object>(this.socialNetworks + '/user/' + id, this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+ 
+  GetProjectsByDigitalProfileId(digitalProfileId: number): Observable<object> {
+    return this.http
+      .get<object>(`${this.projectsUrl}/digitalProfile/${digitalProfileId}`, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 
 
   //////Messages Section /////////
 
-  GetContacts(): Observable<object> {
+  GetContacts(UserId:number): Observable<object> {
     return this.http
-      .get<object>(this.ContactsURL, this.httpOptions)
+      .get<object>(`http://localhost:8080/api/v1/users/${UserId}/messages/LastMessageDeveloper`, this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+  
+  GetMessages(contactId: number, UserId:number): Observable<object> {
+    return this.http
+      .get(`http://localhost:8080/api/v1/users/${UserId}/messages/${contactId}`, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 
-  GetMessages(): Observable<object> {
+  SendMessage(answer: object, contactId: number, UserId:number): Observable<object> {
     return this.http
-      .get(this.MessagesURL, this.httpOptions)
-      .pipe(retry(2), catchError(this.handleError));
-  }
-
-  SendMessage(answer: object): Observable<object> {
-    return this.http
-      .post<object>(this.MessagesURL, answer, this.httpOptions)
+      .post<object>(`http://localhost:8080/api/v1/users/${UserId}/messages/${contactId}`, answer, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 
@@ -141,4 +183,9 @@ export class DevelopersService {
       .pipe(retry(2),catchError(this.handleError));
   }
 
+  DeleteNotificationById(id: number): Observable<object> {
+    return this.http
+      .delete(`${this.NotificationsURL}/${id}`, this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
 }

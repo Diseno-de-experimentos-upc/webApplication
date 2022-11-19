@@ -18,7 +18,7 @@
 <mat-sidenav-container>
   <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
     <img class="avatar mat-elevation-z8" [src]="company.image" width="30%" />
-    <h4 class="name">{{ company.first_name }} {{ company.last_name }}</h4>
+    <h4 class="name">{{ company.firstName }} {{ company.lastName }}</h4>
     <p class="designation">Recruiter</p>
     <mat-divider></mat-divider>
 
@@ -26,10 +26,15 @@
       <mat-icon>home</mat-icon>
       <span> Home</span>
     </button>
-    
+
     <button mat-button class="menu-button" (click)="disableOption()" routerLink="find-devs">
       <mat-icon>search</mat-icon>
       <span> Find your dev </span>
+    </button>
+
+    <button mat-button class="menu-button" (click)="disableOption()" routerLink="make-post">
+      <mat-icon>publish</mat-icon>
+      <span> Make a post </span>
     </button>
 
     <button mat-button class="menu-button" (click)="disableOption()" routerLink="messages">
@@ -38,7 +43,7 @@
     </button>
 
     <button mat-button class="menu-button" (click)="disableOption()" routerLink="notifications">
-      <mat-icon matBadge="4" matBadgeColor="warn">notifications</mat-icon>
+      <mat-icon matBadge="{{notifications.length}}"  matBadgeColor="warn">notifications</mat-icon>
       <span> Notifications</span>
     </button>
 

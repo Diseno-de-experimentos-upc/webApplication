@@ -20,5 +20,10 @@ export class NotificationsCompanyComponent implements OnInit {
       this.notifications = response;
     });
   }
+  DeleteNotificationById(id:number){
+    this.service.DeleteNotificationById(id).subscribe((response:any)=> {
+      this.GetNotifications();
+    });
+  }
 
 }

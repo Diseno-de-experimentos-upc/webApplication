@@ -1,17 +1,21 @@
 export interface Company{
+  bannerImage:string,
+  description:string,
+  email:string,
+  firstName:string,
   id:number,
+  image:string,
+  lastName:string,
+  password:string,
+  phone:string,
+  role : string,
+
+  
   company_name: string,
   ruc: string,
-  owner_name: string,
+  owner: string,
   address: string,
   locality: string,
   city: string,
-  first_name:string,
-  last_name:string,
-  image:string,
-  banner_image:string,
-  description:string,
-  email:string,
-  password:string,
-  phone:string,
+
 }

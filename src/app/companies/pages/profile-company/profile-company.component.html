@@ -14,7 +14,7 @@
 
             <div class="img-container">
               <div class="card-container">
-                <h1 class="card-title-text">{{company.first_name}} {{company.last_name}}</h1>
+                <h1 class="card-title-text">{{company.firstName}} {{company.lastName}}</h1>
                 <p class="card-paragraph-text">
                   {{company.description}}
                 </p>
@@ -81,7 +81,7 @@
             <mat-card-title>
               <div class="img-container-2">
                 <img
-                  [src]="company.banner_image"
+                  [src]="company.bannerImage"
                   alt=""
                   class="img-in"
                 />
@@ -94,23 +94,26 @@
  
                   <mat-card *ngFor="let post of posts" class="post-card">
                     <mat-card-header>
-                    <div mat-card-avatar>
-                      <img
-                        [src]="company.image"
-                        alt=""
-                        class="avatar-header-image"
-                      />
-                    </div>
-                    <mat-card-title>{{company.first_name}} {{company.last_name}}</mat-card-title>
-                    <mat-card-subtitle>{{ post.date }}</mat-card-subtitle>
+                      <div mat-card-avatar>
+                        <img
+                          [src]="company.image"
+                          alt=""
+                          class="avatar-header-image"
+                        />
+                      </div>
+                      <mat-card-title>{{company.firstName}} {{company.lastName}}</mat-card-title>
+                      <mat-card-subtitle>{{ post.date }}</mat-card-subtitle>
                   </mat-card-header>
                   <img mat-card-image [src]="post.image" alt="Profile photo" />
                   <mat-card-content>
                     <h2>{{ post.title }}</h2>
                     <p>{{ post.description }}</p>
                   </mat-card-content>
-                  <mat-card-actions>
-                    
+                  
+                  <mat-card-actions style="display: flex; justify-content: flex-end;">
+                    <button mat-icon-button color="primary" (click)="deletePost(post.id)">
+                      <mat-icon>delete</mat-icon>
+                    </button>
                   </mat-card-actions>
                 </mat-card>
  

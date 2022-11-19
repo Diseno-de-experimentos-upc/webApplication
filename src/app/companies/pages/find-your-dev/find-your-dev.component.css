@@ -46,10 +46,10 @@ mat-card-content {
   margin-bottom: 2rem;
 }
 mat-checkbox {
-  margin-left: 3rem;
   color: darkgrey;
   align-self: center;
-  width: 100%;
+  justify-content: center;
+  margin-left: 9rem;
 }
 mat-form-field {
   margin-left: 2rem;
@@ -68,13 +68,24 @@ mat-form-field {
     max-width: 10rem;
     margin: 1%;
   }
+
+  #ext {
+    margin-left: 6rem;
+  }
+  #ext2 {
+    margin-left: 6rem;
+  }
   .btn-register {
     grid-column: 1/2;
+  }
+  mat-checkbox {
+    margin-left: 1rem;
   }
 }
 @media (max-width: 768px) {
   .grid {
     grid-template-columns: repeat(1, 1fr);
+    margin: 0;
   }
   .grid-two {
     grid-template-columns: repeat(1, 1fr);
@@ -83,8 +94,19 @@ mat-form-field {
   .find-your-dev__form-field {
     max-width: 60%;
   }
+
+  #ext {
+    margin-left: 3rem;
+  }
+  #ext2 {
+    margin-left: 3rem;
+  }
+
   .btn-register {
     grid-column: 1/2;
+  }
+  mat-checkbox {
+    margin-left: 1rem;
   }
 }
 

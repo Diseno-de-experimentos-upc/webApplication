@@ -9,11 +9,14 @@ import {
   ValidatorFn,
   Validators,
 } from '@angular/forms';
-import { Developer } from 'src/app/developers/model/developer';
-import { DevelopersService } from 'src/app/developers/services/developers.service';
+import { Developer } from '../model/developer';
+import { User } from '../model/user';
+import { DigitalProfile } from '../model/digitalprofile';
+import { LoginService } from '../../services/login.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogBoxInvalidFormComponent } from '../dialog-box-invalid-form/dialog-box-invalid-form.component';
 import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-developer',
@@ -24,39 +27,16 @@ export class DeveloperComponent implements OnInit {
 
   mismatch: boolean = false;
   registered: boolean = false;
-  devs: Array<any> = [];
   TempDev: Developer;
+  userDev: any;
   pass: string = '';
   registerForm!: FormGroup;
+  users: Array<User> = [];
+  digitalProfile: DigitalProfile;
 
-  languagesList: Array<string> = [
-    'JavaScript',
-    'Python',
-    'Java',
-    'C#',
-    'C++',
-    'TypeScript',
-    'Shell',
-    'C',
-    'Ruby',
-  ];
-  databasesList: Array<string> = [
-    'MySQL',
-    'Oracle',
-    'PostgreSQL',
-    'Microsoft SQL Server',
-    'MongoDB',
-  ];
-  frameworksList: Array<string> = [
-    'Angular',
-    'ASP.NET Core',
-    'Django',
-    'React',
-    'Vue.js',
-  ];
-
-  constructor( private service: DevelopersService, private formBuilder: FormBuilder, public dialog: MatDialog, private router: Router) {
-    
+  constructor(private service: LoginService, private formBuilder: FormBuilder, public dialog: MatDialog, private router: Router) {
+    this.digitalProfile = {} as DigitalProfile;
+    this.userDev = {} as any;
     this.TempDev = {} as Developer;
     this.registerForm = this.formBuilder.group({
       first_name: new FormControl('', { validators:  [Validators.required], updateOn: 'change' }),
@@ -65,9 +45,6 @@ export class DeveloperComponent implements OnInit {
       email: new FormControl('', { validators:  [Validators.required, Validators.email, Validators.pattern('[a-z0-9]+@[a-z]+\.[a-z]{2,3}')], updateOn: 'change' }),
       password: new FormControl('', { validators:  [Validators.required, Validators.minLength(8), Validators.maxLength(16)], updateOn: 'change' }),
       password_confirm: new FormControl('', { validators: [Validators.required, Validators.minLength(8), Validators.maxLength(16)], updateOn: 'change' }),
-      languages: [''],
-      databases: [''],
-      frameworks: [''],
     },
     {
       validators: this.MustMatch( 'password', 'password_confirm')
@@ -77,23 +54,47 @@ export class DeveloperComponent implements OnInit {
 
   ngOnInit(): void {
     this.setEmailValidation();
-    this. setPhoneValidation();
+    this.setPhoneValidation();
     this.setPaswordValidation();
-    this.service.GetAllDevs().subscribe((response: any) => {
-      this.devs = response;
-      console.log(this.devs);
+    this.service.getAllUser().subscribe((response: any) => {
+      this.users = response;
     });
+    
+  }
+
+  async AddDigitalProfile() {
+    const data = await this.service.getUserByEmail(this.registerForm.get("email")?.value).toPromise();
+    this.userDev = data;
+    localStorage.setItem('id', this.userDev.id.toString());
+    console.log('Get User by email');
+    console.log(JSON.stringify(data));
+    this.digitalProfile.name = "Digital Profile " + this.registerForm.get("first_name")?.value;
+    
+    this.service.postDigitalProfile(this.digitalProfile, this.userDev.id).subscribe((response:any) => {
+      console.log('Post Digital Profile');
+      console.log(response);
+    });
+    
   }
 
   Add() {
-    this.TempDev = this.registerForm.value;
-    this.TempDev.id = 0;
-    this.service.AddDev(this.TempDev).subscribe((response: any) => {
-      this.devs.push({ ...response });
-      console.log(this.devs);
+    this.TempDev.firstName =  this.registerForm.get('first_name')?.value;
+    this.TempDev.lastName =  this.registerForm.get('last_name')?.value;
+    this.TempDev.phone =  this.registerForm.get('phone')?.value;
+    this.TempDev.email =  this.registerForm.get('email')?.value;
+    this.TempDev.password =  this.registerForm.get('password')?.value;
+    this.TempDev.description =  'I am a developer';
+    this.TempDev.role =  'developer';
+    this.TempDev.image = 'https://d500.epimg.net/cincodias/imagenes/2016/07/04/lifestyle/1467646262_522853_1467646344_noticia_normal.jpg';
+    this.TempDev.bannerImage = 'https://thumbs.dreamstime.com/b/internet-information-technology-businessman-hand-showing-concept-75784736.jpg';
+
+    this.service.postDeveloper(this.TempDev).subscribe((response:any) => {
+      console.log('Post User Developer');
+      this.users.push(response)
+      console.log(response);
     });
   }
-
+  
   openDialog() {
     if (this.registerForm.invalid) {
       if(this.registerForm.get('password')?.value !== this.registerForm.get('password_confirm')?.value) {
@@ -112,10 +113,13 @@ export class DeveloperComponent implements OnInit {
       if(!this.registered) {
         this.Add();
         this.registered = true;
-        this.dialog.open(DialogBoxInvalidFormComponent, { 
-          data: {message: 'You have successfully registered!'},
-        });
-        this.router.navigate(['/login']);
+        /* this.dialog.open(DialogBoxInvalidFormComponent, { 
+          data: {message: 'You have registered successfully! Next page you can added some skills to your profile'},
+        }); */
+        this.AddDigitalProfile();
+        if(this.digitalProfile.name != "Digital Profile ") {
+          this.router.navigate(['register/developer-profile']);
+        }
       }
       else {
         this.dialog.open(DialogBoxInvalidFormComponent, { 
@@ -126,7 +130,7 @@ export class DeveloperComponent implements OnInit {
     }
   }
 
-    //Properties
+  //Properties
   get email() {
     return this.registerForm.get('email');
   }
@@ -162,6 +166,7 @@ export class DeveloperComponent implements OnInit {
       }
         this.registerForm.get('email')?.updateValueAndValidity();
     });
+    
   }
 
   setPhoneValidation() {
@@ -206,14 +211,13 @@ export class DeveloperComponent implements OnInit {
     });
   }
   verifyDeveloperUnregistered() {
-    this.devs.forEach((dev: any) => {
-      if (dev.email === this.registerForm.get('email')?.value) {
+    this.users.forEach((user: any) => {
+      if (user.email === this.registerForm.get('email')?.value) {
         this.registered = true;
         return;
       }
       else {
         this.registered = false;
-        return;
       }
     });
     

@@ -25,6 +25,6 @@ export class PageNotFoundComponent implements OnInit {
   }
 
   goToLandingPage(): void {
-    window.location.href = 'https://digitalmind-upc-pre-202202-si729-sw52.github.io/about-us.html';
+    window.location.href = 'https://digitalmind-upc-pre-202202-si729-sw52.github.io';
   }
 }

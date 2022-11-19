@@ -20,7 +20,7 @@
   margin-top: 10px;
   text-align: left;
   align-items: center;
-  height: 40%;
+  height: 60px;
 }
 
 .avatar-header-image {
@@ -40,8 +40,30 @@ button {
 .spacer {
   flex: 1 1 auto;
 }
-.notification-button {
+.notification-button{
   text-align: center;
 }
+
+@media (max-width: 1146px) {
+  .notification-header{
+    max-width: 800px;
+    min-width: 280px;
+    border-radius: 10px;
+    background-color: #CBE0FF;
+    margin-top: 10px;
+    text-align: left;
+    align-items: center;
+    height: 120px;
+  }
+  button {
+    background-color: #4054b4;
+    max-width: 100px;
+    min-width: 60px;
+    height: 55px;
+    margin-top:10%;
+    width: calc(70vw - 750px);
+  }
+}
+
 
 
