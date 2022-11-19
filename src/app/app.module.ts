@@ -68,6 +68,7 @@ import { MakePostComponent } from './companies/pages/make-post/make-post.compone
 //Tools
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
+import { RegisterProfileComponent } from './public/register/register-profile/register-profile.component';
 
 
 @NgModule({
@@ -112,6 +113,7 @@ import {MatNativeDateModule} from '@angular/material/core';
       FrameworkComponent,
       StudyCenterComponent,
       MakePostComponent,
+      RegisterProfileComponent,
 
 
 
