@@ -1,18 +1,19 @@
-<mat-card *ngFor="let New of news" class="news-card">
+<mat-card *ngFor="let Dev of Devs" class="news-card">
   <mat-card-header>
     <div mat-card-avatar>
-      <img [src]="New.profile_photo" alt="" class="avatar-header-image" />
+      <img [src]="Dev.image" alt="" class="avatar-header-image" />
     </div>
-    <mat-card-title>{{ New.author }}</mat-card-title>
-    <mat-card-subtitle>from {{ New.company }}</mat-card-subtitle>
+    <mat-card-title>{{ Dev.firstName }}</mat-card-title>
+    <mat-card-subtitle>I am Developer</mat-card-subtitle>
   </mat-card-header>
-  <img mat-card-image [src]="New.image" alt="Photo of a Shiba Inu" />
+  <img mat-card-image [src]="Dev.image" alt="Photo of a Shiba Inu" />
   <mat-card-content>
-    <h2>{{ New.title }}</h2>
-    <p>{{ New.description }}</p>
+    <p>My name telephone is {{ Dev.phone }}</p>
+    <p>My email is {{ Dev.email}}</p>
+    <p>{{Dev.description}}</p>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-button>LIKE</button>
-    <button mat-button>SHARE</button>
+    <button mat-button  (click)="openMessageDialog(Dev.id)">SEND MESSAGE</button>
+    <button mat-button  (click)="openNotificationDialog(Dev.id)">SEND NOTIFICATION</button>
   </mat-card-actions>
 </mat-card>

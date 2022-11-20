@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {DevelopersService} from "../../services/developers.service";
+import {forEach, toInteger} from "lodash";
+import {BreakpointObserver, Breakpoints} from "@angular/cdk/layout";
 
 @Component({
   selector: 'app-notifications-developer',
@@ -8,21 +10,34 @@ import {DevelopersService} from "../../services/developers.service";
 })
 export class NotificationsDeveloperComponent implements OnInit {
 
+  UserId:number = 0;
+  Developer: any;
   notifications:Array<any> = [];
-  constructor(private service: DevelopersService) { }
+  constructor(private service: DevelopersService, private breakpoint: BreakpointObserver) { }
 
   ngOnInit(): void {
-    this.GetNotifications();
+    this.UserId = toInteger(localStorage.getItem("id"));
+    this.breakpoint.observe([Breakpoints.XSmall, Breakpoints.HandsetLandscape]).subscribe((response:any) => {
+      console.log(response);
+    });
+    this.GetAllNotifications();
+
   }
-  GetNotifications(){
-    this.service.GetNotifications().subscribe((response:any)=> {
+  GetNotification(id:number){
+    this.service.GetNotificationsByUserId(id, this.UserId).subscribe((response:any)=> {
       this.notifications = response;
     });
   }
-
-  DeleteNotificationById(id:number){
-    this.service.DeleteNotificationById(id).subscribe((response:any)=> {
-      this.GetNotifications();
+  GetAllNotifications(){
+    this.service.GetAllNotifications(this.UserId).subscribe((response:any)=> {
+      this.notifications = response;
+      console.log(this.notifications);
     });
   }
+  DeleteNotificationById(id:number){
+    this.service.DeleteNotificationById(id,this.UserId).subscribe((response:any)=> {
+      this.GetNotification(this.UserId);
+    });
+  }
+
 }
