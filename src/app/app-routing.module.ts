@@ -28,7 +28,6 @@ import { ProgrammingLanguageComponent } from './developers/pages/tools-developer
 import { FrameworkComponent } from './developers/pages/tools-developer/framework/framework.component';
 import { StudyCenterComponent } from './developers/pages/tools-developer/study-center/study-center.component';
 import { MakePostComponent } from './companies/pages/make-post/make-post.component';
-import { RegisterProfileComponent } from './public/register/register-profile/register-profile.component';
 const routes: Routes = [
   {path:'', component:LoginComponent},
   {path:'login', component:LoginComponent},
@@ -37,7 +36,6 @@ const routes: Routes = [
       {path: 'company', component: CompanyComponent},
     ]
   },
-  {path: 'register/developer-profile', component: RegisterProfileComponent},
   {
     path: 'developers',
     component: DevelopersComponent,

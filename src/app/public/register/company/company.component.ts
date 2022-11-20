@@ -15,8 +15,6 @@ import { DigitalProfile } from '../model/digitalprofile';
 export class CompanyComponent implements OnInit {
 
   registered: boolean = false;
-
-  users:Array<User> = [];
   TempComp: Company;
   pass:string = "";
   registerForm!: FormGroup;
@@ -51,11 +49,6 @@ export class CompanyComponent implements OnInit {
     this.setEmailValidation();
     this. setPhoneValidation();
     this.setPaswordValidation();
-
-    this.service.getAllUser().subscribe((response:any) => {
-      this.users = response;
-      console.log(response);
-    });
   }
 
   Add(){
@@ -76,8 +69,6 @@ export class CompanyComponent implements OnInit {
     this.TempComp.ruc =  this.registerForm.get('ruc')?.value;
     this.service.postCompany(this.TempComp).subscribe((response:any) => {
       console.log(this.TempComp);
-      this.users.push({...response});
-      console.log(this.users);
     });
   }
 
@@ -98,7 +89,6 @@ export class CompanyComponent implements OnInit {
       this.verifyDeveloperUnregistered();
       if(!this.registered) {
         this.Add();
-        this.registered = true;
         this.dialog.open(DialogBoxInvalidFormComponent, { 
           data: {message: 'You have successfully registered!'},
         });
@@ -219,15 +209,16 @@ export class CompanyComponent implements OnInit {
     });
   }
   verifyDeveloperUnregistered() {
-    this.users.forEach((user: any) => {
-      if (user.email === this.registerForm.get('email')?.value) {
+    this.registered = false;
+    var req = new XMLHttpRequest();
+    req.open('GET', `http://localhost:8080/api/v1/users/searchByEmail/${this.registerForm.get("email")?.value}`, false);
+    req.send(null);
+    if (req.status == 200) {
+      var user = JSON.parse(req.responseText);
+      if (user.email == this.registerForm.get('email')?.value) {
         this.registered = true;
-        return;
       }
-      else {
-        this.registered = false;
-      }
-    });
+    }
     
   }
 }
