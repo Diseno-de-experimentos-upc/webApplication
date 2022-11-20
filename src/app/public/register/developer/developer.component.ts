@@ -120,7 +120,7 @@ export class DeveloperComponent implements OnInit {
         this.language.iconLink = "https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg";
       }
       else if (this.language.name === 'Java'){
-        this.language.iconLink = "https://upload.wikimedia.org/wikipedia/commons/3/30/Java_programming_language_logo.svg";
+        this.language.iconLink = "https://icon-library.com/images/java-icon-png/java-icon-png-15.jpg";
       }
       else if (this.language.name === "C#"){
         this.language.iconLink = "https://upload.wikimedia.org/wikipedia/commons/0/0d/C_Sharp_wordmark.svg";
