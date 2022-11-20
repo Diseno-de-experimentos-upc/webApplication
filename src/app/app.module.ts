@@ -69,6 +69,7 @@ import { MakePostComponent } from './companies/pages/make-post/make-post.compone
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import { MessageDialogComponent } from './companies/pages/find-your-dev/message-dialog/message-dialog.component';
+import { NotificationDialogComponent } from './companies/pages/home-company/notification-dialog/notification-dialog.component';
 
 
 @NgModule({
@@ -92,7 +93,7 @@ import { MessageDialogComponent } from './companies/pages/find-your-dev/message-
     ProfileDeveloperComponent,
     NotificationsDeveloperComponent,
     DialogBoxSettingsDeveloperComponent,
-    
+
     CompaniesComponent,
     HomeCompanyComponent,
     MessagesCompanyComponent,
@@ -114,6 +115,7 @@ import { MessageDialogComponent } from './companies/pages/find-your-dev/message-
       StudyCenterComponent,
       MakePostComponent,
       MessageDialogComponent,
+      NotificationDialogComponent,
 
 
 

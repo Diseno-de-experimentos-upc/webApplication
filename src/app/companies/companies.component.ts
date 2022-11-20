@@ -28,7 +28,7 @@ export class CompaniesComponent implements OnInit {
 
   ngOnInit(): void {
     this.ngAfterViewInit();
-    this.GetAllNotifications();
+    //this.GetAllNotifications();
     this.service.GetAllNews().subscribe((response: any) => {
       this.news = response;
       console.log(this.news);
@@ -73,11 +73,11 @@ export class CompaniesComponent implements OnInit {
   disableOption() {
     this.profile = false;
   }
-  GetAllNotifications() {
+  /*GetAllNotifications() {
     this.service.GetNotifications().subscribe((response: any) => {
       this.notifications = response;
       console.log(this.notifications.length);
     });
-  }
+  }*/
 
 }

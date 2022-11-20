@@ -7,6 +7,7 @@ import {
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { Company } from '../model/company';
+import {Developer} from "../../public/register/model/developer";
 
 
 @Injectable({
@@ -16,10 +17,11 @@ export class CompaniesService {
   BaseURL: string = 'http://localhost:8080/api/v1/companies';
 
   socialNetworks = 'http://localhost:8080/api/v1/socialNetworks';
- 
+
   NewsURL: string = 'http://localhost:3000/news-companies';
-  NotificationsURL: string = 'http://localhost:3000/notifications-companies';
   basePath = 'http://localhost:8080/api/v1/users';
+
+  urlDeveloper = 'http://localhost:8080/api/v1/developers';
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
@@ -121,14 +123,21 @@ export class CompaniesService {
 
   //////Notifications Section /////////
 
-  GetNotifications(): Observable<object> {
+  GetNotificationByUserId(id:number, UserId:number): Observable<object> {
     return this.http
-      .get(this.NotificationsURL, this.httpOptions)
+      .get(`http://localhost:8080/api/v1/users/${UserId}/notifications/${id}`, this.httpOptions)
       .pipe(retry(2),catchError(this.handleError));
   }
-  DeleteNotificationById(id: number): Observable<object> {
+
+  SendNotification(notification: object, contactId: number, UserId:number, ): Observable<object> {
     return this.http
-      .delete(`${this.NotificationsURL}/${id}`, this.httpOptions)
+      .post<object>(`http://localhost:8080/api/v1/users/${UserId}/notifications/${contactId}`, JSON.stringify(notification) , this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+
+  DeleteNotificationById(id: number, UserId: number): Observable<object> {
+    return this.http
+      .delete(`http://localhost:8080/api/v1/users/${UserId}/notifications/${id}`, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 
@@ -141,6 +150,11 @@ export class CompaniesService {
   AddUser(user: Company): Observable<Company> {
     return this.http
       .post<Company>(this.basePath, JSON.stringify(user), this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+  getDeveloperAll(): Observable<Developer> {
+    return this.http
+      .get<Developer>(`${this.urlDeveloper}`, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 }
