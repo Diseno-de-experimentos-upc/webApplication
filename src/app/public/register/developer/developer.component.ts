@@ -77,6 +77,28 @@ export class DeveloperComponent implements OnInit {
     
   }
 
+  addDigitalProfile() {
+    var req = new XMLHttpRequest();
+    req.open('GET', `http://localhost:8080/api/v1/users/searchByEmail/${this.registerForm.get("email")?.value}`, false);
+    req.send(null);
+    console.log('Get User response');
+    console.log(req.responseText);
+    if (req.status == 200) {
+      this.userDev = JSON.parse(req.responseText);
+      console.log('User assigned to userDev');
+      console.log(this.userDev);
+      this.digitalProfile.name = "Digital Profile " + this.registerForm.get("first_name")?.value;
+      var req2 = new XMLHttpRequest();
+      req2.open('POST', `http://localhost:8080/api/v1/digital_profiles/${this.userDev.id}`, false);
+      req2.setRequestHeader('Content-Type', 'application/json');
+      req2.send(JSON.stringify(this.digitalProfile));
+      console.log('Post Digital Profile');
+      console.log(req2.responseText);
+    }
+
+  
+  }
+
   Add() {
     this.TempDev.firstName =  this.registerForm.get('first_name')?.value;
     this.TempDev.lastName =  this.registerForm.get('last_name')?.value;
@@ -88,11 +110,22 @@ export class DeveloperComponent implements OnInit {
     this.TempDev.image = 'https://d500.epimg.net/cincodias/imagenes/2016/07/04/lifestyle/1467646262_522853_1467646344_noticia_normal.jpg';
     this.TempDev.bannerImage = 'https://thumbs.dreamstime.com/b/internet-information-technology-businessman-hand-showing-concept-75784736.jpg';
 
-    this.service.postDeveloper(this.TempDev).subscribe((response:any) => {
+    var req = new XMLHttpRequest();
+    req.open('POST', 'http://localhost:8080/api/v1/developers', false);
+    req.setRequestHeader('Content-Type', 'application/json');
+    req.send(JSON.stringify(this.TempDev));
+    console.log('Post Developer');
+    console.log(req.responseText);
+    if(req.status == 200){
+      this.registered = true;
+      this.AddDigitalProfile();
+    }
+    
+    /* this.service.postDeveloper(this.TempDev).subscribe((response:any) => {
       console.log('Post User Developer');
       this.users.push(response)
       console.log(response);
-    });
+    }); */
   }
   
   openDialog() {
@@ -116,7 +149,7 @@ export class DeveloperComponent implements OnInit {
         this.dialog.open(DialogBoxInvalidFormComponent, { 
           data: {message: 'You have registered successfully! Next page you can added some skills to your profile'},
         });
-        this.AddDigitalProfile();
+        this.addDigitalProfile();
         if(this.digitalProfile.name != "Digital Profile ") {
           this.router.navigate(['register/developer-profile']);
         }
