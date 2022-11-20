@@ -64,8 +64,6 @@ export class DeveloperComponent implements OnInit {
     'React',
     'Vue.js',
   ];
-
-  users: Array<User> = [];
   digitalProfile: DigitalProfile;
 
   constructor(private service: LoginService, private formBuilder: FormBuilder, public dialog: MatDialog, private router: Router) {
@@ -96,9 +94,6 @@ export class DeveloperComponent implements OnInit {
     this.setEmailValidation();
     this.setPhoneValidation();
     this.setPaswordValidation();
-    this.service.getAllUser().subscribe((response: any) => {
-      this.users = response;
-    });
     
   }
 
@@ -274,7 +269,6 @@ export class DeveloperComponent implements OnInit {
     console.log('Post Developer');
     console.log(req.responseText);
     if (req.status == 201) {
-      this.registered = true;
       this.AddDigitalProfile();
     }
   }
@@ -296,7 +290,6 @@ export class DeveloperComponent implements OnInit {
       this.verifyDeveloperUnregistered();
       if(!this.registered) {
         this.AddDeveloper();
-        this.registered = true;
         this.dialog.open(DialogBoxInvalidFormComponent, { 
           data: {message: 'You have registered successfully! You will be redirect to login page to Log In'}
         });
@@ -392,15 +385,15 @@ export class DeveloperComponent implements OnInit {
     });
   }
   verifyDeveloperUnregistered() {
-    this.users.forEach((user: any) => {
-      if (user.email === this.registerForm.get('email')?.value) {
+    this.registered = false;
+    var req = new XMLHttpRequest();
+    req.open('GET', `http://localhost:8080/api/v1/users/searchByEmail/${this.registerForm.get("email")?.value}`, false);
+    req.send(null);
+    if (req.status == 200) {
+      var user = JSON.parse(req.responseText);
+      if (user.email == this.registerForm.get('email')?.value) {
         this.registered = true;
-        return;
       }
-      else {
-        this.registered = false;
-      }
-    });
-    
+    }
   }
 }
