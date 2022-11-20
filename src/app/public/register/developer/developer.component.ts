@@ -65,14 +65,16 @@ export class DeveloperComponent implements OnInit {
   async AddDigitalProfile() {
     const data = await this.service.getUserByEmail(this.registerForm.get("email")?.value).toPromise();
     this.userDev = data;
-    localStorage.setItem('id', this.userDev.id.toString());
+    localStorage.setItem('id_register', this.userDev.id.toString());
     console.log('Get User by email');
     console.log(JSON.stringify(data));
     this.digitalProfile.name = "Digital Profile " + this.registerForm.get("first_name")?.value;
+    
     this.service.postDigitalProfile(this.digitalProfile, this.userDev.id).subscribe((response:any) => {
       console.log('Post Digital Profile');
       console.log(response);
     });
+    
   }
 
   Add() {
@@ -111,9 +113,9 @@ export class DeveloperComponent implements OnInit {
       if(!this.registered) {
         this.Add();
         this.registered = true;
-        /* this.dialog.open(DialogBoxInvalidFormComponent, { 
+        this.dialog.open(DialogBoxInvalidFormComponent, { 
           data: {message: 'You have registered successfully! Next page you can added some skills to your profile'},
-        }); */
+        });
         this.AddDigitalProfile();
         if(this.digitalProfile.name != "Digital Profile ") {
           this.router.navigate(['register/developer-profile']);

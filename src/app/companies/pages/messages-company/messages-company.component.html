@@ -4,13 +4,13 @@
         <div class="inbox" *ngIf="!show && mobile">
             <cdk-virtual-scroll-viewport itemSize="50" class="viewport">
                 <div *ngFor="let contact of contacts">
-                        <mat-card class="contact" matRipple [matRippleCentered]="true" (click)="show = !show">
+                        <mat-card class="contact" matRipple [matRippleCentered]="true" (click)="show = !show; contactDescription = contact.receiver.description; contactName = contact.receiver.firstName + ' ' + contact.receiver.lastName; contactId=contact.receiver.id; contactPhoto=contact.receiver.image; GetMessages(contact.receiver.id)">
                             <mat-card-header>
                                 <div mat-card-avatar>
-                                    <img [src]="contact.profile_pic" alt="Developer's profile photo" class="DeveloperPhoto">                   
+                                    <img [src]="contact.receiver.image" alt="Developer's profile photo" class="DeveloperPhoto">                   
                                 </div>
-                                <mat-card-title>{{contact.full_name}}</mat-card-title>
-                                <mat-card-subtitle>{{contact.last_message}}</mat-card-subtitle>
+                                <mat-card-title>{{contact.receiver.firstName + " " + contact.receiver.lastName}}</mat-card-title>
+                                <mat-card-subtitle>{{contact.message}}</mat-card-subtitle>
                             </mat-card-header>
                         </mat-card>
                 </div>
@@ -20,13 +20,13 @@
         <div class="inbox" *ngIf="!mobile">
             <cdk-virtual-scroll-viewport itemSize="50" class="viewport">
                 <div *ngFor="let contact of contacts">
-                        <mat-card class="contact" matRipple [matRippleCentered]="true" (click)="show = !show">
+                        <mat-card class="contact" matRipple [matRippleCentered]="true" (click)="show = !show; contactDescription = contact.receiver.description; contactName = contact.receiver.firstName + ' ' + contact.receiver.lastName; contactId=contact.receiver.id; contactPhoto=contact.receiver.image; GetMessages(contact.receiver.id)">
                             <mat-card-header>
                                 <div mat-card-avatar>
-                                    <img [src]="contact.profile_pic" alt="Developer's profile photo" class="DeveloperPhoto">                    
+                                    <img [src]="contact.receiver.image" alt="Developer's profile photo" class="DeveloperPhoto">                    
                                 </div>
-                                <mat-card-title>{{contact.full_name}}</mat-card-title>
-                                <mat-card-subtitle>{{contact.last_message}}</mat-card-subtitle>
+                                <mat-card-title>{{contact.receiver.firstName + " " + contact.receiver.lastName}}</mat-card-title>
+                                <mat-card-subtitle>{{contact.message}}</mat-card-subtitle>
                             </mat-card-header>
                         </mat-card>
                 </div>
@@ -42,19 +42,19 @@
                         <mat-icon>clear</mat-icon>
                     </button>
                     <div mat-card-avatar>
-                        <img src="https://randomuser.me/api/portraits/men/70.jpg" alt="Developer's profile photo" class="DeveloperPhoto">                    
+                        <img [src]="contactPhoto" alt="Developer's profile photo" class="DeveloperPhoto">                    
                     </div>
-                    <mat-card-title>Elset MacNess</mat-card-title>
-                    <mat-card-subtitle>Developer</mat-card-subtitle>
+                    <mat-card-title>{{contactName}}</mat-card-title>
+                    <mat-card-subtitle>{{contactDescription}}</mat-card-subtitle>
                 </mat-card-header>
             </mat-card>
     
             <cdk-virtual-scroll-viewport itemSize="50" class="conversation">
                 <div *ngFor="let message of messages">
-                    <div *ngIf="message.type === 'dev'" class="bubble1">
+                    <div *ngIf="message.emitter.role=== 'developer'" class="bubble1">
                         <p>{{message.message}}</p>
                     </div>
-                    <div *ngIf="message.type === 'comp'" class="bubble2">
+                    <div *ngIf="message.emitter.role=== 'company'" class="bubble2">
                         <p>{{message.message}}</p>
                     </div>
                 </div>
@@ -62,9 +62,9 @@
     
             <div class="answer" >
                 <mat-form-field appearance="fill" style="width: calc(100% - 40px);">
-                    <textarea matInput (keydown.enter)="SendMessage()" [(ngModel)]='answer'></textarea>
+                    <textarea matInput (keydown.enter)="SendMessage(contactId)" [(ngModel)]='answer'></textarea>
                 </mat-form-field>
-                <button mat-icon-button (click)="SendMessage()">
+                <button mat-icon-button (click)="SendMessage(contactId)">
                     <mat-icon>send</mat-icon>
                 </button>
             </div>
@@ -77,19 +77,19 @@
         <mat-card class="chat-header">
             <mat-card-header>
                 <div mat-card-avatar>
-                    <img src="https://randomuser.me/api/portraits/men/70.jpg" alt="Developer's profile photo" class="DeveloperPhoto">                    
+                    <img [src]="contactPhoto" class="DeveloperPhoto">                    
                 </div>
-                <mat-card-title>Elset MacNess</mat-card-title>
-                <mat-card-subtitle>Developer</mat-card-subtitle>
+                <mat-card-title>{{contactName}}</mat-card-title>
+                <mat-card-subtitle>{{contactDescription}}</mat-card-subtitle>
             </mat-card-header>
         </mat-card>
     
         <cdk-virtual-scroll-viewport itemSize="50" class="conversation">
             <div *ngFor="let message of messages">
-                <div *ngIf="message.type === 'dev'" class="bubble1">
+                <div *ngIf="message.emitter.role === 'developer'" class="bubble1">
                     <p>{{message.message}}</p>
                 </div>
-                <div *ngIf="message.type === 'comp'" class="bubble2">
+                <div *ngIf="message.emitter.role === 'company'" class="bubble2">
                     <p>{{message.message}}</p>
                 </div>
             </div>
@@ -97,9 +97,9 @@
     
         <div class="answer" >
             <mat-form-field appearance="fill" style="width: calc(100% - 40px);">
-                <textarea matInput (keydown.enter)="SendMessage()" [(ngModel)]='answer'></textarea>
+                <textarea matInput (keydown.enter)="SendMessage(contactId)" [(ngModel)]='answer'></textarea>
             </mat-form-field>
-            <button mat-icon-button (click)="SendMessage()">
+            <button mat-icon-button (click)="SendMessage(contactId)">
                 <mat-icon>send</mat-icon>
             </button>
         </div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DevelopersService} from "../../services/developers.service";
+import { ToolsService } from '../../services/tools.service';
 import { Developer } from "../../model/developer";
 import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
 import { DialogBoxSettingsDeveloperComponent } from "./dialog-box/dialog-box.component";
@@ -15,20 +16,39 @@ import { toInteger } from 'lodash';
 export class SettingsDeveloperComponent implements OnInit {
   email: string = "Email";
   password: string = "Password";
-  image:string = "";
+  image: string = "Image";
+  phone: string = "Phone";
   developer: Developer = {} as Developer;
+  frameworkNames!: Array<string>;
+  databaseNames!: Array<string>;
 
   constructor(
     private service: DevelopersService,
+    private toolsService: ToolsService,
     private dialog: MatDialog
   ) {
+    this.frameworkNames = [];
+    this.databaseNames = [];
   }
 
   ngOnInit(): void {
     this.service.GetDevById(toInteger(localStorage.getItem("id"))).subscribe((data: Developer) => {
       this.developer = data;
-      this.image = this.developer.image;
       console.log(data);
+    });
+    this.toolsService.GetFrameworkByDevId(toInteger(localStorage.getItem("id"))).subscribe((data2: any) => {
+      this.developer.frameworks = data2;
+      for (let i = 0; i < this.developer.frameworks.length; i++) {
+        this.frameworkNames.push(this.developer.frameworks[i].name);
+      }
+      console.log(this.frameworkNames);
+    });
+    this.toolsService.GetDatabaseByDevId(toInteger(localStorage.getItem("id"))).subscribe((data3: any) => {
+      this.developer.databases = data3;
+      for (let i = 0; i < this.developer.databases.length; i++) {
+        this.databaseNames.push(this.developer.databases[i].name);
+      }
+      console.log(this.databaseNames);
     });
   }
   updateDev() {
@@ -62,6 +82,7 @@ export class SettingsDeveloperComponent implements OnInit {
       if (result) {
         console.log("Saving!");
         this.updateDev();
+        location.reload();
       }
       else {
         console.log("Not saving!");
@@ -78,9 +99,21 @@ export class SettingsDeveloperComponent implements OnInit {
         _title: title
       };
     }
-    else {
+    else if (title == "Password") {
       dialogConfig.data = {
         _text: this.developer.password,
+        _title: title
+      };
+    } else if (title == "Image") {
+      dialogConfig.width = "20%";
+      dialogConfig.data = {
+        _text: this.developer.image,
+        _title: title
+      };
+    }
+    else {
+      dialogConfig.data = {
+        _text: this.developer.phone,
         _title: title
       };
     }
@@ -90,8 +123,12 @@ export class SettingsDeveloperComponent implements OnInit {
       if (title == "Email") {
         this.developer.email = result;
       }
-      else {
+      else if (title == "Password") {
         this.developer.password = result;
+      } else if (title == "Image") {
+        this.developer.image = result;
+      } else {
+        this.developer.phone = result;
       }
     });
   }

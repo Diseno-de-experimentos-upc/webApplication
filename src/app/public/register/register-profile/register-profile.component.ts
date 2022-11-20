@@ -1,3 +1,4 @@
+
 import { Component, AfterViewInit, OnInit} from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
@@ -10,14 +11,12 @@ import { Framework } from '../model/framework';
 import { Language } from '../model/language';
 
 @Component({
-  selector: 'app-programming-language',
-  templateUrl: './programming-language.component.html',
-  styleUrls: ['./programming-language.component.css']
+  selector: 'app-register-profile',
+  templateUrl: './register-profile.component.html',
+  styleUrls: ['./register-profile.component.css']
 })
+export class RegisterProfileComponent implements OnInit,AfterViewInit {
 
-export class ProgrammingLanguageComponent implements OnInit, AfterViewInit {
-  
-  email: string | undefined;
   registerForm!: FormGroup;
   userDev: any;
   language: Language;
@@ -70,12 +69,11 @@ export class ProgrammingLanguageComponent implements OnInit, AfterViewInit {
       location.reload() 
     } else {
       localStorage.removeItem('foo') 
-    }
-    
+    }    
   }
 
   ngAfterViewInit(): void {
-    const id = toInteger(localStorage.getItem("id"));
+    const id = toInteger(localStorage.getItem("id_register")??"");
     this.service.getDigitalProfileByDeveloperId(id).subscribe((response:any) => {
       this.digitalProfile = response;  
       console.log("Digital Profile Into Languages: " + JSON.stringify(this.digitalProfile));
@@ -211,15 +209,16 @@ export class ProgrammingLanguageComponent implements OnInit, AfterViewInit {
       this.dialog.open(DialogBoxInvalidFormComponent, { 
         data: {message: 'You added data to your profile, You will be redirect to login!'},
       });
+      localStorage.clear();
       this.router.navigate(['/login']);
-      localStorage.removeItem('id');
     }
     else {
       this.dialog.open(DialogBoxInvalidFormComponent, { 
         data: {message: 'You did not select any language to your profile, You will be redirect to login!'},
       });
+      localStorage.clear();
       this.router.navigate(['/login']);
-      localStorage.removeItem('id');
+      
     }
   }
 
@@ -240,8 +239,7 @@ export class ProgrammingLanguageComponent implements OnInit, AfterViewInit {
     this.dialog.open(DialogBoxInvalidFormComponent, { 
       data: {message: 'You did not select any language to your profile, You will be redirect to login!'},
     });
-    this.router.navigate(['/login']);
-      localStorage.removeItem('id');
+    localStorage.clear();
+    this.router.navigate(['/login']); 
   }
-  
 }

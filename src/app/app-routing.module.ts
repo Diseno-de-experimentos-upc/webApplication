@@ -20,7 +20,15 @@ import { HomeCompanyComponent  } from './companies/pages/home-company/home-compa
 import { MessagesCompanyComponent } from './companies/pages/messages-company/messages-company.component';
 import { SettingsCompanyComponent } from './companies/pages/settings/settings.component';
 import { NotificationsCompanyComponent } from './companies/pages/notifications-company/notifications-company.component';
-import { ProgrammingLanguageComponent } from './public/register/programming-language/programming-language.component';
+import { ToolsDeveloperComponent } from './developers/pages/tools-developer/tools-developer.component';
+import { ProjectComponent } from './developers/pages/tools-developer/project/project.component';
+import { CertificateComponent } from './developers/pages/tools-developer/certificate/certificate.component';
+import { DatabaseComponent } from './developers/pages/tools-developer/database/database.component';
+import { ProgrammingLanguageComponent } from './developers/pages/tools-developer/programming-language/programming-language.component';
+import { FrameworkComponent } from './developers/pages/tools-developer/framework/framework.component';
+import { StudyCenterComponent } from './developers/pages/tools-developer/study-center/study-center.component';
+import { MakePostComponent } from './companies/pages/make-post/make-post.component';
+import { RegisterProfileComponent } from './public/register/register-profile/register-profile.component';
 const routes: Routes = [
   {path:'', component:LoginComponent},
   {path:'login', component:LoginComponent},
@@ -29,13 +37,23 @@ const routes: Routes = [
       {path: 'company', component: CompanyComponent},
     ]
   },
-  {path: 'register/developer-profile', component: ProgrammingLanguageComponent},
+  {path: 'register/developer-profile', component: RegisterProfileComponent},
   {
     path: 'developers',
     component: DevelopersComponent,
     children: [
       { path: 'home', component: HomeComponent },
       { path: 'messages', component: MessagesComponent },
+      { path: 'tools', component: ToolsDeveloperComponent, 
+        children: [
+          { path: 'project', component: ProjectComponent },
+          { path: 'certificate', component: CertificateComponent },
+          { path: 'database', component: DatabaseComponent },
+          { path: 'programming-language', component: ProgrammingLanguageComponent },
+          { path: 'framework', component: FrameworkComponent },
+          { path: 'study-center', component: StudyCenterComponent },
+        ], 
+      },
       { path: 'profile', component: ProfileDeveloperComponent },
       { path: 'settings', component: SettingsDeveloperComponent},
       {path: 'notifications', component: NotificationsDeveloperComponent},
@@ -52,6 +70,7 @@ const routes: Routes = [
       { path: 'settings', component:SettingsCompanyComponent},
       { path: 'notifications', component: NotificationsCompanyComponent},
       { path: 'find-devs', component: FindYourDevComponent },
+      { path: 'make-post', component: MakePostComponent},
     ],
   },
   { path: '**', component: PageNotFoundComponent },

@@ -55,9 +55,21 @@ import { DialogSaveComponent } from './companies/pages/settings/dialog-save/dial
 import { NotificationsCompanyComponent } from './companies/pages/notifications-company/notifications-company.component';
 /* Page Not Found Component */
 import { PageNotFoundComponent } from './public/page-not-found/page-not-found.component';
-import { ProgrammingLanguageComponent } from './public/register/programming-language/programming-language.component';
+import { ToolsDeveloperComponent } from './developers/pages/tools-developer/tools-developer.component';
+import { ProjectComponent } from './developers/pages/tools-developer/project/project.component';
+import { CertificateComponent } from './developers/pages/tools-developer/certificate/certificate.component';
+import { DatabaseComponent } from './developers/pages/tools-developer/database/database.component';
+import { ProgrammingLanguageComponent } from './developers/pages/tools-developer/programming-language/programming-language.component';
+import { FrameworkComponent } from './developers/pages/tools-developer/framework/framework.component';
+import { StudyCenterComponent } from './developers/pages/tools-developer/study-center/study-center.component';
+import { MakePostComponent } from './companies/pages/make-post/make-post.component';
 
 
+//Tools
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
+import { RegisterProfileComponent } from './public/register/register-profile/register-profile.component';
+import { MessageDialogComponent } from './companies/pages/find-your-dev/message-dialog/message-dialog.component';
 
 
 @NgModule({
@@ -94,7 +106,17 @@ import { ProgrammingLanguageComponent } from './public/register/programming-lang
     DialogSaveComponent,
 
     PageNotFoundComponent,
+      ToolsDeveloperComponent,
+      ProjectComponent,
+      CertificateComponent,
+      DatabaseComponent,
       ProgrammingLanguageComponent,
+      FrameworkComponent,
+      StudyCenterComponent,
+      MakePostComponent,
+      RegisterProfileComponent,
+      MessageDialogComponent,
+
 
 
   ],
@@ -125,7 +147,9 @@ import { ProgrammingLanguageComponent } from './public/register/programming-lang
     MatDividerModule,
     MatRippleModule,
     ScrollingModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [],
   bootstrap: [AppComponent],

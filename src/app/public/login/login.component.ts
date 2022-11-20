@@ -4,6 +4,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { DialogBoxInvalidFormComponent } from '../register/dialog-box-invalid-form/dialog-box-invalid-form.component';
 import { Router } from '@angular/router';
 import { LoginService } from '../services/login.service';
+import { Education } from 'src/app/developers/model/education';
+import { DigitalProfile } from '../register/model/digitalprofile';
+import { toInteger } from 'lodash';
 
 
 @Component({
@@ -14,6 +17,8 @@ import { LoginService } from '../services/login.service';
 export class LoginComponent implements OnInit {
   usersDeveloper: Array<any> = [];
   usersCompany: Array<any> = [];
+  education!: Education;
+  digitalProfile!: DigitalProfile;
 
   loggedIn = false;
   registered = false;
@@ -23,7 +28,11 @@ export class LoginComponent implements OnInit {
     password : ["", {validators: [Validators.required, Validators.minLength(8)], updateOn: 'change'}],
   });
   
-  constructor(private formBuilder: FormBuilder, public dialog: MatDialog, private router: Router, private service: LoginService) { }
+  constructor(private formBuilder: FormBuilder, public dialog: MatDialog, private router: Router, private service: LoginService) {
+
+      this.digitalProfile = {} as DigitalProfile;
+      this.education = {} as Education;
+   }
 
   ngOnInit(): void {
     this.setEmailValidation();
@@ -105,7 +114,30 @@ export class LoginComponent implements OnInit {
     });
   }
   goUserDeveloper(id : any) {
+
     localStorage.setItem("id", id);
+ 
+    this.service.getDigitalProfileByDeveloperId(id).subscribe((response: any) => {
+      console.log("digital profile", response);
+      this.digitalProfile = response;
+      
+      this.education.digitalProfile_id = this.digitalProfile.id;
+      localStorage.setItem("digitalProfileId", this.education.digitalProfile_id.toString());
+      this.education.career = "";
+      console.log("education", this.education);
+
+      this.service.postEducation(this.education, this.education.digitalProfile_id).subscribe((response: any) => {
+        console.log("education", response);
+      });
+
+      this.service.GetEducationByDigitalProfileId(this.education.digitalProfile_id).subscribe((response: any) => {
+         localStorage.setItem("educationId", response.id.toString());
+      }
+      );
+
+    }); 
+
+    
     this.router.navigate(['/developers/home']);
   }
   goUserCompany(id : any) {

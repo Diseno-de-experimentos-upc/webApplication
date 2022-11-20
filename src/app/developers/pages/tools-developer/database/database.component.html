@@ -1,0 +1,26 @@
+<div class="title">
+    <p>Publish a new database</p>
+  </div>
+  <form class="make-post-form" [formGroup]="registerFormDatabase">
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Database name</mat-label>
+          <input matInput placeholder="Ex. Ex. MongoDB" name="name" formControlName="name"/>
+          <mat-error *ngIf="name?.errors?.['required']">Name is <strong>required</strong></mat-error>
+        </mat-form-field>
+      
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Description</mat-label>
+          <input matInput placeholder="Ex. Figma UI Kit usage showcasing demo of Marvel Studios Landing Page." name="description" formControlName="description"/>
+          <mat-error *ngIf="description?.errors?.['required']">Description is <strong>required</strong></mat-error>
+        </mat-form-field>
+  
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Database icon URL</mat-label>
+          <input matInput placeholder="EX. https://th.bing.com/th/id/OIP.qNV2XkiYJLiFse9UFGoVOQHaE0?pid=ImgDet&rs=1" name="iconLink" formControlName="iconLink"/>
+          <mat-error *ngIf="iconLink?.errors?.['required']">Project Icon is <strong>required</strong></mat-error>
+        </mat-form-field>
+
+    </form>
+    <div class = "div-btn">
+      <button mat-raised-button color="primary" class="btn-send-post" (click)="addDatabase()" >Publish</button>
+    </div>

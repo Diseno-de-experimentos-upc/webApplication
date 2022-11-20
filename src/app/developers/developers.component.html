@@ -27,7 +27,7 @@
   <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
 
     <img class="avatar mat-elevation-z8" [src]="developer.image" width="30%">
-    <h4 class="name">{{developer.first_name}} {{developer.last_name}} </h4>
+    <h4 class="name">{{developer.firstName}} {{developer.lastName}} </h4>
     <p class="designation">Developer</p>
     <mat-divider></mat-divider>
 
@@ -36,9 +36,14 @@
       <span> Home</span>
     </button>
 
-    <button mat-button class="menu-button"  (click)="disableOption()" routerLink="messages">
+    <button mat-button class="menu-button" (click)="disableOption()" routerLink="messages">
       <mat-icon>messages</mat-icon>
       <span> Messages </span>
+    </button>
+
+    <button mat-button class="menu-button" (click)="setOption()" routerLink="tools">
+      <mat-icon>edit</mat-icon>
+      <span> Tools</span>
     </button>
 
     <button mat-button class="menu-button" (click)="disableOption()" routerLink="notifications">

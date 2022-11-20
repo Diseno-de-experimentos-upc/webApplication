@@ -8,7 +8,11 @@ import { DigitalProfile } from '../register/model/digitalprofile';
 @Injectable({
   providedIn: 'root'
 })
-export class LoginService{
+export class LoginService {
+  developerURL = 'http://localhost:8080/api/v1/developers';
+  companyURL = 'http://localhost:8080/api/v1/companies';
+  usersURL = 'http://localhost:3000/users';
+
   basePath = 'http://localhost:8080/api/v1/users';
   urlDeveloper = 'http://localhost:8080/api/v1/developers';
   urlCompany = 'http://localhost:8080/api/v1/companies';
@@ -16,6 +20,9 @@ export class LoginService{
   urlDatabase = 'http://localhost:8080/api/v1/databases';
   urlFrameworks = 'http://localhost:8080/api/v1/frameworks';
   urlLenguages = 'http://localhost:8080/api/v1/programmingLanguages';
+  educationUrl: string = 'http://localhost:8080/api/v1/educations';
+
+ 
   constructor(private http: HttpClient) { }
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     throw new Error('Method not implemented.');
@@ -89,7 +96,12 @@ export class LoginService{
       .get<DigitalProfile>(`${this.urlDigitalProfile}/developer/${id}`, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
-
+  GetEducationByDigitalProfileId(id: number): Observable<object> {
+    return this.http
+      .get(`${this.educationUrl}/digitalProfile/${id}`, this.httpOptions) 
+      .pipe(retry(2), catchError(this.handleError));
+  }
+ 
   postDatabase(database: object, id: number): Observable<object> {
     return this.http
       .post<object>(`${this.urlDatabase}/${id}`, database, this.httpOptions)
@@ -124,4 +136,17 @@ export class LoginService{
       .get<object>(`${this.basePath}/${id}`, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
+
+  //create a post request to create a new education with specific digital profile id
+  postEducation(education: object, id: number): Observable<object> {
+    return this.http
+      .post<object>(`${this.educationUrl}/${id}`, education, this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+  GetDigitalProfileByDevId(id: number): Observable<object> {
+    return this.http
+      .get(`${this.urlDigitalProfile}/developer/${id}`, this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
 }
+
