@@ -15,7 +15,8 @@ import { toInteger } from 'lodash';
 export class SettingsCompanyComponent implements OnInit {
   email: string = "Email";
   password: string = "Password";
-  image:string = "";
+  image:string = "Image";
+  companyName: string = "Company name";
   recruiter: Company = {} as Company;
 
   constructor(
@@ -28,7 +29,6 @@ export class SettingsCompanyComponent implements OnInit {
    
     this.service.GetRecById(toInteger(localStorage.getItem("id"))).subscribe((data: Company) => {
       this.recruiter = data;
-      this.image = this.recruiter.image;
       console.log(data);
     });
   }
@@ -78,10 +78,20 @@ export class SettingsCompanyComponent implements OnInit {
         _text: this.recruiter.email,
         _title: title
       };
-    }
-    else {
+    } else if (title == "Password") {
       dialogConfig.data = {
         _text: this.recruiter.password,
+        _title: title
+      };
+    } else if (title == "Image") {
+      dialogConfig.width = "20%";
+      dialogConfig.data = {
+        _text: this.recruiter.image,
+        _title: title
+      };
+    } else {
+      dialogConfig.data = {
+        _text: this.recruiter.name,
         _title: title
       };
     }
@@ -90,9 +100,12 @@ export class SettingsCompanyComponent implements OnInit {
       console.log(result);
       if (title == "Email") {
         this.recruiter.email = result;
-      }
-      else {
+      } else if (title == "Password") {
         this.recruiter.password = result;
+      } else if (title == "Image") {
+        this.recruiter.image = result;
+      } else {
+        this.recruiter.name = result;
       }
     });
   }
