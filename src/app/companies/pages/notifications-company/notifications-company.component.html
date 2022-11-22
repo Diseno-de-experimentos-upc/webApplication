@@ -5,11 +5,10 @@
   </mat-toolbar>
   <mat-card *ngFor="let notification of notifications" class="notification-header">
     <mat-card-header>
-      <div mat-card-avatar> <img [src]="notification.receiver.image" alt="" class="avatar-header-image"> </div>
+      <div mat-card-avatar> <img [src]="notification.emitter.image" alt="" class="avatar-header-image"> </div>
       <div mat-card-avatar class="example-header-image"></div>
-      <mat-card-title>{{notification.receiver}}</mat-card-title>
-
-      <mat-card-subtitle>{{notification.message}}<br> {{notification.date}}</mat-card-subtitle>
+      <mat-card-title>{{notification.emitter.firstName + " " + notification.emitter.lastName}}</mat-card-title>
+      <mat-card-subtitle>{{notification.content}}<br></mat-card-subtitle>
 
       <span class="spacer"></span>
       <button mat-button class="notification-button" (click)="DeleteNotificationById(notification.id)">
