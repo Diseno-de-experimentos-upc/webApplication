@@ -9,13 +9,14 @@ import { catchError, retry } from 'rxjs/operators';
 import { Developer } from '../model/developer';
 import { Framework } from '../model/framework';
 import {Company} from "../../public/register/model/company";
+import { Post } from 'src/app/companies/model/post';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DevelopersService {
   BaseURL: string = 'http://localhost:8080/api/v1/developers';
-  NewsURL: string = 'http://localhost:3000/news-developers';
+  PostURL: string = 'http://localhost:8080/api/v1/posts';
 
   certificateUrl: string = 'http://localhost:8080/api/v1/certificates';
   studyCenterUrl: string = 'http://localhost:8080/api/v1/study-centers';
@@ -94,9 +95,9 @@ export class DevelopersService {
       .pipe(retry(2), catchError(this.handleError));
   }
 
-  GetAllNews(): Observable<object> {
+  GetAllPosts(): Observable<Post> {
     return this.http
-      .get<object>(this.NewsURL, this.httpOptions)
+      .get<Post>(this.PostURL, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 
@@ -136,7 +137,7 @@ export class DevelopersService {
       .pipe(retry(2), catchError(this.handleError));
   }
 
-   GetStudyCentersByEducationId(educationId: number): Observable<object> {
+  GetStudyCentersByEducationId(educationId: number): Observable<object> {
     return this.http
       .get<object>(`${this.studyCenterUrl}/education/${educationId}`, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));

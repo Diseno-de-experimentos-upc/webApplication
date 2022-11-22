@@ -46,11 +46,7 @@ export class CompaniesService {
     );
   }
 
-  GetAllPosts(): Observable<Post> {
-    return this.http
-      .get<Post>(this.urlPost, this.httpOptions)
-      .pipe(retry(2), catchError(this.handleError));
-  }
+
 
   GetPostById(id: number): Observable<Post> {
     return this.http

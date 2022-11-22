@@ -1,13 +1,13 @@
-<mat-card *ngFor="let New of news" class="news-card">
+<mat-card *ngFor="let post of posts" class="news-card">
     <mat-card-header>
-      <div mat-card-avatar> <img [src]="New.profile_photo" alt="" class="avatar-header-image"> </div>
-      <mat-card-title>{{New.author}}</mat-card-title>
-      <mat-card-subtitle>from {{New.company}}</mat-card-subtitle>
+      <div mat-card-avatar> <img [src]="post.company.image" alt="" class="avatar-header-image"> </div>
+      <mat-card-title>{{post.company.firstName + " " + post.company.lastName}}</mat-card-title>
+      <mat-card-subtitle>from {{post.company.name}}</mat-card-subtitle>
     </mat-card-header>
-    <img mat-card-image [src]="New.image" alt="Profile photo">
+    <img mat-card-image [src]="post.imageUrl" alt="Profile photo">
     <mat-card-content>
-      <h2>{{New.title}}</h2>
-      <p>{{New.description}}</p>
+      <h2>{{post.title}}</h2>
+      <p>{{post.description}}</p>
     </mat-card-content>
     <mat-card-actions>
       <button mat-button>LIKE</button>
