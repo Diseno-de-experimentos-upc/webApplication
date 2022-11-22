@@ -14,14 +14,14 @@ import { Developer } from '../model/developer';
 export class ToolsService {
 
   //Developer tools
-  projectsUrl: string = 'https://upc-si729-sw52-digitalmind.herokuapp.com/projects';
-  educationUrl: string = 'https://upc-si729-sw52-digitalmind.herokuapp.com/educations';
-  digitalProfileUrl: string = 'https://upc-si729-sw52-digitalmind.herokuapp.com/digital_profiles';
-  databaseUrl: string = 'https://upc-si729-sw52-digitalmind.herokuapp.com/databases';
-  frameWorkUrl: string = 'https://upc-si729-sw52-digitalmind.herokuapp.com/frameworks';
-  programingLanguageUrl: string = 'https://upc-si729-sw52-digitalmind.herokuapp.com/programmingLanguages';
-  certificateUrl: string = 'https://upc-si729-sw52-digitalmind.herokuapp.com/certificates';
-  studyCenterUrl: string = 'https://upc-si729-sw52-digitalmind.herokuapp.com/study-centers';
+  projectsUrl: string = 'https://upc-si729-sw52-digitalmind.herokuapp.com/api/v1/projects';
+  educationUrl: string = 'https://upc-si729-sw52-digitalmind.herokuapp.com/api/v1/educations';
+  digitalProfileUrl: string = 'https://upc-si729-sw52-digitalmind.herokuapp.com/api/v1/digital_profiles';
+  databaseUrl: string = 'https://upc-si729-sw52-digitalmind.herokuapp.com/api/v1/databases';
+  frameWorkUrl: string = 'https://upc-si729-sw52-digitalmind.herokuapp.com/api/v1/frameworks';
+  programingLanguageUrl: string = 'https://upc-si729-sw52-digitalmind.herokuapp.com/api/v1/programmingLanguages';
+  certificateUrl: string = 'https://upc-si729-sw52-digitalmind.herokuapp.com/api/v1/certificates';
+  studyCenterUrl: string = 'https://upc-si729-sw52-digitalmind.herokuapp.com/api/v1/study-centers';
 
   httpOptions = {
     headers: new HttpHeaders({
