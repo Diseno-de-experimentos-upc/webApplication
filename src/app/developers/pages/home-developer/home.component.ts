@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Post } from 'src/app/companies/model/post';
 import { DevelopersService } from 'src/app/developers/services/developers.service';
 
 
@@ -9,14 +10,14 @@ import { DevelopersService } from 'src/app/developers/services/developers.servic
 })
 export class HomeComponent implements OnInit {
 
-  news:Array<any> = [];
+  posts:Array<Post> = [];
   constructor(private service: DevelopersService) {
   }
 
   ngOnInit(): void {
-    this.service.GetAllNews().subscribe((response:any)=>{
-      this.news = response;
-      console.log(this.news);
+    this.service.GetAllPosts().subscribe((response:any)=>{
+      this.posts = response;
+      console.log(this.posts);
     });
   }
 }

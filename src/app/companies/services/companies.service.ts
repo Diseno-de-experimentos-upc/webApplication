@@ -8,6 +8,8 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { Company } from '../model/company';
 import {Developer} from "../../public/register/model/developer";
+import { Post } from '../model/post';
+
 
 
 @Injectable({
@@ -22,6 +24,7 @@ export class CompaniesService {
   basePath = 'https://upc-si729-sw52-digitalmind.herokuapp.com/api/v1/users';
 
   urlDeveloper = 'https://upc-si729-sw52-digitalmind.herokuapp.com/api/v1/developers';
+  urlPost = 'https://upc-si729-sw52-digitalmind.herokuapp.com/api/v1/posts';
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
@@ -41,6 +44,25 @@ export class CompaniesService {
     return throwError(
       'something happened with request, please try again later'
     );
+  }
+
+
+
+  GetPostById(id: number): Observable<Post> {
+    return this.http
+      .get<Post>(this.urlPost + '/' + id, this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+
+  AddPost(post: Post, id: number): Observable<Post> {
+    return this.http
+      .post<Post>(`${this.urlPost}/${id}`, JSON.stringify(post), this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+
+  DeletePostById(id: number) {
+    return this.http.delete(`${this.urlPost}/${id}` , this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
   }
 
   GetAllRec(): Observable<Company> {
@@ -97,16 +119,6 @@ export class CompaniesService {
       .pipe(retry(2), catchError(this.handleError));
   }
 
-  GetPosts(id: number): Observable<object> {
-    return this.http
-      .get<object>(this.BaseURL + '/' + id + '/posts', this.httpOptions)
-      .pipe(retry(2), catchError(this.handleError));
-  }
-
-  DeletePost(id_user:number, id: number) {
-    return this.http.delete(`${this.BaseURL}/${id_user}/posts/${id}` , this.httpOptions)
-      .pipe(retry(2), catchError(this.handleError));
-  }
 
   GetSocialNetworks(companyId: number): Observable<object> {
     return this.http

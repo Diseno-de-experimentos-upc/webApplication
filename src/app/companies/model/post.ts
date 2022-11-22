@@ -1,8 +1,10 @@
-export interface post{
+import { Company } from "src/app/public/register/model/company";
+
+export interface Post{
     id:number,
-    company_id:number,
     title: string,
-    image_url: string,
-    date: Date,
+    imageUrl: string,
+    description: string,
+    company: Company
   }
   

@@ -44,7 +44,7 @@ export class ProfileCompanyComponent implements OnInit {
   }
 
   getPosts(id: number) {
-    this.service.GetPosts(id).subscribe((response: any) => {
+    this.service.GetPostById(id).subscribe((response: any) => {
       this.posts = response;
       console.log(this.posts);
 
@@ -59,7 +59,7 @@ export class ProfileCompanyComponent implements OnInit {
   }
 
   deletePost(id:number) {
-    this.service.DeletePost(this.company.id, id).subscribe((response:any) => {
+    this.service.DeletePostById(id).subscribe((response:any) => {
       this.posts = this.posts.filter((o: any) => {
         return o.id !==id ? o:false; 
       })
