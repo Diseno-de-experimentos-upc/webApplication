@@ -1,4 +1,3 @@
- 
 .inner-content {
   height: auto;
   margin: 16px 16px 0px 32px;
@@ -9,7 +8,6 @@
 mat-sidenav-container {
   height: calc(100vh - 65px);
 }
-
 
 mat-icon {
   margin-right: 8px;
@@ -109,11 +107,6 @@ ul span {
   width: 30%;
   box-sizing: border-box;
   margin: 0.3rem;
-}
-
-.example-header-image {
-  background-size: cover;
-  background-image: url("https://english.spbstu.ru/upload/medialibrary/7ba/47.jpg");
 }
 
 mat-card-subtitle span {
