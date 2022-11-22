@@ -4,7 +4,8 @@ import { toInteger } from 'lodash';
 import { DigitalProfile } from 'src/app/developers/model/digitalProfile';
 import { Project } from 'src/app/developers/model/project';
 import { ToolsService } from 'src/app/developers/services/tools.service';
- 
+import { DialogBoxInvalidFormComponent } from 'src/app/public/register/dialog-box-invalid-form/dialog-box-invalid-form.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-project',
@@ -19,7 +20,7 @@ export class ProjectComponent implements OnInit {
   digitalProfile!: DigitalProfile;
 
 
-  constructor(private formBuilder: FormBuilder, private service: ToolsService) {
+  constructor(private formBuilder: FormBuilder, public dialog: MatDialog, private service: ToolsService) {
       this.TempProject = {} as Project;
       this.registerForm = this.formBuilder.group({
         name: new FormControl('', { validators:  [Validators.required], updateOn: 'change' }),
@@ -64,10 +65,15 @@ export class ProjectComponent implements OnInit {
         console.log(data);
       }
       );
-      alert("Project added successfully");
+      this.dialog.open(DialogBoxInvalidFormComponent, {
+        data: {message: "Project added successfully!"}
+      });
+      this.registerForm.reset();
     }
     else{
-      alert("Please, fill all the fields");
+      this.dialog.open(DialogBoxInvalidFormComponent, {
+        data: {message: "Please, fill all the fields"}
+      });
     }
 
   }
