@@ -10,7 +10,7 @@
       <p>{{post.description}}</p>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-button>LIKE</button>
-      <button mat-button>SHARE</button>
+      <button mat-raised-button color="primary" (click)="openMessageDialog(post.company.id)">Send message <mat-icon>sms</mat-icon></button>
+      <button mat-raised-button color="primary" (click)="openNotificationDialog(post.company.id)">Send Notification <mat-icon>notification_important</mat-icon></button>
     </mat-card-actions>
   </mat-card>
