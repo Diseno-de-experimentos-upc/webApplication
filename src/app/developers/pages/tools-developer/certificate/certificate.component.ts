@@ -5,7 +5,8 @@ import { Certificate } from 'src/app/developers/model/certificate';
 import { DigitalProfile } from 'src/app/developers/model/digitalProfile';
 import { Education } from 'src/app/developers/model/education';
 import { ToolsService } from 'src/app/developers/services/tools.service';
-
+import { DialogBoxInvalidFormComponent } from 'src/app/public/register/dialog-box-invalid-form/dialog-box-invalid-form.component';
+import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-certificate',
   templateUrl: './certificate.component.html',
@@ -20,7 +21,7 @@ export class CertificateComponent implements OnInit {
   education!: Education;
   obteinedDate: string = "";
   
-  constructor(private formBuilder: FormBuilder, private service: ToolsService) { 
+  constructor(private formBuilder: FormBuilder, public dialog: MatDialog, private service: ToolsService) { 
     this.TempCertificate = {} as Certificate;
     this.registerFormCertificate = this.formBuilder.group({
       title: new FormControl('', { validators:  [Validators.required], updateOn: 'change' }),
@@ -87,10 +88,15 @@ export class CertificateComponent implements OnInit {
         console.log(data);
       }
       );
-      alert("Certificate added successfully");
+      this.dialog.open(DialogBoxInvalidFormComponent, {
+        data: {message: "Certificate added successfully!"}
+      });
+      this.registerFormCertificate.reset();
     }
     else{
-      alert("Please, fill all the fields");
+      this.dialog.open(DialogBoxInvalidFormComponent, {
+        data: {message: "Please, fill all the fields"}
+      });
     }
 
   }

@@ -4,6 +4,8 @@ import { toInteger } from 'lodash';
 import { DigitalProfile } from 'src/app/developers/model/digitalProfile';
 import { ProgrammingLanguage } from 'src/app/developers/model/programmingLanguage';
 import { ToolsService } from 'src/app/developers/services/tools.service';
+import { DialogBoxInvalidFormComponent } from 'src/app/public/register/dialog-box-invalid-form/dialog-box-invalid-form.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-programming-language',
@@ -17,7 +19,7 @@ export class ProgrammingLanguageComponent implements OnInit {
   formIsValid: boolean = false;
   digitalProfile!: DigitalProfile;
   
-  constructor(private formBuilder: FormBuilder, private service: ToolsService) { 
+  constructor(private formBuilder: FormBuilder, public dialog: MatDialog, private service: ToolsService) { 
     this.TempProgrammingLanguage = {} as ProgrammingLanguage;
     this.registerFormProgrammingLanguage = this.formBuilder.group({
       name: new FormControl('', { validators:  [Validators.required], updateOn: 'change' }),
@@ -54,10 +56,15 @@ export class ProgrammingLanguageComponent implements OnInit {
         console.log(data);
       }
       );
-      alert("Programming Language added successfully");
+      this.dialog.open(DialogBoxInvalidFormComponent, {
+        data: {message: "Programming Language added successfully"}
+      });
+      this.registerFormProgrammingLanguage.reset();
     }
     else{
-      alert("Please, fill all the fields");
+      this.dialog.open(DialogBoxInvalidFormComponent, {
+        data: {message: "Please, fill all the fields"}
+      });
     }
 
   }

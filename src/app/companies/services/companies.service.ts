@@ -54,6 +54,12 @@ export class CompaniesService {
       .pipe(retry(2), catchError(this.handleError));
   }
 
+  GetPostsByUserId(id: number): Observable<object> {
+    return this.http
+      .get<object>(this.urlPost + '/company/' + id, this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+
   AddPost(post: Post, id: number): Observable<Post> {
     return this.http
       .post<Post>(`${this.urlPost}/${id}`, JSON.stringify(post), this.httpOptions)
@@ -168,6 +174,12 @@ export class CompaniesService {
     return this.http
       .get<Developer>(`${this.urlDeveloper}`, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
+  }
+
+  GetAllNotifications(UserId:number): Observable<object> {
+    return this.http
+      .get(`http://localhost:8080/api/v1/users/${UserId}/notifications`, this.httpOptions)
+      .pipe(retry(2),catchError(this.handleError));
   }
 }
 

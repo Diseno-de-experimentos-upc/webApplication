@@ -4,6 +4,8 @@ import { toInteger } from 'lodash';
 import { DigitalProfile } from 'src/app/developers/model/digitalProfile';
 import { Framework } from 'src/app/developers/model/framework';
 import { ToolsService } from 'src/app/developers/services/tools.service';
+import { DialogBoxInvalidFormComponent } from 'src/app/public/register/dialog-box-invalid-form/dialog-box-invalid-form.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-framework',
@@ -17,7 +19,7 @@ export class FrameworkComponent implements OnInit {
   formIsValid: boolean = false;
   digitalProfile!: DigitalProfile;
   
-  constructor(private formBuilder: FormBuilder, private service: ToolsService) { 
+  constructor(private formBuilder: FormBuilder,  public dialog: MatDialog, private service: ToolsService) { 
     this.TempFramework = {} as Framework;
     this.registerFormFramework = this.formBuilder.group({
       name: new FormControl('', { validators:  [Validators.required], updateOn: 'change' }),
@@ -54,11 +56,15 @@ export class FrameworkComponent implements OnInit {
         console.log(data);
       }
       );
-
-      alert("Framework added successfully");
+      this.dialog.open(DialogBoxInvalidFormComponent, {
+        data: {message: "Framework added successfully!"}
+      });
+      this.registerFormFramework.reset();
     }
     else{
-      alert("Please, fill all the fields");
+      this.dialog.open(DialogBoxInvalidFormComponent, {
+        data: {message: "Please, fill all the fields"}
+      });
     }
 
   }

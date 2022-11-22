@@ -13,7 +13,7 @@
     <p>{{Dev.description}}</p>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-button  (click)="openMessageDialog(Dev.id)">SEND MESSAGE</button>
-    <button mat-button  (click)="openNotificationDialog(Dev.id)">SEND NOTIFICATION</button>
+    <button mat-raised-button color="primary" (click)="openMessageDialog(Dev.id)">Send message <mat-icon>sms</mat-icon></button>
+    <button mat-raised-button color="primary" (click)="openNotificationDialog(Dev.id)">Send Notification <mat-icon>notification_important</mat-icon></button>
   </mat-card-actions>
 </mat-card>

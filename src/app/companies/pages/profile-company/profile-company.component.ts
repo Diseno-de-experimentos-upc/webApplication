@@ -44,7 +44,7 @@ export class ProfileCompanyComponent implements OnInit {
   }
 
   getPosts(id: number) {
-    this.service.GetPostById(id).subscribe((response: any) => {
+    this.service.GetPostsByUserId(id).subscribe((response: any) => {
       this.posts = response;
       console.log(this.posts);
 
