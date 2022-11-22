@@ -9,18 +9,18 @@ import { DigitalProfile } from '../register/model/digitalprofile';
   providedIn: 'root'
 })
 export class LoginService {
-  developerURL = 'http://localhost:8080/api/v1/developers';
-  companyURL = 'http://localhost:8080/api/v1/companies';
+  developerURL = 'https://upc-si729-sw52-digitalmind.herokuapp.com/developers';
+  companyURL = 'https://upc-si729-sw52-digitalmind.herokuapp.com/companies';
   usersURL = 'http://localhost:3000/users';
 
-  basePath = 'http://localhost:8080/api/v1/users';
-  urlDeveloper = 'http://localhost:8080/api/v1/developers';
-  urlCompany = 'http://localhost:8080/api/v1/companies';
-  urlDigitalProfile = "http://localhost:8080/api/v1/digital_profiles";
-  urlDatabase = 'http://localhost:8080/api/v1/databases';
-  urlFrameworks = 'http://localhost:8080/api/v1/frameworks';
-  urlLenguages = 'http://localhost:8080/api/v1/programmingLanguages';
-  educationUrl: string = 'http://localhost:8080/api/v1/educations';
+  basePath = 'https://upc-si729-sw52-digitalmind.herokuapp.com/users';
+  urlDeveloper = 'https://upc-si729-sw52-digitalmind.herokuapp.com/developers';
+  urlCompany = 'https://upc-si729-sw52-digitalmind.herokuapp.com/companies';
+  urlDigitalProfile = "https://upc-si729-sw52-digitalmind.herokuapp.com/digital_profiles";
+  urlDatabase = 'https://upc-si729-sw52-digitalmind.herokuapp.com/databases';
+  urlFrameworks = 'https://upc-si729-sw52-digitalmind.herokuapp.com/frameworks';
+  urlLenguages = 'https://upc-si729-sw52-digitalmind.herokuapp.com/programmingLanguages';
+  educationUrl: string = 'https://upc-si729-sw52-digitalmind.herokuapp.com/educations';
 
  
   constructor(private http: HttpClient) { }

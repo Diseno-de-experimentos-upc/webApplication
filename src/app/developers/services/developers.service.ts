@@ -14,26 +14,26 @@ import {Company} from "../../public/register/model/company";
   providedIn: 'root',
 })
 export class DevelopersService {
-  BaseURL: string = 'http://localhost:8080/api/v1/developers';
+  BaseURL: string = 'https://upc-si729-sw52-digitalmind.herokuapp.com/developers';
   NewsURL: string = 'http://localhost:3000/news-developers';
 
-  certificateUrl: string = 'http://localhost:8080/api/v1/certificates';
-  studyCenterUrl: string = 'http://localhost:8080/api/v1/study-centers';
-  databaseUrl: string = 'http://localhost:8080/api/v1/databases';
-  frameworkUrl: string = 'http://localhost:8080/api/v1/frameworks';
-  programingLanguagesUrl: string = 'http://localhost:8080/api/v1/programmingLanguages';
-  projectsUrl: string = 'http://localhost:8080/api/v1/projects';
-  socialNetworks = 'http://localhost:8080/api/v1/socialNetworks';
+  certificateUrl: string = 'https://upc-si729-sw52-digitalmind.herokuapp.com/certificates';
+  studyCenterUrl: string = 'https://upc-si729-sw52-digitalmind.herokuapp.com/study-centers';
+  databaseUrl: string = 'https://upc-si729-sw52-digitalmind.herokuapp.com/databases';
+  frameworkUrl: string = 'https://upc-si729-sw52-digitalmind.herokuapp.com/frameworks';
+  programingLanguagesUrl: string = 'https://upc-si729-sw52-digitalmind.herokuapp.com/programmingLanguages';
+  projectsUrl: string = 'https://upc-si729-sw52-digitalmind.herokuapp.com/projects';
+  socialNetworks = 'https://upc-si729-sw52-digitalmind.herokuapp.com/socialNetworks';
 
 
-  digitalProfileUrl: string = 'http://localhost:8080/api/v1/digital_profiles';
-  educationUrl: string = 'http://localhost:8080/api/v1/educations';
+  digitalProfileUrl: string = 'https://upc-si729-sw52-digitalmind.herokuapp.com/digital_profiles';
+  educationUrl: string = 'https://upc-si729-sw52-digitalmind.herokuapp.com/educations';
 
   ContactsURL: string = 'http://localhost:3000/contacts';
   MessagesURL: string = 'http://localhost:3000/messages';
-  urlCompany = 'http://localhost:8080/api/v1/companies';
+  urlCompany = 'https://upc-si729-sw52-digitalmind.herokuapp.com/companies';
 
-  backURL: string = 'http://localhost:8080/api/v1/users/searchByFrameworkAndProgrammingLanguageAndDatabase';
+  backURL: string = 'https://upc-si729-sw52-digitalmind.herokuapp.com/users/searchByFrameworkAndProgrammingLanguageAndDatabase';
 
 
   httpOptions = {
@@ -160,19 +160,19 @@ export class DevelopersService {
 
   GetContacts(UserId:number): Observable<object> {
     return this.http
-      .get<object>(`http://localhost:8080/api/v1/users/${UserId}/messages/LastMessageDeveloper`, this.httpOptions)
+      .get<object>(`https://upc-si729-sw52-digitalmind.herokuapp.com/users/${UserId}/messages/LastMessageDeveloper`, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 
   GetMessages(contactId: number, UserId:number): Observable<object> {
     return this.http
-      .get(`http://localhost:8080/api/v1/users/${UserId}/messages/${contactId}`, this.httpOptions)
+      .get(`https://upc-si729-sw52-digitalmind.herokuapp.com/users/${UserId}/messages/${contactId}`, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 
   SendMessage(answer: object, contactId: number, UserId:number): Observable<object> {
     return this.http
-      .post<object>(`http://localhost:8080/api/v1/users/${UserId}/messages/${contactId}`, answer, this.httpOptions)
+      .post<object>(`https://upc-si729-sw52-digitalmind.herokuapp.com/users/${UserId}/messages/${contactId}`, answer, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 
@@ -180,12 +180,12 @@ export class DevelopersService {
 
   GetNotificationsByUserId(id:number, UserId:number): Observable<object> {
     return this.http
-      .get(`http://localhost:8080/api/v1/users/${UserId}/notifications/${id}`, this.httpOptions)
+      .get(`https://upc-si729-sw52-digitalmind.herokuapp.com/users/${UserId}/notifications/${id}`, this.httpOptions)
       .pipe(retry(2),catchError(this.handleError));
   }
   GetAllNotifications(UserId:number): Observable<object> {
     return this.http
-      .get(`http://localhost:8080/api/v1/users/${UserId}/notifications`, this.httpOptions)
+      .get(`https://upc-si729-sw52-digitalmind.herokuapp.com/users/${UserId}/notifications`, this.httpOptions)
       .pipe(retry(2),catchError(this.handleError));
   }
 
@@ -193,14 +193,14 @@ export class DevelopersService {
 
   SendNotification(notification: object, UserId:number): Observable<object> {
     return this.http
-      .post<object>(`http://localhost:8080/api/v1/users/${UserId}/notifications`, JSON.stringify(notification) , this.httpOptions)
+      .post<object>(`https://upc-si729-sw52-digitalmind.herokuapp.com/users/${UserId}/notifications`, JSON.stringify(notification) , this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 
 
   DeleteNotificationById(id: number, UserId: number): Observable<object> {
     return this.http
-      .delete(`http://localhost:8080/api/v1/users/${UserId}/notifications/${id}`, this.httpOptions)
+      .delete(`https://upc-si729-sw52-digitalmind.herokuapp.com/users/${UserId}/notifications/${id}`, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 
