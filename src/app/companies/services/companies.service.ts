@@ -58,9 +58,9 @@ export class CompaniesService {
       .pipe(retry(2), catchError(this.handleError));
   }
 
-  AddPost(post: Post): Observable<Post> {
+  AddPost(post: Post, id: number): Observable<Post> {
     return this.http
-      .post<Post>(this.urlPost, JSON.stringify(post), this.httpOptions)
+      .post<Post>(`${this.urlPost}/${id}`, JSON.stringify(post), this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 

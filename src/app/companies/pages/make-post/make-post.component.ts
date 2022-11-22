@@ -4,6 +4,7 @@ import { CompaniesService } from '../../services/companies.service';
 import { NgForm, FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogBoxInvalidFormComponent } from 'src/app/public/register/dialog-box-invalid-form/dialog-box-invalid-form.component';
+import { toInteger } from 'lodash';
 
 @Component({
   selector: 'app-make-post',
@@ -13,6 +14,7 @@ import { DialogBoxInvalidFormComponent } from 'src/app/public/register/dialog-bo
 export class MakePostComponent implements OnInit {
   post: Post;
   postForm! : FormGroup;
+  UserId:number = 0;
   constructor(private service: CompaniesService,public dialog: MatDialog, private formBuilder: FormBuilder,) {
     this.post = {} as Post;
 
@@ -24,14 +26,14 @@ export class MakePostComponent implements OnInit {
    }
 
   ngOnInit(): void {
- 
+    this.UserId = toInteger(localStorage.getItem("id"));
   }
   eventAddPost(){
-    this.post.id = 0;
     this.post.title = this.postForm.get('title')?.value;
     this.post.imageUrl = this.postForm.get('imageUrl')?.value;
     this.post.description = this.postForm.get('description')?.value;
-    this.service.AddPost(this.post).subscribe((response) => {
+
+    this.service.AddPost(this.post, this.UserId).subscribe((response) => {
         console.log(response);
       }
     );
