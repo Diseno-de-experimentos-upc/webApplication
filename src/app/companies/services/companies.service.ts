@@ -13,13 +13,13 @@ import { Company } from '../model/company';
   providedIn: 'root',
 })
 export class CompaniesService {
-  BaseURL: string = 'http://localhost:8080/api/v1/companies';
+  BaseURL: string = 'https://upc-si729-sw52-digitalmind.herokuapp.com/api/v1/companies';
 
-  socialNetworks = 'http://localhost:8080/api/v1/socialNetworks';
+  socialNetworks = 'https://upc-si729-sw52-digitalmind.herokuapp.com/api/v1/socialNetworks';
  
   NewsURL: string = 'http://localhost:3000/news-companies';
   NotificationsURL: string = 'http://localhost:3000/notifications-companies';
-  basePath = 'http://localhost:8080/api/v1/users';
+  basePath = 'https://upc-si729-sw52-digitalmind.herokuapp.com/api/v1/users';
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
@@ -79,19 +79,19 @@ export class CompaniesService {
 
   GetContacts(UserId:number): Observable<object> {
     return this.http
-      .get<object>(`http://localhost:8080/api/v1/users/${UserId}/messages/LastMessageCompany`, this.httpOptions)
+      .get<object>(`https://upc-si729-sw52-digitalmind.herokuapp.com/api/v1/users/${UserId}/messages/LastMessageCompany`, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 
   GetMessages(contactId: number, UserId:number): Observable<object> {
     return this.http
-      .get(`http://localhost:8080/api/v1/users/${UserId}/messages/${contactId}`, this.httpOptions)
+      .get(`https://upc-si729-sw52-digitalmind.herokuapp.com/api/v1/users/${UserId}/messages/${contactId}`, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 
   SendMessage(answer: object, contactId:number, UserId:number): Observable<object> {
     return this.http
-      .post<object>(`http://localhost:8080/api/v1/users/${UserId}/messages/${contactId}`, answer, this.httpOptions)
+      .post<object>(`https://upc-si729-sw52-digitalmind.herokuapp.com/api/v1/users/${UserId}/messages/${contactId}`, answer, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 
