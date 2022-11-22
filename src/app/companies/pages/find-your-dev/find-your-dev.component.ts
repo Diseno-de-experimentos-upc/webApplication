@@ -91,11 +91,13 @@ export class FindYourDevComponent implements OnInit {
   openDialog() {
     if (this.filterForm.invalid) {
       this.dialog.open(DialogBoxInvalidFormComponent, {
-        data: 'registerForm',
+        data: {message: 'Please fill all the fields'},
       });
     }
     else {
       this.getDevs();
+      this.filterForm.reset();
+      
     }
   }
 

@@ -45,6 +45,7 @@ export class MakePostComponent implements OnInit {
       this.dialog.open(DialogBoxInvalidFormComponent, { 
         data: {message: 'You added a post successfully!'},
       });
+      this.postForm.reset();
     }
     else{
       this.dialog.open(DialogBoxInvalidFormComponent, { 
