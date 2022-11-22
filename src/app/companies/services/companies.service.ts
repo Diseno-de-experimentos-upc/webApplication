@@ -20,7 +20,6 @@ export class CompaniesService {
 
   socialNetworks = 'https://upc-si729-sw52-digitalmind.herokuapp.com/api/v1/socialNetworks';
 
-  NewsURL: string = 'http://localhost:3000/news-companies';
   basePath = 'https://upc-si729-sw52-digitalmind.herokuapp.com/api/v1/users';
 
   urlDeveloper = 'https://upc-si729-sw52-digitalmind.herokuapp.com/api/v1/developers';
@@ -99,12 +98,6 @@ export class CompaniesService {
       .pipe(retry(2), catchError(this.handleError));
   }
 
-  GetAllNews(): Observable<object> {
-    return this.http
-      .get<object>(this.NewsURL, this.httpOptions)
-      .pipe(retry(2), catchError(this.handleError));
-  }
-
   //////Messages Section /////////
 
   GetContacts(UserId:number): Observable<object> {
@@ -178,7 +171,7 @@ export class CompaniesService {
 
   GetAllNotifications(UserId:number): Observable<object> {
     return this.http
-      .get(`http://localhost:8080/api/v1/users/${UserId}/notifications`, this.httpOptions)
+      .get(`https://upc-si729-sw52-digitalmind.herokuapp.com/api/v1/users/${UserId}/notifications`, this.httpOptions)
       .pipe(retry(2),catchError(this.handleError));
   }
 }

@@ -7,8 +7,8 @@ import {
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { Developer } from '../model/developer';
-import { Framework } from '../model/framework';
-import {Company} from "../../public/register/model/company";
+import { Company } from "../../public/register/model/company";
+import { Post } from '../../companies/model/post';
 
 @Injectable({
   providedIn: 'root',
@@ -26,11 +26,9 @@ export class DevelopersService {
   socialNetworks = 'https://upc-si729-sw52-digitalmind.herokuapp.com/api/v1/socialNetworks';
 
 
-  digitalProfileUrl: string = 'http://localhost:8080/api/v1/digital_profiles';
-  educationUrl: string = 'http://localhost:8080/api/v1/educations';
+  digitalProfileUrl: string = 'https://upc-si729-sw52-digitalmind.herokuapp.com/api/v1/digital_profiles';
+  educationUrl: string = 'https://upc-si729-sw52-digitalmind.herokuapp.com/api/v1/educations';
 
-  ContactsURL: string = 'http://localhost:3000/contacts';
-  MessagesURL: string = 'http://localhost:3000/messages';
   urlCompany = 'https://upc-si729-sw52-digitalmind.herokuapp.com/api/v1/companies';
 
   backURL: string = 'https://upc-si729-sw52-digitalmind.herokuapp.com/api/v1/users/searchByFrameworkAndProgrammingLanguageAndDatabase';
