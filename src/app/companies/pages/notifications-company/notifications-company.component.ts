@@ -11,6 +11,7 @@ import {toInteger} from "lodash";
 export class NotificationsCompanyComponent implements OnInit {
 
   UserId:number = 0;
+  Company: any;
   notifications:Array<any> = [];
   constructor(private service: CompaniesService, private breakpoint: BreakpointObserver) { }
 
@@ -19,11 +20,18 @@ export class NotificationsCompanyComponent implements OnInit {
     this.breakpoint.observe([Breakpoints.XSmall, Breakpoints.HandsetLandscape]).subscribe((response:any) => {
       console.log(response);
     });
+    this.GetAllNotifications();
   }
 
   GetNotification(id:number){
     this.service.GetNotificationByUserId(id, this.UserId).subscribe((response:any)=> {
       this.notifications = response;
+    });
+  }
+  GetAllNotifications(){
+    this.service.GetAllNotifications(this.UserId).subscribe((response:any)=> {
+      this.notifications = response;
+      console.log(this.notifications);
     });
   }
 
@@ -32,6 +40,7 @@ export class NotificationsCompanyComponent implements OnInit {
     this.service.DeleteNotificationById(id,this.UserId).subscribe((response:any)=> {
       this.GetNotification(this.UserId);
     });
+    location.reload();
   }
 
 }

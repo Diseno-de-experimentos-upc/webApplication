@@ -38,6 +38,7 @@ export class NotificationsDeveloperComponent implements OnInit {
     this.service.DeleteNotificationById(id,this.UserId).subscribe((response:any)=> {
       this.GetNotification(this.UserId);
     });
+    location.reload();
   }
 
 }

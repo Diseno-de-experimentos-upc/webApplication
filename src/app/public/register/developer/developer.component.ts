@@ -120,7 +120,7 @@ export class DeveloperComponent implements OnInit {
         this.language.iconLink = "https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg";
       }
       else if (this.language.name === 'Java'){
-        this.language.iconLink = "https://upload.wikimedia.org/wikipedia/commons/3/30/Java_programming_language_logo.svg";
+        this.language.iconLink = "https://icon-library.com/images/java-icon-png/java-icon-png-15.jpg";
       }
       else if (this.language.name === "C#"){
         this.language.iconLink = "https://upload.wikimedia.org/wikipedia/commons/0/0d/C_Sharp_wordmark.svg";
@@ -215,7 +215,7 @@ export class DeveloperComponent implements OnInit {
       console.log("Digital Profile Into Languages: " + JSON.stringify(this.digitalProfile));
     });
     var req = new XMLHttpRequest();
-    req.open('GET', `http://localhost:8080/api/v1/digital_profiles//developer/${this.userDev.id}`, false);
+    req.open('GET', `https://upc-si729-sw52-digitalmind.herokuapp.com/api/v1/digital_profiles//developer/${this.userDev.id}`, false);
     req.send(null);
     console.log('Get Digital Profile response');
     console.log(req.responseText);
@@ -228,7 +228,7 @@ export class DeveloperComponent implements OnInit {
 
   AddDigitalProfile() {
     var req = new XMLHttpRequest();
-    req.open('GET', `http://localhost:8080/api/v1/users/searchByEmail/${this.registerForm.get("email")?.value}`, false);
+    req.open('GET', `https://upc-si729-sw52-digitalmind.herokuapp.com/api/v1/users/searchByEmail/${this.registerForm.get("email")?.value}`, false);
     req.send(null);
     console.log('Get User response');
     console.log(req.responseText);
@@ -238,7 +238,7 @@ export class DeveloperComponent implements OnInit {
       console.log(this.userDev);
       this.digitalProfile.name = "Digital Profile " + this.registerForm.get("first_name")?.value;
       var req2 = new XMLHttpRequest();
-      req2.open('POST', `http://localhost:8080/api/v1/digital_profiles/${this.userDev.id}`, false);
+      req2.open('POST', `https://upc-si729-sw52-digitalmind.herokuapp.com/api/v1/digital_profiles/${this.userDev.id}`, false);
       req2.setRequestHeader('Content-Type', 'application/json');
       req2.send(JSON.stringify(this.digitalProfile));
       console.log('Post Digital Profile');
@@ -263,7 +263,7 @@ export class DeveloperComponent implements OnInit {
     this.TempDev.bannerImage = 'https://thumbs.dreamstime.com/b/internet-information-technology-businessman-hand-showing-concept-75784736.jpg';
 
     var req = new XMLHttpRequest();
-    req.open('POST', 'http://localhost:8080/api/v1/developers', false);
+    req.open('POST', 'https://upc-si729-sw52-digitalmind.herokuapp.com/api/v1/developers', false);
     req.setRequestHeader('Content-Type', 'application/json');
     req.send(JSON.stringify(this.TempDev));
     console.log('Post Developer');
@@ -387,7 +387,7 @@ export class DeveloperComponent implements OnInit {
   verifyDeveloperUnregistered() {
     this.registered = false;
     var req = new XMLHttpRequest();
-    req.open('GET', `http://localhost:8080/api/v1/users/searchByEmail/${this.registerForm.get("email")?.value}`, false);
+    req.open('GET', `https://upc-si729-sw52-digitalmind.herokuapp.com/api/v1/users/searchByEmail/${this.registerForm.get("email")?.value}`, false);
     req.send(null);
     if (req.status == 200) {
       var user = JSON.parse(req.responseText);

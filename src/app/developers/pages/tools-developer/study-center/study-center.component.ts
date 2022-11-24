@@ -5,6 +5,8 @@ import { DigitalProfile } from 'src/app/developers/model/digitalProfile';
 import { Education } from 'src/app/developers/model/education';
 import { StudyCenter } from 'src/app/developers/model/studyCenter';
 import { ToolsService } from 'src/app/developers/services/tools.service';
+import { DialogBoxInvalidFormComponent } from 'src/app/public/register/dialog-box-invalid-form/dialog-box-invalid-form.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-study-center',
@@ -21,7 +23,7 @@ export class StudyCenterComponent implements OnInit {
   entryDateS: string = "";
   graduationDateS: string = "";
   
-  constructor(private formBuilder: FormBuilder, private service: ToolsService) { 
+  constructor(private formBuilder: FormBuilder, public dialog: MatDialog, private service: ToolsService) { 
     this.TempStudyCenter = {} as StudyCenter;
     this.registerFormStudyCenter = this.formBuilder.group({
       name: new FormControl('', { validators:  [Validators.required], updateOn: 'change' }),
@@ -97,7 +99,7 @@ export class StudyCenterComponent implements OnInit {
   //TODO: connectar por ID ABAJOW
 
     // get digittal profile by user id
-    this.service.GetDigitalProfileByDevId(2).subscribe((data: any) => {
+    this.service.GetDigitalProfileByDevId(toInteger(localStorage.getItem("id"))).subscribe((data: any) => {
       this.digitalProfile = data;
       localStorage.setItem("digitalProfileId", this.digitalProfile.id.toString());
     });
@@ -113,10 +115,15 @@ export class StudyCenterComponent implements OnInit {
         console.log(data);
       }
       );
-      alert("Study Center added successfully");
+      this.dialog.open(DialogBoxInvalidFormComponent, {
+        data: {message: "Study Center added successfully!"}
+      });
+      this.registerFormStudyCenter.reset();
     }
     else{
-      alert("Please, fill all the fields");
+      this.dialog.open(DialogBoxInvalidFormComponent, {
+        data: {message: "Please, fill all the fields"}
+      });
     }
 
   }

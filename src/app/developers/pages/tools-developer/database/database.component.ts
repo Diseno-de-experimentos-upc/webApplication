@@ -9,6 +9,8 @@ import { toInteger } from 'lodash';
 import { Database } from 'src/app/developers/model/database';
 import { DigitalProfile } from 'src/app/developers/model/digitalProfile';
 import { ToolsService } from 'src/app/developers/services/tools.service';
+import { DialogBoxInvalidFormComponent } from 'src/app/public/register/dialog-box-invalid-form/dialog-box-invalid-form.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-database',
@@ -21,7 +23,7 @@ export class DatabaseComponent implements OnInit {
   formIsValid: boolean = false;
   digitalProfile!: DigitalProfile;
 
-  constructor(private formBuilder: FormBuilder, private service: ToolsService) {
+  constructor(private formBuilder: FormBuilder, public dialog: MatDialog,  private service: ToolsService) {
     this.TempDatabase = {} as Database;
     this.registerFormDatabase = this.formBuilder.group({
       name: new FormControl('', {
@@ -67,9 +69,14 @@ export class DatabaseComponent implements OnInit {
         .subscribe((data) => {
           console.log(data);
         });
-      alert('Database added successfully');
+      this.dialog.open(DialogBoxInvalidFormComponent, {
+        data: {message: "Database added successfully!"}
+      });
+      this.registerFormDatabase.reset();
     } else {
-      alert('Please, fill all the fields');
+      this.dialog.open(DialogBoxInvalidFormComponent, {
+        data: {message: "Please, fill all the fields"}
+      });
     }
   }
 }

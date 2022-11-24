@@ -21,20 +21,19 @@ export class CompaniesComponent implements OnInit {
   currentRoute: string = '';
   notifications: Array<any> = [];
 
-
-  constructor( private observer: BreakpointObserver, private service: CompaniesService, private route: ActivatedRoute,private router: Router ) {
-     this.analizeRoot();
+  constructor(
+    private observer: BreakpointObserver,
+    private service: CompaniesService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {
+    this.analizeRoot();
   }
 
   ngOnInit(): void {
     this.ngAfterViewInit();
-    //this.GetAllNotifications();
-    this.service.GetAllNews().subscribe((response: any) => {
-      this.news = response;
-      console.log(this.news);
-    });
-
-    const id = toInteger(localStorage.getItem("id"));
+    this.GetAllNotifications();
+    const id = toInteger(localStorage.getItem('id'));
     this.service.GetRecruiterById(id).subscribe((response: any) => {
       this.company = response;
     });
@@ -55,14 +54,12 @@ export class CompaniesComponent implements OnInit {
       });
   }
 
-   analizeRoot(){
+  analizeRoot() {
     this.currentRoute = this.router.url;
     //find profile string in current route
     if (this.currentRoute.includes('profile')) {
       this.profile = true;
-    }
-    else
-    {
+    } else {
       this.profile = false;
     }
   }
@@ -73,11 +70,11 @@ export class CompaniesComponent implements OnInit {
   disableOption() {
     this.profile = false;
   }
-  /*GetAllNotifications() {
-    this.service.GetNotifications().subscribe((response: any) => {
-      this.notifications = response;
-      console.log(this.notifications.length);
-    });
-  }*/
 
+  GetAllNotifications(){
+    this.service.GetAllNotifications(toInteger(localStorage.getItem("id"))).subscribe((response:any)=> {
+      this.notifications = response;
+      console.log(this.notifications);
+    });
+  }
 }
