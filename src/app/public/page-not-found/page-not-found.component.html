@@ -1,12 +1,23 @@
 <p>
   <mat-toolbar color="primary">
-    <button mat-icon-button aria-hiden="false" class="btn-go-login" aria-label="Redirect to login"
-            routerLink="/login">
+    <button
+      mat-icon-button
+      aria-hiden="false"
+      class="btn-go-login"
+      aria-label="Redirect to login"
+      routerLink="/login"
+    >
       <mat-icon>arrow_back</mat-icon>
     </button>
-    <span>Go back to Profile+</span>
+    <span>Go back to TechLinker</span>
     <span class="example-spacer"></span>
-    <button mat-icon-button aria-hiden="false" class="btn-landing-page" aria-label="Redirect to landing page" (click)="goToLandingPage()">
+    <button
+      mat-icon-button
+      aria-hiden="false"
+      class="btn-landing-page"
+      aria-label="Redirect to landing page"
+      (click)="goToLandingPage()"
+    >
       <mat-icon>touch_app</mat-icon>
     </button>
     <span>About Us</span>
@@ -15,6 +26,17 @@
 
 <div class="container">
   <h1>404: Page Not Found!</h1>
-  <p class="paragraph">The page yoy are looking for cannot be found or you do not have access to this page</p>
-  <button mat-raised-button color="primary" class="btn-back" aria-label="Redirect to login" [routerLink]="homeLink">Go Home</button>
+  <p class="paragraph">
+    The page yoy are looking for cannot be found or you do not have access to
+    this page
+  </p>
+  <button
+    mat-raised-button
+    color="primary"
+    class="btn-back"
+    aria-label="Redirect to login"
+    [routerLink]="homeLink"
+  >
+    Go Home
+  </button>
 </div>

@@ -7,23 +7,21 @@ import {
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { Company } from '../model/company';
-import {Developer} from "../../public/register/model/developer";
+import { Developer } from '../../public/register/model/developer';
 import { Post } from '../model/post';
-
-
 
 @Injectable({
   providedIn: 'root',
 })
 export class CompaniesService {
-  BaseURL: string = 'https://upc-si729-sw52-digitalmind.herokuapp.com/api/v1/companies';
+  BaseURL: string = 'http://localhost:8080/api/v1/companies';
 
-  socialNetworks = 'https://upc-si729-sw52-digitalmind.herokuapp.com/api/v1/socialNetworks';
+  socialNetworks = 'http://localhost:8080/api/v1/socialNetworks';
 
-  basePath = 'https://upc-si729-sw52-digitalmind.herokuapp.com/api/v1/users';
+  basePath = 'http://localhost:8080/api/v1/users';
 
-  urlDeveloper = 'https://upc-si729-sw52-digitalmind.herokuapp.com/api/v1/developers';
-  urlPost = 'https://upc-si729-sw52-digitalmind.herokuapp.com/api/v1/posts';
+  urlDeveloper = 'http://localhost:8080/api/v1/developers';
+  urlPost = 'http://localhost:8080/api/v1/posts';
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
@@ -45,8 +43,6 @@ export class CompaniesService {
     );
   }
 
-
-
   GetPostById(id: number): Observable<Post> {
     return this.http
       .get<Post>(this.urlPost + '/' + id, this.httpOptions)
@@ -61,12 +57,17 @@ export class CompaniesService {
 
   AddPost(post: Post, id: number): Observable<Post> {
     return this.http
-      .post<Post>(`${this.urlPost}/${id}`, JSON.stringify(post), this.httpOptions)
+      .post<Post>(
+        `${this.urlPost}/${id}`,
+        JSON.stringify(post),
+        this.httpOptions
+      )
       .pipe(retry(2), catchError(this.handleError));
   }
 
   DeletePostById(id: number) {
-    return this.http.delete(`${this.urlPost}/${id}` , this.httpOptions)
+    return this.http
+      .delete(`${this.urlPost}/${id}`, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 
@@ -82,7 +83,11 @@ export class CompaniesService {
   }
   updateRec(id: number, dev: Company): Observable<Company> {
     return this.http
-      .put<Company>(this.BaseURL + '/' + id, JSON.stringify(dev), this.httpOptions)
+      .put<Company>(
+        this.BaseURL + '/' + id,
+        JSON.stringify(dev),
+        this.httpOptions
+      )
       .pipe(retry(2), catchError(this.handleError));
   }
 
@@ -100,28 +105,44 @@ export class CompaniesService {
 
   //////Messages Section /////////
 
-  GetContacts(UserId:number): Observable<object> {
+  GetContacts(UserId: number): Observable<object> {
     return this.http
-      .get<object>(`https://upc-si729-sw52-digitalmind.herokuapp.com/api/v1/users/${UserId}/messages/LastMessageCompany`, this.httpOptions)
+      .get<object>(
+        `http://localhost:8080/api/v1/users/${UserId}/messages/LastMessageCompany`,
+        this.httpOptions
+      )
       .pipe(retry(2), catchError(this.handleError));
   }
 
-  GetMessages(contactId: number, UserId:number): Observable<object> {
+  GetMessages(contactId: number, UserId: number): Observable<object> {
     return this.http
-      .get(`https://upc-si729-sw52-digitalmind.herokuapp.com/api/v1/users/${UserId}/messages/${contactId}`, this.httpOptions)
+      .get(
+        `http://localhost:8080/api/v1/users/${UserId}/messages/${contactId}`,
+        this.httpOptions
+      )
       .pipe(retry(2), catchError(this.handleError));
   }
 
-  SendMessage(answer: object, contactId:number, UserId:number): Observable<object> {
+  SendMessage(
+    answer: object,
+    contactId: number,
+    UserId: number
+  ): Observable<object> {
     return this.http
-      .post<object>(`https://upc-si729-sw52-digitalmind.herokuapp.com/api/v1/users/${UserId}/messages/${contactId}`, answer, this.httpOptions)
+      .post<object>(
+        `http://localhost:8080/api/v1/users/${UserId}/messages/${contactId}`,
+        answer,
+        this.httpOptions
+      )
       .pipe(retry(2), catchError(this.handleError));
   }
-
 
   GetSocialNetworks(companyId: number): Observable<object> {
     return this.http
-      .get<object>(`${this.BaseURL}/${companyId}/company-social-networks`, this.httpOptions)
+      .get<object>(
+        `${this.BaseURL}/${companyId}/company-social-networks`,
+        this.httpOptions
+      )
       .pipe(retry(2), catchError(this.handleError));
   }
 
@@ -134,21 +155,35 @@ export class CompaniesService {
 
   //////Notifications Section /////////
 
-  GetNotificationByUserId(id:number, UserId:number): Observable<object> {
+  GetNotificationByUserId(id: number, UserId: number): Observable<object> {
     return this.http
-      .get(`https://upc-si729-sw52-digitalmind.herokuapp.com/api/v1/users/${UserId}/notifications/${id}`, this.httpOptions)
-      .pipe(retry(2),catchError(this.handleError));
+      .get(
+        `http://localhost:8080/api/v1/users/${UserId}/notifications/${id}`,
+        this.httpOptions
+      )
+      .pipe(retry(2), catchError(this.handleError));
   }
 
-  SendNotification(notification: object, contactId: number, UserId:number, ): Observable<object> {
+  SendNotification(
+    notification: object,
+    contactId: number,
+    UserId: number
+  ): Observable<object> {
     return this.http
-      .post<object>(`https://upc-si729-sw52-digitalmind.herokuapp.com/api/v1/users/${UserId}/notifications/${contactId}`, JSON.stringify(notification) , this.httpOptions)
+      .post<object>(
+        `http://localhost:8080/api/v1/users/${UserId}/notifications/${contactId}`,
+        JSON.stringify(notification),
+        this.httpOptions
+      )
       .pipe(retry(2), catchError(this.handleError));
   }
 
   DeleteNotificationById(id: number, UserId: number): Observable<object> {
     return this.http
-      .delete(`https://upc-si729-sw52-digitalmind.herokuapp.com/api/v1/users/${UserId}/notifications/${id}`, this.httpOptions)
+      .delete(
+        `http://localhost:8080/api/v1/users/${UserId}/notifications/${id}`,
+        this.httpOptions
+      )
       .pipe(retry(2), catchError(this.handleError));
   }
 
@@ -169,10 +204,12 @@ export class CompaniesService {
       .pipe(retry(2), catchError(this.handleError));
   }
 
-  GetAllNotifications(UserId:number): Observable<object> {
+  GetAllNotifications(UserId: number): Observable<object> {
     return this.http
-      .get(`https://upc-si729-sw52-digitalmind.herokuapp.com/api/v1/users/${UserId}/notifications`, this.httpOptions)
-      .pipe(retry(2),catchError(this.handleError));
+      .get(
+        `http://localhost:8080/api/v1/users/${UserId}/notifications`,
+        this.httpOptions
+      )
+      .pipe(retry(2), catchError(this.handleError));
   }
 }
-

@@ -1,38 +1,46 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse,  HttpEvent,  HttpHandler,  HttpHeaders, HttpRequest } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpErrorResponse,
+  HttpEvent,
+  HttpHandler,
+  HttpHeaders,
+  HttpRequest,
+} from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { Developer } from '../register/model/developer';
 import { Company } from '../register/model/company';
 import { DigitalProfile } from '../register/model/digitalprofile';
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class LoginService {
-  developerURL = 'https://upc-si729-sw52-digitalmind.herokuapp.com/api/v1/developers';
-  companyURL = 'https://upc-si729-sw52-digitalmind.herokuapp.com/api/v1/companies';
+  developerURL = 'http://localhost:8080/api/v1/developers';
+  companyURL = 'http://localhost:8080/api/v1/companies';
   usersURL = 'http://localhost:3000/users';
 
-  basePath = 'https://upc-si729-sw52-digitalmind.herokuapp.com/api/v1/users';
-  urlDeveloper = 'https://upc-si729-sw52-digitalmind.herokuapp.com/api/v1/developers';
-  urlCompany = 'https://upc-si729-sw52-digitalmind.herokuapp.com/api/v1/companies';
-  urlDigitalProfile = "https://upc-si729-sw52-digitalmind.herokuapp.com/api/v1/digital_profiles";
-  urlDatabase = 'https://upc-si729-sw52-digitalmind.herokuapp.com/api/v1/databases';
-  urlFrameworks = 'https://upc-si729-sw52-digitalmind.herokuapp.com/api/v1/frameworks';
-  urlLenguages = 'https://upc-si729-sw52-digitalmind.herokuapp.com/api/v1/programmingLanguages';
-  educationUrl: string = 'https://upc-si729-sw52-digitalmind.herokuapp.com/api/v1/educations';
+  basePath = 'http://localhost:8080/api/v1/users';
+  urlDeveloper = 'http://localhost:8080/api/v1/developers';
+  urlCompany = 'http://localhost:8080/api/v1/companies';
+  urlDigitalProfile = 'http://localhost:8080/api/v1/digital_profiles';
+  urlDatabase = 'http://localhost:8080/api/v1/databases';
+  urlFrameworks = 'http://localhost:8080/api/v1/frameworks';
+  urlLenguages = 'http://localhost:8080/api/v1/programmingLanguages';
+  educationUrl: string = 'http://localhost:8080/api/v1/educations';
 
- 
-  constructor(private http: HttpClient) { }
-  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+  constructor(private http: HttpClient) {}
+  intercept(
+    req: HttpRequest<any>,
+    next: HttpHandler
+  ): Observable<HttpEvent<any>> {
     throw new Error('Method not implemented.');
   }
-
 
   //http options
   httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
     }),
   };
   //handle error
@@ -81,7 +89,11 @@ export class LoginService {
 
   postDigitalProfile(digitalProfile: object, id: number): Observable<object> {
     return this.http
-      .post<object>(`${this.urlDigitalProfile}/${id}`, digitalProfile, this.httpOptions)
+      .post<object>(
+        `${this.urlDigitalProfile}/${id}`,
+        digitalProfile,
+        this.httpOptions
+      )
       .pipe(retry(2), catchError(this.handleError));
   }
 
@@ -93,15 +105,18 @@ export class LoginService {
 
   getDigitalProfileByDeveloperId(id: number): Observable<Object> {
     return this.http
-      .get<DigitalProfile>(`${this.urlDigitalProfile}/developer/${id}`, this.httpOptions)
+      .get<DigitalProfile>(
+        `${this.urlDigitalProfile}/developer/${id}`,
+        this.httpOptions
+      )
       .pipe(retry(2), catchError(this.handleError));
   }
   GetEducationByDigitalProfileId(id: number): Observable<object> {
     return this.http
-      .get(`${this.educationUrl}/digitalProfile/${id}`, this.httpOptions) 
+      .get(`${this.educationUrl}/digitalProfile/${id}`, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
- 
+
   postDatabase(database: object, id: number): Observable<object> {
     return this.http
       .post<object>(`${this.urlDatabase}/${id}`, database, this.httpOptions)
@@ -130,7 +145,7 @@ export class LoginService {
       .get<object>(`${this.basePath}/searchByEmail/${email}`, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
-  
+
   getUserById(id: number): Observable<object> {
     return this.http
       .get<object>(`${this.basePath}/${id}`, this.httpOptions)
@@ -149,4 +164,3 @@ export class LoginService {
       .pipe(retry(2), catchError(this.handleError));
   }
 }
-

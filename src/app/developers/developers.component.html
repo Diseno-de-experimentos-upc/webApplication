@@ -1,88 +1,121 @@
 <mat-toolbar color="primary">
-
-  <button mat-icon-button *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()">
-    <mat-icon *ngIf="!sidenav.opened">
-      menu
-    </mat-icon>
-    <mat-icon *ngIf="sidenav.opened">
-      close
-    </mat-icon>
+  <button
+    mat-icon-button
+    *ngIf="sidenav.mode === 'over'"
+    (click)="sidenav.toggle()"
+  >
+    <mat-icon *ngIf="!sidenav.opened"> menu </mat-icon>
+    <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
   </button>
 
-
-  <img src="assets/images/user.png" width="60" height="40">
-  <span>Profile+</span>
+  <img src="assets/images/user.png" width="60" height="40" />
+  <span>TechLinker</span>
   <span class="example-spacer"></span>
   <span>Developer</span>
   <span class="example-spacer"></span>
 
-
-  <button routerLink="/login" mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+  <button
+    routerLink="/login"
+    mat-icon-button
+    class="example-icon"
+    aria-label="Example icon-button with share icon"
+  >
     <mat-icon>logout</mat-icon>
   </button>
 </mat-toolbar>
 
 <mat-sidenav-container>
-
   <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
-
-    <img class="avatar mat-elevation-z8" [src]="developer.image" width="30%">
-    <h4 class="name">{{developer.firstName}} {{developer.lastName}} </h4>
+    <img class="avatar mat-elevation-z8" [src]="developer.image" width="30%" />
+    <h4 class="name">{{ developer.firstName }} {{ developer.lastName }}</h4>
     <p class="designation">Developer</p>
     <mat-divider></mat-divider>
 
-    <button mat-button class="menu-button" (click)="disableOption()" routerLink="home">
+    <button
+      mat-button
+      class="menu-button"
+      (click)="disableOption()"
+      routerLink="home"
+    >
       <mat-icon>home</mat-icon>
       <span> Home</span>
     </button>
 
-    <button mat-button class="menu-button" (click)="disableOption()" routerLink="messages">
+    <button
+      mat-button
+      class="menu-button"
+      (click)="disableOption()"
+      routerLink="messages"
+    >
       <mat-icon>messages</mat-icon>
       <span> Messages </span>
     </button>
 
-    <button mat-button class="menu-button" (click)="setOption()" routerLink="tools">
+    <button
+      mat-button
+      class="menu-button"
+      (click)="setOption()"
+      routerLink="tools"
+    >
       <mat-icon>edit</mat-icon>
       <span> Tools</span>
     </button>
 
-    <button mat-button class="menu-button" (click)="disableOption()" routerLink="notifications">
-      <mat-icon matBadge="{{notifications.length}}" matBadgeColor="warn" >notifications</mat-icon>
+    <button
+      mat-button
+      class="menu-button"
+      (click)="disableOption()"
+      routerLink="notifications"
+    >
+      <mat-icon matBadge="{{ notifications.length }}" matBadgeColor="warn"
+        >notifications</mat-icon
+      >
       <span> Notifications</span>
     </button>
 
-    <button mat-button class="menu-button" (click)="setOption()" routerLink="profile">
+    <button
+      mat-button
+      class="menu-button"
+      (click)="setOption()"
+      routerLink="profile"
+    >
       <mat-icon> person</mat-icon>
       <span> Profile</span>
     </button>
 
-    <button mat-button class="menu-button"  (click)="disableOption()" routerLink="settings">
+    <button
+      mat-button
+      class="menu-button"
+      (click)="disableOption()"
+      routerLink="settings"
+    >
       <mat-icon> settings</mat-icon>
       <span> Settings</span>
     </button>
 
-    <button mat-button class="menu-button"  (click)="disableOption()" routerLink="/login">
+    <button
+      mat-button
+      class="menu-button"
+      (click)="disableOption()"
+      routerLink="/login"
+    >
       <mat-icon> logout</mat-icon>
       <span> Logout</span>
     </button>
-
   </mat-sidenav>
 
-
   <mat-sidenav-content>
-    <div *ngIf= "profile === false">
+    <div *ngIf="profile === false">
       <div class="content">
         <router-outlet></router-outlet>
       </div>
     </div>
-    <div *ngIf= "profile">
+    <div *ngIf="profile">
       <div class="">
         <router-outlet></router-outlet>
       </div>
     </div>
   </mat-sidenav-content>
-
-
 </mat-sidenav-container>
 
 <footer></footer>
