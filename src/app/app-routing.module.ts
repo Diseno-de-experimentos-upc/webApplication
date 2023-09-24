@@ -42,7 +42,7 @@ const routes: Routes = [
     children: [
       { path: 'home', component: HomeComponent },
       { path: 'messages', component: MessagesComponent },
-      { path: 'tools', component: ToolsDeveloperComponent, 
+      { path: 'tools', component: ToolsDeveloperComponent,
         children: [
           { path: 'project', component: ProjectComponent },
           { path: 'certificate', component: CertificateComponent },
@@ -50,7 +50,7 @@ const routes: Routes = [
           { path: 'programming-language', component: ProgrammingLanguageComponent },
           { path: 'framework', component: FrameworkComponent },
           { path: 'study-center', component: StudyCenterComponent },
-        ], 
+        ],
       },
       { path: 'profile', component: ProfileDeveloperComponent },
       { path: 'settings', component: SettingsDeveloperComponent},

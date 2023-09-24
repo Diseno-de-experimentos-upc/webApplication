@@ -14,24 +14,29 @@ import { Post } from '../../companies/model/post';
   providedIn: 'root',
 })
 export class DevelopersService {
-  BaseURL: string = 'https://upc-si729-sw52-digitalmind.herokuapp.com/api/v1/developers';
-  PostURL: string = 'https://upc-si729-sw52-digitalmind.herokuapp.com/api/v1/posts';
-
-  certificateUrl: string = 'https://upc-si729-sw52-digitalmind.herokuapp.com/api/v1/certificates';
-  studyCenterUrl: string = 'https://upc-si729-sw52-digitalmind.herokuapp.com/api/v1/study-centers';
-  databaseUrl: string = 'https://upc-si729-sw52-digitalmind.herokuapp.com/api/v1/databases';
-  frameworkUrl: string = 'https://upc-si729-sw52-digitalmind.herokuapp.com/api/v1/frameworks';
-  programingLanguagesUrl: string = 'https://upc-si729-sw52-digitalmind.herokuapp.com/api/v1/programmingLanguages';
-  projectsUrl: string = 'https://upc-si729-sw52-digitalmind.herokuapp.com/api/v1/projects';
-  socialNetworks = 'https://upc-si729-sw52-digitalmind.herokuapp.com/api/v1/socialNetworks';
 
 
-  digitalProfileUrl: string = 'https://upc-si729-sw52-digitalmind.herokuapp.com/api/v1/digital_profiles';
-  educationUrl: string = 'https://upc-si729-sw52-digitalmind.herokuapp.com/api/v1/educations';
+   //This is the main URL for the backend
+   baseUrl = "https://backend-experimentos.azurewebsites.net/api/v1";
 
-  urlCompany = 'https://upc-si729-sw52-digitalmind.herokuapp.com/api/v1/companies';
+  BaseURL: string = `${this.baseUrl}/developers`;
+  PostURL: string = `${this.baseUrl}/posts`;
 
-  backURL: string = 'https://upc-si729-sw52-digitalmind.herokuapp.com/api/v1/users/searchByFrameworkAndProgrammingLanguageAndDatabase';
+  certificateUrl: string = `${this.baseUrl}/certificates`;
+  studyCenterUrl: string = `${this.baseUrl}/study-centers`;
+  databaseUrl: string = `${this.baseUrl}/databases`;
+  frameworkUrl: string = `${this.baseUrl}/frameworks`;
+  programingLanguagesUrl: string = `${this.baseUrl}/programmingLanguages`;
+  projectsUrl: string = `${this.baseUrl}/projects`;
+  socialNetworks = `${this.baseUrl}/socialNetworks`;
+
+
+  digitalProfileUrl: string = `${this.baseUrl}/digital_profiles`;
+  educationUrl: string = `${this.baseUrl}/educations`;
+
+  urlCompany = `${this.baseUrl}/companies`;
+
+  backURL: string = `${this.baseUrl}/users/searchByFrameworkAndProgrammingLanguageAndDatabase`;
 
 
   httpOptions = {
@@ -158,19 +163,19 @@ export class DevelopersService {
 
   GetContacts(UserId:number): Observable<object> {
     return this.http
-      .get<object>(`https://upc-si729-sw52-digitalmind.herokuapp.com/api/v1/users/${UserId}/messages/LastMessageDeveloper`, this.httpOptions)
+      .get<object>(`https://backend-experimentos.azurewebsites.net/api/v1/users/${UserId}/messages/LastMessageDeveloper`, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 
   GetMessages(contactId: number, UserId:number): Observable<object> {
     return this.http
-      .get(`https://upc-si729-sw52-digitalmind.herokuapp.com/api/v1/users/${UserId}/messages/${contactId}`, this.httpOptions)
+      .get(`https://backend-experimentos.azurewebsites.net/api/v1/users/${UserId}/messages/${contactId}`, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 
   SendMessage(answer: object, contactId: number, UserId:number): Observable<object> {
     return this.http
-      .post<object>(`https://upc-si729-sw52-digitalmind.herokuapp.com/api/v1/users/${UserId}/messages/${contactId}`, answer, this.httpOptions)
+      .post<object>(`https://backend-experimentos.azurewebsites.net/api/v1/users/${UserId}/messages/${contactId}`, answer, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 
@@ -178,12 +183,12 @@ export class DevelopersService {
 
   GetNotificationsByUserId(id:number, UserId:number): Observable<object> {
     return this.http
-      .get(`https://upc-si729-sw52-digitalmind.herokuapp.com/api/v1/users/${UserId}/notifications/${id}`, this.httpOptions)
+      .get(`https://backend-experimentos.azurewebsites.net/api/v1/users/${UserId}/notifications/${id}`, this.httpOptions)
       .pipe(retry(2),catchError(this.handleError));
   }
   GetAllNotifications(UserId:number): Observable<object> {
     return this.http
-      .get(`https://upc-si729-sw52-digitalmind.herokuapp.com/api/v1/users/${UserId}/notifications`, this.httpOptions)
+      .get(`https://backend-experimentos.azurewebsites.net/api/v1/users/${UserId}/notifications`, this.httpOptions)
       .pipe(retry(2),catchError(this.handleError));
   }
 
@@ -191,14 +196,14 @@ export class DevelopersService {
 
   SendNotification(notification: object, UserId:number): Observable<object> {
     return this.http
-      .post<object>(`https://upc-si729-sw52-digitalmind.herokuapp.com/api/v1/users/${UserId}/notifications`, JSON.stringify(notification) , this.httpOptions)
+      .post<object>(`https://backend-experimentos.azurewebsites.net/api/v1/users/${UserId}/notifications`, JSON.stringify(notification) , this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 
 
   DeleteNotificationById(id: number, UserId: number): Observable<object> {
     return this.http
-      .delete(`https://upc-si729-sw52-digitalmind.herokuapp.com/api/v1/users/${UserId}/notifications/${id}`, this.httpOptions)
+      .delete(`https://backend-experimentos.azurewebsites.net/api/v1/users/${UserId}/notifications/${id}`, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 

@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
     email : ["", {validators: [Validators.required, Validators.email], updateOn: 'change'}],
     password : ["", {validators: [Validators.required, Validators.minLength(8)], updateOn: 'change'}],
   });
-  
+
   constructor(private formBuilder: FormBuilder, public dialog: MatDialog, private router: Router, private service: LoginService) {
 
       this.digitalProfile = {} as DigitalProfile;
@@ -114,11 +114,11 @@ export class LoginComponent implements OnInit {
   goUserDeveloper(id : any) {
 
     localStorage.setItem("id", id);
- 
+
     this.service.getDigitalProfileByDeveloperId(id).subscribe((response: any) => {
       console.log("digital profile", response);
       this.digitalProfile = response;
-      
+
       this.education.digitalProfile_id = this.digitalProfile.id;
       localStorage.setItem("digitalProfileId", this.education.digitalProfile_id.toString());
       this.education.career = "";
@@ -133,9 +133,9 @@ export class LoginComponent implements OnInit {
       }
       );
 
-    }); 
+    });
 
-    
+
     this.router.navigate(['/developers/home']);
   }
   goUserCompany(id : any) {
