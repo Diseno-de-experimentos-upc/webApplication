@@ -14,21 +14,23 @@ import { Developer } from '../model/developer';
 export class ToolsService {
 
   //Developer tools
-  projectsUrl: string = 'http://localhost:8080/api/v1/projects';
-  educationUrl: string = 'http://localhost:8080/api/v1/educations';
-  digitalProfileUrl: string = 'http://localhost:8080/api/v1/digital_profiles';
-  databaseUrl: string = 'http://localhost:8080/api/v1/databases';
-  frameWorkUrl: string = 'http://localhost:8080/api/v1/frameworks';
-  programingLanguageUrl: string = 'http://localhost:8080/api/v1/programmingLanguages';
-  certificateUrl: string = 'http://localhost:8080/api/v1/certificates';
-  studyCenterUrl: string = 'http://localhost:8080/api/v1/study-centers';
+
+  projectsUrl: string = 'http://localhost:8090/api/v1/projects';
+  educationUrl: string = 'http://localhost:8090/api/v1/educations';
+  digitalProfileUrl: string = 'http://localhost:8090/api/v1/digital_profiles';
+  databaseUrl: string = 'http://localhost:8090/api/v1/databases';
+  frameWorkUrl: string = 'http://localhost:8090/api/v1/frameworks';
+  programingLanguageUrl: string = 'http://localhost:8090/api/v1/programmingLanguages';
+  certificateUrl: string = 'http://localhost:8090/api/v1/certificates';
+  studyCenterUrl: string = 'http://localhost:8090/api/v1/study-centers';
+
 
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
     }),
   };
-  
+
   constructor(private http: HttpClient) { }
 
   handleError(error: HttpErrorResponse) {
@@ -73,7 +75,7 @@ export class ToolsService {
     createDatabase(database: object, digitalProfileId: number): Observable<object> {
       return this.http
         .post(`${this.databaseUrl}/${digitalProfileId}`, database, this.httpOptions)
-        .pipe(retry(2), catchError(this.handleError));  
+        .pipe(retry(2), catchError(this.handleError));
     }
 
   //create a new framework with especific digital profile
@@ -84,7 +86,7 @@ export class ToolsService {
     }
 
   //create a new programming language with especific digital profile
-   
+
     createProgrammingLanguage(programmingLanguage: object, digitalProfileId: number): Observable<object> {
       return this.http
         .post(`${this.programingLanguageUrl}/${digitalProfileId}`, programmingLanguage, this.httpOptions)
@@ -101,10 +103,10 @@ export class ToolsService {
     //Get Education by digital profile id
     GetEducationByDigitalProfileId(id: number): Observable<object> {
       return this.http
-        .get(`${this.educationUrl}/digitalProfile/${id}`, this.httpOptions) 
+        .get(`${this.educationUrl}/digitalProfile/${id}`, this.httpOptions)
         .pipe(retry(2), catchError(this.handleError));
     }
-   
+
     //create study center with especific education id
     createStudyCenter(studyCenter: object, educationId: number): Observable<object> {
       return this.http

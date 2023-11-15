@@ -5,6 +5,6 @@ export interface Post{
     title: string,
     imageUrl: string,
     description: string,
+    status: string,
     company: Company
   }
-  

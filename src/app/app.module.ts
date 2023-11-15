@@ -70,7 +70,13 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import { MessageDialogComponent } from './companies/pages/find-your-dev/message-dialog/message-dialog.component';
 import { NotificationDialogComponent } from './companies/pages/home-company/notification-dialog/notification-dialog.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
+import {MatSnackBar} from '@angular/material/snack-bar';
+
+
+
+import { GoogleTagManagerModule } from 'angular-google-tag-manager';
 
 @NgModule({
   declarations: [
@@ -117,10 +123,10 @@ import { NotificationDialogComponent } from './companies/pages/home-company/noti
       MessageDialogComponent,
       NotificationDialogComponent,
 
-
-
   ],
   imports: [
+
+    MatSnackBarModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -149,7 +155,10 @@ import { NotificationDialogComponent } from './companies/pages/home-company/noti
     ScrollingModule,
     MatBadgeModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    GoogleTagManagerModule.forRoot({
+      id: 'GTM-N6RT3ND5',
+    })
   ],
   providers: [],
   bootstrap: [AppComponent],

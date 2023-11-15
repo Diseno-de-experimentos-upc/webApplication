@@ -91,34 +91,52 @@
             <mat-card-content>
               <p class="main-post-title">These are your lastest publications</p>
               <div class="posts">
- 
-                  <mat-card *ngFor="let post of posts" class="post-card">
-                    <mat-card-header>
-                      <div mat-card-avatar>
-                        <img
-                          [src]="company.image"
-                          alt=""
-                          class="avatar-header-image"
-                        />
-                      </div>
-                      <mat-card-title>{{company.firstName}} {{company.lastName}}</mat-card-title>
-                      <mat-card-subtitle>{{ post.date }}</mat-card-subtitle>
+
+                <mat-card *ngFor="let post of posts" class="post-card">
+                  <mat-card-header>
+                    <div mat-card-avatar>
+                      <img [src]="company.image" alt="" class="avatar-header-image" />
+                    </div>
+                    <mat-card-title>{{company.firstName}} {{company.lastName}}</mat-card-title>
+                    <mat-card-subtitle>{{ post.date }}</mat-card-subtitle>
                   </mat-card-header>
                   <img mat-card-image [src]="post.imageUrl" alt="Profile photo" />
                   <mat-card-content>
                     <h2>{{ post.title }}</h2>
                     <p>{{ post.description }}</p>
                   </mat-card-content>
-                  
-                  <mat-card-actions style="display: flex; justify-content: flex-end;">
+
+                  <mat-card-actions style="display: flex; justify-content: space-between; align-items: center;">
+
+                    <div style="display: flex; align-items: center; justify-content: center;">
+
+
+
+                      <mat-form-field appearance="fill" style="margin-right: 10px; margin-left: 10px; ">
+                        <mat-label>{{post.status == "ACTIVE" ? "ACTIVE" : post.status == "OCCUPIED_POSITION" ? "OCCUPIED POSITION" : "PROCESS CULMINATED"}}</mat-label>
+                        <mat-select [(value)]="selectedPosts[post.id]" >
+                          <mat-option *ngFor="let status of postStatus" [value]="status">
+                            {{status}}
+
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+
+                      <button mat-raised-button color="primary" class="btn-send-post" (click)="updatePost(post)">Update</button>
+
+                    </div>
+
+
                     <button mat-icon-button color="primary" (click)="deletePost(post.id)">
                       <mat-icon>delete</mat-icon>
                     </button>
+
                   </mat-card-actions>
                 </mat-card>
- 
+
+
               </div>
-              
+
               <div *ngIf="isEmpty" class="empty-post-title">
                 <h2 class="empty-post-title-decoration" >You don't have any publications yet</h2>
               </div>
@@ -129,3 +147,5 @@
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>
+
+ 

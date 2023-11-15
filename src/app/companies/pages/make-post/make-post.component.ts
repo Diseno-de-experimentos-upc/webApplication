@@ -32,6 +32,7 @@ export class MakePostComponent implements OnInit {
     this.post.title = this.postForm.get('title')?.value;
     this.post.imageUrl = this.postForm.get('imageUrl')?.value;
     this.post.description = this.postForm.get('description')?.value;
+    this.post.status = "ACTIVE";
 
     this.service.AddPost(this.post, this.UserId).subscribe((response) => {
         console.log(response);
@@ -42,13 +43,13 @@ export class MakePostComponent implements OnInit {
   onSubmit(){
     if(this.postForm.valid){
       this.eventAddPost();
-      this.dialog.open(DialogBoxInvalidFormComponent, { 
+      this.dialog.open(DialogBoxInvalidFormComponent, {
         data: {message: 'You added a post successfully!'},
       });
       this.postForm.reset();
     }
     else{
-      this.dialog.open(DialogBoxInvalidFormComponent, { 
+      this.dialog.open(DialogBoxInvalidFormComponent, {
         data: {message: 'Please complete all the fields'},
       });
     }

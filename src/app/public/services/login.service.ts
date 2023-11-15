@@ -9,20 +9,24 @@ import { DigitalProfile } from '../register/model/digitalprofile';
   providedIn: 'root'
 })
 export class LoginService {
-  developerURL = 'http://localhost:8080/api/v1/developers';
-  companyURL = 'http://localhost:8080/api/v1/companies';
-  usersURL = 'http://localhost:3000/users';
 
-  basePath = 'http://localhost:8080/api/v1/users';
-  urlDeveloper = 'http://localhost:8080/api/v1/developers';
-  urlCompany = 'http://localhost:8080/api/v1/companies';
-  urlDigitalProfile = "http://localhost:8080/api/v1/digital_profiles";
-  urlDatabase = 'http://localhost:8080/api/v1/databases';
-  urlFrameworks = 'http://localhost:8080/api/v1/frameworks';
-  urlLenguages = 'http://localhost:8080/api/v1/programmingLanguages';
-  educationUrl: string = 'http://localhost:8080/api/v1/educations';
 
- 
+  //This is the main URL for the backend
+  baseUrl = "http://localhost:8090/api/v1";
+
+  developerURL = this.baseUrl + '/developers';
+  companyURL = this.baseUrl + '/companies';
+  usersURL = this.baseUrl + '/users';
+
+  basePath = this.baseUrl + '/users';
+  urlDeveloper = this.baseUrl + '/developers';
+  urlCompany = this.baseUrl + '/companies';
+  urlDigitalProfile = this.baseUrl + "/digital_profiles";
+  urlDatabase = this.baseUrl + '/databases';
+  urlFrameworks = this.baseUrl + '/frameworks';
+  urlLenguages = this.baseUrl + '/programmingLanguages';
+  educationUrl: string = this.baseUrl + '/educations';
+
   constructor(private http: HttpClient) { }
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     throw new Error('Method not implemented.');
@@ -98,10 +102,10 @@ export class LoginService {
   }
   GetEducationByDigitalProfileId(id: number): Observable<object> {
     return this.http
-      .get(`${this.educationUrl}/digitalProfile/${id}`, this.httpOptions) 
+      .get(`${this.educationUrl}/digitalProfile/${id}`, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
- 
+
   postDatabase(database: object, id: number): Observable<object> {
     return this.http
       .post<object>(`${this.urlDatabase}/${id}`, database, this.httpOptions)
@@ -130,7 +134,7 @@ export class LoginService {
       .get<object>(`${this.basePath}/searchByEmail/${email}`, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
-  
+
   getUserById(id: number): Observable<object> {
     return this.http
       .get<object>(`${this.basePath}/${id}`, this.httpOptions)

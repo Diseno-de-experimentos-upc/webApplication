@@ -21,7 +21,7 @@ export class CompanyComponent implements OnInit {
   digitalProfile: DigitalProfile;
 
   constructor(private service: LoginService, private formBuilder: FormBuilder, public dialog: MatDialog, private router: Router) {
-    
+
     this.TempComp = {} as Company;
     this.digitalProfile = {} as DigitalProfile;
 
@@ -75,12 +75,12 @@ export class CompanyComponent implements OnInit {
   openDialog() {
     if (this.registerForm.invalid) {
       if(this.registerForm.get('password')?.value !== this.registerForm.get('password_confirm')?.value) {
-        this.dialog.open(DialogBoxInvalidFormComponent, { 
+        this.dialog.open(DialogBoxInvalidFormComponent, {
           data: {message: 'Please confirm the same password!'},
         });
       }
       else{
-        this.dialog.open(DialogBoxInvalidFormComponent, { 
+        this.dialog.open(DialogBoxInvalidFormComponent, {
           data: {message: 'Please fill all the required fields!'},
         });
       }
@@ -89,17 +89,17 @@ export class CompanyComponent implements OnInit {
       this.verifyDeveloperUnregistered();
       if(!this.registered) {
         this.Add();
-        this.dialog.open(DialogBoxInvalidFormComponent, { 
+        this.dialog.open(DialogBoxInvalidFormComponent, {
           data: {message: 'You have successfully registered!'},
         });
         this.router.navigate(['/login']);
       }
       else {
-        this.dialog.open(DialogBoxInvalidFormComponent, { 
+        this.dialog.open(DialogBoxInvalidFormComponent, {
           data: {message: 'This email is already registered!'},
         });
       }
-      
+
     }
   }
 
@@ -121,7 +121,7 @@ export class CompanyComponent implements OnInit {
   get password_confirm() {
     return this.registerForm.get('password_confirm');
   }
-  
+
   get last_name() {
     return this.registerForm.get('last_name');
   }
@@ -149,7 +149,7 @@ export class CompanyComponent implements OnInit {
   get city() {
     return this.registerForm.get('city');
   }
-  
+
 
   setEmailValidation() {
     const emailControl = this.registerForm.get('email');
@@ -195,7 +195,7 @@ export class CompanyComponent implements OnInit {
       }
     };
   }
-  
+
   setPaswordValidation() {
     const passwordControl = this.registerForm.get('password');
 
@@ -211,7 +211,7 @@ export class CompanyComponent implements OnInit {
   verifyDeveloperUnregistered() {
     this.registered = false;
     var req = new XMLHttpRequest();
-    req.open('GET', `http://localhost:8080/api/v1/users/searchByEmail/${this.registerForm.get("email")?.value}`, false);
+    req.open('GET', `http://localhost:8090/api/v1/users/searchByEmail/${this.registerForm.get("email")?.value}`, false);
     req.send(null);
     if (req.status == 200) {
       var user = JSON.parse(req.responseText);
@@ -219,6 +219,6 @@ export class CompanyComponent implements OnInit {
         this.registered = true;
       }
     }
-    
+
   }
 }

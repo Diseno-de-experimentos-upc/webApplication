@@ -5,6 +5,8 @@ import { delay } from 'rxjs';
 import {CompaniesService} from '../../services/companies.service';
 import { Company } from '../../model/company';
 import {toInteger} from "lodash";
+import { Post } from '../../model/post';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-profile-company',
@@ -29,15 +31,19 @@ export class ProfileCompanyComponent implements OnInit {
   company!: Company;
   isEmpty: boolean = true;
   isResponsive: boolean = false;
+  postStatus: Array<string> = ["ACTIVE", "OCCUPIED POSITION", "PROCESS CULMINATED"];
 
-  constructor(private observer: BreakpointObserver, private service: CompaniesService) { }
+  //create a map id key and status value
+  selectedPosts: Array<any> = [];
+
+  constructor(private observer: BreakpointObserver, private service: CompaniesService, private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
 
     //getting id from localStorage
     const id = toInteger(localStorage.getItem("id"));
     this.ngAfterViewInit();
-    
+
     this.getRecruiter(id);
     this.getSocialNetworks(id);
     this.getPosts(id);
@@ -50,6 +56,16 @@ export class ProfileCompanyComponent implements OnInit {
 
       if(this.posts.length > 0){
         this.isEmpty = false;
+
+        //run through the posts and add selectedPosts
+        let i;
+        for(i = 0; i < this.posts.length; i++){
+          this.selectedPosts.push({
+            id: this.posts[i].id,
+            status: this.posts[i].status == "ACTIVE" ? "ACTIVE" : this.posts[i].status == "OCCUPIED_POSITION" ? "OCCUPIED POSITION" : "PROCESS CULMINATED"
+          });
+        }
+
       }
       else{
         this.isEmpty = true;
@@ -61,9 +77,34 @@ export class ProfileCompanyComponent implements OnInit {
   deletePost(id:number) {
     this.service.DeletePostById(id).subscribe((response:any) => {
       this.posts = this.posts.filter((o: any) => {
-        return o.id !==id ? o:false; 
+        return o.id !==id ? o:false;
       })
     });
+  }
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action);
+  }
+
+
+  updatePost(newPost: Post) {
+
+     if(this.selectedPosts[newPost.id] == "ACTIVE"){
+      newPost.status = "ACTIVE";
+    }
+    else if(this.selectedPosts[newPost.id] == "OCCUPIED POSITION"){
+      newPost.status = "OCCUPIED_POSITION";
+    }
+    else if(this.selectedPosts[newPost.id] == "PROCESS CULMINATED"){
+      newPost.status = "OUT_OF_DATE";
+    }
+
+    this.service.updatePost(newPost).subscribe((response:any) => {
+      if(response != null){
+        this.openSnackBar("Post updated successfully", "Close");
+      }
+    });
+
   }
 
   getRecruiter(id: number) {
