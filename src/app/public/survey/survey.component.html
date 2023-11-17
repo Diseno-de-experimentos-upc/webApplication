@@ -1,0 +1,20 @@
+<div class="main-div">
+  <label class="title">Please complete this short survey</label>
+  <div class="spacer"></div>
+  <div *ngIf="user == 'developer'; else Company" class="subtitle">
+    From 1 to 10, rate how well you think Profile+ helped you find a job offer
+    that meets your needs.
+  </div>
+  <ng-template #Company>
+    <div class="subtitle">
+      From 1 to 10, rate how well you think Profile+ helped you find the right
+      candidate for the job position you published.
+    </div>
+  </ng-template>
+
+  <input matInput [(ngModel)]="rate" type="number" max="10" min="1" value="5" />
+
+  <button mat-raised-button class="button" color="warn" (click)="submit()">
+    Submit
+  </button>
+</div>
