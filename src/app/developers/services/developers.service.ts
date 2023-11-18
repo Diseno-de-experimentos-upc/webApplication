@@ -27,7 +27,6 @@ export class DevelopersService {
   socialNetworks = 'http://localhost:8080/api/v1/socialNetworks';
 
 
-
   digitalProfileUrl: string = 'http://localhost:8080/api/v1/digital_profiles';
   educationUrl: string = 'http://localhost:8080/api/v1/educations';
 
@@ -69,6 +68,15 @@ export class DevelopersService {
       .pipe(retry(2), catchError(this.handleError));
   }
 
+  getTechnologiesByDigitalProfileId(digitalProfileId: number): Observable<object> {
+    // Llamada al método existente que engloba las tecnologías
+    return this.GetDevsByFrameworkAndLanguageAndDatabase('framework', 'language', 'database')
+      .pipe(
+        retry(2),
+        catchError(this.handleError)
+      );
+  }
+
   GetDevsByFrameworkAndLanguageAndDatabase(framework: string, language: string, database: string): Observable<object> {
 
     return this.http
@@ -99,8 +107,8 @@ export class DevelopersService {
     return this.http
       .put<any>(`${this.BaseURL}/${dev.id}`, JSON.stringify(dev), this.httpOptions);
       //.pipe(retry(2), catchError(this.handleError));
-    
-      
+
+
   }
 
   GetAllPosts(): Observable<Post> {
@@ -232,4 +240,7 @@ export class DevelopersService {
       .get<Company>(`${this.urlCompany}`, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
+
+
+
 }
