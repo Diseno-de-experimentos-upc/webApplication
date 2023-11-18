@@ -25,9 +25,11 @@ export class HomeComponent implements OnInit {
     let developer: any;
     this.service.GetDeveloperById(id).subscribe((response: any) => {
       developer = response;
-    });
-
-    // if (developer.rate == null) this.openDialogSurvey();
+      console.log(developer);
+      if (developer.rate == null) {
+        this.openDialogSurvey();
+      }
+    });   
   }
 
   openMessageDialog(id: number) {

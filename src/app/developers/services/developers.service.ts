@@ -15,31 +15,31 @@ import { Post } from 'src/app/companies/model/post';
   providedIn: 'root',
 })
 export class DevelopersService {
-  BaseURL: string = 'http://localhost:8090/api/v1/developers';
-  PostURL: string = 'http://localhost:8090/api/v1/posts';
+  BaseURL: string = 'http://localhost:8080/api/v1/developers';
+  PostURL: string = 'http://localhost:8080/api/v1/posts';
 
-  certificateUrl: string = 'http://localhost:8090/api/v1/certificates';
-  studyCenterUrl: string = 'http://localhost:8090/api/v1/study-centers';
-  databaseUrl: string = 'http://localhost:8090/api/v1/databases';
-  frameworkUrl: string = 'http://localhost:8090/api/v1/frameworks';
-  programingLanguagesUrl: string = 'http://localhost:8090/api/v1/programmingLanguages';
-  projectsUrl: string = 'http://localhost:8090/api/v1/projects';
-  socialNetworks = 'http://localhost:8090/api/v1/socialNetworks';
+  certificateUrl: string = 'http://localhost:8080/api/v1/certificates';
+  studyCenterUrl: string = 'http://localhost:8080/api/v1/study-centers';
+  databaseUrl: string = 'http://localhost:8080/api/v1/databases';
+  frameworkUrl: string = 'http://localhost:8080/api/v1/frameworks';
+  programingLanguagesUrl: string = 'http://localhost:8080/api/v1/programmingLanguages';
+  projectsUrl: string = 'http://localhost:8080/api/v1/projects';
+  socialNetworks = 'http://localhost:8080/api/v1/socialNetworks';
 
 
 
-  digitalProfileUrl: string = 'http://localhost:8090/api/v1/digital_profiles';
-  educationUrl: string = 'http://localhost:8090/api/v1/educations';
+  digitalProfileUrl: string = 'http://localhost:8080/api/v1/digital_profiles';
+  educationUrl: string = 'http://localhost:8080/api/v1/educations';
 
    //This is the main URL for the backend
-   baseUrl = "http://localhost:8090/api/v1";
+   baseUrl = "http://localhost:8080/api/v1";
 
 
-  ContactsURL: string = 'http://localhost:8090/contacts';
-  MessagesURL: string = 'http://localhost:8090/messages';
-  urlCompany = 'http://localhost:8090/api/v1/companies';
+  ContactsURL: string = 'http://localhost:8080/contacts';
+  MessagesURL: string = 'http://localhost:8080/messages';
+  urlCompany = 'http://localhost:8080/api/v1/companies';
 
-  backURL: string = 'http://localhost:8090/api/v1/users/searchByFrameworkAndProgrammingLanguageAndDatabase';
+  backURL: string = 'http://localhost:8080/api/v1/users/searchByFrameworkAndProgrammingLanguageAndDatabase';
 
 
   httpOptions = {
@@ -94,10 +94,13 @@ export class DevelopersService {
       .pipe(retry(2), catchError(this.handleError));
   }
 
-  updateDev(dev: Developer): Observable<Developer> {
+  updateDev(dev: any): any{
+    console.log(dev.rate + " ----------------------------------");
     return this.http
-      .put<Developer>(`${this.BaseURL}/${dev.id}`, JSON.stringify(dev), this.httpOptions)
-      .pipe(retry(2), catchError(this.handleError));
+      .put<any>(`${this.BaseURL}/${dev.id}`, JSON.stringify(dev), this.httpOptions);
+      //.pipe(retry(2), catchError(this.handleError));
+    
+      
   }
 
   GetAllPosts(): Observable<Post> {
@@ -167,7 +170,7 @@ export class DevelopersService {
   GetContacts(UserId:number): Observable<object> {
     return this.http
 
-      .get<object>(`http://localhost:8090/api/v1/users/${UserId}/messages/LastMessageDeveloper`, this.httpOptions)
+      .get<object>(`http://localhost:8080/api/v1/users/${UserId}/messages/LastMessageDeveloper`, this.httpOptions)
 
       .pipe(retry(2), catchError(this.handleError));
   }
@@ -175,7 +178,7 @@ export class DevelopersService {
   GetMessages(contactId: number, UserId:number): Observable<object> {
     return this.http
 
-      .get(`http://localhost:8090/api/v1/users/${UserId}/messages/${contactId}`, this.httpOptions)
+      .get(`http://localhost:8080/api/v1/users/${UserId}/messages/${contactId}`, this.httpOptions)
 
       .pipe(retry(2), catchError(this.handleError));
   }
@@ -183,7 +186,7 @@ export class DevelopersService {
   SendMessage(answer: object, contactId: number, UserId:number): Observable<object> {
     return this.http
 
-      .post<object>(`http://localhost:8090/api/v1/users/${UserId}/messages/${contactId}`, answer, this.httpOptions)
+      .post<object>(`http://localhost:8080/api/v1/users/${UserId}/messages/${contactId}`, answer, this.httpOptions)
 
       .pipe(retry(2), catchError(this.handleError));
   }
@@ -193,14 +196,14 @@ export class DevelopersService {
   GetNotificationsByUserId(id:number, UserId:number): Observable<object> {
     return this.http
 
-      .get(`http://localhost:8090/api/v1/users/${UserId}/notifications/${id}`, this.httpOptions)
+      .get(`http://localhost:8080/api/v1/users/${UserId}/notifications/${id}`, this.httpOptions)
 
       .pipe(retry(2),catchError(this.handleError));
   }
   GetAllNotifications(UserId:number): Observable<object> {
     return this.http
 
-      .get(`http://localhost:8090/api/v1/users/${UserId}/notifications`, this.httpOptions)
+      .get(`http://localhost:8080/api/v1/users/${UserId}/notifications`, this.httpOptions)
 
       .pipe(retry(2),catchError(this.handleError));
   }
@@ -210,7 +213,7 @@ export class DevelopersService {
   SendNotification(notification: object, UserId:number): Observable<object> {
     return this.http
 
-      .post<object>(`http://localhost:8090/api/v1/users/${UserId}/notifications`, JSON.stringify(notification) , this.httpOptions)
+      .post<object>(`http://localhost:8080/api/v1/users/${UserId}/notifications`, JSON.stringify(notification) , this.httpOptions)
 
       .pipe(retry(2), catchError(this.handleError));
   }
@@ -219,7 +222,7 @@ export class DevelopersService {
   DeleteNotificationById(id: number, UserId: number): Observable<object> {
     return this.http
 
-      .delete(`http://localhost:8090/api/v1/users/${UserId}/notifications/${id}`, this.httpOptions)
+      .delete(`http://localhost:8080/api/v1/users/${UserId}/notifications/${id}`, this.httpOptions)
 
       .pipe(retry(2), catchError(this.handleError));
   }

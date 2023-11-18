@@ -12,9 +12,57 @@
     </div>
   </ng-template>
 
-  <input matInput [(ngModel)]="rate" type="number" max="10" min="1" value="5" />
+  <form [formGroup]="nuevoForm" style="margin-top: 2vh;">
 
-  <button mat-raised-button class="button" color="warn" (click)="submit()">
-    Submit
-  </button>
+    <!-- <mat-form-field class="example-full-width">
+      <mat-label>Rate</mat-label>
+      <input matInput type="number" formControlName="rateForm" />
+      <mat-error *ngIf="rateForm?.errors?.['required']">
+        Only a number between <strong>0 and 10</strong>
+      </mat-error>
+    </mat-form-field> -->
+
+    <mat-form-field appearance="fill" style="margin-bottom: 1vh;">
+      <mat-label>Rate</mat-label>
+      <mat-select disableRipple formControlName="rateForm">
+        <mat-option value="1">1
+          <mat-icon class="starIcon" fontIcon="star"></mat-icon>
+        </mat-option>
+        <mat-option value="2">2
+          <mat-icon class="starIcon" fontIcon="star"></mat-icon>
+        </mat-option>
+        <mat-option value="3">3
+          <mat-icon class="starIcon" fontIcon="star"></mat-icon>
+        </mat-option>
+        <mat-option value="4">4
+          <mat-icon class="starIcon" fontIcon="star"></mat-icon>
+        </mat-option>
+        <mat-option value="5">5
+          <mat-icon class="starIcon" fontIcon="star"></mat-icon>
+        </mat-option>
+        <mat-option value="6">6
+          <mat-icon class="starIcon" fontIcon="star"></mat-icon>
+        </mat-option>
+        <mat-option value="7">7
+          <mat-icon class="starIcon" fontIcon="star"></mat-icon>
+        </mat-option>
+        <mat-option value="8">8
+          <mat-icon class="starIcon" fontIcon="star"></mat-icon>
+        </mat-option>
+        <mat-option value="9">9
+          <mat-icon class="starIcon" fontIcon="star"></mat-icon>
+        </mat-option>
+        <mat-option value="10">10
+          <mat-icon class="starIcon" fontIcon="star"></mat-icon>
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="rateForm?.errors?.['required']">Rate is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <button mat-button [disabled]="!nuevoForm.valid" class="button" (click)="submit()" >
+      Send
+    </button>
+  </form>
+
 </div>

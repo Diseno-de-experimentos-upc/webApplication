@@ -20,16 +20,20 @@ export class HomeCompanyComponent implements OnInit {
   ngOnInit(): void {
     this.service.getDeveloperAll().subscribe((response: any) => {
       this.Devs = response;
-      console.log(this.Devs);
     });
 
     const id = toInteger(localStorage.getItem('id'));
-    let developer: any;
+    console.log(id);
+    let company: any;
     this.service.GetRecById(id).subscribe((response: any) => {
-      developer = response;
+      company = response;
+      console.log(company);
+      if (company.rate == null) this.openDialogSurvey();
     });
 
-    // if (developer.rate == null) this.openDialogSurvey();
+    
+
+    
   }
   openMessageDialog(id: number) {
     this.dialog.open(MessageDialogComponent, {

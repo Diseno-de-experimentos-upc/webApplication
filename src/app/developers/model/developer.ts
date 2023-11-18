@@ -16,5 +16,6 @@ export interface Developer{
   databases:Array<Database>,
   languages:Array<ProgrammingLanguage>,
   frameworks:Array<Framework>
+  rate:number
  
 }
