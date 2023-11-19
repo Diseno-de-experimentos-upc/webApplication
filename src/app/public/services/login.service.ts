@@ -12,7 +12,7 @@ export class LoginService {
 
 
   //This is the main URL for the backend
-  baseUrl = "http://localhost:8080/api/v1";
+  baseUrl = "https://backend-experimentos.azurewebsites.net/api/v1";
 
   developerURL = this.baseUrl + '/developers';
   companyURL = this.baseUrl + '/companies';

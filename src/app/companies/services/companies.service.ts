@@ -18,16 +18,16 @@ import { Post } from '../model/post';
 export class CompaniesService {
 
 
-  NewsURL: string = 'http://localhost:8080/news-companies';
+  NewsURL: string = 'https://backend-experimentos.azurewebsites.net/news-companies';
 
-  BaseURL: string = 'http://localhost:8080/api/v1/companies';
+  BaseURL: string = 'https://backend-experimentos.azurewebsites.net/api/v1/companies';
 
-  socialNetworks = 'http://localhost:8080/api/v1/socialNetworks';
+  socialNetworks = 'https://backend-experimentos.azurewebsites.net/api/v1/socialNetworks';
 
-  basePath = 'http://localhost:8080/api/v1/users';
+  basePath = 'https://backend-experimentos.azurewebsites.net/api/v1/users';
 
-  urlDeveloper = 'http://localhost:8080/api/v1/developers';
-  urlPost = 'http://localhost:8080/api/v1/posts';
+  urlDeveloper = 'https://backend-experimentos.azurewebsites.net/api/v1/developers';
+  urlPost = 'https://backend-experimentos.azurewebsites.net/api/v1/posts';
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -120,7 +120,7 @@ export class CompaniesService {
   GetContacts(UserId:number): Observable<object> {
     return this.http
 
-      .get<object>(`http://localhost:8080/api/v1/users/${UserId}/messages/LastMessageCompany`, this.httpOptions)
+      .get<object>(`https://backend-experimentos.azurewebsites.net/api/v1/users/${UserId}/messages/LastMessageCompany`, this.httpOptions)
 
       .pipe(retry(2), catchError(this.handleError));
   }
@@ -128,7 +128,7 @@ export class CompaniesService {
   GetMessages(contactId: number, UserId:number): Observable<object> {
     return this.http
 
-      .get(`http://localhost:8080/api/v1/users/${UserId}/messages/${contactId}`, this.httpOptions)
+      .get(`https://backend-experimentos.azurewebsites.net/api/v1/users/${UserId}/messages/${contactId}`, this.httpOptions)
 
       .pipe(retry(2), catchError(this.handleError));
   }
@@ -136,7 +136,7 @@ export class CompaniesService {
   SendMessage(answer: object, contactId:number, UserId:number): Observable<object> {
     return this.http
 
-      .post<object>(`http://localhost:8080/api/v1/users/${UserId}/messages/${contactId}`, answer, this.httpOptions)
+      .post<object>(`https://backend-experimentos.azurewebsites.net/api/v1/users/${UserId}/messages/${contactId}`, answer, this.httpOptions)
 
       .pipe(retry(2), catchError(this.handleError));
   }
@@ -169,21 +169,21 @@ export class CompaniesService {
 
   GetNotificationByUserId(id:number, UserId:number): Observable<object> {
     return this.http
-      .get(`http://localhost:8080/api/v1/users/${UserId}/notifications/${id}`, this.httpOptions)
+      .get(`https://backend-experimentos.azurewebsites.net/api/v1/users/${UserId}/notifications/${id}`, this.httpOptions)
       .pipe(retry(2),catchError(this.handleError));
   }
 
   SendNotification(notification: object, contactId: number, UserId:number, ): Observable<object> {
     return this.http
 
-      .post<object>(`http://localhost:8080/api/v1/users/${UserId}/notifications/${contactId}`, JSON.stringify(notification) , this.httpOptions)
+      .post<object>(`https://backend-experimentos.azurewebsites.net/api/v1/users/${UserId}/notifications/${contactId}`, JSON.stringify(notification) , this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 
   DeleteNotificationById(id: number, UserId: number): Observable<object> {
     return this.http
 
-      .delete(`http://localhost:8080/api/v1/users/${UserId}/notifications/${id}`, this.httpOptions)
+      .delete(`https://backend-experimentos.azurewebsites.net/api/v1/users/${UserId}/notifications/${id}`, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 
@@ -206,7 +206,7 @@ export class CompaniesService {
 
   GetAllNotifications(UserId:number): Observable<object> {
     return this.http
-      .get(`http://localhost:8080/api/v1/users/${UserId}/notifications`, this.httpOptions)
+      .get(`https://backend-experimentos.azurewebsites.net/api/v1/users/${UserId}/notifications`, this.httpOptions)
 
       .pipe(retry(2),catchError(this.handleError));
   }

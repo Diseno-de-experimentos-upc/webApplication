@@ -15,30 +15,30 @@ import { Post } from 'src/app/companies/model/post';
   providedIn: 'root',
 })
 export class DevelopersService {
-  BaseURL: string = 'http://localhost:8080/api/v1/developers';
-  PostURL: string = 'http://localhost:8080/api/v1/posts';
+  BaseURL: string = 'https://backend-experimentos.azurewebsites.net/api/v1/developers';
+  PostURL: string = 'https://backend-experimentos.azurewebsites.net/api/v1/posts';
 
-  certificateUrl: string = 'http://localhost:8080/api/v1/certificates';
-  studyCenterUrl: string = 'http://localhost:8080/api/v1/study-centers';
-  databaseUrl: string = 'http://localhost:8080/api/v1/databases';
-  frameworkUrl: string = 'http://localhost:8080/api/v1/frameworks';
-  programingLanguagesUrl: string = 'http://localhost:8080/api/v1/programmingLanguages';
-  projectsUrl: string = 'http://localhost:8080/api/v1/projects';
-  socialNetworks = 'http://localhost:8080/api/v1/socialNetworks';
+  certificateUrl: string = 'https://backend-experimentos.azurewebsites.net/api/v1/certificates';
+  studyCenterUrl: string = 'https://backend-experimentos.azurewebsites.net/api/v1/study-centers';
+  databaseUrl: string = 'https://backend-experimentos.azurewebsites.net/api/v1/databases';
+  frameworkUrl: string = 'https://backend-experimentos.azurewebsites.net/api/v1/frameworks';
+  programingLanguagesUrl: string = 'https://backend-experimentos.azurewebsites.net/api/v1/programmingLanguages';
+  projectsUrl: string = 'https://backend-experimentos.azurewebsites.net/api/v1/projects';
+  socialNetworks = 'https://backend-experimentos.azurewebsites.net/api/v1/socialNetworks';
 
 
-  digitalProfileUrl: string = 'http://localhost:8080/api/v1/digital_profiles';
-  educationUrl: string = 'http://localhost:8080/api/v1/educations';
+  digitalProfileUrl: string = 'https://backend-experimentos.azurewebsites.net/api/v1/digital_profiles';
+  educationUrl: string = 'https://backend-experimentos.azurewebsites.net/api/v1/educations';
 
    //This is the main URL for the backend
-   baseUrl = "http://localhost:8080/api/v1";
+   baseUrl = "https://backend-experimentos.azurewebsites.net/api/v1";
 
 
-  ContactsURL: string = 'http://localhost:8080/contacts';
-  MessagesURL: string = 'http://localhost:8080/messages';
-  urlCompany = 'http://localhost:8080/api/v1/companies';
+  ContactsURL: string = 'https://backend-experimentos.azurewebsites.net/contacts';
+  MessagesURL: string = 'https://backend-experimentos.azurewebsites.net/messages';
+  urlCompany = 'https://backend-experimentos.azurewebsites.net/api/v1/companies';
 
-  backURL: string = 'http://localhost:8080/api/v1/users/searchByFrameworkAndProgrammingLanguageAndDatabase';
+  backURL: string = 'https://backend-experimentos.azurewebsites.net/api/v1/users/searchByFrameworkAndProgrammingLanguageAndDatabase';
 
 
   httpOptions = {
@@ -178,7 +178,7 @@ export class DevelopersService {
   GetContacts(UserId:number): Observable<object> {
     return this.http
 
-      .get<object>(`http://localhost:8080/api/v1/users/${UserId}/messages/LastMessageDeveloper`, this.httpOptions)
+      .get<object>(`https://backend-experimentos.azurewebsites.net/api/v1/users/${UserId}/messages/LastMessageDeveloper`, this.httpOptions)
 
       .pipe(retry(2), catchError(this.handleError));
   }
@@ -186,7 +186,7 @@ export class DevelopersService {
   GetMessages(contactId: number, UserId:number): Observable<object> {
     return this.http
 
-      .get(`http://localhost:8080/api/v1/users/${UserId}/messages/${contactId}`, this.httpOptions)
+      .get(`https://backend-experimentos.azurewebsites.net/api/v1/users/${UserId}/messages/${contactId}`, this.httpOptions)
 
       .pipe(retry(2), catchError(this.handleError));
   }
@@ -194,7 +194,7 @@ export class DevelopersService {
   SendMessage(answer: object, contactId: number, UserId:number): Observable<object> {
     return this.http
 
-      .post<object>(`http://localhost:8080/api/v1/users/${UserId}/messages/${contactId}`, answer, this.httpOptions)
+      .post<object>(`https://backend-experimentos.azurewebsites.net/api/v1/users/${UserId}/messages/${contactId}`, answer, this.httpOptions)
 
       .pipe(retry(2), catchError(this.handleError));
   }
@@ -204,14 +204,14 @@ export class DevelopersService {
   GetNotificationsByUserId(id:number, UserId:number): Observable<object> {
     return this.http
 
-      .get(`http://localhost:8080/api/v1/users/${UserId}/notifications/${id}`, this.httpOptions)
+      .get(`https://backend-experimentos.azurewebsites.net/api/v1/users/${UserId}/notifications/${id}`, this.httpOptions)
 
       .pipe(retry(2),catchError(this.handleError));
   }
   GetAllNotifications(UserId:number): Observable<object> {
     return this.http
 
-      .get(`http://localhost:8080/api/v1/users/${UserId}/notifications`, this.httpOptions)
+      .get(`https://backend-experimentos.azurewebsites.net/api/v1/users/${UserId}/notifications`, this.httpOptions)
 
       .pipe(retry(2),catchError(this.handleError));
   }
@@ -221,7 +221,7 @@ export class DevelopersService {
   SendNotification(notification: object, UserId:number): Observable<object> {
     return this.http
 
-      .post<object>(`http://localhost:8080/api/v1/users/${UserId}/notifications`, JSON.stringify(notification) , this.httpOptions)
+      .post<object>(`https://backend-experimentos.azurewebsites.net/api/v1/users/${UserId}/notifications`, JSON.stringify(notification) , this.httpOptions)
 
       .pipe(retry(2), catchError(this.handleError));
   }
@@ -230,7 +230,7 @@ export class DevelopersService {
   DeleteNotificationById(id: number, UserId: number): Observable<object> {
     return this.http
 
-      .delete(`http://localhost:8080/api/v1/users/${UserId}/notifications/${id}`, this.httpOptions)
+      .delete(`https://backend-experimentos.azurewebsites.net/api/v1/users/${UserId}/notifications/${id}`, this.httpOptions)
 
       .pipe(retry(2), catchError(this.handleError));
   }

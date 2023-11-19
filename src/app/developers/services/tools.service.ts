@@ -15,14 +15,14 @@ export class ToolsService {
 
   //Developer tools
 
-  projectsUrl: string = 'http://localhost:8080/api/v1/projects';
-  educationUrl: string = 'http://localhost:8080/api/v1/educations';
-  digitalProfileUrl: string = 'http://localhost:8080/api/v1/digital_profiles';
-  databaseUrl: string = 'http://localhost:8080/api/v1/databases';
-  frameWorkUrl: string = 'http://localhost:8080/api/v1/frameworks';
-  programingLanguageUrl: string = 'http://localhost:8080/api/v1/programmingLanguages';
-  certificateUrl: string = 'http://localhost:8080/api/v1/certificates';
-  studyCenterUrl: string = 'http://localhost:8080/api/v1/study-centers';
+  projectsUrl: string = 'https://backend-experimentos.azurewebsites.net/api/v1/projects';
+  educationUrl: string = 'https://backend-experimentos.azurewebsites.net/api/v1/educations';
+  digitalProfileUrl: string = 'https://backend-experimentos.azurewebsites.net/api/v1/digital_profiles';
+  databaseUrl: string = 'https://backend-experimentos.azurewebsites.net/api/v1/databases';
+  frameWorkUrl: string = 'https://backend-experimentos.azurewebsites.net/api/v1/frameworks';
+  programingLanguageUrl: string = 'https://backend-experimentos.azurewebsites.net/api/v1/programmingLanguages';
+  certificateUrl: string = 'https://backend-experimentos.azurewebsites.net/api/v1/certificates';
+  studyCenterUrl: string = 'https://backend-experimentos.azurewebsites.net/api/v1/study-centers';
 
 
   httpOptions = {

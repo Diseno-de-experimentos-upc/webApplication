@@ -94,7 +94,7 @@ export class DeveloperComponent implements OnInit {
     this.setEmailValidation();
     this.setPhoneValidation();
     this.setPaswordValidation();
-    
+
   }
 
   getLanguages(){
@@ -167,7 +167,7 @@ export class DeveloperComponent implements OnInit {
       }
       this.service.postDatabase(this.database, this.digitalProfile.id).subscribe((response:any) => {
         console.log(response);
-      });    
+      });
     }
   }
 
@@ -195,27 +195,27 @@ export class DeveloperComponent implements OnInit {
       });
     }
 
-    
+
   }
 
   AddInfoToProfile() {
     if(this.registerForm.get('languages')?.value.length > 0)
         this.AddProgrammingLanguages();
-      
+
       if(this.registerForm.get('databases')?.value.length > 0)
         this.AddDatabases();
-      
+
       if(this.registerForm.get('frameworks')?.value.length > 0)
         this.AddFrameworks();
   }
 
   GetDigitalProfile() {
     this.service.getDigitalProfileByDeveloperId(this.userDev.id).subscribe((response:any) => {
-      this.digitalProfile = response;  
+      this.digitalProfile = response;
       console.log("Digital Profile Into Languages: " + JSON.stringify(this.digitalProfile));
     });
     var req = new XMLHttpRequest();
-    req.open('GET', `http://localhost:8080/api/v1/digital_profiles//developer/${this.userDev.id}`, false);
+    req.open('GET', `https://backend-experimentos.azurewebsites.net/api/v1/digital_profiles//developer/${this.userDev.id}`, false);
     req.send(null);
     console.log('Get Digital Profile response');
     console.log(req.responseText);
@@ -228,7 +228,7 @@ export class DeveloperComponent implements OnInit {
 
   AddDigitalProfile() {
     var req = new XMLHttpRequest();
-    req.open('GET', `http://localhost:8080/api/v1/users/searchByEmail/${this.registerForm.get("email")?.value}`, false);
+    req.open('GET', `https://backend-experimentos.azurewebsites.net/api/v1/users/searchByEmail/${this.registerForm.get("email")?.value}`, false);
     req.send(null);
     console.log('Get User response');
     console.log(req.responseText);
@@ -238,7 +238,7 @@ export class DeveloperComponent implements OnInit {
       console.log(this.userDev);
       this.digitalProfile.name = "Digital Profile " + this.registerForm.get("first_name")?.value;
       var req2 = new XMLHttpRequest();
-      req2.open('POST', `http://localhost:8080/api/v1/digital_profiles/${this.userDev.id}`, false);
+      req2.open('POST', `https://backend-experimentos.azurewebsites.net/api/v1/digital_profiles/${this.userDev.id}`, false);
       req2.setRequestHeader('Content-Type', 'application/json');
       req2.send(JSON.stringify(this.digitalProfile));
       console.log('Post Digital Profile');
@@ -248,7 +248,7 @@ export class DeveloperComponent implements OnInit {
       }
     }
 
-  
+
   }
 
   AddDeveloper() {
@@ -263,7 +263,7 @@ export class DeveloperComponent implements OnInit {
     this.TempDev.bannerImage = 'https://thumbs.dreamstime.com/b/internet-information-technology-businessman-hand-showing-concept-75784736.jpg';
 
     var req = new XMLHttpRequest();
-    req.open('POST', 'http://localhost:8080/api/v1/developers', false);
+    req.open('POST', 'https://backend-experimentos.azurewebsites.net/api/v1/developers', false);
     req.setRequestHeader('Content-Type', 'application/json');
     req.send(JSON.stringify(this.TempDev));
     console.log('Post Developer');
@@ -272,16 +272,16 @@ export class DeveloperComponent implements OnInit {
       this.AddDigitalProfile();
     }
   }
-  
+
   openDialog() {
     if (this.registerForm.invalid) {
       if(this.registerForm.get('password')?.value !== this.registerForm.get('password_confirm')?.value) {
-        this.dialog.open(DialogBoxInvalidFormComponent, { 
+        this.dialog.open(DialogBoxInvalidFormComponent, {
           data: {message: 'Please confirm the same password!'},
         });
       }
       else{
-        this.dialog.open(DialogBoxInvalidFormComponent, { 
+        this.dialog.open(DialogBoxInvalidFormComponent, {
           data: {message: 'Please fill all the required fields!'},
         });
       }
@@ -290,17 +290,17 @@ export class DeveloperComponent implements OnInit {
       this.verifyDeveloperUnregistered();
       if(!this.registered) {
         this.AddDeveloper();
-        this.dialog.open(DialogBoxInvalidFormComponent, { 
+        this.dialog.open(DialogBoxInvalidFormComponent, {
           data: {message: 'You have registered successfully! You will be redirect to login page to Log In'}
         });
         this.router.navigate(['/login']);
       }
       else {
-        this.dialog.open(DialogBoxInvalidFormComponent, { 
+        this.dialog.open(DialogBoxInvalidFormComponent, {
           data: {message: 'This email is already registered!'},
         });
       }
-      
+
     }
   }
 
@@ -323,7 +323,7 @@ export class DeveloperComponent implements OnInit {
   get password_confirm() {
     return this.registerForm.get('password_confirm');
   }
-  
+
   get last_name() {
     return this.registerForm.get('last_name');
   }
@@ -340,7 +340,7 @@ export class DeveloperComponent implements OnInit {
       }
         this.registerForm.get('email')?.updateValueAndValidity();
     });
-    
+
   }
 
   setPhoneValidation() {
@@ -373,7 +373,7 @@ export class DeveloperComponent implements OnInit {
       }
     };
   }
-  
+
   setPaswordValidation() {
     this.registerForm.get('password')?.valueChanges.subscribe(value => {
       if (value.length < 8 || value.length > 16) {
@@ -387,7 +387,7 @@ export class DeveloperComponent implements OnInit {
   verifyDeveloperUnregistered() {
     this.registered = false;
     var req = new XMLHttpRequest();
-    req.open('GET', `http://localhost:8080/api/v1/users/searchByEmail/${this.registerForm.get("email")?.value}`, false);
+    req.open('GET', `https://backend-experimentos.azurewebsites.net/api/v1/users/searchByEmail/${this.registerForm.get("email")?.value}`, false);
     req.send(null);
     if (req.status == 200) {
       var user = JSON.parse(req.responseText);

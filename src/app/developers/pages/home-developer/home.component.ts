@@ -17,11 +17,11 @@ export class HomeComponent implements OnInit {
     ngOnInit(): void {
 
 
-      /*
+
         this.service.GetAllPosts().subscribe((response: any) => {
             this.posts = response;
             console.log(this.posts);
-        });*/
+        });
 
         const id = toInteger(localStorage.getItem('id'));
         let developer: any;
@@ -32,6 +32,7 @@ export class HomeComponent implements OnInit {
                 this.openDialogSurvey();
             }
         });
+
         this.service.getTechnologiesByDigitalProfileId(id).subscribe((technologies: any) => {
             // technologies ahora contiene la información de las tecnologías asociadas al perfil digital del usuario
 
